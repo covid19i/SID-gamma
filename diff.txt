@@ -1,0 +1,48 @@
+14,15c14,15
+< checkpoint_dir = './all_of_gt_Sony_GPU_efficient_flattened/'
+< result_dir = './all_of_gt_Sony_GPU_efficient_flattened/'
+---
+> checkpoint_dir = './all_of_gt_Sony_GPU_efficient_flattened_3output/'
+> result_dir = './all_of_gt_Sony_GPU_efficient_flattened_3output/'
+45d44
+<     #https://github.com/google-research/tf-slim/tree/8f0215e924996d7287392241bc8d8b1133d0c5ca/tf_slim
+64c63
+<     #32X32 SIZE IMAGE
+---
+>     #16X16 SIZE IMAGE?
+67,71c66
+<     print(tf.shape(flatten1))#Tensor("Shape:0", shape=(2,), dtype=int32)
+<     print(flatten1.get_shape())#(?, ?)
+<     #https://pythonpedia.com/en/knowledge-base/53200335/tensorflow--valueerror--the-last-dimension-of-the-inputs-to--dense--should-be-defined--found--none-
+<     #ValueError: The last dimension of the inputs to `Dense` should be defined. Found `None`.
+<     flatten1.set_shape([None, 12*32*32])
+---
+>     #print(tf.shape(flatten1))
+81a77
+>     flatten1.set_shape([None, 12*32*32])
+107,108c103
+< gammas = [100, 250, 300]
+< num_classes = len(gammas)
+---
+> 
+112,115d106
+< #gamma
+< 
+< #With flattening of the last conv layer, the following line gives
+< #ValueError: The last dimension of the inputs to `Dense` should be defined. Found `None`.
+117,123c108,110
+< 
+< #G_loss = tf.reduce_mean(tf.abs(tf.log_sofmax(out_gamma) - gt_gamma))
+< #Without flattening of the last conv layer, the following line gives
+< #ValueError: Shapes (?, ?, ?, 3) and (?, 1) are incompatible
+< #Without gt_gamma being a one-hot vector, the same line gives
+< #ValueError: Shapes (?, 3) and (?, 1) are incompatible
+< G_loss = slim.losses.softmax_cross_entropy(out_gamma, tf.squeeze(slim.one_hot_encoding(gt_gamma, num_classes)))
+---
+> #G_loss = slim.losses.softmax_cross_entropy(out_gamma, tf.squeeze(slim.one_hot_encoding(gt_gamma, 3)))
+> #To remvoe the warning
+> G_loss = tf.losses.softmax_cross_entropy(tf.squeeze(slim.one_hot_encoding(gt_gamma, 3)), out_gamma)
+140a128
+> gammas = [100, 250, 300]
+171,172c159,160
+>         #assigned_image_gamma_index = np.array([assigned_image_gamma_index])#conversion for the sake of gt_gamma

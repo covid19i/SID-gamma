@@ -1,0 +1,125 @@
+se) [ir967@log-0 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=1500  --pty /bin/bash
+(base) [ir967@c34-01 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c34-01 Learning-to-See-in-the-Dark]$ vi train_Sony.py 
+(sid) [ir967@c34-01 Learning-to-See-in-the-Dark]$ python train_Sony.py 
+2020-11-07 20:07:12.030230: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:07:12.030359: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:07:12.030398: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+Killed
+(sid) [ir967@c34-01 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c34-01: task 0: Out Of Memory
+srun: Terminating job step 13576083.0
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=2200  --pty /bin/bash
+(base) [ir967@c34-02 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c34-02 Learning-to-See-in-the-Dark]$ python train_Sony.py 
+2020-11-07 20:08:50.130608: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:08:50.130733: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:08:50.130773: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+0 1 Loss=0.070 Time=21.628
+0 2 Loss=0.097 Time=20.422
+0 3 Loss=0.192 Time=20.912
+Killed
+(sid) [ir967@c34-02 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c34-02: task 0: Out Of Memory
+srun: Terminating job step 13576086.0
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=2500  --pty /bin/bash
+(base) [ir967@c34-01 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c34-01 Learning-to-See-in-the-Dark]$ python train_Sony.py 
+2020-11-07 20:11:33.721585: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:11:33.721712: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:11:33.721750: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+1 1 Loss=0.262 Time=21.666
+1 2 Loss=0.360 Time=20.670
+1 3 Loss=0.285 Time=20.693
+1 4 Loss=0.345 Time=20.955
+1 5 Loss=0.307 Time=21.212
+2 1 Loss=0.301 Time=18.528
+2 2 Loss=0.294 Time=18.349
+2 3 Loss=0.300 Time=21.557
+2 4 Loss=0.297 Time=18.331
+Killed
+(sid) [ir967@c34-01 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c34-01: task 0: Out Of Memory
+srun: Terminating job step 13576089.0
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=3000  --pty /bin/bash
+(base) [ir967@c34-01 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c34-01 Learning-to-See-in-the-Dark]$ python train_Sony.py 
+2020-11-07 20:17:00.729289: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:17:00.729427: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:17:00.729464: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./e1_result_Sony/model.ckpt
+1 1 Loss=0.506 Time=21.804
+1 2 Loss=0.328 Time=21.003
+1 3 Loss=0.272 Time=20.772
+1 4 Loss=0.298 Time=20.659
+1 5 Loss=0.270 Time=20.868
+3 1 Loss=0.276 Time=20.635
+3 2 Loss=0.258 Time=18.258
+3 3 Loss=0.224 Time=20.648
+3 4 Loss=0.217 Time=18.254
+3 5 Loss=0.214 Time=20.631
+4 1 Loss=0.220 Time=18.337
+srun: Force Terminated job 13576102
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+4 2 Loss=0.222 Time=18.306
+^CTraceback (most recent call last):
+  File "train_Sony.py", line 189, in <module>
+    feed_dict={in_image: input_patch, gt_image: gt_patch, lr: learning_rate})
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 778, in run
+    run_metadata_ptr)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 982, in _run
+    feed_dict_string, options, run_metadata)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1032, in _do_run
+    target_list, options, run_metadata)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1039, in _do_call
+    return fn(*args)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1021, in _run_fn
+    status, run_metadata)
+KeyboardInterrupt
+(sid) [ir967@c34-01 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c34-01: task 0: Exited with exit code 1
+srun: Terminating job step 13576102.0
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ srun -c1 -gpus:2 -t0:05:00 --mem=3000  --pty /bin/bash
+srun: invalid option -- 'g'
+srun: invalid option -- 'g'
+Try "srun --help" for more information
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ srun -c1 --gres=gpu:2 -t0:05:00 --mem=3000  --pty /bin/bash
+srun: error: GPU number 2 is bigger than CPU number 1
+srun: error: Unable to allocate resources: Unspecified error
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ srun -c1 --gres=gpu:1 -t0:05:00 --mem=3000  --pty /bin/bash
+srun: job 13576161 queued and waiting for resources
+srun: job 13576161 has been allocated resources
+(base) [ir967@gpu-92 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@gpu-92 Learning-to-See-in-the-Dark]$ python train_Sony.py 
+2020-11-07 20:24:55.726129: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:24:55.726232: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:24:55.726270: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:24:55.726316: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:24:55.726355: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX512F instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-07 20:24:55.726397: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./e1_result_Sony/model.ckpt
+1 1 Loss=0.395 Time=22.363
+1 2 Loss=0.250 Time=21.559
+1 3 Loss=0.295 Time=21.427
+1 4 Loss=0.238 Time=21.183
+1 5 Loss=0.231 Time=20.981
+3 1 Loss=0.232 Time=18.890
+3 2 Loss=0.239 Time=18.837
+3 3 Loss=0.239 Time=18.790
+3 4 Loss=0.212 Time=18.761
+3 5 Loss=0.203 Time=18.434
+5 1 Loss=0.191 Time=18.413
+5 2 Loss=0.190 Time=18.553
+srun: Force Terminated job 13576161
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+5 3 Loss=0.181 Time=18.822
+srun: error: gpu-92: task 0: Killed
+srun: Terminating job step 13576161.0
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ exit
+logout
+Connection to localhost closed.
+

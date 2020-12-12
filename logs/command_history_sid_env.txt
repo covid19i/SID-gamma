@@ -1,0 +1,1000 @@
+   76  srun ./gpu03_k80_4.sh
+   77  srun -t0:10:00 --mem=2000 --gres=gpu:1 --pty /bin/bash
+   78  squeue | grep ir967
+   79  cd HPC/hw4/
+   80  ls
+   81  srun gpu03_k80_4.sh
+   82  srun ./gpu03_k80_4.sh
+   83  srun -t0:10:00 --mem=2000 --gres=gpu:1 --pty /bin/bash
+   84  squeue | grep ir967
+   85  squeue
+   86  squeue | grep ir967
+   87  scancel 9018525
+   88  squeue | grep ir967
+   89  srun -t0:01:00 --mem=2000 --gres=gpu:1 --pty /bin/bash
+   90  ls
+   91  ./gpu03_p100_4.sh
+   92  chmod +x gpu03_p100_4.sh 
+   93  ./gpu03_p100_4.sh
+   94  sstat
+   95  squeue | grep ir967
+   96  squeue 9018526
+   97  squeue --start 901
+   98  sstat 9018526
+   99  sacct
+  100  scontrol
+  101  sinfo
+  102  sbatch gpu03.sh
+  103  ls
+  104  pwd
+  105  vi gpu03_p100_4.sh 
+  106  sbatch gpu03_p100_4.sh 
+  107  scontrol show config | grep schedulerType
+  108  scontrol show config | grep SchedulerType
+  109  ls
+  110  vi hw4-1a.sh
+  111  sbatch hw4-1a.sh 
+  112  squeue | grep ir967
+  113  vi hw4-1a.sh
+  114  ls
+  115  cat *.out
+  116  cat slurm_9011157.out
+  117  cat slurm_9011186.out
+  118  cat slurm_9011194.out
+  119  rm slurm_9011194.out
+  120  cat slurm_9011228.out
+  121  cat 1b_slurm_9011228.out
+  122  cat 1b_slurm_9011228.err
+  123  rm 1b_slurm_9011228.err
+  124  ls
+  125  cd HPC/hw4/
+  126  ls
+  127  cat hw4-1a.sh
+  128  sbatch hw4-1a.sh
+  129  squeue | grep ir9
+  130  ls -al
+  131  ls
+  132  cd HPC/hw4/
+  133  pwd
+  134  ls
+  135  pwd
+  136  exit
+  137  pwd
+  138  exit
+  139  ls
+  140  cd HPC/
+  141  ls
+  142  git clone https://github.com/covid19i/csciga2945002.git
+  143  ls
+  144  cd csciga2945002/
+  145  ls
+  146  cd ..
+  147  ls
+  148  cd hw4
+  149  ls
+  150  cp hw4-1a.sh gpu03_p100_4.sh ../csciga2945002/hw5/
+  151  cd ../csciga2945002/hw5
+  152  ls
+  153  vi gpu03_p100_4.sh 
+  154  history | grep sbatch
+  155  sbatch run1.sh 
+  156  vi gpu03_p100_4.sh 
+  157  mv gpu03_p100_4.sh sbatch-run1.sh
+  158  sbatch sbatch-run1.sh 
+  159  vi sbatch-run1.sh 
+  160  sbatch sbatch-run1.sh 
+  161  squeue
+  162  squeue | grep 9391445
+  163  squeue | grep 9301445
+  164  squeue | grep 9301405
+  165  sinfo
+  166  sinfo -p cpu -t idle
+  167  sinfo -p gpu -t idle
+  168  sinfo -lNe
+  169  squeue | grep 9301405
+  170  squeue -j 9301405
+  171  squeue | grep ir967
+  172  ls
+  173  cat hw5_slurm_9301405.err 
+  174  module load openmpi/gnu/4.0.2
+  175  mpic++ -O3 -o mpi-hw5-1 hw5-1.cpp 
+  176  ls
+  177  vi sbatch-run1.sh 
+  178  sbatch sbatch-run1.sh 
+  179  squeue | grep ir967
+  180  ls
+  181  cat hw5_slurm_9301757.err 
+  182  vi hw5__slurm_9301757.out 
+  183  cd HPC/csciga2945002/hw5
+  184  ls
+  185  rm hw4-1a.sh 
+  186  ls
+  187  git add sbatch-run1.sh
+  188  vi sbatch-run1.sh 
+  189  cat run1.sh 
+  190  vi sbatch-run1.sh 
+  191  sbatch sbatch-run1.sh 
+  192  squeue -j 9301865
+  193  scancel 9301865
+  194  squeue -j 9301865
+  195  vi sbatch-run1.sh 
+  196  sbatch sbatch-run1.sh 
+  197  squeue | grep ir967
+  198  ls
+  199  vi sbatch-run1.sh 
+  200  cat hw5_slurm_9301903.err 
+  201  cat hw5__slurm_9301903.out 
+  202  vi sbatch-run1.sh 
+  203  git ls-files
+  204  vi sbatch-run1.sh 
+  205  sbatch sbatch-run1.sh 
+  206  vi sbatch-run1.sh 
+  207  sbatch sbatch-run1.sh 
+  208  vi sbatch-run1.sh 
+  209  sbatch sbatch-run1.sh 
+  210  vi sbatch-run1.sh 
+  211  sbatch sbatch-run1.sh 
+  212  vi sbatch-run1.sh 
+  213  sbatch sbatch-run1.sh 
+  214  vi sbatch-run1.sh 
+  215  squeue | grep ir967
+  216  vi sbatch-run1.sh 
+  217  squeue | grep ir967
+  218  vi sbatch-run1.sh 
+  219  sbatch sbatch-run1.sh 
+  220  vi slurm_hw59302379.out 
+  221  rm slurm_hw59302379.out 
+  222  ls
+  223  rm hw5_sl*.err
+  224  ls
+  225  squeue | grep ir967
+  226  vi sbatch-run1.sh 
+  227  sbatch sbatch-run1.sh 
+  228  vi hw5__slurm_9301757.out 
+  229  rm hw5__slurm_9301757.out
+  230  vi hw5__slurm_9301903.out 
+  231  vi slurm_hw5_9302379.err 
+  232  rm slurm_hw5_9302379.err 
+  233  ls
+  234  vi hw5__slurm_9301865.out 
+  235  vi hw5__slurm_9301405.out 
+  236  rm hw5__slurm_9301405.out 
+  237  ls
+  238  vi hw5__slurm_9301903.out 
+  239  vi hw5__slurm_9301865.out 
+  240  ls
+  241  squeue | grep ir967
+  242  scancel 9302384
+  243  squeue | grep ir967
+  244  vi sbatch-run1.sh 
+  245  squeue | grep ir967
+  246  vi sbatch-run1.sh 
+  247  squeue | grep ir967
+  248  vi sbatch-run1.sh 
+  249  sbatch sbatch-run1.sh 
+  250  squeue | grep ir967
+  251  exit
+  252  ls
+  253  cd HPC
+  254  ls
+  255  cd csciga2945002/
+  256  ls
+  257  cd hw5
+  258  ls
+  259  squeue | grep ir967
+  260  scancel 9302411
+  261  vi sbatch-run1.sh 
+  262  sbatch sbatch-run1.sh 
+  263  squeue | grep ir967
+  264  scancel 9553510
+  265  vi sbatch-run1.sh 
+  266  sbatch sbatch-run1.sh 
+  267  squeue | grep ir967
+  268  vi sbatch-run1.sh 
+  269  ls
+  270  ls -al
+  271  cat slurm_hw5_9553638
+  272  cat slurm_hw5_9553638.err
+  273  squeue | grep ir967
+  274  ls -al
+  275  less slurm_hw59553638
+  276  less slurm_hw59553638.out
+  277  rm hw5_*
+  278  ls
+  279  vi slurm_hw59302381.out 
+  280  git commit -m"Q1 done. Two runs with data for matlab plots."
+  281  git config --global user.email "r.ilyeech.k@gmail.com"
+  282  git config --global user.name "covid19i"
+  283  git commit -m"Q1 done. Two runs with data for matlab plots."
+  284  got ls-files
+  285  git ls-files
+  286  git add *
+  287  git ls-files
+  288  git commit -m"Q1 done. Two runs with data for matlab plots. Some files missed just a sec ago"
+  289  git push
+  290  ls
+  291  cd HPC
+  292  ls
+  293  cd csciga2945002/
+  294  ls
+  295  git pull
+  296  cd hw5
+  297  ls
+  298  git ls-files
+  299  cd ../SGD/
+  300  ls
+  301  git ls-files
+  302  git add TensorFlow/
+  303  cp cudaSGD.cu hogwild.h
+  304  vi hogwild.h
+  305  cd HPC/csciga2945002/SGD/
+  306  ls
+  307  git add hogwild.h
+  308  cd ../hw4
+  309  ls
+  310  vi hw4-2.cu 
+  311  vi hw4-1a.cu 
+  312  cd HPC/csciga2945002/SGD/
+  313  ls
+  314  vi hogwild.h 
+  315  git commit -m"hogwild.h"
+  316  ls
+  317  git push
+  318  cd HPC/csciga2945002/
+  319  git push
+  320  cd SGD
+  321  ls
+  322  vi hogwild.h 
+  323  git commit -m"hogwild.h second time"
+  324  git ls-files
+  325  rm .hogwild.h.swp 
+  326  git add hogwild.h
+  327  git commit -m"hogwild.h third? time"
+  328  git push
+  329  git pull
+  330  ls
+  331  vi compile-run.sh
+  332  vi hogwildSGD.cu 
+  333  sh compile-run.sh 
+  334  git add hogwildSGD.cu
+  335  git add compile-run.sh
+  336  vi batchscript.sh
+  337  git add batchscript.sh
+  338  sbatch batchscript.sh 
+  339  scancel 9565023
+  340  ls
+  341  squeue | grep ir967
+  342  vi batchscript.sh
+  343  sbatch batchscript.sh 
+  344  squeue | grep ir967
+  345  git commit -m "scripts for CIMS and HPC servers of NYU"
+  346  git push
+  347  squeue | grep ir967
+  348  scancel 9565030
+  349  ls
+  350  git status
+  351  vi PSGD.h
+  352  git pull
+  353  ls
+  354  git ls-files
+  355  git rm main
+  356  ls
+  357  exit
+  358  cd HPC/csciga2945002/SGD/TensorFlow/
+  359  module load python3/intel/3.6.3
+  360  module load tensorflow/python3.6/1.5.0
+  361  python mnist.py 
+  362  exit
+  363  ssh prince.hpc.nyu.edu
+  364  exit
+  365  cd HPC/csciga2945002/SGD/
+  366  git pull
+  367  ls
+  368  cd TensorFlow/
+  369  module load tensorflow/python3.6/1.5.0
+  370  module load python3/intel/3.6.3
+  371  module list
+  372  module unload intel/17.0.1 
+  373  module unload cudnn/9.0v7.0.5  
+  374  module unload zlib/intel/1.2.8
+  375  module unload cuda/9.0.176 
+  376  ls
+  377  cp mnist.py mnist-tf1.5.0.py
+  378  ls
+  379  vi mnist-tf1.5.0.py 
+  380  python3 mnist-tf1.5.0.py
+  381  vi mnist-tf1.5.0.py 
+  382  module unload python3/intel/3.6.3 
+  383  module load python/intel/2.7.12
+  384  vi mnist-tf1.5.0.py 
+  385  python mnist-tf1.5.0.py
+  386  module load numpy/python2.7/intel
+  387  module load numpy/python2.7/intel/1.14.0 
+  388  module unload numpy/python2.7/intel
+  389  module load numpy/python2.7/intel/1.14.0 
+  390  module list
+  391  module unload numpy/python3.6/intel/1.14.0
+  392  module unload tensorflow/python3.6/1.5.0
+  393  module load tensorflow/python2.7
+  394  module load tensorflow/python2.7/1.0.1
+  395  python mnist-tf1.5.0.py
+  396  module load cuda-10.2
+  397  module load cuda/9.0.176
+  398  python mnist-tf1.5.0.py
+  399  module list
+  400  module purge
+  401  module list
+  402  python mnist-tf1.5.0.py
+  403  python --version
+  404  module load tensorflow/python2.7
+  405  module list
+  406  module load tensorflow/python2.7/1.2.1
+  407  python mnist-tf1.5.0.py
+  408  ssh prince.hpc.nyu.edu
+  409  exit
+  410  cd HPC/csciga2945002/SGD/
+  411  ls
+  412  cd TensorFlow/
+  413  ls
+  414  module list
+  415  python mnist-tf1.5.0.py 
+  416  module load tensorflow/python2.7/1.5.0
+  417  vi mnist-tf1.5.0.py  
+  418  python mnist-tf1.5.0.py 
+  419  vi mnist-tf1.5.0.py  
+  420  module load tensorflow/python2.7/1.5.0
+  421  module load gcc/6.3.0
+  422  module list
+  423  nvcc -arch=compute_30 -o hogwildSGD hogwildSGD.cu -Xcompiler -fopenmp --maxrregcount 60 --expt-relaxed-constexpr;
+  424  ./hogwildSGD
+  425  python ./TensorFlow/nikhil-mnist.py
+  426  vi runs_cuda_tf.txt
+  427  exit
+  428  cd HPC/csciga2945002/SGD/
+  429  cd TensorFlow/
+  430  cat mnist-tf1.5.0.py 
+  431  pwd
+  432  vi nikhil-mnist.py 
+  433  vi batch-mnist-tf.sh 
+  434  vi nikhil-mnist.py 
+  435  vi mnist.py 
+  436  vi nikhil-mnist.py 
+  437  vi batch-mnist-tf.sh 
+  438  cp batch-mnist-tf.sh ../compare-tf-cuda.sh
+  439  vi ../compare-tf-cuda.sh 
+  440  vi ../hogwildSGD.cu
+  441  vi ../compare-tf-cuda.sh 
+  442  vi nikhil-mnist.py 
+  443  git pull
+  444  vi ../compare-tf-cuda.sh 
+  445  ls
+  446  git ls-files
+  447  cd ..
+  448  git ls-files
+  449  rm hogwildSGD
+  450  rm *.err
+  451  git add *
+  452  git status
+  453  git push
+  454  git pull
+  455  git commit -m "another one just in case"
+  456  git push
+  457  git status
+  458  ls
+  459  cd TensorFlow/
+  460  ls
+  461  rm -r MNIST_data/
+  462  git push
+  463  git commit -m "delete downloads"
+  464  git push
+  465  git rm -r MNIST_data
+  466  git commit -m "delete downloads"
+  467  git push
+  468  cd ..
+  469  git rm *.err
+  470  git rm hogwildSGD
+  471  git commit -m "delete downloads"
+  472  git push
+  473  cd HPC/csciga2945002/SGD/
+  474  ls
+  475  module list
+  476  module load tensorflow/python2.7/1.5.0
+  477  python
+  478  ls
+  479  cd TensorFlow/
+  480  ls
+  481  git pull
+  482  vi mnist-nikhil.py
+  483  mv mnist-nikhil.py nikhil-mnist.py
+  484  python nikhil-mnist.py 
+  485  module list
+  486  module purge
+  487  python --version
+  488  module load tensorflow/python2.7/1.5.0
+  489  python nikhil-mnist.py 
+  490  python
+  491  cp ../batchscript.sh batch-mnist-tf.sh
+  492  vi batch-mnist-tf.sh 
+  493  module list
+  494  sh batch-mnist-tf.sh 
+  495  sbatch batch-mnist-tf.sh 
+  496  squeue | grep ir967
+  497  ls
+  498  cat slurm_9579111.err 
+  499  cat slurm_9579111.out
+  500  squeue | grep ir967
+  501  scancel 9579111
+  502  cat slurm_9579111.out
+  503  cat slurm_9579111.err 
+  504  sbatch batch-mnist-tf.sh 
+  505  squeue | grep ir967
+  506  ls
+  507  rm *9579111*
+  508  cat *9579153*
+  509  cat slurm_9579153.out
+  510  squeue | grep ir967
+  511  cat slurm_9579153.out
+  512  vi nikhil-mnist.py 
+  513  sbatch batch-mnist-tf.sh 
+  514  squeue | grep ir967
+  515  ls
+  516  vi slurm_9579184.out
+  517  sbatch batch-mnist-tf.sh 
+  518  squeue | grep ir967
+  519  vi batch-mnist-tf.sh 
+  520  squeue | grep ir967
+  521  ls
+  522  vi slurm_9579190.err
+  523  vi slurm_9579190.out
+  524  vi slurm_9579153.out 
+  525  rm slurm_9579153.err
+  526  vi slurm_9579184.out
+  527  rm *9579184*
+  528  ls
+  529  rm slurm_9579190.err
+  530  cd ..
+  531  vi hogwildSGD.cu 
+  532  ls
+  533  sbatch compare-tf-cuda.sh 
+  534  ls
+  535  squeue | grep ir967
+  536  ls
+  537  vi cuda_tf_slurm_9579203.err 
+  538  module load cuda/10.2.89
+  539  module list
+  540  vi cuda_tf_slurm_9579203.err 
+  541  sbatch compare-tf-cuda.sh 
+  542  squeue | grep ir967
+  543  ls
+  544  vi cuda_tf_slurm_9579206.err
+  545  sbatch compare-tf-cuda.sh 
+  546  squeue | grep ir967
+  547  squeue -j 9579209
+  548  scancel 9579209
+  549  sbatch compare-tf-cuda.sh 
+  550  scancel 9579234
+  551  srun -t1:30:00 --mem=3000 --gres=gpu:1 --pty /bin/bash
+  552  ls
+  553  git commit -m "compare CUDA TensorFlow done"
+  554  git add *
+  555  git commit -m "compare CUDA TensorFlow done"
+  556  git rm ./MNIST_data/
+  557  git rm -r ./MNIST_data/
+  558  git rm -r ./TensorFlow/MNIST_data/
+  559  cd HPC/csciga2945002/hw5
+  560  git pull
+  561  ls
+  562  git pull
+  563  ls
+  564  cp run1.sh run.sh
+  565  cp sbatch-run1.sh sbatch-run.sh
+  566  mv run1.sh run2.sh
+  567  mv sbatch-run1.sh sbatch-run2.sh
+  568  vi sbatch-run2.sh
+  569  sbatch sbatch-run2.sh
+  570  scancel 9589901
+  571  vi sbatch-run2.sh
+  572  squeue -j 9589900
+  573  scancel 9589900
+  574  sbatch sbatch-run2.sh
+  575  scancel 9589946
+  576  vi sbatch-run2.sh 
+  577  sbatch sbatch-run2.sh
+  578  squeue -j 9589947
+  579  ls
+  580  make clean
+  581  ls
+  582  rm file-io.cpp 
+  583  vi ssort.cpp
+  584  sbatch sbatch-run2.sh
+  585  squeue -j 9590155
+  586  ls
+  587  vi slurm_hw59589947.out
+  588  rm -f *59589947*
+  589  squeue -j 9590155
+  590  vi output00.txt 
+  591  vi output63.txt 
+  592  vi output33.txt 
+  593  rm -f output*
+  594  ls
+  595  vi slurm_hw59590155.out
+  596  ls
+  597  vi answers.txt
+  598  :wq
+  599  ls
+  600  make clean
+  601  ls
+  602  vi slurm_hw59590155.err 
+  603  rm slurm_hw59590155.err 
+  604  vi slurm_hw59553638.out
+  605  vi slurm_hw59553638.e
+  606  vi slurm_hw59553638.err
+  607  ls
+  608  vi slurm_hw5_9553638.err
+  609  ls
+  610  vi run2.sh
+  611  rm run2.sh
+  612  vi sbatch-run.sh
+  613  vi answers.txt 
+  614  mv sbatch-run.sh sbatch-run1.sh
+  615  ls
+  616  git add *
+  617  git describe --all
+  618  git commit -m "hw5 final"
+  619  vi answers.txt 
+  620  git push
+  621  ls
+  622  git rm run1.sh
+  623  git rm output*.txt
+  624  git rm mpi-hw5-1
+  625  git rm ssort
+  626  git push
+  627  top
+  628  nvidia-smi
+  629  vtop
+  630  top
+  631  ls
+  632  passwd
+  633  module list
+  634  module
+  635  module av
+  636  ls
+  637  cd HPC
+  638  ls
+  639  cd ..
+  640  ls
+  641  cd ..
+  642  pwd
+  643  ls
+  644  cd ir967
+  645  ls
+  646  mkdir /scratch/ir967/myjupiter
+  647  cp /share/apps/examples/jupyter/run-jupyter.sbatch /scratch/ir967/myjupyter
+  648  cd /scratch/ir967/myjupiter
+  649  $ sbatch run-jupyter.sbatch
+  650  module load sbatch
+  651  module av
+  652  sbatch run-jupyter.sbatch
+  653  ls
+  654  pwd
+  655  ls /share/apps/examples/jupyter/
+  656  cp /share/apps/examples/jupyter/run-jupyter.sbatch /scratch/ir967/myjupyter
+  657  ls
+  658  pwd
+  659  cd /share/apps/examples/jupyter/
+  660  ls
+  661  cp run-jupyter.sbatch /scratch/ir967/myjupyter
+  662  ls /scratch/ir967/myjupyter
+  663  cd /scratch/ir967/myjupyter
+  664  pwd
+  665  cd /scratch/ir967/
+  666  pwd
+  667  ls
+  668  cp /share/apps/examples/jupyter/run-jupyter.sbatch /scratch/ir967/myjupyter
+  669  ls
+  670  cd myjupiter/
+  671  ls
+  672  cp /share/apps/examples/jupyter/run-jupyter.sbatch .
+  673  ls
+  674  pwd
+  675  ls
+  676  sbatch run-jupyter.sbatch
+  677  ls
+  678  cd /scratch/ir967/
+  679  ls
+  680  squeue -u ir967
+  681  ls
+  682  sinfo
+  683  squeue -u ir967
+  684  sacct
+  685  sstat
+  686  pwd
+  687  ls
+  688  cd myjupiter/
+  689  ls
+  690  vi slurm-12719647.out 
+  691  scancel 12719647
+  692  squeue -u ir967
+  693  squeue -j 12719647
+  694  squeue -u ir967
+  695  pwd
+  696  cd $HOME
+  697  pwd
+  698  cd .ssh
+  699  ls
+  700  echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2/4V7KmzXvwmUlrS7WtX8l0XshXzVS7KR37Y0TUzf12Bvp327mUr2BjFqQdNaEfmwhZuNFue5bFzMbpPYb2+neLUe4GOU7RM4asAvA+BPS5vZi/hEFSaZ34WX2UTnP+a+0loCStHcXEjol1n5kCJPV+VVayOcp2Vxhyo6REyqQHU0rJEPy5/rpCSarQdijY3DbI2K3jejZm/PhGFk/lKhfnkrCFIU2PZKzHP+6Vnbi8k8nBEC6qWQ8c25K8kZUE2ZCBt/DYE7sJMdmZVqbQicghhHBT0SycS9zgusA56fYFdLwYDA2QCG2BdGyBI6kZh1nZ7V8dSJ85nEODRPhUAu6wzkhVBm64Y3sUdO2jM6PeNAl0/KmedTsCKv/UEsijkrdxCjDhsRnUI9dIyS60sTNv/ONfcYxM4nvs/8jLJhWXhOol9t9nfj8EvPvylBDXXYjkuImErkQgqqKzFxRs0k5mYC9jTTO6KbM5Te6+8gnzSZRMPmyycmki1gNgIoOnk= ilyeech@Ilyeechs-MacBook-Pro.local >> authorized_keys 
+  701  cd .ssh
+  702  ls
+  703  cat authorized_keys 
+  704  pwd
+  705  ls
+  706  cd /scratch/ir967/myjupiter/
+  707  sbatch run-jupyter.sbatch 
+  708  squeue -u ir967
+  709  sinfo
+  710  squeue -u ir967
+  711  ls
+  712  vi slurm-12732210.out 
+  713  squeue -u ir967
+  714  scancel 12732210
+  715  squeue -u ir967
+  716  scancel 12732210
+  717  ssh -L 20308:localhost:20308 ir967@prince
+  718  ssh -L 20308:localhost:20308 ir967@prince
+  719  cd /scratch/ir967/myjupiter/
+  720  ls
+  721  sbatch run-jupyter.sbatch 
+  722  ls
+  723  vi slurm-12826657.out 
+  724  vi run-jupyter.sbatch 
+  725  pwd
+  726  cd $HOMW
+  727  cd $HOME
+  728  ls
+  729  pwd
+  730  cd HPC
+  731  ls
+  732  cd ..
+  733  mkdir CV
+  734  ls
+  735  cd CV
+  736  cd
+  737  pwd
+  738  cd $SCRATCH
+  739  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  740  sh miniconda/Miniconda3-latest-Linux-x86_64.sh
+  741  ls
+  742  sh Miniconda3-latest-Linux-x86_64.sh
+  743  rm -r /home/ir967/miniconda3/
+  744  scancel 12826657
+  745  pwd
+  746  ls
+  747  cd ?
+  748  ls
+  749  cd homw
+  750  cd ..
+  751  ls
+  752  ls ./
+  753  rm -r ./?/
+  754  ls ./
+  755  sh Miniconda3-latest-Linux-x86_64.sh
+  756  ls
+  757  ls $HOME
+  758  ls
+  759  sh Miniconda3-latest-Linux-x86_64.sh
+  760  pwd
+  761  sh Miniconda3-latest-Linux-x86_64.sh
+  762  source ~/.bashrc
+  763  ls
+  764  rm -r miniconda3
+  765  rm -r miniconda3/
+  766  ls
+  767  ls /CV/a1
+  768  ls CV
+  769  cd ..
+  770  mkdir a1
+  771  ps
+  772  ssh -L 20594:localhost:20594 ir967@prince.hpc.nyu.edu
+  773  pwd
+  774  ssh -L 37569:localhost:37569 ir967@prince.hpc.nyu.edu
+  775  ls
+  776  cd CV
+  777  ls ./
+  778  mv ./* ../a1/
+  779  ls ../a1/
+  780  cd ..
+  781  mv ./a1/ ./CV/
+  782  ls
+  783  cd CV
+  784  ls
+  785  vi run-1.1.sbatch
+  786  ls
+  787  mv run-1.1.sbatch ./a1/
+  788  cd a1
+  789  ls
+  790  sbatch run-1.1.sbatch 
+  791  vi run-1.1.sbatch
+  792  sbatch run-1.1.sbatch 
+  793  squeue -u ir967
+  794  ls
+  795  vi slurm-12826954.out 
+  796  vi run-1.1.sbatch
+  797  scancel 12826954
+  798  rm slurm-12826954.out 
+  799  sbatch run-1.1.sbatch 
+  800  squeue -u ir967
+  801  vi slurm-12826959.out 
+  802  vi run-1.1.sbatch
+  803  scancel 12826959
+  804  vi run-1.1.sbatch
+  805  sbatch run-1.1.sbatch 
+  806  ls
+  807  vi slurm-12826963.out 
+  808  ls -al
+  809  vi slurm-12826963.out 
+  810  scancel 12826963
+  811  vi run-1.1.sbatch 
+  812  ls
+  813  sbatch run-1.1.sbatch 
+  814  squeue -u ir967
+  815  vi slurm-12828227.out 
+  816  vi run-1.1.sbatch 
+  817  scancel 12828227
+  818  sbatch run-1.1.sbatch 
+  819  vi slurm-12828713.out 
+  820  vi run-1.1.sbatch 
+  821  sbatch run-1.1.sbatch 
+  822  scancel 12828713
+  823  vi slurm-12828738.out 
+  824  scancel 12828738
+  825  squeue -u ir967
+  826  scancel 12828738
+  827  pwd
+  828  conda create -n <env-name> python=3.6
+  829  conda create -n vision_env python=3.6
+  830  conda activate vision_env
+  831  which python
+  832  conda deactivate
+  833  conda activate vision_env
+  834  which python
+  835  ls
+  836  conda deactivate
+  837  conda activate vision_env
+  838  conda install pytorch torchvision -c pytorch
+  839  conda install -c pytorch torchvision
+  840  conda install -c numpy
+  841  conda install numpy
+  842  conda deactivare
+  843  conda deactivate
+  844  ls
+  845  vi myjupiter/
+  846  vi myjupiter/run-jupyter.sbatch 
+  847  ls
+  848  cd myjupiter/
+  849  ls
+  850  vi run-jupyter.sbatch 
+  851  vi slurm-12826657.out 
+  852  vi run-jupyter.sbatch 
+  853  module avail
+  854  pwd
+  855  vi run-jupyter.sbatch 
+  856  module avail numpy
+  857  module numpy
+  858  module keyword numpy
+  859  sbatch /home/ir967/CV/a1/run-1.1.sbatch 
+  860  ls
+  861  vi slurm-12827465.out 
+  862  scancel 12827465
+  863  vi run-jupyter.sbatch 
+  864  module keyword numpy
+  865  module keyword jupyter
+  866  ls
+  867  squeue -u ir967
+  868  man ssh
+  869  cd $SCRATCH
+  870  pwd
+  871  l
+  872  ls
+  873  man conda
+  874  conda list
+  875  cd miniconda3/
+  876  ls
+  877  cd envs
+  878  ls
+  879  conda info -e
+  880  conda info -s
+  881  pwd
+  882  ls
+  883  cd CV
+  884  ls
+  885  mkdir project
+  886  cd project
+  887  ls
+  888  git clone https://github.com/cchen156/Learning-to-See-in-the-Dark.git
+  889  ls
+  890  conda info -e
+  891  pwd
+  892  cd $SCRATCH
+  893  ls
+  894  pwd
+  895  mkdir SID
+  896  pwd
+  897  ls
+  898  cd $HOME
+  899  ls
+  900  vi CV/project/Learning-to-See-in-the-Dark/download_models.py 
+  901  vi CV/project/Learning-to-See-in-the-Dark/download_dataset.py 
+  902  cd /scratch/ir967
+  903  cd SID
+  904  ls
+  905  git clone https://github.com/cchen156/Learning-to-See-in-the-Dark.git
+  906  ls
+  907  cd Learning-to-See-in-the-Dark/
+  908  ls
+  909  python download_dataset.py 
+  910  vi logs.txt
+  911  pwd
+  912  ls
+  913  ls dataset
+  914  cd ..
+  915  pwd
+  916  cd Learning-to-See-in-the-Dark/
+  917  unzip dataset/Fuji.zip 
+  918  ls dataset/Fuji.zip
+  919  ls -l dataset/Fuji.zip
+  920  stat dataset/Fuji.zip 
+  921  ls
+  922  cd CV
+  923  cd project/
+  924  ls
+  925  cd Learning-to-See-in-the-Dark/
+  926  ls
+  927  python download_models.py
+  928  ls
+  929  cd checkpoint/
+  930  ls
+  931  cd Sony/
+  932  ls
+  933  vi model.ckpt.meta
+  934  vi checkpoint 
+  935  cd ../..
+  936  ls
+  937  conda activate vision_env
+  938  ls
+  939  conda list
+  940  conda install tensorflow
+  941  conda install rawpy
+  942  conda install scipy
+  943  pip install rawpy
+  944  conda list
+  945  cd $SCRATCH
+  946  ls
+  947  cd SID/Learning-to-See-in-the-Dark/
+  948  stat dataset/Sony.zip 
+  949  vi download_dataset.py 
+  950  conda activate vision_env
+  951  ls
+  952  python download_dataset.py 
+  953  vi download_dataset.py 
+  954  pwd
+  955  cd checkpoint/
+  956  ls
+  957  cd Sony
+  958  ls
+  959  vi checkpoint 
+  960  cd ../Fuji/
+  961  ls
+  962  vi checkpoint 
+  963  cd ..
+  964  ls
+  965  pwd
+  966  cd ..
+  967  ls
+  968  pwd
+  969  ls ..
+  970  cd dataset/
+  971  ls
+  972  vi ../logs.txt 
+  973  pwd
+  974  cd ..
+  975  ls
+  976  python download_dataset.py 
+  977  vi download_dataset.py 
+  978  python download_dataset.py 
+  979  vi ../logs.txt 
+  980  ls
+  981  vi logs.txt 
+  982  conda deactivate vision_env
+  983  conda deactivate
+  984  python download_dataset.py 
+  985  ls
+  986  rm dataset/Fuji.zip 
+  987  python download_dataset.py 
+  988  vi download_dataset.py 
+  989  pwd
+  990  cd dataset/
+  991  ls
+  992  rm Fuji.zip
+  993  vi Fuji_train_list.txt 
+  994  wget https://storage.googleapis.com/isl-datasets/SID/Fuji.zip
+  995  ls
+  996  cd ..
+  997  ls
+  998  unzip dataset/Fuji.zip -d dataset
+  999  pwd
+ 1000  cd CV/project/Learning-to-See-in-the-Dark/
+ 1001  ls
+ 1002  cd dataset/Sony/long/
+ 1003  cd dataset/Sony
+ 1004  pwd
+ 1005  ls
+ 1006  cd dataset/
+ 1007  ls
+ 1008  cd $SCRATCH
+ 1009  ls
+ 1010  cd SID/Learning-to-See-in-the-Dark/
+ 1011  cd dataset/Sony/long/
+ 1012  ls
+ 1013  cd ../../..
+ 1014  ls
+ 1015  conda deactivate
+ 1016  python test_Sony.py 
+ 1017  conda activate
+ 1018  python test_Sony.py 
+ 1019  conda install scipy
+ 1020  python test_Sony.py 
+ 1021  conda deactivate
+ 1022  conda update -n base -c defaults conda
+ 1023  conda activate base
+ 1024  conda install tensorflow
+ 1025  python test_Sony.py 
+ 1026  conda list
+ 1027  vi test_Sony.py 
+ 1028  python test_Sony.py 
+ 1029  conda install tf_slim
+ 1030  pip install tf_slim
+ 1031  python test_Sony.py 
+ 1032  pip install rawpy
+ 1033  python test_Sony.py 
+ 1034  vi test_Sony.py 
+ 1035  python test_Sony.py 
+ 1036  vi test_Sony.py 
+ 1037  python test_Sony.py 
+ 1038  conda deactivate
+ 1039  conda create -n sid python=2.7 tensorflow=1.1 scipy=1.1.0 numpy=1.8.2 rawpy=0.13.0
+ 1040  conda create -n sid python=2.7 scipy=1.1.0
+ 1041  conda activate sid
+ 1042  conda install tensorflow/1.1
+ 1043  pip install tensorflow/1.1
+ 1044  conda install tensorflow=1.1
+ 1045  pip install tensorflow=1.1
+ 1046  conda install tensorflow=1.1
+ 1047  pip install tensorflow==1.1
+ 1048  pip install rawpy==0.13.0
+ 1049  ls
+ 1050  python test_Sony.py 
+ 1051  ls checkpoint/Sony/
+ 1052  cd checkpoint/
+ 1053  cd ..
+ 1054  ls checkpoint/Sony/checkpoint 
+ 1055  ls checkpoint/Sony/checkpoint/
+ 1056  ls
+ 1057  cd checkpoint/
+ 1058  ls
+ 1059  cd Sony/
+ 1060  ls
+ 1061  cd ../../
+ 1062  pwd
+ 1063  ls
+ 1064  python download_models.py 
+ 1065  conda install requests
+ 1066  python download_models.py 
+ 1067  python test_Sony.py 
+ 1068  ls
+ 1069  cd result_Sony/
+ 1070  ls
+ 1071  cd final/
+ 1072  ls
+ 1073  cd ..
+ 1074  python test_Fuji.py 
+ 1075  history > command_history_sid_env.txt

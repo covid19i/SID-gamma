@@ -1,0 +1,1957 @@
+st login: Fri Nov  6 14:27:54 on ttys000
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Ilyeechs-MacBook-Pro:~ ilyeech$ ssh -Y prince
+Enter passphrase for key '/Users/ilyeech/.ssh/id_rsa': 
+Last login: Wed Sep 30 22:18:39 2020 from psd01a-0046s.cfs.its.nyu.edu
+
+PyTorch GPUs
+
+GPU driver on Prince does not support CUDA 10.2, if you are running PyTorch, please try to use PyTorch built with CUDA 10.1
+Please follow instructions on PyTorch page to reinstall PyTorch, https://pytorch.org
+pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+If you run pip list, the PyTorch version should be torch==1.5.0+cu101
+
+
+Hostname: log-1 at Fri Nov  6 14:38:11 EST 2020
+
+Filesystem   Environment   Backed up?   Allocation       Current Usage
+Space        Variable      /Flushed?    Space / Files    Space(%) / Files(%)
+
+/home       $HOME         Yes/No        20.0GB/-           0.71GB(3.55%)/-
+/scratch    $SCRATCH       No/Yes        5.0TB/1.0M       4.63GB(0.09%)/25839(2.58%)
+/beegfs     $BEEGFS        No/Yes        2.0TB/3.0M        0.00GB(0.00%)/0(0.00%)
+/archive    $ARCHIVE      Yes/No         2.0TB/-           0.00GB(0.00%)/1
+
+(base) [ir967@log-1 ~]$ man ssh
+(base) [ir967@log-1 ~]$ cd $SCRATCH
+(base) [ir967@log-1 ir967]$ pwd
+/scratch/ir967
+(base) [ir967@log-1 ir967]$ l
+bash: l: command not found...
+(base) [ir967@log-1 ir967]$ ls
+miniconda3  Miniconda3-latest-Linux-x86_64.sh  myjupiter  myjupyter
+(base) [ir967@log-1 ir967]$ man conda
+No manual entry for conda
+(base) [ir967@log-1 ir967]$ conda list
+# packages in environment at /scratch/ir967/miniconda3:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+ca-certificates           2020.1.1                      0  
+certifi                   2020.4.5.1               py38_0  
+cffi                      1.14.0           py38he30daa8_1  
+chardet                   3.0.4                 py38_1003  
+conda                     4.8.3                    py38_0  
+conda-package-handling    1.6.1            py38h7b6447c_0  
+cryptography              2.9.2            py38h1ba5d50_0  
+idna                      2.9                        py_1  
+ld_impl_linux-64          2.33.1               h53a641e_7  
+libedit                   3.1.20181209         hc058e9b_0  
+libffi                    3.3                  he6710b0_1  
+libgcc-ng                 9.1.0                hdf63c60_0  
+libstdcxx-ng              9.1.0                hdf63c60_0  
+ncurses                   6.2                  he6710b0_1  
+openssl                   1.1.1g               h7b6447c_0  
+pip                       20.0.2                   py38_3  
+pycosat                   0.6.3            py38h7b6447c_1  
+pycparser                 2.20                       py_0  
+pyopenssl                 19.1.0                   py38_0  
+pysocks                   1.7.1                    py38_0  
+python                    3.8.3                hcff3b4d_0  
+readline                  8.0                  h7b6447c_0  
+requests                  2.23.0                   py38_0  
+ruamel_yaml               0.15.87          py38h7b6447c_0  
+setuptools                46.4.0                   py38_0  
+six                       1.14.0                   py38_0  
+sqlite                    3.31.1               h62c20be_1  
+tk                        8.6.8                hbc83047_0  
+tqdm                      4.46.0                     py_0  
+urllib3                   1.25.8                   py38_0  
+wheel                     0.34.2                   py38_0  
+xz                        5.2.5                h7b6447c_0  
+yaml                      0.1.7                had09818_2  
+zlib                      1.2.11               h7b6447c_3  
+(base) [ir967@log-1 ir967]$ cd miniconda3/
+(base) [ir967@log-1 miniconda3]$ ls
+bin              condabin    envs  include  LICENSE.txt  share  ssl
+compiler_compat  conda-meta  etc   lib      pkgs         shell  x86_64-conda_cos6-linux-gnu
+(base) [ir967@log-1 miniconda3]$ cd envs
+(base) [ir967@log-1 envs]$ ls
+vision_env
+(base) [ir967@log-1 envs]$ conda info -e
+# conda environments:
+#
+base                  *  /scratch/ir967/miniconda3
+vision_env               /scratch/ir967/miniconda3/envs/vision_env
+
+(base) [ir967@log-1 envs]$ conda info -s
+sys.version: 3.8.3 (default, May 19 2020, 18:47:26) 
+...
+sys.prefix: /scratch/ir967/miniconda3
+sys.executable: /scratch/ir967/miniconda3/bin/python
+conda location: /scratch/ir967/miniconda3/lib/python3.8/site-packages/conda
+conda-build: None
+conda-env: /scratch/ir967/miniconda3/bin/conda-env
+user site dirs: 
+
+CIO_TEST: <not set>
+CONDA_DEFAULT_ENV: base
+CONDA_EXE: /scratch/ir967/miniconda3/bin/conda
+CONDA_PREFIX: /scratch/ir967/miniconda3
+CONDA_PROMPT_MODIFIER: (base) 
+CONDA_PYTHON_EXE: /scratch/ir967/miniconda3/bin/python
+CONDA_ROOT: /scratch/ir967/miniconda3
+CONDA_SHLVL: 1
+LD_LIBRARY_PATH: :/share/apps/centos/7/usr/lib64:/opt/slurm/lib64
+LMOD_DEFAULT_MODULEPATH: /share/apps/modulefiles
+MANPATH: :
+MODULEPATH: /share/apps/modulefiles
+PATH: /scratch/ir967/miniconda3/bin:/scratch/ir967/miniconda3/bin:/scratch/ir967/miniconda3/condabin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/ibutils/bin:/share/apps/local/bin:/share/apps/centos/7/bin:/share/apps/singularity/bin:/opt/slurm/bin:/opt/dell/srvadmin/bin:/home/ir967/.local/bin:/home/ir967/bin
+REQUESTS_CA_BUNDLE: <not set>
+SINGULARITY_BINDPATH: /scratch,/beegfs,/share/apps,/mnt,/state/partition1
+SSL_CERT_FILE: <not set>
+
+(base) [ir967@log-1 envs]$ Connection to localhost closed by remote host.
+Connection to localhost closed.
+Ilyeechs-MacBook-Pro:~ ilyeech$ ssh -Y prince
+Enter passphrase for key '/Users/ilyeech/.ssh/id_rsa': 
+Last login: Wed Sep 30 22:05:02 2020 from psd01a-0046s.cfs.its.nyu.edu
+PyTorch GPUs
+
+GPU driver on Prince does not support CUDA 10.2, if you are running PyTorch, please try to use PyTorch built with CUDA 10.1
+Please follow instructions on PyTorch page to reinstall PyTorch, https://pytorch.org
+pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+If you run pip list, the PyTorch version should be torch==1.5.0+cu101
+
+
+
+(base) [ir967@log-0 ~]$ pwd
+/home/ir967
+(base) [ir967@log-0 ~]$ ls
+CV  HPC
+(base) [ir967@log-0 ~]$ cd CV
+(base) [ir967@log-0 CV]$ ls
+a1
+(base) [ir967@log-0 CV]$ mkdir project
+(base) [ir967@log-0 CV]$ cd project
+(base) [ir967@log-0 project]$ ls
+(base) [ir967@log-0 project]$ git clone https://github.com/cchen156/Learning-to-See-in-the-Dark.git
+Cloning into 'Learning-to-See-in-the-Dark'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 171 (delta 2), reused 1 (delta 0), pack-reused 165
+Receiving objects: 100% (171/171), 471.86 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (93/93), done.
+(base) [ir967@log-0 project]$ ls
+Learning-to-See-in-the-Dark
+(base) [ir967@log-0 project]$ conda info -e
+# conda environments:
+#
+base                  *  /scratch/ir967/miniconda3
+vision_env               /scratch/ir967/miniconda3/envs/vision_env
+
+(base) [ir967@log-0 project]$ pwd
+/home/ir967/CV/project
+(base) [ir967@log-0 project]$ cd $SCRATCH
+(base) [ir967@log-0 ir967]$ ls
+miniconda3  Miniconda3-latest-Linux-x86_64.sh  myjupiter  myjupyter
+(base) [ir967@log-0 ir967]$ pwd
+/scratch/ir967
+(base) [ir967@log-0 ir967]$ mkdir SID
+(base) [ir967@log-0 ir967]$ pwd
+/scratch/ir967
+(base) [ir967@log-0 ir967]$ ls
+miniconda3  Miniconda3-latest-Linux-x86_64.sh  myjupiter  myjupyter  SID
+(base) [ir967@log-0 ir967]$ cd $HOME
+(base) [ir967@log-0 ~]$ ls
+CV  HPC
+(base) [ir967@log-0 ~]$ vi CV/
+a1/      project/ 
+(base) [ir967@log-0 ~]$ vi CV/project/Learning-to-See-in-the-Dark/
+checkpoint/          download_models.py   LICENSE.md           test_Sony.py
+dataset/             .git/                README.md            train_Fuji.py
+download_dataset.py  images/              test_Fuji.py         train_Sony.py
+(base) [ir967@log-0 ~]$ vi CV/project/Learning-to-See-in-the-Dark/download_models.py 
+(base) [ir967@log-0 ~]$ vi CV/project/Learning-to-See-in-the-Dark/download_dataset.py 
+(base) [ir967@log-0 ~]$ vi CV/project/Learning-to-See-in-the-Dark/download_dataset.py 
+(base) [ir967@log-0 ~]$ cd /scratch/ir967
+(base) [ir967@log-0 ir967]$ cd SID
+(base) [ir967@log-0 SID]$ ls
+(base) [ir967@log-0 SID]$ git clone https://github.com/cchen156/Learning-to-See-in-the-Dark.git
+Cloning into 'Learning-to-See-in-the-Dark'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 171 (delta 2), reused 1 (delta 0), pack-reused 165
+Receiving objects: 100% (171/171), 471.86 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (93/93), done.
+(base) [ir967@log-0 SID]$ ls
+Learning-to-See-in-the-Dark
+(base) [ir967@log-0 SID]$ cd Learning-to-See-in-the-Dark/
+(base) [ir967@log-0 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      README.md     test_Sony.py   train_Sony.py
+dataset     download_models.py   LICENSE.md  test_Fuji.py  train_Fuji.py
+  inflating: dataset/Sony/short/00110_07_0.1s.ARW  
+  inflating: dataset/Sony/short/00110_08_0.1s.ARW  
+  inflating: dataset/Fuji/short/20184_09_0.04s.RAF  
+  inflating: dataset/Fuji/short/20184_10_0.04s.RAF  
+replace dataset/Fuji_test_list.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
+  inflating: dataset/Fuji_test_list.txt  
+replace dataset/Fuji_train_list.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
+  inflating: dataset/Fuji_train_list.txt  
+replace dataset/Fuji_val_list.txt? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
+  inflating: dataset/Fuji_val_list.txt  
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ logout
+Connection to localhost closed.
+Ilyeechs-MacBook-Pro:~ ilyeech$ ssh -Y prince
+Enter passphrase for key '/Users/ilyeech/.ssh/id_rsa': 
+Last login: Fri Nov  6 16:34:25 2020 from psd01a-0046s.cfs.its.nyu.edu
+
+PyTorch GPUs
+
+GPU driver on Prince does not support CUDA 10.2, if you are running PyTorch, please try to use PyTorch built with CUDA 10.1
+Please follow instructions on PyTorch page to reinstall PyTorch, https://pytorch.org
+pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+If you run pip list, the PyTorch version should be torch==1.5.0+cu101
+
+(base) [ir967@log-1 ~]$ pwd
+/home/ir967
+(base) [ir967@log-1 ~]$ cd 
+.cache/   .config/  HPC/      .jupyter/ .lmod.d/  .nv/      .ssh/     
+.conda/   CV/       .ipython/ .keras/   .local/   .pki/     .vim/     
+(base) [ir967@log-1 ~]$ cd CV/project/Learning-to-See-in-the-Dark/
+checkpoint/ dataset/    .git/       images/     
+(base) [ir967@log-1 ~]$ cd CV/project/Learning-to-See-in-the-Dark/
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      README.md     test_Sony.py   train_Sony.py
+dataset     download_models.py   LICENSE.md  test_Fuji.py  train_Fuji.py
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd dataset/Sony/long/
+-bash: cd: dataset/Sony/long/: No such file or directory
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd dataset/Sony
+-bash: cd: dataset/Sony: No such file or directory
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ pwd
+/home/ir967/CV/project/Learning-to-See-in-the-Dark
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      README.md     test_Sony.py   train_Sony.py
+dataset     download_models.py   LICENSE.md  test_Fuji.py  train_Fuji.py
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd dataset/
+(base) [ir967@log-1 dataset]$ ls
+Fuji_test_list.txt   Fuji_val_list.txt   Sony_train_list.txt
+Fuji_train_list.txt  Sony_test_list.txt  Sony_val_list.txt
+(base) [ir967@log-1 dataset]$ cd $SCRATCH
+(base) [ir967@log-1 ir967]$ cd $S
+$SBATCH_IGNORE_PBS     $SHELLOPTS             $SINGULARITY_BINDPATH  $SYSP
+$SCRATCH               $SHLVL                 $SSH_CLIENT            
+$SECONDS               $SINCE                 $SSH_CONNECTION        
+$SHELL                 $SINCEFILE             $SSH_TTY               
+(base) [ir967@log-1 ir967]$ ls
+miniconda3  Miniconda3-latest-Linux-x86_64.sh  myjupiter  myjupyter  SID
+(base) [ir967@log-1 ir967]$ cd SID/Learning-to-See-in-the-Dark/
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd dataset/Sony/
+long/  short/ 
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd dataset/Sony/long/
+(base) [ir967@log-1 long]$ ls
+00001_00_10s.ARW  00067_00_10s.ARW  00135_00_30s.ARW  00204_00_10s.ARW  10126_00_30s.ARW
+00002_00_10s.ARW  00070_00_10s.ARW  00136_00_30s.ARW  00205_00_10s.ARW  10139_00_30s.ARW
+00004_00_10s.ARW  00071_00_10s.ARW  00137_00_30s.ARW  00206_00_10s.ARW  10140_00_30s.ARW
+00009_00_10s.ARW  00072_00_30s.ARW  00138_00_30s.ARW  00207_00_10s.ARW  10162_00_30s.ARW
+00010_00_10s.ARW  00073_00_30s.ARW  00141_00_30s.ARW  00209_00_10s.ARW  10163_00_30s.ARW
+00012_00_10s.ARW  00075_00_30s.ARW  00142_00_30s.ARW  00212_00_10s.ARW  10167_00_30s.ARW
+00013_00_10s.ARW  00076_00_30s.ARW  00143_00_30s.ARW  00214_00_10s.ARW  10170_00_30s.ARW
+00014_00_10s.ARW  00078_00_30s.ARW  00144_00_30s.ARW  00215_00_10s.ARW  10172_00_30s.ARW
+00015_00_10s.ARW  00081_00_30s.ARW  00145_00_30s.ARW  00216_00_10s.ARW  10176_00_30s.ARW
+00017_00_10s.ARW  00083_00_30s.ARW  00146_00_30s.ARW  00218_00_10s.ARW  10178_00_10s.ARW
+00018_00_10s.ARW  00084_00_30s.ARW  00148_00_30s.ARW  00219_00_10s.ARW  10185_00_10s.ARW
+00019_00_10s.ARW  00085_00_30s.ARW  00149_00_30s.ARW  00220_00_10s.ARW  10187_00_10s.ARW
+00021_00_10s.ARW  00086_00_30s.ARW  00150_00_30s.ARW  00221_00_10s.ARW  10191_00_10s.ARW
+00023_00_10s.ARW  00088_00_30s.ARW  00151_00_30s.ARW  00222_00_10s.ARW  10192_00_10s.ARW
+00024_00_10s.ARW  00090_00_30s.ARW  00152_00_30s.ARW  00223_00_10s.ARW  10193_00_10s.ARW
+00026_00_10s.ARW  00091_00_30s.ARW  00154_00_30s.ARW  00224_00_10s.ARW  10198_00_10s.ARW
+00027_00_10s.ARW  00092_00_30s.ARW  00155_00_30s.ARW  00225_00_10s.ARW  10199_00_10s.ARW
+00028_00_10s.ARW  00094_00_30s.ARW  00156_00_30s.ARW  00230_00_10s.ARW  10203_00_10s.ARW
+00029_00_10s.ARW  00095_00_30s.ARW  00157_00_30s.ARW  00231_00_10s.ARW  10213_00_10s.ARW
+00031_00_10s.ARW  00096_00_30s.ARW  00158_00_30s.ARW  00232_00_10s.ARW  10217_00_10s.ARW
+00033_00_10s.ARW  00097_00_30s.ARW  00159_00_30s.ARW  10003_00_10s.ARW  10226_00_10s.ARW
+00036_00_10s.ARW  00098_00_30s.ARW  00160_00_30s.ARW  10006_00_10s.ARW  10227_00_10s.ARW
+00037_00_10s.ARW  00099_00_30s.ARW  00161_00_30s.ARW  10011_00_10s.ARW  10228_00_10s.ARW
+00038_00_10s.ARW  00100_00_30s.ARW  00164_00_30s.ARW  10016_00_10s.ARW  20005_00_10s.ARW
+00039_00_10s.ARW  00102_00_30s.ARW  00165_00_30s.ARW  10022_00_10s.ARW  20007_00_10s.ARW
+00041_00_10s.ARW  00104_00_30s.ARW  00166_00_30s.ARW  10030_00_10s.ARW  20008_00_10s.ARW
+00042_00_10s.ARW  00108_00_30s.ARW  00168_00_30s.ARW  10032_00_10s.ARW  20020_00_10s.ARW
+00043_00_10s.ARW  00109_00_30s.ARW  00169_00_30s.ARW  10034_00_10s.ARW  20025_00_10s.ARW
+00044_00_10s.ARW  00110_00_30s.ARW  00171_00_30s.ARW  10035_00_10s.ARW  20061_00_10s.ARW
+00046_00_10s.ARW  00112_00_30s.ARW  00173_00_30s.ARW  10040_00_10s.ARW  20079_00_30s.ARW
+00047_00_10s.ARW  00113_00_30s.ARW  00174_00_30s.ARW  10045_00_10s.ARW  20080_00_30s.ARW
+00048_00_10s.ARW  00114_00_30s.ARW  00175_00_30s.ARW  10054_00_10s.ARW  20089_00_30s.ARW
+00049_00_10s.ARW  00117_00_30s.ARW  00179_00_10s.ARW  10055_00_10s.ARW  20107_00_30s.ARW
+00050_00_10s.ARW  00118_00_30s.ARW  00180_00_10s.ARW  10068_00_10s.ARW  20115_00_30s.ARW
+00051_00_10s.ARW  00119_00_30s.ARW  00181_00_10s.ARW  10069_00_10s.ARW  20120_00_30s.ARW
+00052_00_10s.ARW  00121_00_30s.ARW  00182_00_10s.ARW  10074_00_30s.ARW  20147_00_30s.ARW
+00053_00_10s.ARW  00122_00_30s.ARW  00183_00_10s.ARW  10077_00_30s.ARW  20153_00_30s.ARW
+00056_00_10s.ARW  00123_00_30s.ARW  00184_00_10s.ARW  10082_00_30s.ARW  20177_00_30s.ARW
+00057_00_10s.ARW  00124_00_30s.ARW  00186_00_10s.ARW  10087_00_30s.ARW  20188_00_10s.ARW
+00058_00_10s.ARW  00127_00_30s.ARW  00189_00_10s.ARW  10093_00_30s.ARW  20201_00_10s.ARW
+00059_00_10s.ARW  00128_00_30s.ARW  00190_00_10s.ARW  10101_00_30s.ARW  20208_00_10s.ARW
+00060_00_10s.ARW  00129_00_30s.ARW  00194_00_10s.ARW  10103_00_30s.ARW  20210_00_10s.ARW
+00062_00_10s.ARW  00130_00_30s.ARW  00195_00_10s.ARW  10105_00_30s.ARW  20211_00_10s.ARW
+00063_00_10s.ARW  00131_00_30s.ARW  00196_00_10s.ARW  10106_00_30s.ARW
+00064_00_10s.ARW  00132_00_30s.ARW  00197_00_10s.ARW  10111_00_30s.ARW
+00065_00_10s.ARW  00133_00_30s.ARW  00200_00_10s.ARW  10116_00_30s.ARW
+00066_00_10s.ARW  00134_00_30s.ARW  00202_00_10s.ARW  10125_00_30s.ARW
+(base) [ir967@log-1 long]$ cd ../../..
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      logs.txt   test_Fuji.py  train_Fuji.py
+dataset     download_models.py   LICENSE.md  README.md  test_Sony.py  train_Sony.py
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda deactivate
+[ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 4, in <module>
+    import os, scipy.io
+ImportError: No module named scipy.io
+[ir967@log-1 Learning-to-See-in-the-Dark]$ conda activate
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 4, in <module>
+    import os, scipy.io
+ModuleNotFoundError: No module named 'scipy'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3
+
+  added / updated specs:
+    - scipy
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    conda-4.9.1                |   py38h06a4308_0         2.9 MB
+    mkl-service-2.3.0          |   py38he904b0f_0          62 KB
+    mkl_fft-1.2.0              |   py38h23d657b_0         157 KB
+    mkl_random-1.1.1           |   py38h0573a6f_0         341 KB
+    numpy-1.19.2               |   py38h54aff64_0          22 KB
+    numpy-base-1.19.2          |   py38hfa32c7d_0         4.2 MB
+    scipy-1.5.2                |   py38h0b6359f_0        14.5 MB
+    ------------------------------------------------------------
+                                           Total:        22.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2020.2-254
+  libgfortran-ng     pkgs/main/linux-64::libgfortran-ng-7.3.0-hdf63c60_0
+  mkl                pkgs/main/linux-64::mkl-2020.2-256
+  mkl-service        pkgs/main/linux-64::mkl-service-2.3.0-py38he904b0f_0
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.2.0-py38h23d657b_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.1.1-py38h0573a6f_0
+  numpy              pkgs/main/linux-64::numpy-1.19.2-py38h54aff64_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.19.2-py38hfa32c7d_0
+  scipy              pkgs/main/linux-64::scipy-1.5.2-py38h0b6359f_0
+
+The following packages will be UPDATED:
+
+  ca-certificates                                2020.1.1-0 --> 2020.10.14-0
+  certifi            pkgs/main/linux-64::certifi-2020.4.5.~ --> pkgs/main/noarch::certifi-2020.6.20-pyhd3eb1b0_3
+  conda                                        4.8.3-py38_0 --> 4.9.1-py38h06a4308_0
+  openssl                                 1.1.1g-h7b6447c_0 --> 1.1.1h-h7b6447c_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+conda-4.9.1          | 2.9 MB    | ################################################## | 100% 
+numpy-base-1.19.2    | 4.2 MB    | ################################################## | 100% 
+mkl_random-1.1.1     | 341 KB    | ################################################## | 100% 
+mkl_fft-1.2.0        | 157 KB    | ################################################## | 100% 
+numpy-1.19.2         | 22 KB     | ################################################## | 100% 
+scipy-1.5.2          | 14.5 MB   | ################################################## | 100% 
+mkl-service-2.3.0    | 62 KB     | ################################################## | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 5, in <module>
+    import tensorflow as tf
+ModuleNotFoundError: No module named 'tensorflow'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda deactivate
+[ir967@log-1 Learning-to-See-in-the-Dark]$ conda update -n base -c defaults conda
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3
+
+  added / updated specs:
+    - conda
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    brotlipy-0.7.0             |py38h7b6447c_1000         322 KB
+    cffi-1.14.3                |   py38he30daa8_0         225 KB
+    conda-package-handling-1.7.2|   py38h03888b9_0         886 KB
+    cryptography-3.1.1         |   py38h1ba5d50_0         557 KB
+    pip-20.2.4                 |   py38h06a4308_0         1.8 MB
+    ruamel_yaml-0.15.87        |   py38h7b6447c_1         249 KB
+    setuptools-50.3.0          |   py38h06a4308_1         742 KB
+    tqdm-4.50.2                |             py_0          56 KB
+    yaml-0.2.5                 |       h7b6447c_0          75 KB
+    ------------------------------------------------------------
+                                           Total:         4.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  brotlipy           pkgs/main/linux-64::brotlipy-0.7.0-py38h7b6447c_1000
+
+The following packages will be UPDATED:
+
+  cffi                                1.14.0-py38he30daa8_1 --> 1.14.3-py38he30daa8_0
+  conda-package-han~                   1.6.1-py38h7b6447c_0 --> 1.7.2-py38h03888b9_0
+  cryptography                         2.9.2-py38h1ba5d50_0 --> 3.1.1-py38h1ba5d50_0
+  idna                                             2.9-py_1 --> 2.10-py_0
+  libedit                           3.1.20181209-hc058e9b_0 --> 3.1.20191231-h14c3975_1
+  libffi                                     3.3-he6710b0_1 --> 3.3-he6710b0_2
+  pip                                         20.0.2-py38_3 --> 20.2.4-py38h06a4308_0
+  pycparser                                       2.20-py_0 --> 2.20-py_2
+  pyopenssl          pkgs/main/linux-64::pyopenssl-19.1.0-~ --> pkgs/main/noarch::pyopenssl-19.1.0-py_1
+  requests           pkgs/main/linux-64::requests-2.23.0-p~ --> pkgs/main/noarch::requests-2.24.0-py_0
+  ruamel_yaml                        0.15.87-py38h7b6447c_0 --> 0.15.87-py38h7b6447c_1
+  setuptools                                  46.4.0-py38_0 --> 50.3.0-py38h06a4308_1
+  six                 pkgs/main/linux-64::six-1.14.0-py38_0 --> pkgs/main/noarch::six-1.15.0-py_0
+  sqlite                                  3.31.1-h62c20be_1 --> 3.33.0-h62c20be_0
+  tk                                       8.6.8-hbc83047_0 --> 8.6.10-hbc83047_0
+  tqdm                                          4.46.0-py_0 --> 4.50.2-py_0
+  urllib3            pkgs/main/linux-64::urllib3-1.25.8-py~ --> pkgs/main/noarch::urllib3-1.25.11-py_0
+  wheel              pkgs/main/linux-64::wheel-0.34.2-py38~ --> pkgs/main/noarch::wheel-0.35.1-py_0
+  yaml                                     0.1.7-had09818_2 --> 0.2.5-h7b6447c_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+brotlipy-0.7.0       | 322 KB    | ################################################## | 100% 
+conda-package-handli | 886 KB    | ################################################## | 100% 
+ruamel_yaml-0.15.87  | 249 KB    | ################################################## | 100% 
+cffi-1.14.3          | 225 KB    | ################################################## | 100% 
+tqdm-4.50.2          | 56 KB     | ################################################## | 100% 
+pip-20.2.4           | 1.8 MB    | ################################################## | 100% 
+yaml-0.2.5           | 75 KB     | ################################################## | 100% 
+setuptools-50.3.0    | 742 KB    | ################################################## | 100% 
+cryptography-3.1.1   | 557 KB    | ################################################## | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+[ir967@log-1 Learning-to-See-in-the-Dark]$ conda activate base
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install tensorflow
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3
+
+  added / updated specs:
+    - tensorflow
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    _tflow_select-2.3.0        |            eigen           3 KB
+    absl-py-0.11.0             |   py38h06a4308_0         173 KB
+    aiohttp-3.6.3              |   py38h7b6447c_0         553 KB
+    async-timeout-3.0.1        |           py38_0          12 KB
+    blinker-1.4                |           py38_0          22 KB
+    grpcio-1.31.0              |   py38hf8bcb03_0         2.0 MB
+    h5py-2.10.0                |   py38hd6299e0_1         948 KB
+    markdown-3.3.2             |           py38_0         127 KB
+    multidict-4.7.6            |   py38h7b6447c_1          67 KB
+    protobuf-3.13.0.1          |   py38he6710b0_1         636 KB
+    pyjwt-1.7.1                |           py38_0          33 KB
+    tensorflow-2.3.0           |eigen_py38h71ff20e_0           4 KB
+    tensorflow-base-2.3.0      |eigen_py38hb57a387_0       108.1 MB
+    tensorflow-estimator-2.3.0 |     pyheb71bc4_0         271 KB
+    termcolor-1.1.0            |           py38_1           8 KB
+    wrapt-1.12.1               |   py38h7b6447c_1          50 KB
+    yarl-1.6.2                 |   py38h7b6447c_0         136 KB
+    ------------------------------------------------------------
+                                           Total:       113.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  _tflow_select      pkgs/main/linux-64::_tflow_select-2.3.0-eigen
+  absl-py            pkgs/main/linux-64::absl-py-0.11.0-py38h06a4308_0
+  aiohttp            pkgs/main/linux-64::aiohttp-3.6.3-py38h7b6447c_0
+  astunparse         pkgs/main/noarch::astunparse-1.6.3-py_0
+  async-timeout      pkgs/main/linux-64::async-timeout-3.0.1-py38_0
+  attrs              pkgs/main/noarch::attrs-20.2.0-py_0
+  blinker            pkgs/main/linux-64::blinker-1.4-py38_0
+  c-ares             pkgs/main/linux-64::c-ares-1.16.1-h7b6447c_0
+  cachetools         pkgs/main/noarch::cachetools-4.1.1-py_0
+  click              pkgs/main/noarch::click-7.1.2-py_0
+  gast               pkgs/main/noarch::gast-0.3.3-py_0
+  google-auth        pkgs/main/noarch::google-auth-1.23.0-pyhd3eb1b0_0
+  google-auth-oauth~ pkgs/main/noarch::google-auth-oauthlib-0.4.2-pyhd3eb1b0_2
+  google-pasta       pkgs/main/noarch::google-pasta-0.2.0-py_0
+  grpcio             pkgs/main/linux-64::grpcio-1.31.0-py38hf8bcb03_0
+  h5py               pkgs/main/linux-64::h5py-2.10.0-py38hd6299e0_1
+  hdf5               pkgs/main/linux-64::hdf5-1.10.6-hb1b8bf9_0
+  importlib-metadata pkgs/main/noarch::importlib-metadata-2.0.0-py_1
+  keras-preprocessi~ pkgs/main/noarch::keras-preprocessing-1.1.0-py_1
+  libprotobuf        pkgs/main/linux-64::libprotobuf-3.13.0.1-hd408876_0
+  markdown           pkgs/main/linux-64::markdown-3.3.2-py38_0
+  multidict          pkgs/main/linux-64::multidict-4.7.6-py38h7b6447c_1
+  oauthlib           pkgs/main/noarch::oauthlib-3.1.0-py_0
+  opt_einsum         pkgs/main/noarch::opt_einsum-3.1.0-py_0
+  protobuf           pkgs/main/linux-64::protobuf-3.13.0.1-py38he6710b0_1
+  pyasn1             pkgs/main/noarch::pyasn1-0.4.8-py_0
+  pyasn1-modules     pkgs/main/noarch::pyasn1-modules-0.2.8-py_0
+  pyjwt              pkgs/main/linux-64::pyjwt-1.7.1-py38_0
+  requests-oauthlib  pkgs/main/noarch::requests-oauthlib-1.3.0-py_0
+  rsa                pkgs/main/noarch::rsa-4.6-py_0
+  tensorboard        pkgs/main/noarch::tensorboard-2.3.0-pyh4dce500_0
+  tensorboard-plugi~ pkgs/main/noarch::tensorboard-plugin-wit-1.6.0-py_0
+  tensorflow         pkgs/main/linux-64::tensorflow-2.3.0-eigen_py38h71ff20e_0
+  tensorflow-base    pkgs/main/linux-64::tensorflow-base-2.3.0-eigen_py38hb57a387_0
+  tensorflow-estima~ pkgs/main/noarch::tensorflow-estimator-2.3.0-pyheb71bc4_0
+  termcolor          pkgs/main/linux-64::termcolor-1.1.0-py38_1
+  werkzeug           pkgs/main/noarch::werkzeug-1.0.1-py_0
+  wrapt              pkgs/main/linux-64::wrapt-1.12.1-py38h7b6447c_1
+  yarl               pkgs/main/linux-64::yarl-1.6.2-py38h7b6447c_0
+  zipp               pkgs/main/noarch::zipp-3.4.0-pyhd3eb1b0_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+multidict-4.7.6      | 67 KB     | ####################################################################### | 100% 
+protobuf-3.13.0.1    | 636 KB    | ####################################################################### | 100% 
+wrapt-1.12.1         | 50 KB     | ####################################################################### | 100% 
+absl-py-0.11.0       | 173 KB    | ####################################################################### | 100% 
+aiohttp-3.6.3        | 553 KB    | ####################################################################### | 100% 
+tensorflow-base-2.3. | 108.1 MB  | ####################################################################### | 100% 
+yarl-1.6.2           | 136 KB    | ####################################################################### | 100% 
+blinker-1.4          | 22 KB     | ####################################################################### | 100% 
+termcolor-1.1.0      | 8 KB      | ####################################################################### | 100% 
+tensorflow-2.3.0     | 4 KB      | ####################################################################### | 100% 
+async-timeout-3.0.1  | 12 KB     | ####################################################################### | 100% 
+pyjwt-1.7.1          | 33 KB     | ####################################################################### | 100% 
+grpcio-1.31.0        | 2.0 MB    | ####################################################################### | 100% 
+markdown-3.3.2       | 127 KB    | ####################################################################### | 100% 
+_tflow_select-2.3.0  | 3 KB      | ####################################################################### | 100% 
+h5py-2.10.0          | 948 KB    | ####################################################################### | 100% 
+tensorflow-estimator | 271 KB    | ####################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 6, in <module>
+    import tensorflow.contrib.slim as slim
+ModuleNotFoundError: No module named 'tensorflow.contrib'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda list
+# packages in environment at /scratch/ir967/miniconda3:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+_tflow_select             2.3.0                     eigen  
+absl-py                   0.11.0           py38h06a4308_0  
+aiohttp                   3.6.3            py38h7b6447c_0  
+astunparse                1.6.3                      py_0  
+async-timeout             3.0.1                    py38_0  
+attrs                     20.2.0                     py_0  
+blas                      1.0                         mkl  
+blinker                   1.4                      py38_0  
+brotlipy                  0.7.0           py38h7b6447c_1000  
+c-ares                    1.16.1               h7b6447c_0  
+ca-certificates           2020.10.14                    0  
+cachetools                4.1.1                      py_0  
+certifi                   2020.6.20          pyhd3eb1b0_3  
+cffi                      1.14.3           py38he30daa8_0  
+chardet                   3.0.4                 py38_1003  
+click                     7.1.2                      py_0  
+conda                     4.9.1            py38h06a4308_0  
+conda-package-handling    1.7.2            py38h03888b9_0  
+cryptography              3.1.1            py38h1ba5d50_0  
+gast                      0.3.3                      py_0  
+google-auth               1.23.0             pyhd3eb1b0_0  
+google-auth-oauthlib      0.4.2              pyhd3eb1b0_2  
+google-pasta              0.2.0                      py_0  
+grpcio                    1.31.0           py38hf8bcb03_0  
+h5py                      2.10.0           py38hd6299e0_1  
+hdf5                      1.10.6               hb1b8bf9_0  
+idna                      2.10                       py_0  
+importlib-metadata        2.0.0                      py_1  
+intel-openmp              2020.2                      254  
+keras-preprocessing       1.1.0                      py_1  
+ld_impl_linux-64          2.33.1               h53a641e_7  
+libedit                   3.1.20191231         h14c3975_1  
+libffi                    3.3                  he6710b0_2  
+libgcc-ng                 9.1.0                hdf63c60_0  
+libgfortran-ng            7.3.0                hdf63c60_0  
+libprotobuf               3.13.0.1             hd408876_0  
+libstdcxx-ng              9.1.0                hdf63c60_0  
+markdown                  3.3.2                    py38_0  
+mkl                       2020.2                      256  
+mkl-service               2.3.0            py38he904b0f_0  
+mkl_fft                   1.2.0            py38h23d657b_0  
+mkl_random                1.1.1            py38h0573a6f_0  
+multidict                 4.7.6            py38h7b6447c_1  
+ncurses                   6.2                  he6710b0_1  
+numpy                     1.19.2           py38h54aff64_0  
+numpy-base                1.19.2           py38hfa32c7d_0  
+oauthlib                  3.1.0                      py_0  
+openssl                   1.1.1h               h7b6447c_0  
+opt_einsum                3.1.0                      py_0  
+pip                       20.2.4           py38h06a4308_0  
+protobuf                  3.13.0.1         py38he6710b0_1  
+pyasn1                    0.4.8                      py_0  
+pyasn1-modules            0.2.8                      py_0  
+pycosat                   0.6.3            py38h7b6447c_1  
+pycparser                 2.20                       py_2  
+pyjwt                     1.7.1                    py38_0  
+pyopenssl                 19.1.0                     py_1  
+pysocks                   1.7.1                    py38_0  
+python                    3.8.3                hcff3b4d_0  
+readline                  8.0                  h7b6447c_0  
+requests                  2.24.0                     py_0  
+requests-oauthlib         1.3.0                      py_0  
+rsa                       4.6                        py_0  
+ruamel_yaml               0.15.87          py38h7b6447c_1  
+scipy                     1.5.2            py38h0b6359f_0  
+setuptools                50.3.0           py38h06a4308_1  
+six                       1.15.0                     py_0  
+sqlite                    3.33.0               h62c20be_0  
+tensorboard               2.3.0              pyh4dce500_0  
+tensorboard-plugin-wit    1.6.0                      py_0  
+tensorflow                2.3.0           eigen_py38h71ff20e_0  
+tensorflow-base           2.3.0           eigen_py38hb57a387_0  
+tensorflow-estimator      2.3.0              pyheb71bc4_0  
+termcolor                 1.1.0                    py38_1  
+tk                        8.6.10               hbc83047_0  
+tqdm                      4.50.2                     py_0  
+urllib3                   1.25.11                    py_0  
+werkzeug                  1.0.1                      py_0  
+wheel                     0.35.1                     py_0  
+wrapt                     1.12.1           py38h7b6447c_1  
+xz                        5.2.5                h7b6447c_0  
+yaml                      0.2.5                h7b6447c_0  
+yarl                      1.6.2            py38h7b6447c_0  
+zipp                      3.4.0              pyhd3eb1b0_0  
+zlib                      1.2.11               h7b6447c_3  
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ vi test_Sony.py 
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 7, in <module>
+    import tf_slim as slim
+ModuleNotFoundError: No module named 'tf_slim'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install tf_slim
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - tf_slim
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ pip install tf_slim
+Collecting tf_slim
+  Downloading tf_slim-1.1.0-py2.py3-none-any.whl (352 kB)
+     |████████████████████████████████| 352 kB 8.3 MB/s 
+Requirement already satisfied: absl-py>=0.2.2 in /scratch/ir967/miniconda3/lib/python3.8/site-packages (from tf_slim) (0.11.0)
+Requirement already satisfied: six in /scratch/ir967/miniconda3/lib/python3.8/site-packages (from absl-py>=0.2.2->tf_slim) (1.15.0)
+Installing collected packages: tf-slim
+Successfully installed tf-slim-1.1.0
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 9, in <module>
+    import rawpy
+ModuleNotFoundError: No module named 'rawpy'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ pip install rawpy
+Collecting rawpy
+  Downloading rawpy-0.15.0-cp38-cp38-manylinux2010_x86_64.whl (1.8 MB)
+     |████████████████████████████████| 1.8 MB 7.2 MB/s 
+Requirement already satisfied: numpy in /scratch/ir967/miniconda3/lib/python3.8/site-packages (from rawpy) (1.19.2)
+Installing collected packages: rawpy
+Successfully installed rawpy-0.15.0
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 100, in <module>
+    sess = tf.Session()
+AttributeError: module 'tensorflow' has no attribute 'Session'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ vi test_Sony.py 
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ vi test_Sony.py 
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+WARNING:tensorflow:From /scratch/ir967/miniconda3/lib/python3.8/site-packages/tensorflow/python/compat/v2_compat.py:96: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+Traceback (most recent call last):
+  File "test_Sony.py", line 9, in <module>
+    import tensorflow.contrib.slim as slim
+ModuleNotFoundError: No module named 'tensorflow.contrib'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ vi test_Sony.py 
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ vi test_Sony.py 
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+Traceback (most recent call last):
+  File "test_Sony.py", line 9, in <module>
+    import tensorflow.contrib.slim as slim
+ModuleNotFoundError: No module named 'tensorflow.contrib'
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda deactivate
+[ir967@log-1 Learning-to-See-in-the-Dark]$ conda create -n sid python=2.7 tensorflow=1.1 scipy=1.1.0 numpy=1.8.2 rawpy=0.13.0
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: failed
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - tensorflow=1.1
+  - numpy=1.8.2
+  - rawpy=0.13.0
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+[ir967@log-1 Learning-to-See-in-the-Dark]$ conda create -n sid python=2.7 scipy=1.1.0
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  added / updated specs:
+    - python=2.7
+    - scipy=1.1.0
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    mkl-service-2.3.0          |   py27he904b0f_0         217 KB
+    mkl_fft-1.0.15             |   py27ha843d7b_0         146 KB
+    mkl_random-1.1.0           |   py27hd6b4f25_0         297 KB
+    numpy-1.16.6               |   py27hbc911f0_0          48 KB
+    numpy-base-1.16.6          |   py27hde5b4d6_0         3.5 MB
+    pip-19.3.1                 |           py27_0         1.7 MB
+    python-2.7.18              |       h15b4118_1         9.9 MB
+    scipy-1.1.0                |   py27h7c811a0_2        13.1 MB
+    setuptools-44.0.0          |           py27_0         512 KB
+    ------------------------------------------------------------
+                                           Total:        29.4 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2020.10.14-0
+  certifi            pkgs/main/noarch::certifi-2020.6.20-pyhd3eb1b0_3
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2020.2-254
+  libedit            pkgs/main/linux-64::libedit-3.1.20191231-h14c3975_1
+  libffi             pkgs/main/linux-64::libffi-3.3-he6710b0_2
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-9.1.0-hdf63c60_0
+  libgfortran-ng     pkgs/main/linux-64::libgfortran-ng-7.3.0-hdf63c60_0
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-9.1.0-hdf63c60_0
+  mkl                pkgs/main/linux-64::mkl-2020.2-256
+  mkl-service        pkgs/main/linux-64::mkl-service-2.3.0-py27he904b0f_0
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.0.15-py27ha843d7b_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.1.0-py27hd6b4f25_0
+  ncurses            pkgs/main/linux-64::ncurses-6.2-he6710b0_1
+  numpy              pkgs/main/linux-64::numpy-1.16.6-py27hbc911f0_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.16.6-py27hde5b4d6_0
+  pip                pkgs/main/linux-64::pip-19.3.1-py27_0
+  python             pkgs/main/linux-64::python-2.7.18-h15b4118_1
+  readline           pkgs/main/linux-64::readline-8.0-h7b6447c_0
+  scipy              pkgs/main/linux-64::scipy-1.1.0-py27h7c811a0_2
+  setuptools         pkgs/main/linux-64::setuptools-44.0.0-py27_0
+  six                pkgs/main/noarch::six-1.15.0-py_0
+  sqlite             pkgs/main/linux-64::sqlite-3.33.0-h62c20be_0
+  tk                 pkgs/main/linux-64::tk-8.6.10-hbc83047_0
+  wheel              pkgs/main/noarch::wheel-0.35.1-py_0
+  zlib               pkgs/main/linux-64::zlib-1.2.11-h7b6447c_3
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+setuptools-44.0.0    | 512 KB    | ####################################################################### | 100% 
+mkl_fft-1.0.15       | 146 KB    | ####################################################################### | 100% 
+numpy-base-1.16.6    | 3.5 MB    | ####################################################################### | 100% 
+pip-19.3.1           | 1.7 MB    | ####################################################################### | 100% 
+python-2.7.18        | 9.9 MB    | ####################################################################### | 100% 
+scipy-1.1.0          | 13.1 MB   | ####################################################################### | 100% 
+mkl_random-1.1.0     | 297 KB    | ####################################################################### | 100% 
+mkl-service-2.3.0    | 217 KB    | ####################################################################### | 100% 
+numpy-1.16.6         | 48 KB     | ####################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate sid
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+[ir967@log-1 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install tensorflow/1.1
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - tensorflow/1.1
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ pip install tensorflow/1.1
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+ERROR: Invalid requirement: 'tensorflow/1.1'
+Hint: It looks like a path. File 'tensorflow/1.1' does not exist.
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install tensorflow=1.1
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - tensorflow=1.1
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ pip install tensorflow=1.1
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+ERROR: Invalid requirement: 'tensorflow=1.1'
+Hint: = is not a valid operator. Did you mean == ?
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install tensorflow=1.1
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - tensorflow=1.1
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ pip install tensorflow==1.1
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+Collecting tensorflow==1.1
+  Downloading https://files.pythonhosted.org/packages/8a/73/74c610decd5e0a1fd7f441a32e3561d21c28ced98fd6d3d9d5c70dbf92ce/tensorflow-1.1.0-cp27-cp27mu-manylinux1_x86_64.whl (31.0MB)
+     |████████████████████████████████| 31.0MB 11.0MB/s 
+Requirement already satisfied: wheel in /scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages (from tensorflow==1.1) (0.35.1)
+Collecting mock>=2.0.0
+  Downloading https://files.pythonhosted.org/packages/05/d2/f94e68be6b17f46d2c353564da56e6fb89ef09faeeff3313a046cb810ca9/mock-3.0.5-py2.py3-none-any.whl
+Requirement already satisfied: numpy>=1.11.0 in /scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages (from tensorflow==1.1) (1.16.6)
+Collecting werkzeug>=0.11.10
+  Downloading https://files.pythonhosted.org/packages/cc/94/5f7079a0e00bd6863ef8f1da638721e9da21e5bacee597595b318f71d62e/Werkzeug-1.0.1-py2.py3-none-any.whl (298kB)
+     |████████████████████████████████| 307kB 65.1MB/s 
+Requirement already satisfied: six>=1.10.0 in /scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages (from tensorflow==1.1) (1.15.0)
+Collecting protobuf>=3.2.0
+  Downloading https://files.pythonhosted.org/packages/19/f1/e7ea38480048cc073802b9242156b85095586c5b1f66d84447635696be60/protobuf-3.13.0-cp27-cp27mu-manylinux1_x86_64.whl (1.3MB)
+     |████████████████████████████████| 1.3MB 64.0MB/s 
+Collecting funcsigs>=1; python_version < "3.3"
+  Downloading https://files.pythonhosted.org/packages/69/cb/f5be453359271714c01b9bd06126eaf2e368f1fddfff30818754b5ac2328/funcsigs-1.0.2-py2.py3-none-any.whl
+Requirement already satisfied: setuptools in /scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages (from protobuf>=3.2.0->tensorflow==1.1) (44.0.0.post20200106)
+Installing collected packages: funcsigs, mock, werkzeug, protobuf, tensorflow
+Successfully installed funcsigs-1.0.2 mock-3.0.5 protobuf-3.13.0 tensorflow-1.1.0 werkzeug-1.0.1
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ pip install rawpy==0.13.0
+DEPRECATION: Python 2.7 will reach the end of its life on January 1st, 2020. Please upgrade your Python as Python 2.7 won't be maintained after that date. A future version of pip will drop support for Python 2.7. More details about Python 2 support in pip, can be found at https://pip.pypa.io/en/latest/development/release-process/#python-2-support
+Collecting rawpy==0.13.0
+  Downloading https://files.pythonhosted.org/packages/06/68/7d5e739b1e5054a54e6466e1f34b6d5f3988d9e6aa5ba7fc2985b36b92e4/rawpy-0.13.0-cp27-cp27mu-manylinux1_x86_64.whl (645kB)
+     |████████████████████████████████| 655kB 12.8MB/s 
+Requirement already satisfied: numpy in /scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages (from rawpy==0.13.0) (1.16.6)
+Collecting enum34
+  Downloading https://files.pythonhosted.org/packages/6f/2c/a9386903ece2ea85e9807e0e062174dc26fdce8b05f216d00491be29fad5/enum34-1.1.10-py2-none-any.whl
+Installing collected packages: enum34, rawpy
+Successfully installed enum34-1.1.10 rawpy-0.13.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      logs.txt   test_Fuji.py  train_Fuji.py
+dataset     download_models.py   LICENSE.md  README.md  test_Sony.py  train_Sony.py
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+2020-11-06 20:02:50.765912: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:02:50.765964: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:02:50.765981: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:02:50.765989: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:02:50.766000: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+2020-11-06 20:02:51.191574: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191608: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191661: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191684: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191592: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191745: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191581: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191653: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191596: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191609: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191579: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191636: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.192269: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191662: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191591: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191574: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191592: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191603: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191605: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191642: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191584: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191586: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191574: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191596: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191582: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.191592: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.193216: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.193932: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.194514: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.194674: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.194790: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195070: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195101: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195112: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195134: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195309: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195413: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195424: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195536: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195677: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195765: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+2020-11-06 20:02:51.195875: W tensorflow/core/framework/op_kernel.cc:1152] Not found: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+Traceback (most recent call last):
+  File "test_Sony.py", line 113, in <module>
+    saver.restore(sess, ckpt.model_checkpoint_path)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 1457, in restore
+    {self.saver_def.filename_tensor_name: save_path})
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 778, in run
+    run_metadata_ptr)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 982, in _run
+    feed_dict_string, options, run_metadata)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1032, in _do_run
+    target_list, options, run_metadata)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1052, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.NotFoundError: ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+	 [[Node: save/RestoreV2_4 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_4/tensor_names, save/RestoreV2_4/shape_and_slices)]]
+
+Caused by op u'save/RestoreV2_4', defined at:
+  File "test_Sony.py", line 108, in <module>
+    saver = tf.train.Saver()
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 1056, in __init__
+    self.build()
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 1086, in build
+    restore_sequentially=self._restore_sequentially)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 691, in build
+    restore_sequentially, reshape)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 407, in _AddRestoreOps
+    tensors = self.restore_op(filename_tensor, saveable, preferred_shard)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 247, in restore_op
+    [spec.tensor.dtype])[0])
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/ops/gen_io_ops.py", line 669, in restore_v2
+    dtypes=dtypes, name=name)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/framework/op_def_library.py", line 768, in apply_op
+    op_def=op_def)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 2336, in create_op
+    original_op=self._default_original_op, op_def=op_def)
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 1228, in __init__
+    self._traceback = _extract_stack()
+
+NotFoundError (see above for traceback): ./checkpoint/Sony/model.ckpt.data-00000-of-00001
+	 [[Node: save/RestoreV2_4 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_recv_save/Const_0, save/RestoreV2_4/tensor_names, save/RestoreV2_4/shape_and_slices)]]
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls checkpoint/Sony/
+checkpoint  model.ckpt.index
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd checkpoint/
+(sid) [ir967@log-1 checkpoint]$ cd ..
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls checkpoint/Sony/checkpoint 
+checkpoint/Sony/checkpoint
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls checkpoint/Sony/checkpoint/
+ls: cannot access checkpoint/Sony/checkpoint/: Not a directory
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      logs.txt   test_Fuji.py  train_Fuji.py
+dataset     download_models.py   LICENSE.md  README.md  test_Sony.py  train_Sony.py
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd checkpoint/
+(sid) [ir967@log-1 checkpoint]$ ls
+Fuji  Sony
+(sid) [ir967@log-1 checkpoint]$ cd Sony/
+(sid) [ir967@log-1 Sony]$ ls
+checkpoint  model.ckpt.index
+(sid) [ir967@log-1 Sony]$ cd ../../
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ pwd
+/scratch/ir967/SID/Learning-to-See-in-the-Dark
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      logs.txt   test_Fuji.py  train_Fuji.py
+dataset     download_models.py   LICENSE.md  README.md  test_Sony.py  train_Sony.py
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ python download_models.py 
+Traceback (most recent call last):
+  File "download_models.py", line 1, in <module>
+    import requests
+ImportError: No module named requests
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install requests
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  added / updated specs:
+    - requests
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    asn1crypto-1.4.0           |             py_0          80 KB
+    cffi-1.14.0                |   py27he30daa8_1         221 KB
+    chardet-3.0.4              |        py27_1003         171 KB
+    cryptography-2.8           |   py27h1ba5d50_0         547 KB
+    enum34-1.1.6               |           py27_1          58 KB
+    ipaddress-1.0.23           |             py_0          22 KB
+    pysocks-1.7.1              |           py27_0          31 KB
+    urllib3-1.25.7             |           py27_0         169 KB
+    ------------------------------------------------------------
+                                           Total:         1.3 MB
+
+The following NEW packages will be INSTALLED:
+
+  asn1crypto         pkgs/main/noarch::asn1crypto-1.4.0-py_0
+  cffi               pkgs/main/linux-64::cffi-1.14.0-py27he30daa8_1
+  chardet            pkgs/main/linux-64::chardet-3.0.4-py27_1003
+  cryptography       pkgs/main/linux-64::cryptography-2.8-py27h1ba5d50_0
+  enum34             pkgs/main/linux-64::enum34-1.1.6-py27_1
+  idna               pkgs/main/noarch::idna-2.10-py_0
+  ipaddress          pkgs/main/noarch::ipaddress-1.0.23-py_0
+  openssl            pkgs/main/linux-64::openssl-1.1.1h-h7b6447c_0
+  pycparser          pkgs/main/noarch::pycparser-2.20-py_2
+  pyopenssl          pkgs/main/noarch::pyopenssl-19.1.0-py_1
+  pysocks            pkgs/main/linux-64::pysocks-1.7.1-py27_0
+  requests           pkgs/main/noarch::requests-2.24.0-py_0
+  urllib3            pkgs/main/linux-64::urllib3-1.25.7-py27_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+chardet-3.0.4        | 171 KB    | ####################################################################### | 100% 
+ipaddress-1.0.23     | 22 KB     | ####################################################################### | 100% 
+cffi-1.14.0          | 221 KB    | ####################################################################### | 100% 
+asn1crypto-1.4.0     | 80 KB     | ####################################################################### | 100% 
+pysocks-1.7.1        | 31 KB     | ####################################################################### | 100% 
+cryptography-2.8     | 547 KB    | ####################################################################### | 100% 
+urllib3-1.25.7       | 169 KB    | ####################################################################### | 100% 
+enum34-1.1.6         | 58 KB     | ####################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ python download_models.py 
+Dowloading Sony Model (84Mb)
+Dowloading Fuji Model (84Mb)
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+2020-11-06 20:10:11.287910: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:10:11.287951: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:10:11.287962: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:10:11.287969: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:10:11.287977: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+^C^C^CTraceback (most recent call last):
+  File "test_Sony.py", line 133, in <module>
+    input_full = np.expand_dims(pack_raw(raw), axis=0) * ratio
+  File "test_Sony.py", line 89, in pack_raw
+    im = np.maximum(im - 512, 0) / (16383 - 512)  # subtract the black level
+KeyboardInterrupt
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint  download_dataset.py  images      logs.txt   result_Sony   test_Sony.py   train_Sony.py
+dataset     download_models.py   LICENSE.md  README.md  test_Fuji.py  train_Fuji.py
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ cd result_Sony/
+(sid) [ir967@log-1 result_Sony]$ ls
+final
+(sid) [ir967@log-1 result_Sony]$ cd final/
+(sid) [ir967@log-1 final]$ ls
+(sid) [ir967@log-1 final]$ cd ..
+(sid) [ir967@log-1 result_Sony]$ cd ..
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ python test_Fuji.py 
+2020-11-06 20:12:38.333147: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:12:38.333189: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:12:38.333198: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:12:38.333205: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:12:38.333212: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Fuji/model.ckpt
+10161_00_0.04s.RAF
+^C^C^CTraceback (most recent call last):
+  File "test_Fuji.py", line 153, in <module>
+    input_full = np.expand_dims(pack_raw(raw), axis=0) * ratio
+KeyboardInterrupt
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ history > command_history_sid_env.txt
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ vi command_history_sid_env.txt 
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ cp command_history_sid_env.txt $HOME/command_history.txt
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls $HOME
+command_history.txt  CV  HPC
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ cat command_history_sid_env.txt | top 10
+top: unknown option '1'
+Usage:
+  top -hv | -bcHiOSs -d secs -n max -u|U user -p pid(s) -o field -w [cols]
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls $HOME/CV
+a1  project
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls $HOME/CV/a1/
+16CNN_4IDSkip_3FC,_3x3_filters_only,_BN_GPU_Assignment_1_2.ipynb
+1layerweight.png
+Assignment_1_1_Computer_Vision_CSCI_GA_2272_001.ipynb
+cifar-10-batches-py
+cifar-10-python.tar.gz
+dataset.zip
+gtsrb_kaggle_2CNN_18epoch.csv
+gtsrb_kaggle_3CNN_100_100_200_3FC_5000_5000_5000_43_dropout_0.15CNN_0.5FC_0.01lr_gpu.csv
+gtsrb_kaggle_3CNN_100_100_200_3FC_5000_5000_5000_43_dropout_0.1CNN_0.5FC_0.01lr_gpu.csv
+gtsrb_kaggle_3CNN_100_100_200_3FC_5000_5000_5000.csv
+gtsrb_kaggle_5CNN_64_64_3x3x128_128_128_3FC_3200_3200_1000_43_BN_0.0005L2_0.01lr_gpu.csv
+gtsrb_kaggle_5CNN_64_64_3x3x128_128_128_3FC_3200_3200_1000_43_BN_0.006L2_0.01lr_gpu.csv
+gtsrb_kaggle_5CNN_64_64_3x3x128_128_128_3FC_3200_3200_1000_43_BN_0.01L2_0.01lr_gpu.csv
+gtsrb_kaggle_5CNN_64_64_3x3x128_128_128_3FC_3200_3200_1000_43_BN_0.01lr_gpu.csv
+gtsrb_kaggle_5CNN_64_64_3x3x128_128_128_3FC_3200_3200_1000_43_dropout_0.2CNN_0.5FC_0.01lr_gpu.csv
+gtsrb_kaggle.csv
+processed
+raw
+report copy.txt
+report.txt
+run-1.1.sbatch
+slurm-12826959.out
+slurm-12826963.out
+slurm-12828227.out
+slurm-12828713.out
+slurm-12828738.out
+The_German_Traffic_Sign_Recognition_Benchmark_A_mu.pdf
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ cp \$HOME/CV/a1/run-1.1.sbatch test_Sony.sbatch
+cp: cannot stat ‘$HOME/CV/a1/run-1.1.sbatch’: No such file or directory
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ cp $HOME/CV/a1/run-1.1.sbatch test_Sony.sbatch
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ vi test_Sony.sbatch 
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda list
+# packages in environment at /scratch/ir967/miniconda3/envs/sid:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+asn1crypto                1.4.0                      py_0  
+blas                      1.0                         mkl  
+ca-certificates           2020.10.14                    0  
+certifi                   2020.6.20          pyhd3eb1b0_3  
+cffi                      1.14.0           py27he30daa8_1  
+chardet                   3.0.4                 py27_1003  
+cryptography              2.8              py27h1ba5d50_0  
+enum34                    1.1.10                   pypi_0    pypi
+funcsigs                  1.0.2                    pypi_0    pypi
+idna                      2.10                       py_0  
+intel-openmp              2020.2                      254  
+ipaddress                 1.0.23                     py_0  
+libedit                   3.1.20191231         h14c3975_1  
+libffi                    3.3                  he6710b0_2  
+libgcc-ng                 9.1.0                hdf63c60_0  
+libgfortran-ng            7.3.0                hdf63c60_0  
+libstdcxx-ng              9.1.0                hdf63c60_0  
+mkl                       2020.2                      256  
+mkl-service               2.3.0            py27he904b0f_0  
+mkl_fft                   1.0.15           py27ha843d7b_0  
+mkl_random                1.1.0            py27hd6b4f25_0  
+mock                      3.0.5                    pypi_0    pypi
+ncurses                   6.2                  he6710b0_1  
+numpy                     1.16.6           py27hbc911f0_0  
+numpy-base                1.16.6           py27hde5b4d6_0  
+openssl                   1.1.1h               h7b6447c_0  
+pip                       19.3.1                   py27_0  
+protobuf                  3.13.0                   pypi_0    pypi
+pycparser                 2.20                       py_2  
+pyopenssl                 19.1.0                     py_1  
+pysocks                   1.7.1                    py27_0  
+python                    2.7.18               h15b4118_1  
+rawpy                     0.13.0                   pypi_0    pypi
+readline                  8.0                  h7b6447c_0  
+requests                  2.24.0                     py_0  
+scipy                     1.1.0            py27h7c811a0_2  
+setuptools                44.0.0                   py27_0  
+six                       1.15.0                     py_0  
+sqlite                    3.33.0               h62c20be_0  
+tensorflow                1.1.0                    pypi_0    pypi
+tk                        8.6.10               hbc83047_0  
+urllib3                   1.25.7                   py27_0  
+werkzeug                  1.0.1                    pypi_0    pypi
+wheel                     0.35.1                     py_0  
+zlib                      1.2.11               h7b6447c_3  
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda deactivate
+[ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 -mem=1000 --gres=gpu:1
+srun: error: Invalid --distribution specification
+[ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=1000 --gres=gpu:1
+srun: fatal: No command given to execute.
+[ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=1000 --gres=gpu:1 --pty /bin/bash
+(base) [ir967@gpu-43 Learning-to-See-in-the-Dark]$ conda activate sid'
+> ^C
+(base) [ir967@gpu-43 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@gpu-43 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+2020-11-06 20:36:06.925957: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:36:06.926113: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:36:06.926188: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:36:06.926259: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:36:06.926315: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+Killed
+(sid) [ir967@gpu-43 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: gpu-43: task 0: Out Of Memory
+srun: Terminating job step 13564819.0
+[ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint                   download_dataset.py  LICENSE.md  result_Fuji   test_Sony.py      train_Sony.py
+command_history_sid_env.txt  download_models.py   logs.txt    result_Sony   test_Sony.sbatch
+dataset                      images               README.md   test_Fuji.py  train_Fuji.py
+[ir967@log-1 Learning-to-See-in-the-Dark]$ cd result_Sony/
+[ir967@log-1 result_Sony]$ ls
+final
+[ir967@log-1 result_Sony]$ cd final/
+[ir967@log-1 final]$ ls
+[ir967@log-1 final]$ cd ../..
+[ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=4000 --gres=gpu:1 --pty /bin/bash
+(base) [ir967@gpu-12 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@gpu-12 Learning-to-See-in-the-Dark]$ python test_Sony.py 
+2020-11-06 20:39:46.166512: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:39:46.166672: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:39:46.166720: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:39:46.166765: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:39:46.166814: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+Traceback (most recent call last):
+  File "test_Sony.py", line 154, in <module>
+    scipy.misc.toimage(output * 255, high=255, low=0, cmin=0, cmax=255).save(
+AttributeError: 'module' object has no attribute 'toimage'
+(sid) [ir967@gpu-12 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: gpu-12: task 0: Exited with exit code 1
+srun: Terminating job step 13564832.0
+[ir967@log-1 Learning-to-See-in-the-Dark]$ vi test_Sony.py 
+[ir967@log-1 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda uninstall scipy
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  removed specs:
+    - scipy
+
+
+The following packages will be REMOVED:
+
+  blas-1.0-mkl
+  intel-openmp-2020.2-254
+  libgfortran-ng-7.3.0-hdf63c60_0
+  mkl-2020.2-256
+  mkl-service-2.3.0-py27he904b0f_0
+  mkl_fft-1.0.15-py27ha843d7b_0
+  mkl_random-1.1.0-py27hd6b4f25_0
+  numpy-1.16.6-py27hbc911f0_0
+  numpy-base-1.16.6-py27hde5b4d6_0
+  scipy-1.1.0-py27h7c811a0_2
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=1.0.0
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  added / updated specs:
+    - scipy=1.0.0
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    intel-openmp-2019.4        |              243         729 KB
+    mkl-2018.0.3               |                1       126.9 MB
+    mkl_fft-1.0.6              |   py27h7dd41cf_0         134 KB
+    mkl_random-1.0.1           |   py27h4414c95_1         310 KB
+    numpy-1.15.4               |   py27h1d66e8a_0          34 KB
+    numpy-base-1.15.4          |   py27h81de0dd_0         3.3 MB
+    scipy-1.0.0                |   py27hf5f0f52_0        13.0 MB
+    tbb-2020.3                 |       hfd86e86_0         1.1 MB
+    tbb4py-2019.8              |   py27hfd86e86_0         209 KB
+    ------------------------------------------------------------
+                                           Total:       145.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2019.4-243
+  libgfortran-ng     pkgs/main/linux-64::libgfortran-ng-7.3.0-hdf63c60_0
+  mkl                pkgs/main/linux-64::mkl-2018.0.3-1
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.0.6-py27h7dd41cf_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.0.1-py27h4414c95_1
+  numpy              pkgs/main/linux-64::numpy-1.15.4-py27h1d66e8a_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.15.4-py27h81de0dd_0
+  scipy              pkgs/main/linux-64::scipy-1.0.0-py27hf5f0f52_0
+  tbb                pkgs/main/linux-64::tbb-2020.3-hfd86e86_0
+  tbb4py             pkgs/main/linux-64::tbb4py-2019.8-py27hfd86e86_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+tbb4py-2019.8        | 209 KB    | ####################################################################### | 100% 
+mkl_random-1.0.1     | 310 KB    | ####################################################################### | 100% 
+scipy-1.0.0          | 13.0 MB   | ####################################################################### | 100% 
+intel-openmp-2019.4  | 729 KB    | ####################################################################### | 100% 
+numpy-1.15.4         | 34 KB     | ####################################################################### | 100% 
+mkl-2018.0.3         | 126.9 MB  | ####################################################################### | 100% 
+tbb-2020.3           | 1.1 MB    | ####################################################################### | 100% 
+mkl_fft-1.0.6        | 134 KB    | ####################################################################### | 100% 
+numpy-base-1.15.4    | 3.3 MB    | ####################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=4000 --gres=gpu:1 --pty /bin/bash
+(base) [ir967@gpu-33 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@gpu-33 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 20:48:51.601399: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:48:51.601575: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:48:51.601644: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:48:51.601715: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:48:51.601776: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+Traceback (most recent call last):
+  File "test_Sony.py", line 155, in <module>
+    scipy.misc.toimage(output * 255, high=255, low=0, cmin=0, cmax=255).save(
+AttributeError: 'module' object has no attribute 'toimage'
+(sid) [ir967@gpu-33 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: gpu-33: task 0: Exited with exit code 1
+srun: Terminating job step 13564869.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda uninstall scipy
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  removed specs:
+    - scipy
+
+
+The following packages will be REMOVED:
+
+  blas-1.0-mkl
+  intel-openmp-2019.4-243
+  libgfortran-ng-7.3.0-hdf63c60_0
+  mkl-2018.0.3-1
+  mkl_fft-1.0.6-py27h7dd41cf_0
+  mkl_random-1.0.1-py27h4414c95_1
+  numpy-1.15.4-py27h1d66e8a_0
+  numpy-base-1.15.4-py27h81de0dd_0
+  scipy-1.0.0-py27hf5f0f52_0
+  tbb-2020.3-hfd86e86_0
+  tbb4py-2019.8-py27hfd86e86_0
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=0.19.1
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  added / updated specs:
+    - scipy=0.19.1
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    scipy-0.19.1               |   py27h1edc525_3        12.7 MB
+    ------------------------------------------------------------
+                                           Total:        12.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2019.4-243
+  libgfortran-ng     pkgs/main/linux-64::libgfortran-ng-7.3.0-hdf63c60_0
+  mkl                pkgs/main/linux-64::mkl-2018.0.3-1
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.0.6-py27h7dd41cf_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.0.1-py27h4414c95_1
+  numpy              pkgs/main/linux-64::numpy-1.15.4-py27h1d66e8a_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.15.4-py27h81de0dd_0
+  scipy              pkgs/main/linux-64::scipy-0.19.1-py27h1edc525_3
+  tbb                pkgs/main/linux-64::tbb-2020.3-hfd86e86_0
+  tbb4py             pkgs/main/linux-64::tbb4py-2019.8-py27hfd86e86_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+scipy-0.19.1         | 12.7 MB   | ####################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=4000 --gres=gpu:1 --pty /bin/bash
+(base) [ir967@gpu-32 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@gpu-32 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 20:54:48.472148: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:54:48.472305: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:54:48.472368: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:54:48.472414: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 20:54:48.472457: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+Traceback (most recent call last):
+  File "test_Sony.py", line 155, in <module>
+    scipy.misc.toimage(output * 255, high=255, low=0, cmin=0, cmax=255).save(
+AttributeError: 'module' object has no attribute 'toimage'
+(sid) [ir967@gpu-32 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: gpu-32: task 0: Exited with exit code 1
+srun: Terminating job step 13564913.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls 
+checkpoint/                  images/                      test_Fuji.py
+command_history_sid_env.txt  LICENSE.md                   test_Sony.py
+dataset/                     logs.txt                     test_Sony.sbatch
+download_dataset.py          README.md                    train_Fuji.py
+download_models.py           result_Fuji/                 train_Sony.py
+.git/                        result_Sony/                 
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls dataset/Sony/
+long/  short/ 
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls dataset/Sony/short/
+Display all 2697 possibilities? (y or n)
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls dataset/Sony/short/10022_00*.ARW
+dataset/Sony/short/10022_00_0.04s.ARW  dataset/Sony/short/10022_00_0.1s.ARW
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=2000  --pty /bin/bash
+(base) [ir967@c35-09 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c35-09 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 21:03:16.320614: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:03:16.320815: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:03:16.320859: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+Traceback (most recent call last):
+  File "test_Sony.py", line 155, in <module>
+    scipy.misc.toimage(output * 255, high=255, low=0, cmin=0, cmax=255).save(
+AttributeError: 'module' object has no attribute 'toimage'
+(sid) [ir967@c35-09 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c35-09: task 0: Exited with exit code 1
+srun: Terminating job step 13565007.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=1500  --pty /bin/bash
+(base) [ir967@c36-04 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c36-04 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 21:06:54.506864: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:06:54.507001: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:06:54.507037: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+Killed
+(sid) [ir967@c36-04 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c36-04: task 0: Out Of Memory
+srun: Terminating job step 13565239.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=1800  --pty /bin/bash
+(base) [ir967@c35-09 Learning-to-See-in-the-Dark]$ python test_Sony.py
+Traceback (most recent call last):
+  File "test_Sony.py", line 9, in <module>
+    import tensorflow.contrib.slim as slim
+ModuleNotFoundError: No module named 'tensorflow.contrib'
+(base) [ir967@c35-09 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c35-09 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 21:09:40.897045: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:09:40.897232: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:09:40.897279: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+Killed
+(sid) [ir967@c35-09 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c35-09: task 0: Out Of Memory
+srun: Terminating job step 13565363.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda list scipy
+# packages in environment at /scratch/ir967/miniconda3/envs/sid:
+#
+# Name                    Version                   Build  Channel
+scipy                     0.19.1           py27h1edc525_3  
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda uninstall scipy
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  removed specs:
+    - scipy
+
+
+The following packages will be REMOVED:
+
+  blas-1.0-mkl
+  intel-openmp-2019.4-243
+  libgfortran-ng-7.3.0-hdf63c60_0
+  mkl-2018.0.3-1
+  mkl_fft-1.0.6-py27h7dd41cf_0
+  mkl_random-1.0.1-py27h4414c95_1
+  numpy-1.15.4-py27h1d66e8a_0
+  numpy-base-1.15.4-py27h81de0dd_0
+  scipy-0.19.1-py27h1edc525_3
+  tbb-2020.3-hfd86e86_0
+  tbb4py-2019.8-py27hfd86e86_0
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=0.16.0
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - scipy=0.16.0
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=0.17.0
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - scipy=0.17.0
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=0.18.0
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - scipy=0.18.0
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=0.18.1
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - scipy=0.18.1
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=0.19.0
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - scipy=0.19.0
+
+Current channels:
+
+  - https://repo.anaconda.com/pkgs/main/linux-64
+  - https://repo.anaconda.com/pkgs/main/noarch
+  - https://repo.anaconda.com/pkgs/r/linux-64
+  - https://repo.anaconda.com/pkgs/r/noarch
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install scipy=0.19.1
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  added / updated specs:
+    - scipy=0.19.1
+
+
+The following NEW packages will be INSTALLED:
+
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2019.4-243
+  libgfortran-ng     pkgs/main/linux-64::libgfortran-ng-7.3.0-hdf63c60_0
+  mkl                pkgs/main/linux-64::mkl-2018.0.3-1
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.0.6-py27h7dd41cf_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.0.1-py27h4414c95_1
+  numpy              pkgs/main/linux-64::numpy-1.15.4-py27h1d66e8a_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.15.4-py27h81de0dd_0
+  scipy              pkgs/main/linux-64::scipy-0.19.1-py27h1edc525_3
+  tbb                pkgs/main/linux-64::tbb-2020.3-hfd86e86_0
+  tbb4py             pkgs/main/linux-64::tbb4py-2019.8-py27hfd86e86_0
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda list tensorflow
+# packages in environment at /scratch/ir967/miniconda3/envs/sid:
+#
+# Name                    Version                   Build  Channel
+tensorflow                1.1.0                    pypi_0    pypi
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda list python
+# packages in environment at /scratch/ir967/miniconda3/envs/sid:
+#
+# Name                    Version                   Build  Channel
+python                    2.7.18               h15b4118_1  
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda list rawpy
+# packages in environment at /scratch/ir967/miniconda3/envs/sid:
+#
+# Name                    Version                   Build  Channel
+rawpy                     0.13.0                   pypi_0    pypi
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ ls
+checkpoint                   download_dataset.py  LICENSE.md  result_Fuji   test_Sony.py      train_Sony.py
+command_history_sid_env.txt  download_models.py   logs.txt    result_Sony   test_Sony.sbatch
+dataset                      images               README.md   test_Fuji.py  train_Fuji.py
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ wget http://loki.disi.unitn.it/RAISE/Flat-field/Flat-field.zip
+--2020-11-06 21:27:32--  http://loki.disi.unitn.it/RAISE/Flat-field/Flat-field.zip
+Resolving loki.disi.unitn.it (loki.disi.unitn.it)... 193.205.194.113
+Connecting to loki.disi.unitn.it (loki.disi.unitn.it)|193.205.194.113|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5381509030 (5.0G) [application/zip]
+Saving to: ‘Flat-field.zip’
+
+100%[======================================================================>] 5,381,509,030 31.5MB/s   in 2m 46s 
+
+2020-11-06 21:30:19 (30.8 MB/s) - ‘Flat-field.zip’ saved [5381509030/5381509030]
+
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ pip install PILLOW
+^CTraceback (most recent call last):
+  File "/scratch/ir967/miniconda3/envs/sid/bin/pip", line 7, in <module>
+    from pip._internal.main import main
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_internal/main.py", line 13, in <module>
+    from pip._internal.cli.autocompletion import autocomplete
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_internal/cli/autocompletion.py", line 11, in <module>
+    from pip._internal.cli.main_parser import create_main_parser
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_internal/cli/main_parser.py", line 7, in <module>
+    from pip._internal.cli import cmdoptions
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_internal/cli/cmdoptions.py", line 25, in <module>
+    from pip._internal.locations import USER_CACHE_DIR, get_src_prefix
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_internal/locations.py", line 18, in <module>
+    from pip._internal.utils import appdirs
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_internal/utils/appdirs.py", line 16, in <module>
+    from pip._internal.utils.compat import WINDOWS, expanduser
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_internal/utils/compat.py", line 17, in <module>
+    from pip._vendor.urllib3.util import IS_PYOPENSSL
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_vendor/urllib3/__init__.py", line 7, in <module>
+    from .connectionpool import HTTPConnectionPool, HTTPSConnectionPool, connection_from_url
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/site-packages/pip/_vendor/urllib3/connectionpool.py", line 7, in <module>
+    from socket import error as SocketError, timeout as SocketTimeout
+  File "/scratch/ir967/miniconda3/envs/sid/lib/python2.7/socket.py", line 53, in <module>
+    import _ssl
+KeyboardInterrupt
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ conda install pillow
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /scratch/ir967/miniconda3/envs/sid
+
+  added / updated specs:
+    - pillow
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    freetype-2.10.4            |       h5ab3b9f_0         596 KB
+    lz4-c-1.9.2                |       heb0550a_3         175 KB
+    olefile-0.46               |           py27_0          49 KB
+    pillow-6.2.1               |   py27h34e0f95_0         587 KB
+    ------------------------------------------------------------
+                                           Total:         1.4 MB
+
+The following NEW packages will be INSTALLED:
+
+  freetype           pkgs/main/linux-64::freetype-2.10.4-h5ab3b9f_0
+  jpeg               pkgs/main/linux-64::jpeg-9b-h024ee3a_2
+  libpng             pkgs/main/linux-64::libpng-1.6.37-hbc83047_0
+  libtiff            pkgs/main/linux-64::libtiff-4.1.0-h2733197_1
+  lz4-c              pkgs/main/linux-64::lz4-c-1.9.2-heb0550a_3
+  olefile            pkgs/main/linux-64::olefile-0.46-py27_0
+  pillow             pkgs/main/linux-64::pillow-6.2.1-py27h34e0f95_0
+  xz                 pkgs/main/linux-64::xz-5.2.5-h7b6447c_0
+  zstd               pkgs/main/linux-64::zstd-1.4.5-h9ceee32_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+lz4-c-1.9.2          | 175 KB    | ####################################################################### | 100% 
+freetype-2.10.4      | 596 KB    | ####################################################################### | 100% 
+pillow-6.2.1         | 587 KB    | ####################################################################### | 100% 
+olefile-0.46         | 49 KB     | ####################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=2000  --pty /bin/bash
+(base) [ir967@c35-09 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c35-09 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 21:34:11.912701: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:34:11.912919: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:34:11.912970: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+10022_00_0.04s.ARW
+Killed
+(sid) [ir967@c35-09 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: c35-09: task 0: Out Of Memory
+srun: Terminating job step 13566075.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:05:00 --mem=2500  --pty /bin/bash
+(base) [ir967@c32-08 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c32-08 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 21:37:09.641986: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:37:09.642130: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:37:09.642191: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+10022_00_0.04s.ARW
+10226_00_0.04s.ARW
+10226_00_0.033s.ARW
+srun: Force Terminated job 13566886
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+10226_00_0.1s.ARW
+srun: error: c32-08: task 0: Killed
+srun: Terminating job step 13566886.0
+(sid) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -c1 -t0:50:00 --mem=2500  --pty /bin/bash
+(base) [ir967@c32-08 Learning-to-See-in-the-Dark]$ conda activate sid
+(sid) [ir967@c32-08 Learning-to-See-in-the-Dark]$ python test_Sony.py
+2020-11-06 21:52:37.145005: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:52:37.145150: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2020-11-06 21:52:37.145190: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+loaded ./checkpoint/Sony/model.ckpt
+10022_00_0.1s.ARW
+10022_00_0.04s.ARW
+10226_00_0.04s.ARW
+10226_00_0.033s.ARW
+10226_00_0.1s.ARW
+10163_00_0.1s.ARW
+10016_00_0.04s.ARW
+10016_00_0.1s.ARW
+10217_00_0.1s.ARW
+10217_00_0.04s.ARW
+10217_00_0.033s.ARW
+10003_00_0.04s.ARW
+10003_00_0.1s.ARW
+10082_00_0.1s.ARW
+10111_00_0.1s.ARW
+10191_00_0.04s.ARW
+10191_00_0.033s.ARW
+10191_00_0.1s.ARW
+10045_00_0.04s.ARW
+10045_00_0.1s.ARW
+
+

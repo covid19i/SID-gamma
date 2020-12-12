@@ -1,0 +1,583 @@
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ mkdir gt_Sony_medium_MSE_lowerLRat500_BNeverywhere
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ vi medium_batched_square_loss.py
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ rm gt_Sony_medium_MSE_lowerLRat500_BNeverywhere
+rm: cannot remove 'gt_Sony_medium_MSE_lowerLRat500_BNeverywhere': Is a directory
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ rmdir gt_Sony_medium_MSE_lowerLRat500_BNeverywhere
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ mkdir gt_Sony_medium_MSE_lowerLRat200_BNeverywhere
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ vi medium_batched_square_loss.py
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ python medium_batched_square_loss.py
+
+
+
+
+Found 161 images to train with
+
+Training on 161 images only
+
+2020-12-12 14:05:16.486920: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-12 14:05:16.624375: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:86:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-12 14:05:16.624409: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-12 14:05:16.911617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-12 14:05:16.911651: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-12 14:05:16.911675: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-12 14:05:16.911774: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:86:00.0, compute capability: 7.5)
+No checkpoint found at ./gt_Sony_medium_MSE_lowerLRat200_BNeverywhere/. Hence, will create the folder.
+Gamma curve:
+Every 8K, 0 to 64K
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 125, 64536 to 65536
+[[14104 17115 20761 25175 30515 36975 44786 54227]
+ [ 1408  2284  3702  5994  9696 15670 25302 40817]
+ [  653  1167  2083  3715  6616 11770 20917 37129]]
+Every 1, 65526 to 65536
+[[64641 64739 64838 64937 65036 65136 65235 65335 65435 65535]
+ [63323 63565 63808 64051 64296 64542 64789 65036 65285 65535]
+ [62889 63178 63468 63759 64051 64345 64641 64937 65235 65535]]
+last epoch of previous run: 0
+rawpy read the 0th file at location: ./dataset/Sony/long/00018_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.89525, 0.00000, 250.00000, 3485919
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01633, 250.00000, 1
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00164, 300.00000, 1177951
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00190, 250.00000, 803131
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.02465, 100.00000, 3700
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00417, 300.00000, 2882267
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00001, 300.00000, 5540515
+rawpy read the 10th file at location: ./dataset/Sony/long/00038_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00887, 250.00000, 2598691
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00228, 300.00000, 4653941
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00017, 250.00000, 6102869
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00611, 250.00000, 1458187
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00012, 300.00000, 3426263
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00116, 250.00000, 4586373
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00155, 100.00000, 909101
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00307, 250.00000, 3630407
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00003, 100.00000, 6735543
+rawpy read the 20th file at location: ./dataset/Sony/long/00072_00_30s.ARW
+rawpy read the 30th file at location: ./dataset/Sony/long/00039_00_10s.ARW
+rawpy read the 40th file at location: ./dataset/Sony/long/00200_00_10s.ARW
+rawpy read the 50th file at location: ./dataset/Sony/long/00024_00_10s.ARW
+rawpy read the 60th file at location: ./dataset/Sony/long/00084_00_30s.ARW
+rawpy read the 70th file at location: ./dataset/Sony/long/00164_00_30s.ARW
+rawpy read the 80th file at location: ./dataset/Sony/long/00128_00_30s.ARW
+rawpy read the 90th file at location: ./dataset/Sony/long/00057_00_10s.ARW
+rawpy read the 100th file at location: ./dataset/Sony/long/00059_00_10s.ARW
+rawpy read the 110th file at location: ./dataset/Sony/long/00026_00_10s.ARW
+rawpy read the 120th file at location: ./dataset/Sony/long/00012_00_10s.ARW
+rawpy read the 130th file at location: ./dataset/Sony/long/00090_00_30s.ARW
+rawpy read the 140th file at location: ./dataset/Sony/long/00114_00_30s.ARW
+rawpy read the 150th file at location: ./dataset/Sony/long/00156_00_30s.ARW
+rawpy read the 160th file at location: ./dataset/Sony/long/00219_00_10s.ARW
+161 images loaded to CPU RAM in Time=40.966 seconds.
+
+Moved images data to a numpy array.
+BATCH_SIZE 16 ,final_epoch 4001 ,no_of_batches 10 ,ps 128 ,result_dir ./gt_Sony_medium_MSE_lowerLRat200_BNeverywhere/ ,len(train_ids) 161
+Starting Training on index [  1  98 134 100 132 104  85 136  98  27 120 131 115 130  99  65], dataset index: [148  96 232  59  97 145 154 216  96   9  12 180  66  90  28 159]
+Starting Training on gammas [250 300 300 250 300 300 100 250 300 250 300 250 100 250 300 250]
+Epoch 0: at batch 1: Training dataset Loss=1.724, Batch Time=1.334
+[[0.33301342]
+ [1.79722941]
+ [1.54413354]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1: at batch 1: Training dataset Loss=0.840, Batch Time=0.031
+Epoch 1: Epoch time = 2.806, Avg epoch time=0.298, Total Time=1.403
+
+[[0.33333334]
+ [0.52079636]
+ [0.52079636]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2: at batch 1: Training dataset Loss=0.557, Batch Time=0.027
+[[0.428682  ]
+ [0.52079636]
+ [0.66675854]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 3: at batch 1: Training dataset Loss=0.469, Batch Time=0.027
+[[0.428682  ]
+ [0.50665885]
+ [0.66675854]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 4: at batch 1: Training dataset Loss=0.425, Batch Time=0.030
+[[0.57656592]
+ [0.33333334]
+ [0.66675854]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 5: at batch 1: Training dataset Loss=0.402, Batch Time=0.027
+[[0.27306426]
+ [0.35628858]
+ [1.14635468]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 6: at batch 1: Training dataset Loss=0.406, Batch Time=0.035
+[[0.2816138 ]
+ [0.35628858]
+ [0.5419966 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 7: at batch 1: Training dataset Loss=0.363, Batch Time=0.030
+[[0.32522312]
+ [0.35628858]
+ [0.48744157]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 8: at batch 1: Training dataset Loss=0.388, Batch Time=0.036
+[[0.25754353]
+ [0.33333334]
+ [0.48744157]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 9: at batch 1: Training dataset Loss=0.396, Batch Time=0.024
+[[0.25787684]
+ [0.33333334]
+ [0.24011843]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 11: at batch 1: Training dataset Loss=0.403, Batch Time=0.028
+Epoch 21: at batch 1: Training dataset Loss=0.460, Batch Time=0.029
+Epoch 31: at batch 1: Training dataset Loss=0.321, Batch Time=0.028
+Epoch 41: at batch 1: Training dataset Loss=0.351, Batch Time=0.026
+Epoch 51: at batch 1: Training dataset Loss=0.352, Batch Time=0.031
+Epoch 61: at batch 1: Training dataset Loss=0.319, Batch Time=0.027
+Epoch 71: at batch 1: Training dataset Loss=0.352, Batch Time=0.023
+Epoch 81: at batch 1: Training dataset Loss=0.318, Batch Time=0.034
+Epoch 91: at batch 1: Training dataset Loss=0.322, Batch Time=0.029
+Epoch 101: at batch 1: Training dataset Loss=0.313, Batch Time=0.031
+Epoch 101: Epoch time = 43.853, Avg epoch time=0.291, Total Time=0.430
+
+[[0.24278744]
+ [0.29572701]
+ [0.28177097]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 111: at batch 1: Training dataset Loss=0.308, Batch Time=0.032
+Epoch 121: at batch 1: Training dataset Loss=0.304, Batch Time=0.030
+Epoch 131: at batch 1: Training dataset Loss=0.330, Batch Time=0.032
+Epoch 141: at batch 1: Training dataset Loss=0.296, Batch Time=0.029
+Epoch 151: at batch 1: Training dataset Loss=0.300, Batch Time=0.025
+Epoch 161: at batch 1: Training dataset Loss=0.303, Batch Time=0.032
+Epoch 171: at batch 1: Training dataset Loss=0.296, Batch Time=0.027
+Epoch 181: at batch 1: Training dataset Loss=0.294, Batch Time=0.026
+Epoch 191: at batch 1: Training dataset Loss=0.287, Batch Time=0.028
+Epoch 201: at batch 1: Training dataset Loss=0.305, Batch Time=0.027
+Epoch 201: Epoch time = 84.538, Avg epoch time=0.271, Total Time=0.419
+
+[[0.24765307]
+ [0.33894667]
+ [0.23372376]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 211: at batch 1: Training dataset Loss=0.308, Batch Time=0.034
+Epoch 221: at batch 1: Training dataset Loss=0.306, Batch Time=0.030
+Epoch 231: at batch 1: Training dataset Loss=0.309, Batch Time=0.030
+Epoch 241: at batch 1: Training dataset Loss=0.298, Batch Time=0.035
+Epoch 251: at batch 1: Training dataset Loss=0.295, Batch Time=0.029
+Epoch 261: at batch 1: Training dataset Loss=0.306, Batch Time=0.028
+Epoch 271: at batch 1: Training dataset Loss=0.298, Batch Time=0.032
+Epoch 281: at batch 1: Training dataset Loss=0.301, Batch Time=0.028
+Epoch 291: at batch 1: Training dataset Loss=0.275, Batch Time=0.031
+Epoch 301: at batch 1: Training dataset Loss=0.307, Batch Time=0.030
+Epoch 301: Epoch time = 125.358, Avg epoch time=0.267, Total Time=0.415
+
+[[0.23749542]
+ [0.31154326]
+ [0.24782521]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 311: at batch 1: Training dataset Loss=0.308, Batch Time=0.027
+Epoch 321: at batch 1: Training dataset Loss=0.288, Batch Time=0.029
+Epoch 331: at batch 1: Training dataset Loss=0.331, Batch Time=0.027
+Epoch 341: at batch 1: Training dataset Loss=0.296, Batch Time=0.032
+Epoch 351: at batch 1: Training dataset Loss=0.305, Batch Time=0.026
+Epoch 361: at batch 1: Training dataset Loss=0.295, Batch Time=0.031
+Epoch 371: at batch 1: Training dataset Loss=0.268, Batch Time=0.028
+Epoch 381: at batch 1: Training dataset Loss=0.298, Batch Time=0.028
+Epoch 391: at batch 1: Training dataset Loss=0.300, Batch Time=0.033
+Epoch 401: at batch 1: Training dataset Loss=0.298, Batch Time=0.030
+Epoch 401: Epoch time = 166.020, Avg epoch time=0.274, Total Time=0.413
+
+[[0.33333334]
+ [0.23735635]
+ [0.32531747]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 411: at batch 1: Training dataset Loss=0.273, Batch Time=0.029
+Epoch 421: at batch 1: Training dataset Loss=0.286, Batch Time=0.033
+Epoch 431: at batch 1: Training dataset Loss=0.273, Batch Time=0.026
+Epoch 441: at batch 1: Training dataset Loss=0.283, Batch Time=0.028
+Epoch 451: at batch 1: Training dataset Loss=0.293, Batch Time=0.026
+Epoch 461: at batch 1: Training dataset Loss=0.283, Batch Time=0.033
+Epoch 471: at batch 1: Training dataset Loss=0.306, Batch Time=0.029
+Epoch 481: at batch 1: Training dataset Loss=0.289, Batch Time=0.028
+Epoch 491: at batch 1: Training dataset Loss=0.312, Batch Time=0.026
+Epoch 501: at batch 1: Training dataset Loss=0.298, Batch Time=0.031
+Epoch 501: Epoch time = 206.408, Avg epoch time=0.297, Total Time=0.411
+
+[[0.24910979]
+ [0.38662648]
+ [0.2655741 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 511: at batch 1: Training dataset Loss=0.289, Batch Time=0.029
+Epoch 521: at batch 1: Training dataset Loss=0.303, Batch Time=0.026
+Epoch 531: at batch 1: Training dataset Loss=0.287, Batch Time=0.034
+Epoch 541: at batch 1: Training dataset Loss=0.295, Batch Time=0.027
+Epoch 551: at batch 1: Training dataset Loss=0.284, Batch Time=0.033
+Epoch 561: at batch 1: Training dataset Loss=0.296, Batch Time=0.033
+Epoch 571: at batch 1: Training dataset Loss=0.285, Batch Time=0.032
+Epoch 581: at batch 1: Training dataset Loss=0.300, Batch Time=0.032
+Epoch 591: at batch 1: Training dataset Loss=0.281, Batch Time=0.035
+Epoch 601: at batch 1: Training dataset Loss=0.296, Batch Time=0.026
+Epoch 601: Epoch time = 246.940, Avg epoch time=0.285, Total Time=0.410
+
+[[0.25680283]
+ [0.3017011 ]
+ [0.23907571]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 611: at batch 1: Training dataset Loss=0.275, Batch Time=0.032
+Epoch 621: at batch 1: Training dataset Loss=0.287, Batch Time=0.023
+Epoch 631: at batch 1: Training dataset Loss=0.286, Batch Time=0.026
+Epoch 641: at batch 1: Training dataset Loss=0.312, Batch Time=0.032
+Epoch 651: at batch 1: Training dataset Loss=0.283, Batch Time=0.024
+Epoch 661: at batch 1: Training dataset Loss=0.281, Batch Time=0.029
+Epoch 671: at batch 1: Training dataset Loss=0.282, Batch Time=0.026
+Epoch 681: at batch 1: Training dataset Loss=0.274, Batch Time=0.031
+Epoch 691: at batch 1: Training dataset Loss=0.277, Batch Time=0.025
+Epoch 701: at batch 1: Training dataset Loss=0.282, Batch Time=0.027
+Epoch 701: Epoch time = 287.664, Avg epoch time=0.246, Total Time=0.410
+
+[[0.26157349]
+ [0.19965927]
+ [0.26808825]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 711: at batch 1: Training dataset Loss=0.274, Batch Time=0.035
+Epoch 721: at batch 1: Training dataset Loss=0.287, Batch Time=0.028
+Epoch 731: at batch 1: Training dataset Loss=0.272, Batch Time=0.033
+Epoch 741: at batch 1: Training dataset Loss=0.266, Batch Time=0.025
+Epoch 751: at batch 1: Training dataset Loss=0.282, Batch Time=0.028
+Epoch 761: at batch 1: Training dataset Loss=0.281, Batch Time=0.032
+Epoch 771: at batch 1: Training dataset Loss=0.280, Batch Time=0.035
+Epoch 781: at batch 1: Training dataset Loss=0.343, Batch Time=0.026
+Epoch 791: at batch 1: Training dataset Loss=0.307, Batch Time=0.028
+Epoch 801: at batch 1: Training dataset Loss=0.288, Batch Time=0.029
+Epoch 801: Epoch time = 328.244, Avg epoch time=0.277, Total Time=0.409
+
+[[0.33333334]
+ [0.33333334]
+ [0.24643295]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 811: at batch 1: Training dataset Loss=0.301, Batch Time=0.028
+Epoch 821: at batch 1: Training dataset Loss=0.275, Batch Time=0.026
+Epoch 831: at batch 1: Training dataset Loss=0.288, Batch Time=0.031
+Epoch 841: at batch 1: Training dataset Loss=0.277, Batch Time=0.028
+Epoch 851: at batch 1: Training dataset Loss=0.286, Batch Time=0.029
+Epoch 861: at batch 1: Training dataset Loss=0.276, Batch Time=0.034
+Epoch 871: at batch 1: Training dataset Loss=0.278, Batch Time=0.032
+Epoch 881: at batch 1: Training dataset Loss=0.276, Batch Time=0.032
+Epoch 891: at batch 1: Training dataset Loss=0.267, Batch Time=0.033
+Epoch 901: at batch 1: Training dataset Loss=0.283, Batch Time=0.032
+Epoch 901: Epoch time = 368.749, Avg epoch time=0.279, Total Time=0.409
+
+[[0.33333334]
+ [0.33333334]
+ [0.26928988]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 911: at batch 1: Training dataset Loss=0.278, Batch Time=0.026
+Epoch 921: at batch 1: Training dataset Loss=0.279, Batch Time=0.035
+Epoch 931: at batch 1: Training dataset Loss=0.264, Batch Time=0.029
+Epoch 941: at batch 1: Training dataset Loss=0.277, Batch Time=0.030
+Epoch 951: at batch 1: Training dataset Loss=0.300, Batch Time=0.025
+Epoch 961: at batch 1: Training dataset Loss=0.276, Batch Time=0.029
+Epoch 971: at batch 1: Training dataset Loss=0.279, Batch Time=0.026
+Epoch 981: at batch 1: Training dataset Loss=0.277, Batch Time=0.032
+Epoch 991: at batch 1: Training dataset Loss=0.255, Batch Time=0.026
+Epoch 1001: at batch 1: Training dataset Loss=0.274, Batch Time=0.033
+Epoch 1001: Epoch time = 409.284, Avg epoch time=0.288, Total Time=0.408
+
+[[0.22268514]
+ [0.33333334]
+ [0.2207752 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1011: at batch 1: Training dataset Loss=0.275, Batch Time=0.027
+Epoch 1021: at batch 1: Training dataset Loss=0.270, Batch Time=0.029
+Epoch 1031: at batch 1: Training dataset Loss=0.281, Batch Time=0.025
+Epoch 1041: at batch 1: Training dataset Loss=0.289, Batch Time=0.026
+Epoch 1051: at batch 1: Training dataset Loss=0.274, Batch Time=0.025
+Epoch 1061: at batch 1: Training dataset Loss=0.273, Batch Time=0.034
+Epoch 1071: at batch 1: Training dataset Loss=0.289, Batch Time=0.024
+Epoch 1081: at batch 1: Training dataset Loss=0.278, Batch Time=0.025
+Epoch 1091: at batch 1: Training dataset Loss=0.280, Batch Time=0.031
+Epoch 1101: at batch 1: Training dataset Loss=0.290, Batch Time=0.025
+Epoch 1101: Epoch time = 449.782, Avg epoch time=0.264, Total Time=0.408
+
+[[0.22537225]
+ [0.33333334]
+ [0.23698479]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1111: at batch 1: Training dataset Loss=0.294, Batch Time=0.028
+Epoch 1121: at batch 1: Training dataset Loss=0.276, Batch Time=0.034
+Epoch 1131: at batch 1: Training dataset Loss=0.277, Batch Time=0.024
+Epoch 1141: at batch 1: Training dataset Loss=0.274, Batch Time=0.030
+Epoch 1151: at batch 1: Training dataset Loss=0.283, Batch Time=0.032
+Epoch 1161: at batch 1: Training dataset Loss=0.281, Batch Time=0.029
+Epoch 1171: at batch 1: Training dataset Loss=0.287, Batch Time=0.026
+Epoch 1181: at batch 1: Training dataset Loss=0.270, Batch Time=0.029
+Epoch 1191: at batch 1: Training dataset Loss=0.264, Batch Time=0.026
+Epoch 1201: at batch 1: Training dataset Loss=0.260, Batch Time=0.024
+Epoch 1201: Epoch time = 490.107, Avg epoch time=0.262, Total Time=0.408
+
+[[0.25269327]
+ [0.25769845]
+ [0.24104394]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1211: at batch 1: Training dataset Loss=0.263, Batch Time=0.033
+Epoch 1221: at batch 1: Training dataset Loss=0.281, Batch Time=0.026
+Epoch 1231: at batch 1: Training dataset Loss=0.272, Batch Time=0.032
+Epoch 1241: at batch 1: Training dataset Loss=0.297, Batch Time=0.026
+Epoch 1251: at batch 1: Training dataset Loss=0.291, Batch Time=0.029
+Epoch 1261: at batch 1: Training dataset Loss=0.278, Batch Time=0.024
+Epoch 1271: at batch 1: Training dataset Loss=0.282, Batch Time=0.026
+Epoch 1281: at batch 1: Training dataset Loss=0.277, Batch Time=0.032
+Epoch 1291: at batch 1: Training dataset Loss=0.276, Batch Time=0.031
+Epoch 1301: at batch 1: Training dataset Loss=0.278, Batch Time=0.032
+Epoch 1301: Epoch time = 530.650, Avg epoch time=0.288, Total Time=0.408
+
+[[0.25308409]
+ [0.30753151]
+ [0.25308409]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1311: at batch 1: Training dataset Loss=0.289, Batch Time=0.025
+Epoch 1321: at batch 1: Training dataset Loss=0.289, Batch Time=0.032
+Epoch 1331: at batch 1: Training dataset Loss=0.275, Batch Time=0.026
+Epoch 1341: at batch 1: Training dataset Loss=0.263, Batch Time=0.026
+Epoch 1351: at batch 1: Training dataset Loss=0.258, Batch Time=0.033
+Epoch 1361: at batch 1: Training dataset Loss=0.272, Batch Time=0.035
+Epoch 1371: at batch 1: Training dataset Loss=0.291, Batch Time=0.027
+Epoch 1381: at batch 1: Training dataset Loss=0.277, Batch Time=0.025
+Epoch 1391: at batch 1: Training dataset Loss=0.273, Batch Time=0.026
+Epoch 1401: at batch 1: Training dataset Loss=0.286, Batch Time=0.031
+Epoch 1401: Epoch time = 571.045, Avg epoch time=0.277, Total Time=0.407
+
+[[0.26836622]
+ [0.35037351]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1411: at batch 1: Training dataset Loss=0.283, Batch Time=0.027
+Epoch 1421: at batch 1: Training dataset Loss=0.270, Batch Time=0.027
+Epoch 1431: at batch 1: Training dataset Loss=0.284, Batch Time=0.032
+Epoch 1441: at batch 1: Training dataset Loss=0.276, Batch Time=0.031
+Epoch 1451: at batch 1: Training dataset Loss=0.280, Batch Time=0.030
+Epoch 1461: at batch 1: Training dataset Loss=0.273, Batch Time=0.031
+Epoch 1471: at batch 1: Training dataset Loss=0.281, Batch Time=0.032
+Epoch 1481: at batch 1: Training dataset Loss=0.281, Batch Time=0.030
+Epoch 1491: at batch 1: Training dataset Loss=0.282, Batch Time=0.034
+Epoch 1501: at batch 1: Training dataset Loss=0.267, Batch Time=0.034
+Epoch 1501: Epoch time = 611.658, Avg epoch time=0.283, Total Time=0.407
+
+[[0.25958756]
+ [0.26822904]
+ [0.24814852]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1511: at batch 1: Training dataset Loss=0.263, Batch Time=0.027
+Epoch 1521: at batch 1: Training dataset Loss=0.277, Batch Time=0.025
+Epoch 1531: at batch 1: Training dataset Loss=0.260, Batch Time=0.029
+Epoch 1541: at batch 1: Training dataset Loss=0.265, Batch Time=0.032
+Epoch 1551: at batch 1: Training dataset Loss=0.260, Batch Time=0.025
+Epoch 1561: at batch 1: Training dataset Loss=0.281, Batch Time=0.030
+Epoch 1571: at batch 1: Training dataset Loss=0.271, Batch Time=0.026
+Epoch 1581: at batch 1: Training dataset Loss=0.287, Batch Time=0.032
+Epoch 1591: at batch 1: Training dataset Loss=0.274, Batch Time=0.032
+Epoch 1601: at batch 1: Training dataset Loss=0.270, Batch Time=0.030
+Epoch 1601: Epoch time = 651.950, Avg epoch time=0.277, Total Time=0.407
+
+[[0.30522713]
+ [0.23968112]
+ [0.26814422]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1611: at batch 1: Training dataset Loss=0.268, Batch Time=0.029
+Epoch 1621: at batch 1: Training dataset Loss=0.297, Batch Time=0.033
+Epoch 1631: at batch 1: Training dataset Loss=0.279, Batch Time=0.028
+Epoch 1641: at batch 1: Training dataset Loss=0.284, Batch Time=0.034
+Epoch 1651: at batch 1: Training dataset Loss=0.273, Batch Time=0.027
+Epoch 1661: at batch 1: Training dataset Loss=0.273, Batch Time=0.035
+Epoch 1671: at batch 1: Training dataset Loss=0.261, Batch Time=0.032
+Epoch 1681: at batch 1: Training dataset Loss=0.280, Batch Time=0.025
+Epoch 1691: at batch 1: Training dataset Loss=0.282, Batch Time=0.026
+Epoch 1701: at batch 1: Training dataset Loss=0.297, Batch Time=0.031
+Epoch 1701: Epoch time = 693.088, Avg epoch time=0.269, Total Time=0.407
+
+[[0.26470777]
+ [0.26152611]
+ [0.22742951]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1711: at batch 1: Training dataset Loss=0.275, Batch Time=0.026
+Epoch 1721: at batch 1: Training dataset Loss=0.301, Batch Time=0.023
+Epoch 1731: at batch 1: Training dataset Loss=0.275, Batch Time=0.023
+Epoch 1741: at batch 1: Training dataset Loss=0.294, Batch Time=0.034
+Epoch 1751: at batch 1: Training dataset Loss=0.286, Batch Time=0.030
+Epoch 1761: at batch 1: Training dataset Loss=0.279, Batch Time=0.026
+Epoch 1771: at batch 1: Training dataset Loss=0.265, Batch Time=0.026
+Epoch 1781: at batch 1: Training dataset Loss=0.283, Batch Time=0.030
+Epoch 1791: at batch 1: Training dataset Loss=0.292, Batch Time=0.027
+Epoch 1801: at batch 1: Training dataset Loss=0.270, Batch Time=0.023
+Epoch 1801: Epoch time = 733.549, Avg epoch time=0.277, Total Time=0.407
+
+[[0.25026897]
+ [0.26533911]
+ [0.24933417]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1811: at batch 1: Training dataset Loss=0.282, Batch Time=0.031
+Epoch 1821: at batch 1: Training dataset Loss=0.271, Batch Time=0.031
+Epoch 1831: at batch 1: Training dataset Loss=0.264, Batch Time=0.034
+Epoch 1841: at batch 1: Training dataset Loss=0.296, Batch Time=0.030
+Epoch 1851: at batch 1: Training dataset Loss=0.272, Batch Time=0.032
+Epoch 1861: at batch 1: Training dataset Loss=0.288, Batch Time=0.031
+Epoch 1871: at batch 1: Training dataset Loss=0.266, Batch Time=0.030
+Epoch 1881: at batch 1: Training dataset Loss=0.261, Batch Time=0.029
+Epoch 1891: at batch 1: Training dataset Loss=0.272, Batch Time=0.024
+Epoch 1901: at batch 1: Training dataset Loss=0.262, Batch Time=0.027
+Epoch 1901: Epoch time = 774.032, Avg epoch time=0.258, Total Time=0.407
+
+[[0.21803598]
+ [0.33333334]
+ [0.20531441]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1911: at batch 1: Training dataset Loss=0.264, Batch Time=0.027
+Epoch 1921: at batch 1: Training dataset Loss=0.269, Batch Time=0.029
+Epoch 1931: at batch 1: Training dataset Loss=0.270, Batch Time=0.028
+Epoch 1941: at batch 1: Training dataset Loss=0.276, Batch Time=0.035
+Epoch 1951: at batch 1: Training dataset Loss=0.269, Batch Time=0.023
+Epoch 1961: at batch 1: Training dataset Loss=0.268, Batch Time=0.026
+Epoch 1971: at batch 1: Training dataset Loss=0.262, Batch Time=0.032
+Epoch 1981: at batch 1: Training dataset Loss=0.266, Batch Time=0.026
+Epoch 1991: at batch 1: Training dataset Loss=0.272, Batch Time=0.032
+Epoch 2001: at batch 1: Training dataset Loss=0.254, Batch Time=0.031
+Epoch 2001: Epoch time = 814.345, Avg epoch time=0.269, Total Time=0.407
+
+[[0.26246998]
+ [0.24395972]
+ [0.26547927]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2011: at batch 1: Training dataset Loss=0.285, Batch Time=0.025
+Epoch 2021: at batch 1: Training dataset Loss=0.262, Batch Time=0.031
+Epoch 2031: at batch 1: Training dataset Loss=0.258, Batch Time=0.024
+Epoch 2041: at batch 1: Training dataset Loss=0.261, Batch Time=0.029
+Epoch 2051: at batch 1: Training dataset Loss=0.269, Batch Time=0.031
+Epoch 2061: at batch 1: Training dataset Loss=0.278, Batch Time=0.024
+Epoch 2071: at batch 1: Training dataset Loss=0.286, Batch Time=0.033
+Epoch 2081: at batch 1: Training dataset Loss=0.285, Batch Time=0.031
+Epoch 2091: at batch 1: Training dataset Loss=0.281, Batch Time=0.029
+Epoch 2101: at batch 1: Training dataset Loss=0.271, Batch Time=0.033
+Epoch 2101: Epoch time = 854.949, Avg epoch time=0.282, Total Time=0.407
+
+[[0.24158125]
+ [0.29258657]
+ [0.32555312]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2111: at batch 1: Training dataset Loss=0.303, Batch Time=0.023
+^CTraceback (most recent call last):
+  File "medium_batched_square_loss.py", line 316, in <module>
+    feed_dict={in_image: input_patch, gt_gamma: assigned_image_gamma_index, lr: learning_rate})
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 887, in run
+    run_metadata_ptr)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1110, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1286, in _do_run
+    run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1292, in _do_call
+    return fn(*args)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1277, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1367, in _call_tf_sessionrun
+    run_metadata)
+KeyboardInterrupt
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ 

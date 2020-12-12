@@ -1,0 +1,599 @@
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ vi medium_batched_square_loss.py
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ python medium_batched_square_loss.py
+
+
+
+
+Found 161 images to train with
+
+Training on 161 images only
+
+2020-12-12 13:24:16.648262: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-12 13:24:16.784826: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:86:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-12 13:24:16.784860: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-12 13:24:17.071721: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-12 13:24:17.071758: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-12 13:24:17.071782: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-12 13:24:17.071889: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:86:00.0, compute capability: 7.5)
+No checkpoint found at ./gt_Sony_medium_MSE/. Hence, will create the folder.
+Gamma curve:
+Every 8K, 0 to 64K
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 125, 64536 to 65536
+[[14104 17115 20761 25175 30515 36975 44786 54227]
+ [ 1408  2284  3702  5994  9696 15670 25302 40817]
+ [  653  1167  2083  3715  6616 11770 20917 37129]]
+Every 1, 65526 to 65536
+[[64641 64739 64838 64937 65036 65136 65235 65335 65435 65535]
+ [63323 63565 63808 64051 64296 64542 64789 65036 65285 65535]
+ [62889 63178 63468 63759 64051 64345 64641 64937 65235 65535]]
+last epoch of previous run: 0
+rawpy read the 0th file at location: ./dataset/Sony/long/00018_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.89525, 0.00000, 250.00000, 3485919
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01648, 100.00000, 1
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00164, 300.00000, 1177951
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00201, 100.00000, 803131
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.02266, 300.00000, 3700
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00417, 300.00000, 2882267
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00001, 100.00000, 5540515
+rawpy read the 10th file at location: ./dataset/Sony/long/00038_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00886, 300.00000, 2598691
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00228, 300.00000, 4653941
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00017, 250.00000, 6102869
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00611, 300.00000, 1458187
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00012, 100.00000, 3426263
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00117, 100.00000, 4586373
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00144, 300.00000, 909101
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00327, 100.00000, 3630407
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00003, 100.00000, 6735543
+rawpy read the 20th file at location: ./dataset/Sony/long/00072_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00003, 300.00000, 7298885
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00153, 100.00000, 1272259
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00000, 300.00000, 142725
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00456, 300.00000, 822369
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00011, 250.00000, 2983955
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00123, 100.00000, 2393979
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.03574, 100.00000, 2641491
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00003, 300.00000, 1597850
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00010, 250.00000, 1430113
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+rawpy read the 30th file at location: ./dataset/Sony/long/00039_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.07888, 300.00000, 535
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00247, 250.00000, 2877047
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00027, 100.00000, 271135
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00001, 300.00000, 11918285
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00060, 100.00000, 3901
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00017, 100.00000, 684739
+rawpy read the 40th file at location: ./dataset/Sony/long/00200_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00235, 300.00000, 1458719
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.01101, 100.00000, 1212279
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00241, 250.00000, 2952517
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00235, 100.00000, 158803
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00168, 250.00000, 2486907
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00202, 250.00000, 7900835
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00007, 100.00000, 4543563
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.05083, 100.00000, 3437
+rawpy read the 50th file at location: ./dataset/Sony/long/00024_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00048, 250.00000, 33748
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00346, 300.00000, 3626303
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01253, 300.00000, 304767
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00058, 300.00000, 5644
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00062, 100.00000, 4526
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00008, 100.00000, 11755519
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00012, 250.00000, 2512821
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01871, 250.00000, 2025
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00338, 300.00000, 5557479
+rawpy read the 60th file at location: ./dataset/Sony/long/00084_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00375, 100.00000, 67803
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00228, 100.00000, 103
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 250.00000, 1696711
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00622, 300.00000, 2302635
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00053, 250.00000, 1589659
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00674, 250.00000, 1
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00517, 300.00000, 3437411
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.01027, 100.00000, 1033619
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00001, 300.00000, 742143
+rawpy read the 70th file at location: ./dataset/Sony/long/00164_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00444, 100.00000, 509891
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00001, 250.00000, 433279
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00106, 250.00000, 6156358
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00004, 100.00000, 2110981
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00085, 250.00000, 277500
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.02919, 250.00000, 646472
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00062, 100.00000, 5676651
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 250.00000, 7066147
+rawpy read the 80th file at location: ./dataset/Sony/long/00128_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00313, 300.00000, 4421929
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.01822, 300.00000, 489052
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00000, 300.00000, 10328681
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00136, 100.00000, 2198927
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00012, 100.00000, 5346741
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00147, 250.00000, 646955
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00077, 300.00000, 3032047
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00608, 250.00000, 1407
+rawpy read the 90th file at location: ./dataset/Sony/long/00057_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00013, 100.00000, 6606155
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00027, 300.00000, 353239
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00076, 100.00000, 877649
+min, max, mean, gamma, argmax: 0.00000, 0.00288, 0.00000, 100.00000, 810977
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00000, 100.00000, 4792466
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00045, 250.00000, 3173995
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00208, 300.00000, 3012800
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00086, 250.00000, 732975
+rawpy read the 100th file at location: ./dataset/Sony/long/00059_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01515, 250.00000, 5126389
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 100.00000, 221629
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00000, 250.00000, 895895
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00095, 100.00000, 121547
+min, max, mean, gamma, argmax: 0.00000, 0.89525, 0.00000, 250.00000, 6694829
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00001, 300.00000, 2019203
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00108, 250.00000, 2924589
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00000, 100.00000, 6922649
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00182, 250.00000, 8237
+rawpy read the 110th file at location: ./dataset/Sony/long/00026_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00100, 100.00000, 255039
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00826, 100.00000, 3862619
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00166, 100.00000, 27523
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00438, 250.00000, 4373627
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00212, 100.00000, 6454
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00032, 100.00000, 4246091
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00139, 100.00000, 952285
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00499, 100.00000, 2253
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+rawpy read the 120th file at location: ./dataset/Sony/long/00012_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 300.00000, 6320171
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00037, 100.00000, 8352977
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00176, 300.00000, 2730987
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00010, 300.00000, 830169
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00217, 250.00000, 106691
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00767, 300.00000, 2536575
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00001, 100.00000, 6777631
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+rawpy read the 130th file at location: ./dataset/Sony/long/00090_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00260, 300.00000, 6265
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 100.00000, 9536203
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00981, 100.00000, 1211799
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00000, 300.00000, 1962014
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00122, 300.00000, 1095547
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00110, 100.00000, 208955
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00497, 250.00000, 1787501
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00044, 300.00000, 2237695
+rawpy read the 140th file at location: ./dataset/Sony/long/00114_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00015, 250.00000, 2570045
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00002, 250.00000, 4933369
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00017, 300.00000, 2972
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00016, 100.00000, 8615375
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.06321, 300.00000, 1502619
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00135, 250.00000, 1940733
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00007, 100.00000, 8449
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00079, 250.00000, 506409
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+rawpy read the 150th file at location: ./dataset/Sony/long/00156_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00804, 300.00000, 2309
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00134, 250.00000, 1993235
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.03581, 300.00000, 2694439
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00922, 250.00000, 2353163
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00030, 250.00000, 2700797
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.01503, 100.00000, 7293
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00021, 250.00000, 581525
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00004, 300.00000, 4860611
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00336, 250.00000, 5285
+rawpy read the 160th file at location: ./dataset/Sony/long/00219_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+161 images loaded to CPU RAM in Time=52.984 seconds.
+
+Moved images data to a numpy array.
+Starting Training on index [ 39  36 147 147  59 157  59  22 100 100  30  83 138 159  76  14], dataset index: [ 64  14  15  15  37  48  37 214  59  59  39 195 131 215  60 119]
+Starting Training on gammas [100 100 250 250 300 250 300 300 250 250 300 100 250 250 250 100]
+[[0.31412432]
+ [0.31412432]
+ [0.75585485]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1: at batch 1: Loss=3.398, Time=0.025
+Epoch 1: Time=3.477, Epoch time = 0.294, Avg epoch time=1.739
+
+[[0.31412432]
+ [0.31412432]
+ [0.75585485]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.33333334]
+ [0.33333334]
+ [0.33799669]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.62188607]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.62188607]
+ [0.30455354]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.33333334]
+ [0.30455354]
+ [0.317727  ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.33333334]
+ [0.32115328]
+ [0.317727  ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.33225438]
+ [0.33333334]
+ [0.34932104]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+[[0.33225438]
+ [0.33333334]
+ [0.34932104]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 11: at batch 1: Loss=0.331, Time=0.025
+Epoch 21: at batch 1: Loss=0.305, Time=0.027
+Epoch 31: at batch 1: Loss=0.301, Time=0.027
+Epoch 41: at batch 1: Loss=0.307, Time=0.035
+Epoch 51: at batch 1: Loss=0.291, Time=0.033
+Epoch 61: at batch 1: Loss=0.292, Time=0.030
+Epoch 71: at batch 1: Loss=0.291, Time=0.028
+Epoch 81: at batch 1: Loss=0.309, Time=0.029
+Epoch 91: at batch 1: Loss=0.300, Time=0.023
+Epoch 101: at batch 1: Loss=0.296, Time=0.027
+Epoch 101: Time=45.062, Epoch time = 0.275, Avg epoch time=0.442
+
+[[0.23830403]
+ [0.33333334]
+ [0.29780489]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 111: at batch 1: Loss=0.289, Time=0.032
+Epoch 121: at batch 1: Loss=0.287, Time=0.029
+Epoch 131: at batch 1: Loss=0.281, Time=0.031
+Epoch 141: at batch 1: Loss=0.301, Time=0.032
+Epoch 151: at batch 1: Loss=0.276, Time=0.027
+Epoch 161: at batch 1: Loss=0.274, Time=0.031
+Epoch 171: at batch 1: Loss=0.283, Time=0.032
+Epoch 181: at batch 1: Loss=0.270, Time=0.024
+Epoch 191: at batch 1: Loss=0.272, Time=0.035
+Epoch 201: at batch 1: Loss=0.245, Time=0.032
+Epoch 201: Time=85.943, Epoch time = 0.284, Avg epoch time=0.425
+
+[[0.23847419]
+ [0.22654504]
+ [0.23485462]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 211: at batch 1: Loss=0.272, Time=0.031
+Epoch 221: at batch 1: Loss=0.264, Time=0.024
+Epoch 231: at batch 1: Loss=0.256, Time=0.025
+Epoch 241: at batch 1: Loss=0.282, Time=0.026
+Epoch 251: at batch 1: Loss=0.275, Time=0.024
+Epoch 261: at batch 1: Loss=0.265, Time=0.029
+Epoch 271: at batch 1: Loss=0.261, Time=0.034
+Epoch 281: at batch 1: Loss=0.267, Time=0.035
+Epoch 291: at batch 1: Loss=0.264, Time=0.032
+Epoch 301: at batch 1: Loss=0.255, Time=0.031
+Epoch 301: Time=126.725, Epoch time = 0.317, Avg epoch time=0.420
+
+[[0.23193984]
+ [0.26581466]
+ [0.23665892]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 311: at batch 1: Loss=0.246, Time=0.034
+Epoch 321: at batch 1: Loss=0.255, Time=0.026
+Epoch 331: at batch 1: Loss=0.297, Time=0.027
+Epoch 341: at batch 1: Loss=0.265, Time=0.030
+Epoch 351: at batch 1: Loss=0.259, Time=0.027
+Epoch 361: at batch 1: Loss=0.263, Time=0.028
+Epoch 371: at batch 1: Loss=0.269, Time=0.029
+Epoch 381: at batch 1: Loss=0.264, Time=0.035
+Epoch 391: at batch 1: Loss=0.264, Time=0.035
+Epoch 401: at batch 1: Loss=0.262, Time=0.034
+Epoch 401: Time=167.397, Epoch time = 0.303, Avg epoch time=0.416
+
+[[0.24517477]
+ [0.23023814]
+ [0.25004089]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 411: at batch 1: Loss=0.252, Time=0.027
+Epoch 421: at batch 1: Loss=0.266, Time=0.032
+Epoch 431: at batch 1: Loss=0.258, Time=0.033
+Epoch 441: at batch 1: Loss=0.261, Time=0.023
+Epoch 451: at batch 1: Loss=0.256, Time=0.029
+Epoch 461: at batch 1: Loss=0.258, Time=0.035
+Epoch 471: at batch 1: Loss=0.284, Time=0.024
+Epoch 481: at batch 1: Loss=0.256, Time=0.028
+Epoch 491: at batch 1: Loss=0.264, Time=0.025
+Epoch 501: at batch 1: Loss=0.262, Time=0.025
+Epoch 501: Time=208.717, Epoch time = 0.276, Avg epoch time=0.416
+
+[[0.33333334]
+ [0.33333334]
+ [0.23389117]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 511: at batch 1: Loss=0.275, Time=0.030
+Epoch 521: at batch 1: Loss=0.276, Time=0.027
+Epoch 531: at batch 1: Loss=0.254, Time=0.030
+Epoch 541: at batch 1: Loss=0.250, Time=0.032
+Epoch 551: at batch 1: Loss=0.263, Time=0.028
+Epoch 561: at batch 1: Loss=0.269, Time=0.026
+Epoch 571: at batch 1: Loss=0.249, Time=0.029
+Epoch 581: at batch 1: Loss=0.242, Time=0.026
+Epoch 591: at batch 1: Loss=0.277, Time=0.031
+Epoch 601: at batch 1: Loss=0.393, Time=0.034
+Epoch 601: Time=249.352, Epoch time = 0.291, Avg epoch time=0.414
+
+[[0.2610774 ]
+ [0.20808166]
+ [0.36246428]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 611: at batch 1: Loss=0.265, Time=0.032
+Epoch 621: at batch 1: Loss=0.271, Time=0.025
+Epoch 631: at batch 1: Loss=0.251, Time=0.026
+Epoch 641: at batch 1: Loss=0.260, Time=0.031
+Epoch 651: at batch 1: Loss=0.260, Time=0.025
+Epoch 661: at batch 1: Loss=0.261, Time=0.031
+Epoch 671: at batch 1: Loss=0.243, Time=0.029
+Epoch 681: at batch 1: Loss=0.239, Time=0.038
+Epoch 691: at batch 1: Loss=0.260, Time=0.029
+Epoch 701: at batch 1: Loss=0.275, Time=0.032
+Epoch 701: Time=291.207, Epoch time = 0.313, Avg epoch time=0.415
+
+[[0.23792942]
+ [0.23697565]
+ [0.25594792]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 711: at batch 1: Loss=0.263, Time=0.032
+Epoch 721: at batch 1: Loss=0.279, Time=0.028
+Epoch 731: at batch 1: Loss=0.262, Time=0.031
+Epoch 741: at batch 1: Loss=0.256, Time=0.029
+Epoch 751: at batch 1: Loss=0.334, Time=0.027
+Epoch 761: at batch 1: Loss=0.828, Time=0.031
+Epoch 771: at batch 1: Loss=0.326, Time=0.027
+Epoch 781: at batch 1: Loss=0.321, Time=0.024
+Epoch 791: at batch 1: Loss=0.319, Time=0.025
+Epoch 801: at batch 1: Loss=0.814, Time=0.026
+Epoch 801: Time=333.091, Epoch time = 0.253, Avg epoch time=0.415
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 811: at batch 1: Loss=0.333, Time=0.027
+Epoch 821: at batch 1: Loss=0.346, Time=0.029
+Epoch 831: at batch 1: Loss=0.333, Time=0.031
+Epoch 841: at batch 1: Loss=0.333, Time=0.035
+Epoch 851: at batch 1: Loss=0.333, Time=0.029
+Epoch 861: at batch 1: Loss=0.333, Time=0.024
+Epoch 871: at batch 1: Loss=0.333, Time=0.029
+Epoch 881: at batch 1: Loss=0.333, Time=0.032
+Epoch 891: at batch 1: Loss=0.333, Time=0.027
+Epoch 901: at batch 1: Loss=0.333, Time=0.035
+Epoch 901: Time=374.483, Epoch time = 0.319, Avg epoch time=0.415
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 911: at batch 1: Loss=0.333, Time=0.028
+Epoch 921: at batch 1: Loss=0.333, Time=0.028
+Epoch 931: at batch 1: Loss=0.333, Time=0.026
+Epoch 941: at batch 1: Loss=0.333, Time=0.026
+Epoch 951: at batch 1: Loss=0.333, Time=0.032
+Epoch 961: at batch 1: Loss=0.333, Time=0.029
+Epoch 971: at batch 1: Loss=0.333, Time=0.026
+Epoch 981: at batch 1: Loss=0.333, Time=0.027
+Epoch 991: at batch 1: Loss=0.333, Time=0.034
+Epoch 1001: at batch 1: Loss=0.333, Time=0.027
+Epoch 1001: Time=415.246, Epoch time = 0.300, Avg epoch time=0.414
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1011: at batch 1: Loss=0.333, Time=0.031
+Epoch 1021: at batch 1: Loss=0.333, Time=0.024
+Epoch 1031: at batch 1: Loss=0.333, Time=0.031
+Epoch 1041: at batch 1: Loss=0.333, Time=0.026
+Epoch 1051: at batch 1: Loss=0.333, Time=0.031
+Epoch 1061: at batch 1: Loss=0.333, Time=0.026
+Epoch 1071: at batch 1: Loss=0.333, Time=0.026
+Epoch 1081: at batch 1: Loss=0.333, Time=0.026
+Epoch 1091: at batch 1: Loss=0.333, Time=0.036
+Epoch 1101: at batch 1: Loss=0.333, Time=0.026
+Epoch 1101: Time=455.854, Epoch time = 0.264, Avg epoch time=0.414
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1111: at batch 1: Loss=0.333, Time=0.035
+Epoch 1121: at batch 1: Loss=0.333, Time=0.028
+Epoch 1131: at batch 1: Loss=0.333, Time=0.026
+Epoch 1141: at batch 1: Loss=0.333, Time=0.030
+Epoch 1151: at batch 1: Loss=0.333, Time=0.024
+Epoch 1161: at batch 1: Loss=0.333, Time=0.027
+Epoch 1171: at batch 1: Loss=0.333, Time=0.030
+Epoch 1181: at batch 1: Loss=0.333, Time=0.027
+Epoch 1191: at batch 1: Loss=0.333, Time=0.034
+Epoch 1201: at batch 1: Loss=0.333, Time=0.034
+Epoch 1201: Time=496.796, Epoch time = 0.309, Avg epoch time=0.413
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1211: at batch 1: Loss=0.333, Time=0.034
+Epoch 1221: at batch 1: Loss=0.333, Time=0.034
+Epoch 1231: at batch 1: Loss=0.333, Time=0.029
+Epoch 1241: at batch 1: Loss=0.333, Time=0.030
+Epoch 1251: at batch 1: Loss=0.333, Time=0.032
+Epoch 1261: at batch 1: Loss=0.333, Time=0.032
+Epoch 1271: at batch 1: Loss=0.333, Time=0.035
+Epoch 1281: at batch 1: Loss=0.333, Time=0.024
+Epoch 1291: at batch 1: Loss=0.333, Time=0.033
+Epoch 1301: at batch 1: Loss=0.333, Time=0.030
+Epoch 1301: Time=537.589, Epoch time = 0.271, Avg epoch time=0.413
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1311: at batch 1: Loss=0.333, Time=0.033
+Epoch 1321: at batch 1: Loss=0.333, Time=0.027
+Epoch 1331: at batch 1: Loss=0.333, Time=0.035
+Epoch 1341: at batch 1: Loss=0.333, Time=0.025
+Epoch 1351: at batch 1: Loss=0.333, Time=0.027
+Epoch 1361: at batch 1: Loss=0.333, Time=0.035
+Epoch 1371: at batch 1: Loss=0.333, Time=0.034
+Epoch 1381: at batch 1: Loss=0.333, Time=0.023
+Epoch 1391: at batch 1: Loss=0.333, Time=0.027
+Epoch 1401: at batch 1: Loss=0.333, Time=0.027
+Epoch 1401: Time=578.521, Epoch time = 0.280, Avg epoch time=0.413
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1411: at batch 1: Loss=0.333, Time=0.024
+Epoch 1421: at batch 1: Loss=0.333, Time=0.029
+Epoch 1431: at batch 1: Loss=0.333, Time=0.031
+Epoch 1441: at batch 1: Loss=0.333, Time=0.032
+Epoch 1451: at batch 1: Loss=0.333, Time=0.027
+Epoch 1461: at batch 1: Loss=0.333, Time=0.030
+Epoch 1471: at batch 1: Loss=0.333, Time=0.027
+Epoch 1481: at batch 1: Loss=0.333, Time=0.028
+Epoch 1491: at batch 1: Loss=0.333, Time=0.023
+Epoch 1501: at batch 1: Loss=0.333, Time=0.027
+Epoch 1501: Time=619.092, Epoch time = 0.286, Avg epoch time=0.412
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1511: at batch 1: Loss=0.333, Time=0.024
+Epoch 1521: at batch 1: Loss=0.333, Time=0.029
+Epoch 1531: at batch 1: Loss=0.333, Time=0.029
+Epoch 1541: at batch 1: Loss=0.333, Time=0.028
+Epoch 1551: at batch 1: Loss=0.333, Time=0.029
+Epoch 1561: at batch 1: Loss=0.333, Time=0.031
+^CTraceback (most recent call last):
+  File "medium_batched_square_loss.py", line 309, in <module>
+    feed_dict={in_image: input_patch, gt_gamma: assigned_image_gamma_index, lr: learning_rate})
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 887, in run
+    run_metadata_ptr)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1110, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1286, in _do_run
+    run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1292, in _do_call
+    return fn(*args)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1277, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1367, in _call_tf_sessionrun
+    run_metadata)
+KeyboardInterrupt
+(sid2) [ir967@gr011 Learning-to-See-in-the-Dark]$ 

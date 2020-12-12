@@ -1,0 +1,4963 @@
+
+(sid2) [ir967@gr018 Learning-to-See-in-the-Dark]$ vi simple_batched_numpy_diff_loss.py
+(sid2) [ir967@gr018 Learning-to-See-in-the-Dark]$ python simple_batched_numpy_diff_loss.py 
+
+
+
+
+Found 161 images to train with
+
+Training on 16 images only
+
+2020-12-12 01:20:05.258184: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-12 01:20:05.408475: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:06:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-12 01:20:05.408516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-12 01:20:05.688923: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-12 01:20:05.688957: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-12 01:20:05.688962: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-12 01:20:05.689058: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:06:00.0, compute capability: 7.5)
+
+Loaded ./gt_Sony_simple_batched_MSE_loss/model.ckpt
+
+a: 0.0000000000
+b: 1.8054000000
+-0.6435445925714693
+35.645540742853065
+
+a: 0.0000000000
+b: 4.5135000000
+-0.8186270064387413
+45.34324839031467
+
+a: 0.0000000000
+b: 5.4162000000
+-0.8441445092110595
+46.756647236682134
+Gamma curve:
+Every 10, 0 to 100
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Every 100, 0 to 1000
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Every 1000, 0 to 8000
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 8K, 0 to 64K
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 1000, 57536 to 65536
+[[    0     0     4    23   120   605  2958 14104]
+ [    0     0     0     0     0     0    28  1408]
+ [    0     0     0     0     0     0     6   653]]
+Every 125, 64536 to 65536
+[[14104 17115 20761 25175 30515 36975 44786 54227]
+ [ 1408  2284  3702  5994  9696 15670 25302 40817]
+ [  653  1167  2083  3715  6616 11770 20917 37129]]
+Every 10, 65436 to 65536
+[[56340 57207 58088 58982 59890 60812 61747 62697 63662 64641]
+ [44908 46657 48474 50361 52321 54357 56473 58670 60952 63323]
+ [41639 43592 45637 47777 50017 52362 54817 57386 60075 62889]]
+Every 1, 65526 to 65536
+[[64641 64739 64838 64937 65036 65136 65235 65335 65435 65535]
+ [63323 63565 63808 64051 64296 64542 64789 65036 65285 65535]
+ [62889 63178 63468 63759 64051 64345 64641 64937 65235 65535]]
+last epoch of previous run: 0
+rawpy read the 0th file at location: ./dataset/Sony/long/00018_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.95669, 0.00000, 100.00000, 3485919
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01631, 300.00000, 1
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00165, 100.00000, 1177951
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00187, 300.00000, 803131
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.02310, 250.00000, 3700
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00417, 300.00000, 2882267
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00001, 100.00000, 5540515
+rawpy read the 10th file at location: ./dataset/Sony/long/00038_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00886, 300.00000, 2598691
+^CTraceback (most recent call last):
+  File "simple_batched_numpy_diff_loss.py", line 221, in <module>
+    input_image = pack_raw(gt_raw)
+  File "simple_batched_numpy_diff_loss.py", line 86, in pack_raw
+    im = np.maximum(im - 512, 0) / (16383 - 512)  # subtract the black level
+KeyboardInterrupt
+(sid2) [ir967@gr018 Learning-to-See-in-the-Dark]$ vi simple_batched_numpy_diff_loss.py
+(sid2) [ir967@gr018 Learning-to-See-in-the-Dark]$ python simple_batched_numpy_diff_loss.py 
+
+
+
+
+Found 161 images to train with
+
+Training on 161 images only
+
+2020-12-12 01:20:34.862865: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-12 01:20:35.025484: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:06:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-12 01:20:35.025516: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-12 01:20:35.304767: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-12 01:20:35.304804: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-12 01:20:35.304810: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-12 01:20:35.304986: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:06:00.0, compute capability: 7.5)
+
+Loaded ./gt_Sony_simple_batched_MSE_loss/model.ckpt
+
+a: 0.0000000000
+b: 1.8054000000
+-0.6435445925714693
+35.645540742853065
+
+a: 0.0000000000
+b: 4.5135000000
+-0.8186270064387413
+45.34324839031467
+
+a: 0.0000000000
+b: 5.4162000000
+-0.8441445092110595
+46.756647236682134
+Gamma curve:
+Every 10, 0 to 100
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Every 100, 0 to 1000
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Every 1000, 0 to 8000
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 8K, 0 to 64K
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 1000, 57536 to 65536
+[[    0     0     4    23   120   605  2958 14104]
+ [    0     0     0     0     0     0    28  1408]
+ [    0     0     0     0     0     0     6   653]]
+Every 125, 64536 to 65536
+[[14104 17115 20761 25175 30515 36975 44786 54227]
+ [ 1408  2284  3702  5994  9696 15670 25302 40817]
+ [  653  1167  2083  3715  6616 11770 20917 37129]]
+Every 10, 65436 to 65536
+[[56340 57207 58088 58982 59890 60812 61747 62697 63662 64641]
+ [44908 46657 48474 50361 52321 54357 56473 58670 60952 63323]
+ [41639 43592 45637 47777 50017 52362 54817 57386 60075 62889]]
+Every 1, 65526 to 65536
+[[64641 64739 64838 64937 65036 65136 65235 65335 65435 65535]
+ [63323 63565 63808 64051 64296 64542 64789 65036 65285 65535]
+ [62889 63178 63468 63759 64051 64345 64641 64937 65235 65535]]
+last epoch of previous run: 0
+rawpy read the 0th file at location: ./dataset/Sony/long/00018_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.89525, 0.00000, 250.00000, 3485919
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01631, 300.00000, 1
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00165, 100.00000, 1177951
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00187, 300.00000, 803131
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.02266, 300.00000, 3700
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00427, 250.00000, 2882267
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00001, 100.00000, 5540515
+rawpy read the 10th file at location: ./dataset/Sony/long/00038_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00887, 250.00000, 2598691
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00228, 300.00000, 4653941
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00017, 100.00000, 6102869
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00613, 100.00000, 1458187
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00012, 250.00000, 3426263
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00116, 250.00000, 4586373
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00144, 300.00000, 909101
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00307, 250.00000, 3630407
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00003, 100.00000, 6735543
+rawpy read the 20th file at location: ./dataset/Sony/long/00072_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00003, 300.00000, 7298885
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00141, 300.00000, 1272259
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00000, 250.00000, 142725
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00466, 250.00000, 822369
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00011, 300.00000, 2983955
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00116, 250.00000, 2393979
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.03368, 250.00000, 2641491
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00003, 100.00000, 1597850
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00010, 250.00000, 1430113
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+rawpy read the 30th file at location: ./dataset/Sony/long/00039_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.07888, 300.00000, 535
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00247, 250.00000, 2877047
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00027, 250.00000, 271135
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00001, 300.00000, 11918285
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00060, 100.00000, 3901
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00017, 300.00000, 684739
+rawpy read the 40th file at location: ./dataset/Sony/long/00200_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00246, 250.00000, 1458719
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00976, 300.00000, 1212279
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00237, 300.00000, 2952517
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00215, 300.00000, 158803
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00179, 100.00000, 2486907
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00215, 100.00000, 7900835
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00006, 250.00000, 4543563
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.05081, 300.00000, 3437
+rawpy read the 50th file at location: ./dataset/Sony/long/00024_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00048, 300.00000, 33748
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00375, 100.00000, 3626303
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01267, 100.00000, 304767
+Killed
+(sid2) [ir967@gr018 Learning-to-See-in-the-Dark]$ exit
+logout
+Connection to gr018 closed.
+(base) [ir967@gr018 Learning-to-See-in-the-Dark]$ 
+(base) [ir967@gr018 Learning-to-See-in-the-Dark]$ 
+(base) [ir967@gr018 Learning-to-See-in-the-Dark]$ 
+(base) [ir967@gr018 Learning-to-See-in-the-Dark]$ exit
+exit
+slurmstepd: error: Detected 1 oom-kill event(s) in step 402358.0 cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: gr018-ib0: task 0: Out Of Memory
+srun: Terminating job step 402358.0
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -t2:00:00 --gres=gpu:1 --mem=18500MB --pty /bin/bash
+(base) [ir967@gr018 Learning-to-See-in-the-Dark]$ cd $SCRATCH/SID
+(base) [ir967@gr018 SID]$ cd Learning-to-See-in-the-Dark/
+(base) [ir967@gr018 Learning-to-See-in-the-Dark]$ conda activate sid2
+(sid2) [ir967@gr018 Learning-to-See-in-the-Dark]$ python simple_batched_numpy_diff_loss.py 
+
+
+
+
+Found 161 images to train with
+
+Training on 161 images only
+
+2020-12-12 01:23:15.379166: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-12 01:23:15.542917: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:06:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-12 01:23:15.542950: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-12 01:23:15.820694: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-12 01:23:15.820728: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-12 01:23:15.820733: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-12 01:23:15.820830: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:06:00.0, compute capability: 7.5)
+
+Loaded ./gt_Sony_simple_batched_MSE_loss/model.ckpt
+
+a: 0.0000000000
+b: 1.8054000000
+-0.6435445925714693
+35.645540742853065
+
+a: 0.0000000000
+b: 4.5135000000
+-0.8186270064387413
+45.34324839031467
+
+a: 0.0000000000
+b: 5.4162000000
+-0.8441445092110595
+46.756647236682134
+Gamma curve:
+Every 10, 0 to 100
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Every 100, 0 to 1000
+[[0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0 0]]
+Every 1000, 0 to 8000
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 8K, 0 to 64K
+[[0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0]]
+Every 1000, 57536 to 65536
+[[    0     0     4    23   120   605  2958 14104]
+ [    0     0     0     0     0     0    28  1408]
+ [    0     0     0     0     0     0     6   653]]
+Every 125, 64536 to 65536
+[[14104 17115 20761 25175 30515 36975 44786 54227]
+ [ 1408  2284  3702  5994  9696 15670 25302 40817]
+ [  653  1167  2083  3715  6616 11770 20917 37129]]
+Every 10, 65436 to 65536
+[[56340 57207 58088 58982 59890 60812 61747 62697 63662 64641]
+ [44908 46657 48474 50361 52321 54357 56473 58670 60952 63323]
+ [41639 43592 45637 47777 50017 52362 54817 57386 60075 62889]]
+Every 1, 65526 to 65536
+[[64641 64739 64838 64937 65036 65136 65235 65335 65435 65535]
+ [63323 63565 63808 64051 64296 64542 64789 65036 65285 65535]
+ [62889 63178 63468 63759 64051 64345 64641 64937 65235 65535]]
+last epoch of previous run: 0
+rawpy read the 0th file at location: ./dataset/Sony/long/00018_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.89525, 0.00000, 250.00000, 3485919
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01631, 300.00000, 1
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00165, 250.00000, 1177951
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00187, 300.00000, 803131
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.02465, 100.00000, 3700
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00467, 100.00000, 2882267
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00001, 100.00000, 5540515
+rawpy read the 10th file at location: ./dataset/Sony/long/00038_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00894, 100.00000, 2598691
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00233, 250.00000, 4653941
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00017, 250.00000, 6102869
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00613, 100.00000, 1458187
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00012, 300.00000, 3426263
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00116, 300.00000, 4586373
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00155, 100.00000, 909101
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00301, 300.00000, 3630407
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00002, 250.00000, 6735543
+rawpy read the 20th file at location: ./dataset/Sony/long/00072_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00003, 300.00000, 7298885
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00141, 300.00000, 1272259
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00000, 250.00000, 142725
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00497, 100.00000, 822369
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00011, 250.00000, 2983955
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00123, 100.00000, 2393979
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.03574, 100.00000, 2641491
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00003, 250.00000, 1597850
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00010, 250.00000, 1430113
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+rawpy read the 30th file at location: ./dataset/Sony/long/00039_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.07893, 250.00000, 535
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00247, 250.00000, 2877047
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00027, 100.00000, 271135
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00001, 100.00000, 11918285
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00056, 300.00000, 3901
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00017, 300.00000, 684739
+rawpy read the 40th file at location: ./dataset/Sony/long/00200_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00235, 300.00000, 1458719
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.01101, 100.00000, 1212279
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00257, 100.00000, 2952517
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00235, 100.00000, 158803
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00168, 250.00000, 2486907
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00198, 300.00000, 7900835
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00006, 250.00000, 4543563
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.05083, 100.00000, 3437
+rawpy read the 50th file at location: ./dataset/Sony/long/00024_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00048, 100.00000, 33748
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00375, 100.00000, 3626303
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01253, 300.00000, 304767
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00063, 100.00000, 5644
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00062, 100.00000, 4526
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00007, 250.00000, 11755519
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00012, 300.00000, 2512821
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01870, 300.00000, 2025
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00338, 250.00000, 5557479
+rawpy read the 60th file at location: ./dataset/Sony/long/00084_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00375, 100.00000, 67803
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00214, 250.00000, 103
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 250.00000, 1696711
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00622, 300.00000, 2302635
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00053, 250.00000, 1589659
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00674, 250.00000, 1
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00517, 300.00000, 3437411
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00969, 250.00000, 1033619
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00001, 100.00000, 742143
+rawpy read the 70th file at location: ./dataset/Sony/long/00164_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00419, 250.00000, 509891
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00001, 100.00000, 433279
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00114, 100.00000, 6156358
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00004, 300.00000, 2110981
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00084, 300.00000, 277500
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.02919, 250.00000, 646472
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00057, 300.00000, 5676651
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 300.00000, 7066147
+rawpy read the 80th file at location: ./dataset/Sony/long/00128_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00313, 300.00000, 4421929
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.01822, 300.00000, 489052
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00000, 100.00000, 10328681
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00136, 100.00000, 2198927
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00010, 250.00000, 5346741
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00156, 100.00000, 646955
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00084, 100.00000, 3032047
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00596, 300.00000, 1407
+rawpy read the 90th file at location: ./dataset/Sony/long/00057_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00010, 300.00000, 6606155
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00027, 250.00000, 353239
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00075, 300.00000, 877649
+min, max, mean, gamma, argmax: 0.00000, 0.00288, 0.00000, 100.00000, 810977
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00000, 250.00000, 4792466
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00044, 300.00000, 3173995
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00208, 300.00000, 3012800
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00086, 300.00000, 732975
+rawpy read the 100th file at location: ./dataset/Sony/long/00059_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.01523, 100.00000, 5126389
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 300.00000, 221629
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00000, 250.00000, 895895
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00088, 300.00000, 121547
+min, max, mean, gamma, argmax: 0.00000, 0.89525, 0.00000, 250.00000, 6694829
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00001, 250.00000, 2019203
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00114, 100.00000, 2924589
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00000, 250.00000, 6922649
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00195, 100.00000, 8237
+rawpy read the 110th file at location: ./dataset/Sony/long/00026_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00100, 100.00000, 255039
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00826, 100.00000, 3862619
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00162, 300.00000, 27523
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00429, 300.00000, 4373627
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00196, 300.00000, 6454
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00032, 100.00000, 4246091
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00131, 250.00000, 952285
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00464, 300.00000, 2253
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+rawpy read the 120th file at location: ./dataset/Sony/long/00012_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 250.00000, 6320171
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00035, 250.00000, 8352977
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00180, 250.00000, 2730987
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00010, 100.00000, 830169
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00216, 300.00000, 106691
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00827, 100.00000, 2536575
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00000, 300.00000, 6777631
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+rawpy read the 130th file at location: ./dataset/Sony/long/00090_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00260, 300.00000, 6265
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00000, 250.00000, 9536203
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00922, 250.00000, 1211799
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00000, 250.00000, 1962014
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00124, 250.00000, 1095547
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00110, 100.00000, 208955
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00497, 250.00000, 1787501
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00045, 250.00000, 2237695
+rawpy read the 140th file at location: ./dataset/Sony/long/00114_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00015, 250.00000, 2570045
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00002, 100.00000, 4933369
+min, max, mean, gamma, argmax: 0.00000, 0.95160, 0.00017, 250.00000, 2972
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00014, 300.00000, 8615375
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.06321, 300.00000, 1502619
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.00130, 300.00000, 1940733
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00007, 300.00000, 8449
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 100.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00078, 300.00000, 506409
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+rawpy read the 150th file at location: ./dataset/Sony/long/00156_00_30s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00875, 100.00000, 2309
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00143, 100.00000, 1993235
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 300.00000, 0
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.03859, 100.00000, 2694439
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00922, 250.00000, 2353163
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00030, 300.00000, 2700797
+min, max, mean, gamma, argmax: 0.00000, 0.94221, 0.01375, 300.00000, 7293
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00021, 100.00000, 581525
+min, max, mean, gamma, argmax: 0.00000, 1.00000, 0.00004, 100.00000, 4860611
+min, max, mean, gamma, argmax: 0.00000, 0.98035, 0.00430, 100.00000, 5285
+rawpy read the 160th file at location: ./dataset/Sony/long/00219_00_10s.ARW
+min, max, mean, gamma, argmax: 0.00000, 0.00000, 0.00000, 250.00000, 0
+161 images loaded to CPU RAM in Time=52.061 seconds.
+
+moved images data to numpy array
+Epoch 1: at batch 1: Loss=0.301, Time=1.198
+Epoch 1: Time=1.381, Epoch time = 1.381, Avg epoch time=0.000
+
+[[0.60452837]
+ [0.        ]
+ [0.        ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2: at batch 1: Loss=0.475, Time=0.015
+Epoch 3: at batch 1: Loss=0.596, Time=0.019
+Epoch 4: at batch 1: Loss=0.587, Time=0.023
+Epoch 5: at batch 1: Loss=0.742, Time=0.016
+Epoch 6: at batch 1: Loss=0.477, Time=0.018
+Epoch 7: at batch 1: Loss=0.470, Time=0.025
+Epoch 8: at batch 1: Loss=0.347, Time=0.020
+Epoch 9: at batch 1: Loss=0.481, Time=0.025
+Epoch 10: at batch 1: Loss=0.521, Time=0.020
+Epoch 11: at batch 1: Loss=0.608, Time=0.014
+Epoch 11: Time=3.591, Epoch time = 0.175, Avg epoch time=0.000
+
+[[0.31968963]
+ [0.66819233]
+ [0.44762349]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 12: at batch 1: Loss=0.472, Time=0.021
+Epoch 13: at batch 1: Loss=0.465, Time=0.025
+Epoch 14: at batch 1: Loss=0.448, Time=0.015
+Epoch 15: at batch 1: Loss=0.388, Time=0.015
+Epoch 16: at batch 1: Loss=0.318, Time=0.019
+Epoch 17: at batch 1: Loss=0.297, Time=0.022
+Epoch 18: at batch 1: Loss=0.338, Time=0.020
+Epoch 19: at batch 1: Loss=0.490, Time=0.015
+Epoch 20: at batch 1: Loss=0.562, Time=0.021
+Epoch 21: at batch 1: Loss=0.595, Time=0.020
+Epoch 21: Time=5.801, Epoch time = 0.185, Avg epoch time=0.000
+
+[[0.2677578 ]
+ [0.34725535]
+ [0.36270872]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 22: at batch 1: Loss=0.754, Time=0.024
+Epoch 23: at batch 1: Loss=0.589, Time=0.014
+Epoch 24: at batch 1: Loss=0.507, Time=0.022
+Epoch 25: at batch 1: Loss=0.463, Time=0.020
+Epoch 26: at batch 1: Loss=0.316, Time=0.014
+Epoch 27: at batch 1: Loss=0.296, Time=0.016
+Epoch 28: at batch 1: Loss=0.361, Time=0.018
+Epoch 29: at batch 1: Loss=0.369, Time=0.024
+Epoch 30: at batch 1: Loss=0.441, Time=0.025
+Epoch 31: at batch 1: Loss=0.333, Time=0.020
+Epoch 31: Time=7.956, Epoch time = 0.177, Avg epoch time=0.000
+
+[[0.55015868]
+ [0.23811032]
+ [0.23811032]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 32: at batch 1: Loss=0.323, Time=0.017
+Epoch 33: at batch 1: Loss=0.456, Time=0.017
+Epoch 34: at batch 1: Loss=0.406, Time=0.019
+Epoch 35: at batch 1: Loss=0.428, Time=0.020
+Epoch 36: at batch 1: Loss=0.562, Time=0.024
+Epoch 37: at batch 1: Loss=0.494, Time=0.022
+Epoch 38: at batch 1: Loss=0.477, Time=0.019
+Epoch 39: at batch 1: Loss=0.340, Time=0.016
+Epoch 40: at batch 1: Loss=0.431, Time=0.021
+Epoch 41: at batch 1: Loss=0.431, Time=0.022
+Epoch 41: Time=10.151, Epoch time = 0.205, Avg epoch time=0.000
+
+[[0.27772135]
+ [0.95605874]
+ [0.54791135]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 42: at batch 1: Loss=0.445, Time=0.016
+Epoch 43: at batch 1: Loss=0.364, Time=0.015
+Epoch 44: at batch 1: Loss=0.393, Time=0.014
+Epoch 45: at batch 1: Loss=0.391, Time=0.014
+Epoch 46: at batch 1: Loss=0.309, Time=0.021
+Epoch 47: at batch 1: Loss=0.330, Time=0.021
+Epoch 48: at batch 1: Loss=0.393, Time=0.019
+Epoch 49: at batch 1: Loss=0.333, Time=0.016
+Epoch 50: at batch 1: Loss=0.373, Time=0.019
+Epoch 51: at batch 1: Loss=0.330, Time=0.020
+Epoch 51: Time=12.249, Epoch time = 0.173, Avg epoch time=0.000
+
+[[0.65377015]
+ [0.36626291]
+ [0.30462885]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 52: at batch 1: Loss=0.365, Time=0.018
+Epoch 53: at batch 1: Loss=0.415, Time=0.024
+Epoch 54: at batch 1: Loss=0.521, Time=0.021
+Epoch 55: at batch 1: Loss=0.377, Time=0.019
+Epoch 56: at batch 1: Loss=0.364, Time=0.016
+Epoch 57: at batch 1: Loss=0.360, Time=0.024
+Epoch 58: at batch 1: Loss=0.302, Time=0.022
+Epoch 59: at batch 1: Loss=0.426, Time=0.015
+Epoch 60: at batch 1: Loss=0.438, Time=0.024
+Epoch 61: at batch 1: Loss=0.502, Time=0.017
+Epoch 61: Time=14.434, Epoch time = 0.198, Avg epoch time=0.000
+
+[[0.32986757]
+ [0.3278465 ]
+ [0.26994511]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 62: at batch 1: Loss=0.407, Time=0.014
+Epoch 63: at batch 1: Loss=0.340, Time=0.021
+Epoch 64: at batch 1: Loss=0.316, Time=0.024
+Epoch 65: at batch 1: Loss=0.291, Time=0.022
+Epoch 66: at batch 1: Loss=0.284, Time=0.021
+Epoch 67: at batch 1: Loss=0.311, Time=0.015
+Epoch 68: at batch 1: Loss=0.528, Time=0.022
+Epoch 69: at batch 1: Loss=0.429, Time=0.025
+Epoch 70: at batch 1: Loss=0.369, Time=0.014
+Epoch 71: at batch 1: Loss=0.312, Time=0.022
+Epoch 71: Time=16.591, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.22671121]
+ [1.05510819]
+ [0.31412384]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 72: at batch 1: Loss=0.358, Time=0.022
+Epoch 73: at batch 1: Loss=0.334, Time=0.016
+Epoch 74: at batch 1: Loss=0.348, Time=0.023
+Epoch 75: at batch 1: Loss=0.298, Time=0.022
+Epoch 76: at batch 1: Loss=0.265, Time=0.021
+Epoch 77: at batch 1: Loss=0.326, Time=0.017
+Epoch 78: at batch 1: Loss=0.344, Time=0.015
+Epoch 79: at batch 1: Loss=0.337, Time=0.017
+Epoch 80: at batch 1: Loss=0.377, Time=0.014
+Epoch 81: at batch 1: Loss=0.482, Time=0.019
+Epoch 81: Time=18.696, Epoch time = 0.200, Avg epoch time=0.000
+
+[[0.3845273 ]
+ [0.87979674]
+ [0.26209721]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 82: at batch 1: Loss=0.385, Time=0.019
+Epoch 83: at batch 1: Loss=0.427, Time=0.023
+Epoch 84: at batch 1: Loss=0.361, Time=0.021
+Epoch 85: at batch 1: Loss=0.373, Time=0.017
+Epoch 86: at batch 1: Loss=0.368, Time=0.014
+Epoch 87: at batch 1: Loss=0.339, Time=0.020
+Epoch 88: at batch 1: Loss=0.367, Time=0.019
+Epoch 89: at batch 1: Loss=0.457, Time=0.016
+Epoch 90: at batch 1: Loss=0.360, Time=0.017
+Epoch 91: at batch 1: Loss=0.349, Time=0.018
+Epoch 91: Time=20.833, Epoch time = 0.192, Avg epoch time=0.000
+
+[[0.21576445]
+ [0.22385716]
+ [0.90511554]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 92: at batch 1: Loss=0.445, Time=0.019
+Epoch 93: at batch 1: Loss=0.428, Time=0.017
+Epoch 94: at batch 1: Loss=0.352, Time=0.015
+Epoch 95: at batch 1: Loss=0.318, Time=0.021
+Epoch 96: at batch 1: Loss=0.306, Time=0.017
+Epoch 97: at batch 1: Loss=0.298, Time=0.017
+Epoch 98: at batch 1: Loss=0.374, Time=0.022
+Epoch 99: at batch 1: Loss=0.400, Time=0.024
+Epoch 100: at batch 1: Loss=0.302, Time=0.024
+Epoch 101: at batch 1: Loss=0.335, Time=0.016
+Epoch 101: Time=22.918, Epoch time = 0.164, Avg epoch time=0.000
+
+[[0.27319816]
+ [0.40138122]
+ [0.2396369 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 102: at batch 1: Loss=0.321, Time=0.021
+Epoch 103: at batch 1: Loss=0.301, Time=0.019
+Epoch 104: at batch 1: Loss=0.293, Time=0.022
+Epoch 105: at batch 1: Loss=0.297, Time=0.017
+Epoch 106: at batch 1: Loss=0.282, Time=0.021
+Epoch 107: at batch 1: Loss=0.278, Time=0.021
+Epoch 108: at batch 1: Loss=0.288, Time=0.020
+Epoch 109: at batch 1: Loss=0.366, Time=0.020
+Epoch 110: at batch 1: Loss=0.439, Time=0.021
+Epoch 111: at batch 1: Loss=0.538, Time=0.024
+Epoch 111: Time=25.043, Epoch time = 0.186, Avg epoch time=0.000
+
+[[0.23022117]
+ [0.23022117]
+ [0.23022117]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 112: at batch 1: Loss=0.431, Time=0.022
+Epoch 113: at batch 1: Loss=0.395, Time=0.022
+Epoch 114: at batch 1: Loss=0.440, Time=0.021
+Epoch 115: at batch 1: Loss=0.413, Time=0.021
+Epoch 116: at batch 1: Loss=0.344, Time=0.016
+Epoch 117: at batch 1: Loss=0.316, Time=0.021
+Epoch 118: at batch 1: Loss=0.308, Time=0.021
+Epoch 119: at batch 1: Loss=0.289, Time=0.021
+Epoch 120: at batch 1: Loss=0.476, Time=0.023
+Epoch 121: at batch 1: Loss=0.409, Time=0.021
+Epoch 121: Time=27.216, Epoch time = 0.193, Avg epoch time=0.000
+
+[[0.29645029]
+ [0.33333334]
+ [0.22549455]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 122: at batch 1: Loss=0.350, Time=0.017
+Epoch 123: at batch 1: Loss=0.363, Time=0.019
+Epoch 124: at batch 1: Loss=0.345, Time=0.020
+Epoch 125: at batch 1: Loss=0.294, Time=0.021
+Epoch 126: at batch 1: Loss=0.280, Time=0.017
+Epoch 127: at batch 1: Loss=0.288, Time=0.018
+Epoch 128: at batch 1: Loss=0.297, Time=0.019
+Epoch 129: at batch 1: Loss=0.287, Time=0.024
+Epoch 130: at batch 1: Loss=0.315, Time=0.014
+Epoch 131: at batch 1: Loss=0.301, Time=0.016
+Epoch 131: Time=29.317, Epoch time = 0.163, Avg epoch time=0.000
+
+[[0.30820182]
+ [0.26398745]
+ [0.26398745]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 132: at batch 1: Loss=0.275, Time=0.022
+Epoch 133: at batch 1: Loss=0.346, Time=0.016
+Epoch 134: at batch 1: Loss=0.332, Time=0.016
+Epoch 135: at batch 1: Loss=0.361, Time=0.016
+Epoch 136: at batch 1: Loss=0.306, Time=0.019
+Epoch 137: at batch 1: Loss=0.311, Time=0.021
+Epoch 138: at batch 1: Loss=0.336, Time=0.018
+Epoch 139: at batch 1: Loss=0.353, Time=0.013
+Epoch 140: at batch 1: Loss=0.413, Time=0.016
+Epoch 141: at batch 1: Loss=0.398, Time=0.015
+Epoch 141: Time=31.465, Epoch time = 0.175, Avg epoch time=0.000
+
+[[0.35607219]
+ [0.33333334]
+ [0.43315014]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 142: at batch 1: Loss=0.399, Time=0.021
+Epoch 143: at batch 1: Loss=0.298, Time=0.022
+Epoch 144: at batch 1: Loss=0.271, Time=0.019
+Epoch 145: at batch 1: Loss=0.320, Time=0.019
+Epoch 146: at batch 1: Loss=0.332, Time=0.019
+Epoch 147: at batch 1: Loss=0.330, Time=0.016
+Epoch 148: at batch 1: Loss=0.377, Time=0.020
+Epoch 149: at batch 1: Loss=0.370, Time=0.020
+Epoch 150: at batch 1: Loss=0.317, Time=0.021
+Epoch 151: at batch 1: Loss=0.336, Time=0.019
+Epoch 151: Time=33.648, Epoch time = 0.189, Avg epoch time=0.000
+
+[[0.25228557]
+ [0.33333334]
+ [0.45458493]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 152: at batch 1: Loss=0.353, Time=0.014
+Epoch 153: at batch 1: Loss=0.353, Time=0.016
+Epoch 154: at batch 1: Loss=0.373, Time=0.022
+Epoch 155: at batch 1: Loss=0.421, Time=0.025
+Epoch 156: at batch 1: Loss=0.349, Time=0.017
+Epoch 157: at batch 1: Loss=0.315, Time=0.019
+Epoch 158: at batch 1: Loss=0.314, Time=0.015
+Epoch 159: at batch 1: Loss=0.334, Time=0.019
+Epoch 160: at batch 1: Loss=0.301, Time=0.017
+Epoch 161: at batch 1: Loss=0.309, Time=0.015
+Epoch 161: Time=35.771, Epoch time = 0.161, Avg epoch time=0.000
+
+[[0.33333334]
+ [0.33333334]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 162: at batch 1: Loss=0.393, Time=0.015
+Epoch 163: at batch 1: Loss=0.344, Time=0.022
+Epoch 164: at batch 1: Loss=0.440, Time=0.021
+Epoch 165: at batch 1: Loss=0.415, Time=0.020
+Epoch 166: at batch 1: Loss=0.383, Time=0.021
+Epoch 167: at batch 1: Loss=0.362, Time=0.016
+Epoch 168: at batch 1: Loss=0.370, Time=0.021
+Epoch 169: at batch 1: Loss=0.307, Time=0.021
+Epoch 170: at batch 1: Loss=0.307, Time=0.021
+Epoch 171: at batch 1: Loss=0.343, Time=0.018
+Epoch 171: Time=37.934, Epoch time = 0.205, Avg epoch time=0.000
+
+[[0.33333334]
+ [0.33381447]
+ [0.33721051]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 172: at batch 1: Loss=0.401, Time=0.024
+Epoch 173: at batch 1: Loss=0.342, Time=0.021
+Epoch 174: at batch 1: Loss=0.325, Time=0.024
+Epoch 175: at batch 1: Loss=0.324, Time=0.020
+Epoch 176: at batch 1: Loss=0.327, Time=0.025
+Epoch 177: at batch 1: Loss=0.293, Time=0.014
+Epoch 178: at batch 1: Loss=0.322, Time=0.013
+Epoch 179: at batch 1: Loss=0.411, Time=0.022
+Epoch 180: at batch 1: Loss=0.360, Time=0.013
+Epoch 181: at batch 1: Loss=0.358, Time=0.022
+Epoch 181: Time=40.090, Epoch time = 0.197, Avg epoch time=0.000
+
+[[0.25484875]
+ [0.28073868]
+ [0.74266666]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 182: at batch 1: Loss=0.306, Time=0.021
+Epoch 183: at batch 1: Loss=0.278, Time=0.023
+Epoch 184: at batch 1: Loss=0.344, Time=0.021
+Epoch 185: at batch 1: Loss=0.344, Time=0.014
+Epoch 186: at batch 1: Loss=0.422, Time=0.023
+Epoch 187: at batch 1: Loss=0.309, Time=0.021
+Epoch 188: at batch 1: Loss=0.305, Time=0.017
+Epoch 189: at batch 1: Loss=0.281, Time=0.017
+Epoch 190: at batch 1: Loss=0.276, Time=0.021
+Epoch 191: at batch 1: Loss=0.287, Time=0.022
+Epoch 191: Time=42.215, Epoch time = 0.200, Avg epoch time=0.000
+
+[[0.22490185]
+ [0.54682666]
+ [0.60920852]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 192: at batch 1: Loss=0.380, Time=0.023
+Epoch 193: at batch 1: Loss=0.365, Time=0.023
+Epoch 194: at batch 1: Loss=0.663, Time=0.016
+Epoch 195: at batch 1: Loss=0.467, Time=0.018
+Epoch 196: at batch 1: Loss=0.376, Time=0.016
+Epoch 197: at batch 1: Loss=0.316, Time=0.013
+Epoch 198: at batch 1: Loss=0.289, Time=0.017
+Epoch 199: at batch 1: Loss=0.323, Time=0.016
+Epoch 200: at batch 1: Loss=0.321, Time=0.016
+Epoch 201: at batch 1: Loss=0.282, Time=0.021
+Epoch 201: Time=44.379, Epoch time = 0.209, Avg epoch time=0.000
+
+[[0.27201667]
+ [0.32823619]
+ [0.41509008]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 202: at batch 1: Loss=0.476, Time=0.013
+Epoch 203: at batch 1: Loss=0.367, Time=0.020
+Epoch 204: at batch 1: Loss=0.345, Time=0.021
+Epoch 205: at batch 1: Loss=0.296, Time=0.018
+Epoch 206: at batch 1: Loss=0.308, Time=0.019
+Epoch 207: at batch 1: Loss=0.274, Time=0.016
+Epoch 208: at batch 1: Loss=0.258, Time=0.022
+Epoch 209: at batch 1: Loss=0.292, Time=0.019
+Epoch 210: at batch 1: Loss=0.268, Time=0.024
+Epoch 211: at batch 1: Loss=0.241, Time=0.019
+Epoch 211: Time=46.524, Epoch time = 0.183, Avg epoch time=0.000
+
+[[0.25701821]
+ [0.22490595]
+ [0.37176976]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 212: at batch 1: Loss=0.258, Time=0.021
+Epoch 213: at batch 1: Loss=0.268, Time=0.016
+Epoch 214: at batch 1: Loss=0.274, Time=0.019
+Epoch 215: at batch 1: Loss=0.272, Time=0.019
+Epoch 216: at batch 1: Loss=0.645, Time=0.022
+Epoch 217: at batch 1: Loss=0.493, Time=0.023
+Epoch 218: at batch 1: Loss=0.316, Time=0.014
+Epoch 219: at batch 1: Loss=0.595, Time=0.016
+Epoch 220: at batch 1: Loss=0.429, Time=0.019
+Epoch 221: at batch 1: Loss=0.346, Time=0.013
+Epoch 221: Time=48.648, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.33333334]
+ [0.23461239]
+ [0.32848561]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 222: at batch 1: Loss=0.338, Time=0.022
+Epoch 223: at batch 1: Loss=0.344, Time=0.017
+Epoch 224: at batch 1: Loss=0.286, Time=0.017
+Epoch 225: at batch 1: Loss=0.347, Time=0.024
+Epoch 226: at batch 1: Loss=0.353, Time=0.016
+Epoch 227: at batch 1: Loss=0.317, Time=0.023
+Epoch 228: at batch 1: Loss=0.335, Time=0.019
+Epoch 229: at batch 1: Loss=0.353, Time=0.023
+Epoch 230: at batch 1: Loss=0.306, Time=0.020
+Epoch 231: at batch 1: Loss=0.297, Time=0.022
+Epoch 231: Time=50.838, Epoch time = 0.197, Avg epoch time=0.000
+
+[[0.23672044]
+ [0.23672044]
+ [0.26286101]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 232: at batch 1: Loss=0.278, Time=0.016
+Epoch 233: at batch 1: Loss=0.293, Time=0.024
+Epoch 234: at batch 1: Loss=0.298, Time=0.022
+Epoch 235: at batch 1: Loss=0.271, Time=0.023
+Epoch 236: at batch 1: Loss=0.283, Time=0.024
+Epoch 237: at batch 1: Loss=0.276, Time=0.020
+Epoch 238: at batch 1: Loss=0.266, Time=0.020
+Epoch 239: at batch 1: Loss=0.409, Time=0.018
+Epoch 240: at batch 1: Loss=0.365, Time=0.022
+Epoch 241: at batch 1: Loss=0.323, Time=0.019
+Epoch 241: Time=53.032, Epoch time = 0.201, Avg epoch time=0.000
+
+[[0.22829008]
+ [0.23231103]
+ [0.26592425]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 242: at batch 1: Loss=0.407, Time=0.024
+Epoch 243: at batch 1: Loss=0.329, Time=0.017
+Epoch 244: at batch 1: Loss=0.299, Time=0.020
+Epoch 245: at batch 1: Loss=0.280, Time=0.022
+Epoch 246: at batch 1: Loss=0.280, Time=0.014
+Epoch 247: at batch 1: Loss=0.311, Time=0.016
+Epoch 248: at batch 1: Loss=0.310, Time=0.019
+Epoch 249: at batch 1: Loss=0.353, Time=0.014
+Epoch 250: at batch 1: Loss=0.340, Time=0.020
+Epoch 251: at batch 1: Loss=0.303, Time=0.022
+Epoch 251: Time=55.157, Epoch time = 0.183, Avg epoch time=0.000
+
+[[0.22867166]
+ [0.22867166]
+ [0.33333334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 252: at batch 1: Loss=0.301, Time=0.017
+Epoch 253: at batch 1: Loss=0.324, Time=0.022
+Epoch 254: at batch 1: Loss=0.342, Time=0.016
+Epoch 255: at batch 1: Loss=0.280, Time=0.022
+Epoch 256: at batch 1: Loss=0.329, Time=0.022
+Epoch 257: at batch 1: Loss=0.354, Time=0.021
+Epoch 258: at batch 1: Loss=0.333, Time=0.023
+Epoch 259: at batch 1: Loss=0.464, Time=0.016
+Epoch 260: at batch 1: Loss=0.319, Time=0.024
+Epoch 261: at batch 1: Loss=0.332, Time=0.021
+Epoch 261: Time=57.345, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.36243021]
+ [0.36243021]
+ [0.24163513]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 262: at batch 1: Loss=0.309, Time=0.024
+Epoch 263: at batch 1: Loss=0.288, Time=0.024
+Epoch 264: at batch 1: Loss=0.440, Time=0.016
+Epoch 265: at batch 1: Loss=0.335, Time=0.021
+Epoch 266: at batch 1: Loss=0.292, Time=0.016
+Epoch 267: at batch 1: Loss=0.285, Time=0.021
+Epoch 268: at batch 1: Loss=0.266, Time=0.021
+Epoch 269: at batch 1: Loss=0.265, Time=0.020
+Epoch 270: at batch 1: Loss=0.300, Time=0.019
+Epoch 271: at batch 1: Loss=0.395, Time=0.021
+Epoch 271: Time=59.512, Epoch time = 0.201, Avg epoch time=0.000
+
+[[0.31919554]
+ [0.25084022]
+ [0.29413003]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 272: at batch 1: Loss=0.316, Time=0.016
+Epoch 273: at batch 1: Loss=0.293, Time=0.024
+Epoch 274: at batch 1: Loss=0.291, Time=0.016
+Epoch 275: at batch 1: Loss=0.359, Time=0.022
+Epoch 276: at batch 1: Loss=0.363, Time=0.016
+Epoch 277: at batch 1: Loss=0.397, Time=0.018
+Epoch 278: at batch 1: Loss=0.350, Time=0.021
+Epoch 279: at batch 1: Loss=0.293, Time=0.024
+Epoch 280: at batch 1: Loss=0.312, Time=0.016
+Epoch 281: at batch 1: Loss=0.384, Time=0.024
+Epoch 281: Time=61.640, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.33333334]
+ [0.24366426]
+ [0.23465173]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 282: at batch 1: Loss=0.325, Time=0.022
+Epoch 283: at batch 1: Loss=0.293, Time=0.020
+Epoch 284: at batch 1: Loss=0.268, Time=0.022
+Epoch 285: at batch 1: Loss=0.267, Time=0.022
+Epoch 286: at batch 1: Loss=0.269, Time=0.017
+Epoch 287: at batch 1: Loss=0.264, Time=0.016
+Epoch 288: at batch 1: Loss=0.261, Time=0.014
+Epoch 289: at batch 1: Loss=0.320, Time=0.014
+Epoch 290: at batch 1: Loss=0.404, Time=0.023
+Epoch 291: at batch 1: Loss=0.321, Time=0.020
+Epoch 291: Time=63.870, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.2987543 ]
+ [0.32327127]
+ [0.32327127]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 292: at batch 1: Loss=0.297, Time=0.022
+Epoch 293: at batch 1: Loss=0.292, Time=0.017
+Epoch 294: at batch 1: Loss=0.308, Time=0.019
+Epoch 295: at batch 1: Loss=0.313, Time=0.019
+Epoch 296: at batch 1: Loss=0.297, Time=0.019
+Epoch 297: at batch 1: Loss=0.326, Time=0.024
+Epoch 298: at batch 1: Loss=0.293, Time=0.019
+Epoch 299: at batch 1: Loss=0.294, Time=0.019
+Epoch 300: at batch 1: Loss=0.288, Time=0.024
+Epoch 301: at batch 1: Loss=0.400, Time=0.024
+Epoch 301: Time=66.063, Epoch time = 0.204, Avg epoch time=0.000
+
+[[0.24034649]
+ [0.31341293]
+ [0.48767909]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 302: at batch 1: Loss=0.310, Time=0.020
+Epoch 303: at batch 1: Loss=0.316, Time=0.019
+Epoch 304: at batch 1: Loss=0.293, Time=0.016
+Epoch 305: at batch 1: Loss=0.349, Time=0.017
+Epoch 306: at batch 1: Loss=0.327, Time=0.022
+Epoch 307: at batch 1: Loss=0.293, Time=0.022
+Epoch 308: at batch 1: Loss=0.277, Time=0.021
+Epoch 309: at batch 1: Loss=0.291, Time=0.017
+Epoch 310: at batch 1: Loss=0.290, Time=0.022
+Epoch 311: at batch 1: Loss=0.295, Time=0.023
+Epoch 311: Time=68.181, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.33666158]
+ [0.22767472]
+ [0.32851881]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 312: at batch 1: Loss=0.279, Time=0.022
+Epoch 313: at batch 1: Loss=0.284, Time=0.018
+Epoch 314: at batch 1: Loss=0.274, Time=0.014
+Epoch 315: at batch 1: Loss=0.264, Time=0.013
+Epoch 316: at batch 1: Loss=0.266, Time=0.013
+Epoch 317: at batch 1: Loss=0.305, Time=0.017
+Epoch 318: at batch 1: Loss=0.333, Time=0.023
+Epoch 319: at batch 1: Loss=0.300, Time=0.017
+Epoch 320: at batch 1: Loss=0.292, Time=0.019
+Epoch 321: at batch 1: Loss=0.271, Time=0.021
+Epoch 321: Time=70.343, Epoch time = 0.196, Avg epoch time=0.000
+
+[[0.3304542 ]
+ [0.22400753]
+ [0.32226932]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 322: at batch 1: Loss=0.381, Time=0.025
+Epoch 323: at batch 1: Loss=0.313, Time=0.017
+Epoch 324: at batch 1: Loss=0.271, Time=0.014
+Epoch 325: at batch 1: Loss=0.308, Time=0.014
+Epoch 326: at batch 1: Loss=0.288, Time=0.024
+Epoch 327: at batch 1: Loss=0.304, Time=0.019
+Epoch 328: at batch 1: Loss=0.295, Time=0.019
+Epoch 329: at batch 1: Loss=0.317, Time=0.014
+Epoch 330: at batch 1: Loss=0.276, Time=0.019
+Epoch 331: at batch 1: Loss=0.255, Time=0.020
+Epoch 331: Time=72.506, Epoch time = 0.200, Avg epoch time=0.000
+
+[[0.30754128]
+ [0.24295926]
+ [0.32949093]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 332: at batch 1: Loss=0.293, Time=0.016
+Epoch 333: at batch 1: Loss=0.321, Time=0.017
+Epoch 334: at batch 1: Loss=0.302, Time=0.021
+Epoch 335: at batch 1: Loss=0.303, Time=0.017
+Epoch 336: at batch 1: Loss=0.309, Time=0.017
+Epoch 337: at batch 1: Loss=0.279, Time=0.013
+Epoch 338: at batch 1: Loss=0.266, Time=0.025
+Epoch 339: at batch 1: Loss=0.272, Time=0.020
+Epoch 340: at batch 1: Loss=0.296, Time=0.022
+Epoch 341: at batch 1: Loss=0.275, Time=0.019
+Epoch 341: Time=74.704, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.19733125]
+ [0.24867059]
+ [0.23940437]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 342: at batch 1: Loss=0.273, Time=0.019
+Epoch 343: at batch 1: Loss=0.264, Time=0.016
+Epoch 344: at batch 1: Loss=0.289, Time=0.019
+Epoch 345: at batch 1: Loss=0.275, Time=0.020
+Epoch 346: at batch 1: Loss=0.276, Time=0.020
+Epoch 347: at batch 1: Loss=0.336, Time=0.018
+Epoch 348: at batch 1: Loss=0.307, Time=0.019
+Epoch 349: at batch 1: Loss=0.314, Time=0.021
+Epoch 350: at batch 1: Loss=0.281, Time=0.016
+Epoch 351: at batch 1: Loss=0.267, Time=0.022
+Epoch 351: Time=76.866, Epoch time = 0.204, Avg epoch time=0.000
+
+[[0.25044826]
+ [0.59263176]
+ [0.2515521 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 352: at batch 1: Loss=0.304, Time=0.021
+Epoch 353: at batch 1: Loss=0.273, Time=0.021
+Epoch 354: at batch 1: Loss=0.274, Time=0.022
+Epoch 355: at batch 1: Loss=0.263, Time=0.022
+Epoch 356: at batch 1: Loss=0.254, Time=0.019
+Epoch 357: at batch 1: Loss=0.257, Time=0.022
+Epoch 358: at batch 1: Loss=0.508, Time=0.021
+Epoch 359: at batch 1: Loss=0.362, Time=0.014
+Epoch 360: at batch 1: Loss=0.319, Time=0.017
+Epoch 361: at batch 1: Loss=0.288, Time=0.017
+Epoch 361: Time=79.009, Epoch time = 0.178, Avg epoch time=0.000
+
+[[0.25459635]
+ [0.29880559]
+ [0.24487938]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 362: at batch 1: Loss=0.297, Time=0.019
+Epoch 363: at batch 1: Loss=0.299, Time=0.019
+Epoch 364: at batch 1: Loss=0.298, Time=0.024
+Epoch 365: at batch 1: Loss=0.298, Time=0.020
+Epoch 366: at batch 1: Loss=0.323, Time=0.020
+Epoch 367: at batch 1: Loss=0.301, Time=0.016
+Epoch 368: at batch 1: Loss=0.280, Time=0.018
+Epoch 369: at batch 1: Loss=0.294, Time=0.019
+Epoch 370: at batch 1: Loss=0.291, Time=0.021
+Epoch 371: at batch 1: Loss=0.295, Time=0.024
+Epoch 371: Time=81.187, Epoch time = 0.189, Avg epoch time=0.000
+
+[[0.30733508]
+ [0.33333334]
+ [0.30521211]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 372: at batch 1: Loss=0.376, Time=0.014
+Epoch 373: at batch 1: Loss=0.310, Time=0.013
+Epoch 374: at batch 1: Loss=0.280, Time=0.020
+Epoch 375: at batch 1: Loss=0.279, Time=0.019
+Epoch 376: at batch 1: Loss=0.296, Time=0.014
+Epoch 377: at batch 1: Loss=0.309, Time=0.013
+Epoch 378: at batch 1: Loss=0.289, Time=0.014
+Epoch 379: at batch 1: Loss=0.318, Time=0.016
+Epoch 380: at batch 1: Loss=0.325, Time=0.021
+Epoch 381: at batch 1: Loss=0.386, Time=0.020
+Epoch 381: Time=83.236, Epoch time = 0.185, Avg epoch time=0.000
+
+[[0.24977545]
+ [0.32332578]
+ [0.37129471]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 382: at batch 1: Loss=0.330, Time=0.021
+Epoch 383: at batch 1: Loss=0.305, Time=0.025
+Epoch 384: at batch 1: Loss=0.293, Time=0.016
+Epoch 385: at batch 1: Loss=0.301, Time=0.014
+Epoch 386: at batch 1: Loss=0.309, Time=0.021
+Epoch 387: at batch 1: Loss=0.326, Time=0.020
+Epoch 388: at batch 1: Loss=0.298, Time=0.022
+Epoch 389: at batch 1: Loss=0.284, Time=0.020
+Epoch 390: at batch 1: Loss=0.277, Time=0.019
+Epoch 391: at batch 1: Loss=0.300, Time=0.019
+Epoch 391: Time=85.424, Epoch time = 0.209, Avg epoch time=0.000
+
+[[0.21960004]
+ [0.22691655]
+ [0.24269827]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 392: at batch 1: Loss=0.323, Time=0.019
+Epoch 393: at batch 1: Loss=0.297, Time=0.017
+Epoch 394: at batch 1: Loss=0.289, Time=0.023
+Epoch 395: at batch 1: Loss=0.284, Time=0.019
+Epoch 396: at batch 1: Loss=0.289, Time=0.014
+Epoch 397: at batch 1: Loss=0.284, Time=0.016
+Epoch 398: at batch 1: Loss=0.267, Time=0.023
+Epoch 399: at batch 1: Loss=0.268, Time=0.025
+Epoch 400: at batch 1: Loss=0.266, Time=0.017
+Epoch 401: at batch 1: Loss=0.257, Time=0.017
+Epoch 401: Time=87.594, Epoch time = 0.195, Avg epoch time=0.000
+
+[[0.29824778]
+ [0.21713527]
+ [0.23477282]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 402: at batch 1: Loss=0.258, Time=0.016
+Epoch 403: at batch 1: Loss=0.284, Time=0.022
+Epoch 404: at batch 1: Loss=0.300, Time=0.022
+Epoch 405: at batch 1: Loss=0.272, Time=0.016
+Epoch 406: at batch 1: Loss=0.276, Time=0.023
+Epoch 407: at batch 1: Loss=0.271, Time=0.024
+Epoch 408: at batch 1: Loss=0.275, Time=0.022
+Epoch 409: at batch 1: Loss=0.290, Time=0.014
+Epoch 410: at batch 1: Loss=0.285, Time=0.017
+Epoch 411: at batch 1: Loss=0.301, Time=0.014
+Epoch 411: Time=89.722, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.28393272]
+ [0.22297025]
+ [0.32312396]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 412: at batch 1: Loss=0.309, Time=0.025
+Epoch 413: at batch 1: Loss=0.378, Time=0.019
+Epoch 414: at batch 1: Loss=0.350, Time=0.018
+Epoch 415: at batch 1: Loss=0.294, Time=0.024
+Epoch 416: at batch 1: Loss=0.290, Time=0.014
+Epoch 417: at batch 1: Loss=0.314, Time=0.014
+Epoch 418: at batch 1: Loss=0.313, Time=0.017
+Epoch 419: at batch 1: Loss=0.314, Time=0.019
+Epoch 420: at batch 1: Loss=0.293, Time=0.015
+Epoch 421: at batch 1: Loss=0.297, Time=0.024
+Epoch 421: Time=91.838, Epoch time = 0.192, Avg epoch time=0.000
+
+[[0.24921854]
+ [0.31577489]
+ [0.20310242]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 422: at batch 1: Loss=0.288, Time=0.015
+Epoch 423: at batch 1: Loss=0.293, Time=0.019
+Epoch 424: at batch 1: Loss=0.263, Time=0.016
+Epoch 425: at batch 1: Loss=0.243, Time=0.019
+Epoch 426: at batch 1: Loss=0.250, Time=0.014
+Epoch 427: at batch 1: Loss=0.256, Time=0.021
+Epoch 428: at batch 1: Loss=0.249, Time=0.023
+Epoch 429: at batch 1: Loss=0.295, Time=0.023
+Epoch 430: at batch 1: Loss=0.271, Time=0.019
+Epoch 431: at batch 1: Loss=0.262, Time=0.017
+Epoch 431: Time=93.913, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.47294065]
+ [0.25220606]
+ [0.47294065]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 432: at batch 1: Loss=0.301, Time=0.021
+Epoch 433: at batch 1: Loss=0.283, Time=0.018
+Epoch 434: at batch 1: Loss=0.380, Time=0.022
+Epoch 435: at batch 1: Loss=0.305, Time=0.020
+Epoch 436: at batch 1: Loss=0.295, Time=0.016
+Epoch 437: at batch 1: Loss=0.345, Time=0.017
+Epoch 438: at batch 1: Loss=0.317, Time=0.021
+Epoch 439: at batch 1: Loss=0.266, Time=0.023
+Epoch 440: at batch 1: Loss=0.278, Time=0.024
+Epoch 441: at batch 1: Loss=0.268, Time=0.018
+Epoch 441: Time=96.028, Epoch time = 0.188, Avg epoch time=0.000
+
+[[0.26872054]
+ [0.26872054]
+ [0.97846121]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 442: at batch 1: Loss=0.279, Time=0.019
+Epoch 443: at batch 1: Loss=0.271, Time=0.023
+Epoch 444: at batch 1: Loss=0.265, Time=0.022
+Epoch 445: at batch 1: Loss=0.262, Time=0.016
+Epoch 446: at batch 1: Loss=0.251, Time=0.020
+Epoch 447: at batch 1: Loss=0.308, Time=0.013
+Epoch 448: at batch 1: Loss=0.289, Time=0.024
+Epoch 449: at batch 1: Loss=0.313, Time=0.017
+Epoch 450: at batch 1: Loss=0.286, Time=0.018
+Epoch 451: at batch 1: Loss=0.281, Time=0.016
+Epoch 451: Time=98.149, Epoch time = 0.173, Avg epoch time=0.000
+
+[[0.3200247 ]
+ [0.24240868]
+ [0.24774979]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 452: at batch 1: Loss=0.327, Time=0.019
+Epoch 453: at batch 1: Loss=0.287, Time=0.014
+Epoch 454: at batch 1: Loss=0.273, Time=0.018
+Epoch 455: at batch 1: Loss=0.300, Time=0.016
+Epoch 456: at batch 1: Loss=0.283, Time=0.022
+Epoch 457: at batch 1: Loss=0.277, Time=0.013
+Epoch 458: at batch 1: Loss=0.264, Time=0.013
+Epoch 459: at batch 1: Loss=0.279, Time=0.014
+Epoch 460: at batch 1: Loss=0.272, Time=0.019
+Epoch 461: at batch 1: Loss=0.268, Time=0.020
+Epoch 461: Time=100.175, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.23584682]
+ [0.27433303]
+ [0.24316603]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 462: at batch 1: Loss=0.269, Time=0.023
+Epoch 463: at batch 1: Loss=0.263, Time=0.015
+Epoch 464: at batch 1: Loss=0.299, Time=0.019
+Epoch 465: at batch 1: Loss=0.302, Time=0.018
+Epoch 466: at batch 1: Loss=0.273, Time=0.018
+Epoch 467: at batch 1: Loss=0.280, Time=0.015
+Epoch 468: at batch 1: Loss=0.305, Time=0.024
+Epoch 469: at batch 1: Loss=0.286, Time=0.021
+Epoch 470: at batch 1: Loss=0.275, Time=0.024
+Epoch 471: at batch 1: Loss=0.275, Time=0.018
+Epoch 471: Time=102.308, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.24540257]
+ [0.24218237]
+ [0.22524701]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 472: at batch 1: Loss=0.280, Time=0.019
+Epoch 473: at batch 1: Loss=0.265, Time=0.019
+Epoch 474: at batch 1: Loss=0.272, Time=0.022
+Epoch 475: at batch 1: Loss=0.268, Time=0.023
+Epoch 476: at batch 1: Loss=0.255, Time=0.021
+Epoch 477: at batch 1: Loss=0.255, Time=0.020
+Epoch 478: at batch 1: Loss=0.284, Time=0.025
+Epoch 479: at batch 1: Loss=0.326, Time=0.024
+Epoch 480: at batch 1: Loss=0.325, Time=0.022
+Epoch 481: at batch 1: Loss=0.276, Time=0.016
+Epoch 481: Time=104.474, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.39092755]
+ [0.22905278]
+ [0.20440573]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 482: at batch 1: Loss=0.271, Time=0.024
+Epoch 483: at batch 1: Loss=0.403, Time=0.022
+Epoch 484: at batch 1: Loss=0.321, Time=0.014
+Epoch 485: at batch 1: Loss=0.331, Time=0.017
+Epoch 486: at batch 1: Loss=0.277, Time=0.019
+Epoch 487: at batch 1: Loss=0.304, Time=0.019
+Epoch 488: at batch 1: Loss=0.311, Time=0.021
+Epoch 489: at batch 1: Loss=0.293, Time=0.019
+Epoch 490: at batch 1: Loss=0.276, Time=0.021
+Epoch 491: at batch 1: Loss=0.275, Time=0.024
+Epoch 491: Time=106.630, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.33345413]
+ [0.24545592]
+ [0.24545592]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 492: at batch 1: Loss=0.291, Time=0.023
+Epoch 493: at batch 1: Loss=0.261, Time=0.022
+Epoch 494: at batch 1: Loss=0.279, Time=0.021
+Epoch 495: at batch 1: Loss=0.297, Time=0.014
+Epoch 496: at batch 1: Loss=0.278, Time=0.015
+Epoch 497: at batch 1: Loss=0.261, Time=0.019
+Epoch 498: at batch 1: Loss=0.276, Time=0.016
+Epoch 499: at batch 1: Loss=0.277, Time=0.018
+Epoch 500: at batch 1: Loss=0.265, Time=0.022
+Epoch 501: at batch 1: Loss=0.267, Time=0.021
+Epoch 501: Time=108.686, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.22017486]
+ [0.25438273]
+ [0.28378791]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 502: at batch 1: Loss=0.265, Time=0.018
+Epoch 503: at batch 1: Loss=0.274, Time=0.015
+Epoch 504: at batch 1: Loss=0.264, Time=0.014
+Epoch 505: at batch 1: Loss=0.262, Time=0.016
+Epoch 506: at batch 1: Loss=0.275, Time=0.019
+Epoch 507: at batch 1: Loss=0.274, Time=0.015
+Epoch 508: at batch 1: Loss=0.284, Time=0.019
+Epoch 509: at batch 1: Loss=0.432, Time=0.018
+Epoch 510: at batch 1: Loss=0.482, Time=0.016
+Epoch 511: at batch 1: Loss=0.312, Time=0.018
+Epoch 511: Time=110.789, Epoch time = 0.176, Avg epoch time=0.000
+
+[[0.21824878]
+ [0.24309987]
+ [0.22694387]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 512: at batch 1: Loss=0.293, Time=0.022
+Epoch 513: at batch 1: Loss=0.335, Time=0.021
+Epoch 514: at batch 1: Loss=0.295, Time=0.015
+Epoch 515: at batch 1: Loss=0.272, Time=0.022
+Epoch 516: at batch 1: Loss=0.292, Time=0.021
+Epoch 517: at batch 1: Loss=0.258, Time=0.023
+Epoch 518: at batch 1: Loss=0.274, Time=0.016
+Epoch 519: at batch 1: Loss=0.303, Time=0.023
+Epoch 520: at batch 1: Loss=0.281, Time=0.020
+Epoch 521: at batch 1: Loss=0.269, Time=0.019
+Epoch 521: Time=112.907, Epoch time = 0.169, Avg epoch time=0.000
+
+[[0.26979277]
+ [0.27582347]
+ [0.21826279]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 522: at batch 1: Loss=0.275, Time=0.021
+Epoch 523: at batch 1: Loss=0.275, Time=0.016
+Epoch 524: at batch 1: Loss=0.278, Time=0.018
+Epoch 525: at batch 1: Loss=0.370, Time=0.022
+Epoch 526: at batch 1: Loss=0.298, Time=0.023
+Epoch 527: at batch 1: Loss=0.284, Time=0.019
+Epoch 528: at batch 1: Loss=0.303, Time=0.019
+Epoch 529: at batch 1: Loss=0.311, Time=0.016
+Epoch 530: at batch 1: Loss=0.290, Time=0.023
+Epoch 531: at batch 1: Loss=0.276, Time=0.016
+Epoch 531: Time=114.954, Epoch time = 0.170, Avg epoch time=0.000
+
+[[0.29581216]
+ [0.32665753]
+ [0.22412121]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 532: at batch 1: Loss=0.276, Time=0.013
+Epoch 533: at batch 1: Loss=0.407, Time=0.016
+Epoch 534: at batch 1: Loss=0.337, Time=0.017
+Epoch 535: at batch 1: Loss=0.293, Time=0.018
+Epoch 536: at batch 1: Loss=0.267, Time=0.018
+Epoch 537: at batch 1: Loss=0.303, Time=0.020
+Epoch 538: at batch 1: Loss=0.316, Time=0.019
+Epoch 539: at batch 1: Loss=0.270, Time=0.022
+Epoch 540: at batch 1: Loss=0.258, Time=0.018
+Epoch 541: at batch 1: Loss=0.265, Time=0.014
+Epoch 541: Time=117.094, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.22767551]
+ [0.23326357]
+ [0.21963416]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 542: at batch 1: Loss=0.406, Time=0.023
+Epoch 543: at batch 1: Loss=0.370, Time=0.021
+Epoch 544: at batch 1: Loss=0.347, Time=0.017
+Epoch 545: at batch 1: Loss=0.302, Time=0.021
+Epoch 546: at batch 1: Loss=0.314, Time=0.024
+Epoch 547: at batch 1: Loss=0.428, Time=0.021
+Epoch 548: at batch 1: Loss=0.294, Time=0.024
+Epoch 549: at batch 1: Loss=0.358, Time=0.019
+Epoch 550: at batch 1: Loss=0.351, Time=0.022
+Epoch 551: at batch 1: Loss=0.290, Time=0.014
+Epoch 551: Time=119.254, Epoch time = 0.172, Avg epoch time=0.000
+
+[[0.25437811]
+ [0.35667562]
+ [0.27664769]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 552: at batch 1: Loss=0.266, Time=0.016
+Epoch 553: at batch 1: Loss=0.283, Time=0.013
+Epoch 554: at batch 1: Loss=0.291, Time=0.020
+Epoch 555: at batch 1: Loss=0.292, Time=0.019
+Epoch 556: at batch 1: Loss=0.261, Time=0.020
+Epoch 557: at batch 1: Loss=0.294, Time=0.016
+Epoch 558: at batch 1: Loss=0.288, Time=0.017
+Epoch 559: at batch 1: Loss=0.266, Time=0.014
+Epoch 560: at batch 1: Loss=0.252, Time=0.020
+Epoch 561: at batch 1: Loss=0.250, Time=0.016
+Epoch 561: Time=121.383, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.24573667]
+ [0.29009148]
+ [0.22800732]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 562: at batch 1: Loss=0.544, Time=0.021
+Epoch 563: at batch 1: Loss=0.394, Time=0.025
+Epoch 564: at batch 1: Loss=0.319, Time=0.019
+Epoch 565: at batch 1: Loss=0.318, Time=0.018
+Epoch 566: at batch 1: Loss=0.285, Time=0.014
+Epoch 567: at batch 1: Loss=0.265, Time=0.022
+Epoch 568: at batch 1: Loss=0.267, Time=0.019
+Epoch 569: at batch 1: Loss=0.258, Time=0.019
+Epoch 570: at batch 1: Loss=0.290, Time=0.019
+Epoch 571: at batch 1: Loss=0.274, Time=0.022
+Epoch 571: Time=123.471, Epoch time = 0.174, Avg epoch time=0.000
+
+[[0.30307445]
+ [0.30969495]
+ [0.24368797]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 572: at batch 1: Loss=0.274, Time=0.014
+Epoch 573: at batch 1: Loss=0.313, Time=0.014
+Epoch 574: at batch 1: Loss=0.273, Time=0.024
+Epoch 575: at batch 1: Loss=0.260, Time=0.028
+Epoch 576: at batch 1: Loss=0.261, Time=0.019
+Epoch 577: at batch 1: Loss=0.264, Time=0.016
+Epoch 578: at batch 1: Loss=0.265, Time=0.024
+Epoch 579: at batch 1: Loss=0.284, Time=0.021
+Epoch 580: at batch 1: Loss=0.254, Time=0.017
+Epoch 581: at batch 1: Loss=0.390, Time=0.014
+Epoch 581: Time=125.597, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.20509982]
+ [0.27797744]
+ [0.26542956]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 582: at batch 1: Loss=0.353, Time=0.021
+Epoch 583: at batch 1: Loss=0.333, Time=0.014
+Epoch 584: at batch 1: Loss=0.309, Time=0.016
+Epoch 585: at batch 1: Loss=0.294, Time=0.016
+Epoch 586: at batch 1: Loss=0.265, Time=0.015
+Epoch 587: at batch 1: Loss=0.263, Time=0.018
+Epoch 588: at batch 1: Loss=0.261, Time=0.016
+Epoch 589: at batch 1: Loss=0.278, Time=0.016
+Epoch 590: at batch 1: Loss=0.317, Time=0.020
+Epoch 591: at batch 1: Loss=0.275, Time=0.018
+Epoch 591: Time=127.600, Epoch time = 0.183, Avg epoch time=0.000
+
+[[0.30278635]
+ [0.32978359]
+ [0.23415996]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 592: at batch 1: Loss=0.270, Time=0.014
+Epoch 593: at batch 1: Loss=0.283, Time=0.015
+Epoch 594: at batch 1: Loss=0.267, Time=0.018
+Epoch 595: at batch 1: Loss=0.279, Time=0.024
+Epoch 596: at batch 1: Loss=0.341, Time=0.022
+Epoch 597: at batch 1: Loss=0.343, Time=0.015
+Epoch 598: at batch 1: Loss=0.288, Time=0.024
+Epoch 599: at batch 1: Loss=0.267, Time=0.016
+Epoch 600: at batch 1: Loss=0.251, Time=0.023
+Epoch 601: at batch 1: Loss=0.257, Time=0.020
+Epoch 601: Time=129.713, Epoch time = 0.162, Avg epoch time=0.000
+
+[[0.30815428]
+ [0.2210446 ]
+ [0.30815428]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 602: at batch 1: Loss=0.256, Time=0.014
+Epoch 603: at batch 1: Loss=0.256, Time=0.016
+Epoch 604: at batch 1: Loss=0.244, Time=0.016
+Epoch 605: at batch 1: Loss=0.254, Time=0.013
+Epoch 606: at batch 1: Loss=0.255, Time=0.015
+Epoch 607: at batch 1: Loss=0.257, Time=0.025
+Epoch 608: at batch 1: Loss=0.248, Time=0.024
+Epoch 609: at batch 1: Loss=0.280, Time=0.019
+Epoch 610: at batch 1: Loss=0.333, Time=0.023
+Epoch 611: at batch 1: Loss=0.395, Time=0.013
+Epoch 611: Time=131.799, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.24619043]
+ [0.23422216]
+ [0.2473253 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 612: at batch 1: Loss=0.309, Time=0.025
+Epoch 613: at batch 1: Loss=0.287, Time=0.022
+Epoch 614: at batch 1: Loss=0.270, Time=0.019
+Epoch 615: at batch 1: Loss=0.267, Time=0.018
+Epoch 616: at batch 1: Loss=0.257, Time=0.014
+Epoch 617: at batch 1: Loss=0.277, Time=0.014
+Epoch 618: at batch 1: Loss=0.323, Time=0.013
+Epoch 619: at batch 1: Loss=0.262, Time=0.022
+Epoch 620: at batch 1: Loss=0.288, Time=0.016
+Epoch 621: at batch 1: Loss=0.280, Time=0.021
+Epoch 621: Time=133.893, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.28242645]
+ [0.21553783]
+ [0.24889064]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 622: at batch 1: Loss=0.254, Time=0.020
+Epoch 623: at batch 1: Loss=0.257, Time=0.018
+Epoch 624: at batch 1: Loss=0.472, Time=0.018
+Epoch 625: at batch 1: Loss=0.392, Time=0.017
+Epoch 626: at batch 1: Loss=0.303, Time=0.018
+Epoch 627: at batch 1: Loss=0.297, Time=0.021
+Epoch 628: at batch 1: Loss=0.299, Time=0.015
+Epoch 629: at batch 1: Loss=0.285, Time=0.017
+Epoch 630: at batch 1: Loss=0.311, Time=0.024
+Epoch 631: at batch 1: Loss=0.277, Time=0.014
+Epoch 631: Time=136.019, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.27503973]
+ [0.27503973]
+ [0.27653256]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 632: at batch 1: Loss=0.281, Time=0.019
+Epoch 633: at batch 1: Loss=0.284, Time=0.015
+Epoch 634: at batch 1: Loss=0.275, Time=0.019
+Epoch 635: at batch 1: Loss=0.267, Time=0.024
+Epoch 636: at batch 1: Loss=0.290, Time=0.020
+Epoch 637: at batch 1: Loss=0.267, Time=0.026
+Epoch 638: at batch 1: Loss=0.251, Time=0.018
+Epoch 639: at batch 1: Loss=0.261, Time=0.016
+Epoch 640: at batch 1: Loss=0.271, Time=0.014
+Epoch 641: at batch 1: Loss=0.402, Time=0.019
+Epoch 641: Time=138.151, Epoch time = 0.178, Avg epoch time=0.000
+
+[[0.26822293]
+ [0.25695753]
+ [0.25695753]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 642: at batch 1: Loss=0.330, Time=0.023
+Epoch 643: at batch 1: Loss=0.292, Time=0.016
+Epoch 644: at batch 1: Loss=0.270, Time=0.018
+Epoch 645: at batch 1: Loss=0.296, Time=0.022
+Epoch 646: at batch 1: Loss=0.333, Time=0.013
+Epoch 647: at batch 1: Loss=0.319, Time=0.024
+Epoch 648: at batch 1: Loss=0.292, Time=0.019
+Epoch 649: at batch 1: Loss=0.277, Time=0.024
+Epoch 650: at batch 1: Loss=0.339, Time=0.016
+Epoch 651: at batch 1: Loss=0.289, Time=0.022
+Epoch 651: Time=140.333, Epoch time = 0.210, Avg epoch time=0.000
+
+[[0.24254368]
+ [0.3976576 ]
+ [0.29324555]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 652: at batch 1: Loss=0.288, Time=0.013
+Epoch 653: at batch 1: Loss=0.288, Time=0.021
+Epoch 654: at batch 1: Loss=0.263, Time=0.017
+Epoch 655: at batch 1: Loss=0.266, Time=0.024
+Epoch 656: at batch 1: Loss=0.499, Time=0.022
+Epoch 657: at batch 1: Loss=0.344, Time=0.018
+Epoch 658: at batch 1: Loss=0.302, Time=0.019
+Epoch 659: at batch 1: Loss=0.308, Time=0.015
+Epoch 660: at batch 1: Loss=0.257, Time=0.020
+Epoch 661: at batch 1: Loss=0.290, Time=0.023
+Epoch 661: Time=142.495, Epoch time = 0.200, Avg epoch time=0.000
+
+[[0.21511789]
+ [0.27214345]
+ [0.24186438]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 662: at batch 1: Loss=0.278, Time=0.014
+Epoch 663: at batch 1: Loss=0.271, Time=0.022
+Epoch 664: at batch 1: Loss=0.279, Time=0.014
+Epoch 665: at batch 1: Loss=0.272, Time=0.021
+Epoch 666: at batch 1: Loss=0.312, Time=0.022
+Epoch 667: at batch 1: Loss=0.286, Time=0.017
+Epoch 668: at batch 1: Loss=0.271, Time=0.013
+Epoch 669: at batch 1: Loss=0.270, Time=0.017
+Epoch 670: at batch 1: Loss=0.283, Time=0.020
+Epoch 671: at batch 1: Loss=0.280, Time=0.021
+Epoch 671: Time=144.574, Epoch time = 0.189, Avg epoch time=0.000
+
+[[0.22751845]
+ [0.3289952 ]
+ [0.23638622]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 672: at batch 1: Loss=0.267, Time=0.022
+Epoch 673: at batch 1: Loss=0.256, Time=0.021
+Epoch 674: at batch 1: Loss=0.271, Time=0.016
+Epoch 675: at batch 1: Loss=0.273, Time=0.021
+Epoch 676: at batch 1: Loss=0.284, Time=0.013
+Epoch 677: at batch 1: Loss=0.265, Time=0.016
+Epoch 678: at batch 1: Loss=0.270, Time=0.019
+Epoch 679: at batch 1: Loss=0.356, Time=0.016
+Epoch 680: at batch 1: Loss=0.297, Time=0.013
+Epoch 681: at batch 1: Loss=0.259, Time=0.019
+Epoch 681: Time=146.722, Epoch time = 0.196, Avg epoch time=0.000
+
+[[0.2417448 ]
+ [0.31829032]
+ [0.26731181]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 682: at batch 1: Loss=0.298, Time=0.013
+Epoch 683: at batch 1: Loss=0.266, Time=0.014
+Epoch 684: at batch 1: Loss=0.270, Time=0.020
+Epoch 685: at batch 1: Loss=0.259, Time=0.022
+Epoch 686: at batch 1: Loss=0.250, Time=0.014
+Epoch 687: at batch 1: Loss=0.257, Time=0.014
+Epoch 688: at batch 1: Loss=0.256, Time=0.014
+Epoch 689: at batch 1: Loss=0.261, Time=0.020
+Epoch 690: at batch 1: Loss=0.285, Time=0.018
+Epoch 691: at batch 1: Loss=0.313, Time=0.016
+Epoch 691: Time=148.835, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.23994023]
+ [0.23738758]
+ [0.23738758]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 692: at batch 1: Loss=0.268, Time=0.017
+Epoch 693: at batch 1: Loss=0.281, Time=0.021
+Epoch 694: at batch 1: Loss=0.281, Time=0.020
+Epoch 695: at batch 1: Loss=0.255, Time=0.014
+Epoch 696: at batch 1: Loss=0.289, Time=0.019
+Epoch 697: at batch 1: Loss=0.262, Time=0.017
+Epoch 698: at batch 1: Loss=0.280, Time=0.022
+Epoch 699: at batch 1: Loss=0.302, Time=0.019
+Epoch 700: at batch 1: Loss=0.301, Time=0.024
+Epoch 701: at batch 1: Loss=0.311, Time=0.019
+Epoch 701: Time=150.994, Epoch time = 0.186, Avg epoch time=0.000
+
+[[0.24186738]
+ [0.22361362]
+ [0.31231308]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 702: at batch 1: Loss=0.284, Time=0.014
+Epoch 703: at batch 1: Loss=0.299, Time=0.019
+Epoch 704: at batch 1: Loss=0.289, Time=0.016
+Epoch 705: at batch 1: Loss=0.262, Time=0.022
+Epoch 706: at batch 1: Loss=0.250, Time=0.024
+Epoch 707: at batch 1: Loss=0.251, Time=0.017
+Epoch 708: at batch 1: Loss=0.260, Time=0.016
+Epoch 709: at batch 1: Loss=0.257, Time=0.021
+Epoch 710: at batch 1: Loss=0.256, Time=0.021
+Epoch 711: at batch 1: Loss=0.275, Time=0.024
+Epoch 711: Time=153.126, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.25989175]
+ [0.30528703]
+ [0.25593069]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 712: at batch 1: Loss=0.339, Time=0.020
+Epoch 713: at batch 1: Loss=0.351, Time=0.019
+Epoch 714: at batch 1: Loss=0.285, Time=0.019
+Epoch 715: at batch 1: Loss=0.284, Time=0.017
+Epoch 716: at batch 1: Loss=0.253, Time=0.016
+Epoch 717: at batch 1: Loss=0.323, Time=0.022
+Epoch 718: at batch 1: Loss=0.319, Time=0.016
+Epoch 719: at batch 1: Loss=0.271, Time=0.024
+Epoch 720: at batch 1: Loss=0.290, Time=0.019
+Epoch 721: at batch 1: Loss=0.282, Time=0.015
+Epoch 721: Time=155.249, Epoch time = 0.185, Avg epoch time=0.000
+
+[[0.24921693]
+ [0.2333107 ]
+ [0.2333107 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 722: at batch 1: Loss=0.283, Time=0.024
+Epoch 723: at batch 1: Loss=0.390, Time=0.016
+Epoch 724: at batch 1: Loss=0.343, Time=0.019
+Epoch 725: at batch 1: Loss=0.370, Time=0.018
+Epoch 726: at batch 1: Loss=0.324, Time=0.023
+Epoch 727: at batch 1: Loss=0.325, Time=0.015
+Epoch 728: at batch 1: Loss=0.282, Time=0.019
+Epoch 729: at batch 1: Loss=0.270, Time=0.017
+Epoch 730: at batch 1: Loss=0.273, Time=0.022
+Epoch 731: at batch 1: Loss=0.270, Time=0.016
+Epoch 731: Time=157.489, Epoch time = 0.204, Avg epoch time=0.000
+
+[[0.38400126]
+ [0.23778582]
+ [0.23778582]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 732: at batch 1: Loss=0.269, Time=0.019
+Epoch 733: at batch 1: Loss=0.274, Time=0.023
+Epoch 734: at batch 1: Loss=0.276, Time=0.021
+Epoch 735: at batch 1: Loss=0.309, Time=0.019
+Epoch 736: at batch 1: Loss=0.267, Time=0.024
+Epoch 737: at batch 1: Loss=0.282, Time=0.016
+Epoch 738: at batch 1: Loss=0.289, Time=0.016
+Epoch 739: at batch 1: Loss=0.303, Time=0.014
+Epoch 740: at batch 1: Loss=0.272, Time=0.024
+Epoch 741: at batch 1: Loss=0.257, Time=0.018
+Epoch 741: Time=159.634, Epoch time = 0.199, Avg epoch time=0.000
+
+[[0.25065705]
+ [0.2294517 ]
+ [0.23606116]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 742: at batch 1: Loss=0.280, Time=0.019
+Epoch 743: at batch 1: Loss=0.268, Time=0.019
+Epoch 744: at batch 1: Loss=0.272, Time=0.017
+Epoch 745: at batch 1: Loss=0.265, Time=0.018
+Epoch 746: at batch 1: Loss=0.266, Time=0.018
+Epoch 747: at batch 1: Loss=0.274, Time=0.014
+Epoch 748: at batch 1: Loss=0.268, Time=0.021
+Epoch 749: at batch 1: Loss=0.284, Time=0.016
+Epoch 750: at batch 1: Loss=0.272, Time=0.018
+Epoch 751: at batch 1: Loss=0.268, Time=0.021
+Epoch 751: Time=161.767, Epoch time = 0.204, Avg epoch time=0.000
+
+[[0.22541009]
+ [0.30089304]
+ [0.22541009]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 752: at batch 1: Loss=0.255, Time=0.016
+Epoch 753: at batch 1: Loss=0.281, Time=0.014
+Epoch 754: at batch 1: Loss=0.269, Time=0.018
+Epoch 755: at batch 1: Loss=0.246, Time=0.015
+Epoch 756: at batch 1: Loss=0.453, Time=0.016
+Epoch 757: at batch 1: Loss=0.291, Time=0.020
+Epoch 758: at batch 1: Loss=0.301, Time=0.020
+Epoch 759: at batch 1: Loss=0.272, Time=0.014
+Epoch 760: at batch 1: Loss=0.269, Time=0.021
+Epoch 761: at batch 1: Loss=0.267, Time=0.023
+Epoch 761: Time=163.839, Epoch time = 0.197, Avg epoch time=0.000
+
+[[0.26881048]
+ [0.38191319]
+ [0.2461416 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 762: at batch 1: Loss=0.310, Time=0.016
+Epoch 763: at batch 1: Loss=0.279, Time=0.020
+Epoch 764: at batch 1: Loss=0.262, Time=0.018
+Epoch 765: at batch 1: Loss=0.250, Time=0.020
+Epoch 766: at batch 1: Loss=0.263, Time=0.021
+Epoch 767: at batch 1: Loss=0.278, Time=0.016
+Epoch 768: at batch 1: Loss=0.260, Time=0.021
+Epoch 769: at batch 1: Loss=0.267, Time=0.018
+Epoch 770: at batch 1: Loss=0.262, Time=0.024
+Epoch 771: at batch 1: Loss=0.277, Time=0.015
+Epoch 771: Time=165.989, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.28785953]
+ [0.22859173]
+ [0.26270285]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 772: at batch 1: Loss=0.262, Time=0.014
+Epoch 773: at batch 1: Loss=0.355, Time=0.022
+Epoch 774: at batch 1: Loss=0.340, Time=0.014
+Epoch 775: at batch 1: Loss=0.541, Time=0.016
+Epoch 776: at batch 1: Loss=0.446, Time=0.019
+Epoch 777: at batch 1: Loss=0.313, Time=0.013
+Epoch 778: at batch 1: Loss=0.271, Time=0.021
+Epoch 779: at batch 1: Loss=0.261, Time=0.022
+Epoch 780: at batch 1: Loss=0.258, Time=0.019
+Epoch 781: at batch 1: Loss=0.253, Time=0.022
+Epoch 781: Time=168.136, Epoch time = 0.204, Avg epoch time=0.000
+
+[[0.22842108]
+ [0.26021072]
+ [0.22451435]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 782: at batch 1: Loss=0.255, Time=0.019
+Epoch 783: at batch 1: Loss=0.278, Time=0.016
+Epoch 784: at batch 1: Loss=0.271, Time=0.019
+Epoch 785: at batch 1: Loss=0.297, Time=0.016
+Epoch 786: at batch 1: Loss=0.273, Time=0.018
+Epoch 787: at batch 1: Loss=0.299, Time=0.019
+Epoch 788: at batch 1: Loss=0.257, Time=0.023
+Epoch 789: at batch 1: Loss=0.258, Time=0.024
+Epoch 790: at batch 1: Loss=0.250, Time=0.024
+Epoch 791: at batch 1: Loss=0.247, Time=0.025
+Epoch 791: Time=170.252, Epoch time = 0.174, Avg epoch time=0.000
+
+[[0.24326701]
+ [0.23753166]
+ [0.2227592 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 792: at batch 1: Loss=0.329, Time=0.022
+Epoch 793: at batch 1: Loss=0.298, Time=0.024
+Epoch 794: at batch 1: Loss=0.275, Time=0.017
+Epoch 795: at batch 1: Loss=0.264, Time=0.019
+Epoch 796: at batch 1: Loss=0.257, Time=0.016
+Epoch 797: at batch 1: Loss=0.246, Time=0.016
+Epoch 798: at batch 1: Loss=0.320, Time=0.019
+Epoch 799: at batch 1: Loss=0.273, Time=0.018
+Epoch 800: at batch 1: Loss=0.269, Time=0.023
+Epoch 801: at batch 1: Loss=0.258, Time=0.017
+Epoch 801: Time=172.424, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.22697778]
+ [0.26101187]
+ [0.23052113]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 802: at batch 1: Loss=0.264, Time=0.015
+Epoch 803: at batch 1: Loss=0.261, Time=0.023
+Epoch 804: at batch 1: Loss=0.262, Time=0.019
+Epoch 805: at batch 1: Loss=0.337, Time=0.015
+Epoch 806: at batch 1: Loss=0.331, Time=0.013
+Epoch 807: at batch 1: Loss=0.262, Time=0.014
+Epoch 808: at batch 1: Loss=0.290, Time=0.016
+Epoch 809: at batch 1: Loss=0.273, Time=0.013
+Epoch 810: at batch 1: Loss=0.269, Time=0.022
+Epoch 811: at batch 1: Loss=0.250, Time=0.016
+Epoch 811: Time=174.482, Epoch time = 0.161, Avg epoch time=0.000
+
+[[0.24218424]
+ [0.21819651]
+ [0.240871  ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 812: at batch 1: Loss=0.252, Time=0.016
+Epoch 813: at batch 1: Loss=0.249, Time=0.016
+Epoch 814: at batch 1: Loss=0.237, Time=0.019
+Epoch 815: at batch 1: Loss=0.240, Time=0.016
+Epoch 816: at batch 1: Loss=0.266, Time=0.020
+Epoch 817: at batch 1: Loss=0.261, Time=0.016
+Epoch 818: at batch 1: Loss=0.290, Time=0.015
+Epoch 819: at batch 1: Loss=0.566, Time=0.016
+Epoch 820: at batch 1: Loss=0.451, Time=0.019
+Epoch 821: at batch 1: Loss=0.287, Time=0.023
+Epoch 821: Time=176.627, Epoch time = 0.197, Avg epoch time=0.000
+
+[[0.25265029]
+ [0.25265029]
+ [0.25265029]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 822: at batch 1: Loss=0.302, Time=0.019
+Epoch 823: at batch 1: Loss=0.279, Time=0.016
+Epoch 824: at batch 1: Loss=0.251, Time=0.019
+Epoch 825: at batch 1: Loss=0.254, Time=0.016
+Epoch 826: at batch 1: Loss=0.250, Time=0.024
+Epoch 827: at batch 1: Loss=0.249, Time=0.014
+Epoch 828: at batch 1: Loss=0.276, Time=0.019
+Epoch 829: at batch 1: Loss=0.274, Time=0.017
+Epoch 830: at batch 1: Loss=0.285, Time=0.021
+Epoch 831: at batch 1: Loss=0.297, Time=0.017
+Epoch 831: Time=178.706, Epoch time = 0.160, Avg epoch time=0.000
+
+[[0.22410582]
+ [0.30729735]
+ [0.21768273]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 832: at batch 1: Loss=0.273, Time=0.022
+Epoch 833: at batch 1: Loss=0.327, Time=0.013
+Epoch 834: at batch 1: Loss=0.275, Time=0.019
+Epoch 835: at batch 1: Loss=0.324, Time=0.022
+Epoch 836: at batch 1: Loss=0.270, Time=0.023
+Epoch 837: at batch 1: Loss=0.269, Time=0.017
+Epoch 838: at batch 1: Loss=0.257, Time=0.015
+Epoch 839: at batch 1: Loss=0.245, Time=0.020
+Epoch 840: at batch 1: Loss=0.255, Time=0.016
+Epoch 841: at batch 1: Loss=0.461, Time=0.017
+Epoch 841: Time=180.857, Epoch time = 0.172, Avg epoch time=0.000
+
+[[0.24321572]
+ [0.22735824]
+ [0.25343409]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 842: at batch 1: Loss=0.368, Time=0.019
+Epoch 843: at batch 1: Loss=0.414, Time=0.022
+Epoch 844: at batch 1: Loss=0.372, Time=0.021
+Epoch 845: at batch 1: Loss=0.318, Time=0.016
+Epoch 846: at batch 1: Loss=0.285, Time=0.014
+Epoch 847: at batch 1: Loss=0.297, Time=0.025
+Epoch 848: at batch 1: Loss=0.279, Time=0.016
+Epoch 849: at batch 1: Loss=0.251, Time=0.022
+Epoch 850: at batch 1: Loss=0.249, Time=0.016
+Epoch 851: at batch 1: Loss=0.254, Time=0.022
+Epoch 851: Time=183.000, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.23718105]
+ [0.28817847]
+ [0.30542773]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 852: at batch 1: Loss=0.276, Time=0.024
+Epoch 853: at batch 1: Loss=0.273, Time=0.020
+Epoch 854: at batch 1: Loss=0.258, Time=0.024
+Epoch 855: at batch 1: Loss=0.248, Time=0.019
+Epoch 856: at batch 1: Loss=0.270, Time=0.022
+Epoch 857: at batch 1: Loss=0.256, Time=0.016
+Epoch 858: at batch 1: Loss=0.258, Time=0.020
+Epoch 859: at batch 1: Loss=0.269, Time=0.014
+Epoch 860: at batch 1: Loss=0.259, Time=0.023
+Epoch 861: at batch 1: Loss=0.249, Time=0.017
+Epoch 861: Time=185.205, Epoch time = 0.198, Avg epoch time=0.000
+
+[[0.24376635]
+ [0.22448142]
+ [0.32473782]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 862: at batch 1: Loss=0.264, Time=0.023
+Epoch 863: at batch 1: Loss=0.284, Time=0.014
+Epoch 864: at batch 1: Loss=0.294, Time=0.017
+Epoch 865: at batch 1: Loss=0.270, Time=0.015
+Epoch 866: at batch 1: Loss=0.265, Time=0.019
+Epoch 867: at batch 1: Loss=0.258, Time=0.020
+Epoch 868: at batch 1: Loss=0.256, Time=0.024
+Epoch 869: at batch 1: Loss=0.247, Time=0.018
+Epoch 870: at batch 1: Loss=0.252, Time=0.021
+Epoch 871: at batch 1: Loss=0.242, Time=0.021
+Epoch 871: Time=187.379, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.24489999]
+ [0.24489999]
+ [0.22956313]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 872: at batch 1: Loss=0.238, Time=0.022
+Epoch 873: at batch 1: Loss=0.248, Time=0.024
+Epoch 874: at batch 1: Loss=0.251, Time=0.014
+Epoch 875: at batch 1: Loss=0.357, Time=0.024
+Epoch 876: at batch 1: Loss=0.302, Time=0.017
+Epoch 877: at batch 1: Loss=0.278, Time=0.019
+Epoch 878: at batch 1: Loss=0.265, Time=0.019
+Epoch 879: at batch 1: Loss=0.288, Time=0.015
+Epoch 880: at batch 1: Loss=0.286, Time=0.022
+Epoch 881: at batch 1: Loss=0.310, Time=0.013
+Epoch 881: Time=189.510, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.87681085]
+ [0.29224446]
+ [0.29224446]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 882: at batch 1: Loss=0.324, Time=0.019
+Epoch 883: at batch 1: Loss=0.295, Time=0.022
+Epoch 884: at batch 1: Loss=0.273, Time=0.022
+Epoch 885: at batch 1: Loss=0.256, Time=0.020
+Epoch 886: at batch 1: Loss=0.245, Time=0.020
+Epoch 887: at batch 1: Loss=0.251, Time=0.024
+Epoch 888: at batch 1: Loss=0.241, Time=0.018
+Epoch 889: at batch 1: Loss=0.272, Time=0.022
+Epoch 890: at batch 1: Loss=0.249, Time=0.020
+Epoch 891: at batch 1: Loss=0.257, Time=0.016
+Epoch 891: Time=191.701, Epoch time = 0.198, Avg epoch time=0.000
+
+[[0.23343106]
+ [0.36759612]
+ [0.28580156]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 892: at batch 1: Loss=0.320, Time=0.019
+Epoch 893: at batch 1: Loss=0.271, Time=0.021
+Epoch 894: at batch 1: Loss=0.249, Time=0.016
+Epoch 895: at batch 1: Loss=0.267, Time=0.015
+Epoch 896: at batch 1: Loss=0.265, Time=0.022
+Epoch 897: at batch 1: Loss=0.256, Time=0.024
+Epoch 898: at batch 1: Loss=0.267, Time=0.022
+Epoch 899: at batch 1: Loss=0.264, Time=0.019
+Epoch 900: at batch 1: Loss=0.402, Time=0.014
+Epoch 901: at batch 1: Loss=0.324, Time=0.014
+Epoch 901: Time=193.822, Epoch time = 0.183, Avg epoch time=0.000
+
+[[0.23208435]
+ [0.23792303]
+ [0.23626423]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 902: at batch 1: Loss=0.255, Time=0.017
+Epoch 903: at batch 1: Loss=0.261, Time=0.021
+Epoch 904: at batch 1: Loss=0.248, Time=0.019
+Epoch 905: at batch 1: Loss=0.278, Time=0.023
+Epoch 906: at batch 1: Loss=0.377, Time=0.019
+Epoch 907: at batch 1: Loss=0.300, Time=0.018
+Epoch 908: at batch 1: Loss=0.261, Time=0.020
+Epoch 909: at batch 1: Loss=0.253, Time=0.016
+Epoch 910: at batch 1: Loss=0.279, Time=0.016
+Epoch 911: at batch 1: Loss=0.269, Time=0.022
+Epoch 911: Time=195.929, Epoch time = 0.214, Avg epoch time=0.000
+
+[[0.21719272]
+ [0.22719099]
+ [0.23198934]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 912: at batch 1: Loss=0.249, Time=0.021
+Epoch 913: at batch 1: Loss=0.253, Time=0.023
+Epoch 914: at batch 1: Loss=0.254, Time=0.021
+Epoch 915: at batch 1: Loss=0.270, Time=0.018
+Epoch 916: at batch 1: Loss=0.342, Time=0.021
+Epoch 917: at batch 1: Loss=0.277, Time=0.024
+Epoch 918: at batch 1: Loss=0.262, Time=0.016
+Epoch 919: at batch 1: Loss=0.255, Time=0.021
+Epoch 920: at batch 1: Loss=0.250, Time=0.023
+Epoch 921: at batch 1: Loss=0.350, Time=0.024
+Epoch 921: Time=198.013, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.23793803]
+ [0.21090336]
+ [0.21938361]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 922: at batch 1: Loss=0.268, Time=0.016
+Epoch 923: at batch 1: Loss=0.240, Time=0.021
+Epoch 924: at batch 1: Loss=0.314, Time=0.014
+Epoch 925: at batch 1: Loss=0.290, Time=0.014
+Epoch 926: at batch 1: Loss=0.351, Time=0.020
+Epoch 927: at batch 1: Loss=0.325, Time=0.015
+Epoch 928: at batch 1: Loss=0.290, Time=0.021
+Epoch 929: at batch 1: Loss=0.292, Time=0.013
+Epoch 930: at batch 1: Loss=0.273, Time=0.023
+Epoch 931: at batch 1: Loss=0.262, Time=0.019
+Epoch 931: Time=200.027, Epoch time = 0.154, Avg epoch time=0.000
+
+[[0.36112583]
+ [0.2282722 ]
+ [0.2364257 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 932: at batch 1: Loss=0.245, Time=0.019
+Epoch 933: at batch 1: Loss=0.272, Time=0.018
+Epoch 934: at batch 1: Loss=0.267, Time=0.015
+Epoch 935: at batch 1: Loss=0.253, Time=0.015
+Epoch 936: at batch 1: Loss=0.269, Time=0.021
+Epoch 937: at batch 1: Loss=0.267, Time=0.021
+Epoch 938: at batch 1: Loss=0.248, Time=0.019
+Epoch 939: at batch 1: Loss=0.249, Time=0.022
+Epoch 940: at batch 1: Loss=0.240, Time=0.023
+Epoch 941: at batch 1: Loss=0.241, Time=0.021
+Epoch 941: Time=202.159, Epoch time = 0.196, Avg epoch time=0.000
+
+[[0.21847562]
+ [0.29808864]
+ [0.3950828 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 942: at batch 1: Loss=0.266, Time=0.021
+Epoch 943: at batch 1: Loss=0.258, Time=0.024
+Epoch 944: at batch 1: Loss=0.496, Time=0.016
+Epoch 945: at batch 1: Loss=0.319, Time=0.018
+Epoch 946: at batch 1: Loss=0.244, Time=0.021
+Epoch 947: at batch 1: Loss=0.243, Time=0.019
+Epoch 948: at batch 1: Loss=0.248, Time=0.023
+Epoch 949: at batch 1: Loss=0.272, Time=0.023
+Epoch 950: at batch 1: Loss=0.253, Time=0.021
+Epoch 951: at batch 1: Loss=0.239, Time=0.021
+Epoch 951: Time=204.234, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.24695112]
+ [0.22464603]
+ [0.25995842]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 952: at batch 1: Loss=0.259, Time=0.018
+Epoch 953: at batch 1: Loss=0.256, Time=0.019
+Epoch 954: at batch 1: Loss=0.245, Time=0.018
+Epoch 955: at batch 1: Loss=0.290, Time=0.017
+Epoch 956: at batch 1: Loss=0.271, Time=0.016
+Epoch 957: at batch 1: Loss=0.282, Time=0.013
+Epoch 958: at batch 1: Loss=0.244, Time=0.022
+Epoch 959: at batch 1: Loss=0.236, Time=0.023
+Epoch 960: at batch 1: Loss=0.264, Time=0.022
+Epoch 961: at batch 1: Loss=0.264, Time=0.019
+Epoch 961: Time=206.306, Epoch time = 0.164, Avg epoch time=0.000
+
+[[0.22872265]
+ [0.22872265]
+ [0.27934313]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 962: at batch 1: Loss=0.270, Time=0.017
+Epoch 963: at batch 1: Loss=0.401, Time=0.019
+Epoch 964: at batch 1: Loss=0.306, Time=0.018
+Epoch 965: at batch 1: Loss=0.272, Time=0.021
+Epoch 966: at batch 1: Loss=0.277, Time=0.024
+Epoch 967: at batch 1: Loss=0.255, Time=0.021
+Epoch 968: at batch 1: Loss=0.267, Time=0.016
+Epoch 969: at batch 1: Loss=0.296, Time=0.023
+Epoch 970: at batch 1: Loss=0.362, Time=0.018
+Epoch 971: at batch 1: Loss=0.316, Time=0.016
+Epoch 971: Time=208.441, Epoch time = 0.185, Avg epoch time=0.000
+
+[[0.21508037]
+ [0.24791209]
+ [0.22182448]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 972: at batch 1: Loss=0.261, Time=0.016
+Epoch 973: at batch 1: Loss=0.310, Time=0.019
+Epoch 974: at batch 1: Loss=0.276, Time=0.022
+Epoch 975: at batch 1: Loss=0.257, Time=0.021
+Epoch 976: at batch 1: Loss=0.272, Time=0.024
+Epoch 977: at batch 1: Loss=0.252, Time=0.017
+Epoch 978: at batch 1: Loss=0.253, Time=0.017
+Epoch 979: at batch 1: Loss=0.245, Time=0.020
+Epoch 980: at batch 1: Loss=0.253, Time=0.025
+Epoch 981: at batch 1: Loss=0.266, Time=0.021
+Epoch 981: Time=210.588, Epoch time = 0.192, Avg epoch time=0.000
+
+[[0.27048239]
+ [0.51726794]
+ [0.22974901]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 982: at batch 1: Loss=0.325, Time=0.024
+Epoch 983: at batch 1: Loss=0.256, Time=0.017
+Epoch 984: at batch 1: Loss=0.266, Time=0.019
+Epoch 985: at batch 1: Loss=0.280, Time=0.022
+Epoch 986: at batch 1: Loss=0.264, Time=0.014
+Epoch 987: at batch 1: Loss=0.262, Time=0.022
+Epoch 988: at batch 1: Loss=0.283, Time=0.024
+Epoch 989: at batch 1: Loss=0.259, Time=0.016
+Epoch 990: at batch 1: Loss=0.298, Time=0.024
+Epoch 991: at batch 1: Loss=0.269, Time=0.022
+Epoch 991: Time=212.789, Epoch time = 0.217, Avg epoch time=0.000
+
+[[0.6618948 ]
+ [0.23302595]
+ [0.23357773]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 992: at batch 1: Loss=0.281, Time=0.016
+Epoch 993: at batch 1: Loss=0.249, Time=0.017
+Epoch 994: at batch 1: Loss=0.257, Time=0.019
+Epoch 995: at batch 1: Loss=0.268, Time=0.022
+Epoch 996: at batch 1: Loss=0.249, Time=0.018
+Epoch 997: at batch 1: Loss=0.260, Time=0.019
+Epoch 998: at batch 1: Loss=0.256, Time=0.019
+Epoch 999: at batch 1: Loss=0.251, Time=0.024
+Epoch 1000: at batch 1: Loss=0.295, Time=0.016
+Epoch 1001: at batch 1: Loss=0.275, Time=0.020
+Epoch 1001: Time=214.890, Epoch time = 0.174, Avg epoch time=0.000
+
+[[0.25005341]
+ [0.22776985]
+ [0.22311227]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1002: at batch 1: Loss=0.249, Time=0.015
+Epoch 1003: at batch 1: Loss=0.253, Time=0.021
+Epoch 1004: at batch 1: Loss=0.263, Time=0.024
+Epoch 1005: at batch 1: Loss=0.257, Time=0.016
+Epoch 1006: at batch 1: Loss=0.388, Time=0.018
+Epoch 1007: at batch 1: Loss=0.313, Time=0.018
+Epoch 1008: at batch 1: Loss=0.284, Time=0.023
+Epoch 1009: at batch 1: Loss=0.291, Time=0.013
+Epoch 1010: at batch 1: Loss=0.294, Time=0.021
+Epoch 1011: at batch 1: Loss=0.272, Time=0.016
+Epoch 1011: Time=216.978, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.25949439]
+ [0.24979882]
+ [0.24851592]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1012: at batch 1: Loss=0.268, Time=0.019
+Epoch 1013: at batch 1: Loss=0.296, Time=0.016
+Epoch 1014: at batch 1: Loss=0.305, Time=0.019
+Epoch 1015: at batch 1: Loss=0.315, Time=0.016
+Epoch 1016: at batch 1: Loss=0.327, Time=0.024
+Epoch 1017: at batch 1: Loss=0.292, Time=0.018
+Epoch 1018: at batch 1: Loss=0.291, Time=0.022
+Epoch 1019: at batch 1: Loss=0.292, Time=0.019
+Epoch 1020: at batch 1: Loss=0.280, Time=0.018
+Epoch 1021: at batch 1: Loss=0.279, Time=0.015
+Epoch 1021: Time=219.037, Epoch time = 0.163, Avg epoch time=0.000
+
+[[0.2405591 ]
+ [0.23666155]
+ [0.2405591 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1022: at batch 1: Loss=0.284, Time=0.018
+Epoch 1023: at batch 1: Loss=0.281, Time=0.017
+Epoch 1024: at batch 1: Loss=0.291, Time=0.024
+Epoch 1025: at batch 1: Loss=0.288, Time=0.016
+Epoch 1026: at batch 1: Loss=0.310, Time=0.019
+Epoch 1027: at batch 1: Loss=0.292, Time=0.021
+Epoch 1028: at batch 1: Loss=0.270, Time=0.013
+Epoch 1029: at batch 1: Loss=0.270, Time=0.016
+Epoch 1030: at batch 1: Loss=0.400, Time=0.024
+Epoch 1031: at batch 1: Loss=0.317, Time=0.016
+Epoch 1031: Time=221.159, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.33333334]
+ [0.30241457]
+ [0.21787365]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1032: at batch 1: Loss=0.284, Time=0.025
+Epoch 1033: at batch 1: Loss=0.301, Time=0.021
+Epoch 1034: at batch 1: Loss=0.267, Time=0.018
+Epoch 1035: at batch 1: Loss=0.283, Time=0.013
+Epoch 1036: at batch 1: Loss=0.275, Time=0.014
+Epoch 1037: at batch 1: Loss=0.367, Time=0.022
+Epoch 1038: at batch 1: Loss=0.299, Time=0.021
+Epoch 1039: at batch 1: Loss=0.301, Time=0.024
+Epoch 1040: at batch 1: Loss=0.294, Time=0.020
+Epoch 1041: at batch 1: Loss=0.279, Time=0.014
+Epoch 1041: Time=223.288, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.25495318]
+ [0.2579217 ]
+ [0.32546893]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1042: at batch 1: Loss=0.263, Time=0.015
+Epoch 1043: at batch 1: Loss=0.266, Time=0.019
+Epoch 1044: at batch 1: Loss=0.253, Time=0.017
+Epoch 1045: at batch 1: Loss=0.246, Time=0.017
+Epoch 1046: at batch 1: Loss=0.248, Time=0.017
+Epoch 1047: at batch 1: Loss=0.236, Time=0.014
+Epoch 1048: at batch 1: Loss=0.242, Time=0.014
+Epoch 1049: at batch 1: Loss=0.250, Time=0.019
+Epoch 1050: at batch 1: Loss=0.293, Time=0.021
+Epoch 1051: at batch 1: Loss=0.271, Time=0.019
+Epoch 1051: Time=225.397, Epoch time = 0.198, Avg epoch time=0.000
+
+[[0.30874836]
+ [0.25629997]
+ [0.19984074]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1052: at batch 1: Loss=0.258, Time=0.017
+Epoch 1053: at batch 1: Loss=0.258, Time=0.016
+Epoch 1054: at batch 1: Loss=0.268, Time=0.023
+Epoch 1055: at batch 1: Loss=0.252, Time=0.016
+Epoch 1056: at batch 1: Loss=0.259, Time=0.019
+Epoch 1057: at batch 1: Loss=0.271, Time=0.024
+Epoch 1058: at batch 1: Loss=0.249, Time=0.018
+Epoch 1059: at batch 1: Loss=0.248, Time=0.021
+Epoch 1060: at batch 1: Loss=0.287, Time=0.016
+Epoch 1061: at batch 1: Loss=0.254, Time=0.021
+Epoch 1061: Time=227.525, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.20482671]
+ [0.26635471]
+ [0.25194982]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1062: at batch 1: Loss=0.250, Time=0.018
+Epoch 1063: at batch 1: Loss=0.240, Time=0.014
+Epoch 1064: at batch 1: Loss=0.285, Time=0.019
+Epoch 1065: at batch 1: Loss=0.257, Time=0.018
+Epoch 1066: at batch 1: Loss=0.259, Time=0.018
+Epoch 1067: at batch 1: Loss=0.244, Time=0.016
+Epoch 1068: at batch 1: Loss=0.296, Time=0.019
+Epoch 1069: at batch 1: Loss=0.267, Time=0.016
+Epoch 1070: at batch 1: Loss=0.273, Time=0.018
+Epoch 1071: at batch 1: Loss=0.253, Time=0.014
+Epoch 1071: Time=229.580, Epoch time = 0.170, Avg epoch time=0.000
+
+[[0.2126158 ]
+ [0.23621482]
+ [0.22480096]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1072: at batch 1: Loss=0.246, Time=0.019
+Epoch 1073: at batch 1: Loss=0.279, Time=0.018
+Epoch 1074: at batch 1: Loss=0.277, Time=0.016
+Epoch 1075: at batch 1: Loss=0.253, Time=0.024
+Epoch 1076: at batch 1: Loss=0.286, Time=0.015
+Epoch 1077: at batch 1: Loss=0.271, Time=0.019
+Epoch 1078: at batch 1: Loss=0.254, Time=0.020
+Epoch 1079: at batch 1: Loss=0.249, Time=0.013
+Epoch 1080: at batch 1: Loss=0.243, Time=0.024
+Epoch 1081: at batch 1: Loss=0.243, Time=0.021
+Epoch 1081: Time=231.718, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.23253064]
+ [0.23253064]
+ [0.23745517]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1082: at batch 1: Loss=0.260, Time=0.023
+Epoch 1083: at batch 1: Loss=0.252, Time=0.018
+Epoch 1084: at batch 1: Loss=0.278, Time=0.015
+Epoch 1085: at batch 1: Loss=0.267, Time=0.016
+Epoch 1086: at batch 1: Loss=0.261, Time=0.020
+Epoch 1087: at batch 1: Loss=0.253, Time=0.017
+Epoch 1088: at batch 1: Loss=0.470, Time=0.018
+Epoch 1089: at batch 1: Loss=0.401, Time=0.016
+Epoch 1090: at batch 1: Loss=0.262, Time=0.023
+Epoch 1091: at batch 1: Loss=0.337, Time=0.022
+Epoch 1091: Time=233.821, Epoch time = 0.176, Avg epoch time=0.000
+
+[[0.22309004]
+ [0.258903  ]
+ [0.23787606]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1092: at batch 1: Loss=0.332, Time=0.022
+Epoch 1093: at batch 1: Loss=0.285, Time=0.020
+Epoch 1094: at batch 1: Loss=0.287, Time=0.014
+Epoch 1095: at batch 1: Loss=0.254, Time=0.021
+Epoch 1096: at batch 1: Loss=0.256, Time=0.013
+Epoch 1097: at batch 1: Loss=0.256, Time=0.022
+Epoch 1098: at batch 1: Loss=0.271, Time=0.016
+Epoch 1099: at batch 1: Loss=0.245, Time=0.017
+Epoch 1100: at batch 1: Loss=0.294, Time=0.019
+Epoch 1101: at batch 1: Loss=0.270, Time=0.022
+Epoch 1101: Time=235.933, Epoch time = 0.196, Avg epoch time=0.000
+
+[[0.22985132]
+ [0.22668768]
+ [0.22915018]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1102: at batch 1: Loss=0.260, Time=0.015
+Epoch 1103: at batch 1: Loss=0.250, Time=0.014
+Epoch 1104: at batch 1: Loss=0.239, Time=0.019
+Epoch 1105: at batch 1: Loss=0.322, Time=0.022
+Epoch 1106: at batch 1: Loss=0.278, Time=0.020
+Epoch 1107: at batch 1: Loss=0.252, Time=0.024
+Epoch 1108: at batch 1: Loss=0.242, Time=0.014
+Epoch 1109: at batch 1: Loss=0.270, Time=0.016
+Epoch 1110: at batch 1: Loss=0.259, Time=0.014
+Epoch 1111: at batch 1: Loss=0.268, Time=0.019
+Epoch 1111: Time=238.034, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.21053529]
+ [0.27437577]
+ [0.28195283]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1112: at batch 1: Loss=0.276, Time=0.022
+Epoch 1113: at batch 1: Loss=0.270, Time=0.022
+Epoch 1114: at batch 1: Loss=0.263, Time=0.016
+Epoch 1115: at batch 1: Loss=0.243, Time=0.020
+Epoch 1116: at batch 1: Loss=0.339, Time=0.023
+Epoch 1117: at batch 1: Loss=0.307, Time=0.014
+Epoch 1118: at batch 1: Loss=0.283, Time=0.014
+Epoch 1119: at batch 1: Loss=0.249, Time=0.014
+Epoch 1120: at batch 1: Loss=0.287, Time=0.019
+Epoch 1121: at batch 1: Loss=0.253, Time=0.024
+Epoch 1121: Time=240.183, Epoch time = 0.183, Avg epoch time=0.000
+
+[[0.38332093]
+ [0.24586612]
+ [0.29555815]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1122: at batch 1: Loss=0.293, Time=0.014
+Epoch 1123: at batch 1: Loss=0.307, Time=0.016
+Epoch 1124: at batch 1: Loss=0.280, Time=0.021
+Epoch 1125: at batch 1: Loss=0.265, Time=0.019
+Epoch 1126: at batch 1: Loss=0.272, Time=0.024
+Epoch 1127: at batch 1: Loss=0.265, Time=0.014
+Epoch 1128: at batch 1: Loss=0.259, Time=0.016
+Epoch 1129: at batch 1: Loss=0.265, Time=0.020
+Epoch 1130: at batch 1: Loss=0.268, Time=0.014
+Epoch 1131: at batch 1: Loss=0.253, Time=0.023
+Epoch 1131: Time=242.209, Epoch time = 0.187, Avg epoch time=0.000
+
+[[0.23954344]
+ [0.23760056]
+ [0.28942659]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1132: at batch 1: Loss=0.246, Time=0.016
+Epoch 1133: at batch 1: Loss=0.247, Time=0.022
+Epoch 1134: at batch 1: Loss=0.315, Time=0.019
+Epoch 1135: at batch 1: Loss=0.281, Time=0.022
+Epoch 1136: at batch 1: Loss=0.252, Time=0.022
+Epoch 1137: at batch 1: Loss=0.273, Time=0.021
+Epoch 1138: at batch 1: Loss=0.253, Time=0.024
+Epoch 1139: at batch 1: Loss=0.246, Time=0.019
+Epoch 1140: at batch 1: Loss=0.581, Time=0.024
+Epoch 1141: at batch 1: Loss=0.380, Time=0.024
+Epoch 1141: Time=244.488, Epoch time = 0.204, Avg epoch time=0.000
+
+[[0.29221913]
+ [0.29221913]
+ [0.23211242]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1142: at batch 1: Loss=0.289, Time=0.020
+Epoch 1143: at batch 1: Loss=0.288, Time=0.017
+Epoch 1144: at batch 1: Loss=0.249, Time=0.022
+Epoch 1145: at batch 1: Loss=0.484, Time=0.023
+Epoch 1146: at batch 1: Loss=0.376, Time=0.019
+Epoch 1147: at batch 1: Loss=0.280, Time=0.020
+Epoch 1148: at batch 1: Loss=0.263, Time=0.019
+Epoch 1149: at batch 1: Loss=0.447, Time=0.023
+Epoch 1150: at batch 1: Loss=0.350, Time=0.019
+Epoch 1151: at batch 1: Loss=0.301, Time=0.014
+Epoch 1151: Time=246.688, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.22532414]
+ [0.23954374]
+ [0.24415602]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1152: at batch 1: Loss=0.274, Time=0.023
+Epoch 1153: at batch 1: Loss=0.246, Time=0.017
+Epoch 1154: at batch 1: Loss=0.254, Time=0.017
+Epoch 1155: at batch 1: Loss=0.342, Time=0.022
+Epoch 1156: at batch 1: Loss=0.296, Time=0.017
+Epoch 1157: at batch 1: Loss=0.303, Time=0.017
+Epoch 1158: at batch 1: Loss=0.279, Time=0.019
+Epoch 1159: at batch 1: Loss=0.264, Time=0.014
+Epoch 1160: at batch 1: Loss=0.265, Time=0.019
+Epoch 1161: at batch 1: Loss=0.258, Time=0.019
+Epoch 1161: Time=248.838, Epoch time = 0.203, Avg epoch time=0.000
+
+[[0.32959566]
+ [0.36112443]
+ [0.25203073]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1162: at batch 1: Loss=0.312, Time=0.016
+Epoch 1163: at batch 1: Loss=0.295, Time=0.017
+Epoch 1164: at batch 1: Loss=0.267, Time=0.019
+Epoch 1165: at batch 1: Loss=0.258, Time=0.022
+Epoch 1166: at batch 1: Loss=0.251, Time=0.021
+Epoch 1167: at batch 1: Loss=0.242, Time=0.022
+Epoch 1168: at batch 1: Loss=0.240, Time=0.021
+Epoch 1169: at batch 1: Loss=0.276, Time=0.016
+Epoch 1170: at batch 1: Loss=0.291, Time=0.016
+Epoch 1171: at batch 1: Loss=0.268, Time=0.014
+Epoch 1171: Time=251.007, Epoch time = 0.169, Avg epoch time=0.000
+
+[[0.24424778]
+ [0.22113335]
+ [0.21746208]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1172: at batch 1: Loss=0.259, Time=0.019
+Epoch 1173: at batch 1: Loss=0.266, Time=0.022
+Epoch 1174: at batch 1: Loss=0.260, Time=0.017
+Epoch 1175: at batch 1: Loss=0.253, Time=0.024
+Epoch 1176: at batch 1: Loss=0.243, Time=0.019
+Epoch 1177: at batch 1: Loss=0.262, Time=0.022
+Epoch 1178: at batch 1: Loss=0.247, Time=0.024
+Epoch 1179: at batch 1: Loss=0.238, Time=0.018
+Epoch 1180: at batch 1: Loss=0.279, Time=0.024
+Epoch 1181: at batch 1: Loss=0.263, Time=0.021
+Epoch 1181: Time=253.208, Epoch time = 0.185, Avg epoch time=0.000
+
+[[0.20639028]
+ [0.25128508]
+ [0.20639028]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1182: at batch 1: Loss=0.275, Time=0.014
+Epoch 1183: at batch 1: Loss=0.305, Time=0.021
+Epoch 1184: at batch 1: Loss=0.277, Time=0.018
+Epoch 1185: at batch 1: Loss=0.265, Time=0.016
+Epoch 1186: at batch 1: Loss=0.257, Time=0.015
+Epoch 1187: at batch 1: Loss=0.251, Time=0.016
+Epoch 1188: at batch 1: Loss=0.239, Time=0.025
+Epoch 1189: at batch 1: Loss=0.243, Time=0.016
+Epoch 1190: at batch 1: Loss=0.239, Time=0.018
+Epoch 1191: at batch 1: Loss=0.302, Time=0.020
+Epoch 1191: Time=255.352, Epoch time = 0.176, Avg epoch time=0.000
+
+[[0.23684882]
+ [0.22627611]
+ [0.21946812]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1192: at batch 1: Loss=0.257, Time=0.024
+Epoch 1193: at batch 1: Loss=0.280, Time=0.022
+Epoch 1194: at batch 1: Loss=0.252, Time=0.019
+Epoch 1195: at batch 1: Loss=0.297, Time=0.021
+Epoch 1196: at batch 1: Loss=0.304, Time=0.025
+Epoch 1197: at batch 1: Loss=0.270, Time=0.017
+Epoch 1198: at batch 1: Loss=0.259, Time=0.019
+Epoch 1199: at batch 1: Loss=0.270, Time=0.014
+Epoch 1200: at batch 1: Loss=0.289, Time=0.021
+Epoch 1201: at batch 1: Loss=0.274, Time=0.022
+Epoch 1201: Time=257.519, Epoch time = 0.205, Avg epoch time=0.000
+
+[[0.25806248]
+ [0.25806248]
+ [0.25806248]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1202: at batch 1: Loss=0.277, Time=0.020
+Epoch 1203: at batch 1: Loss=0.260, Time=0.024
+Epoch 1204: at batch 1: Loss=0.250, Time=0.017
+Epoch 1205: at batch 1: Loss=0.249, Time=0.022
+Epoch 1206: at batch 1: Loss=0.263, Time=0.024
+Epoch 1207: at batch 1: Loss=0.258, Time=0.024
+Epoch 1208: at batch 1: Loss=0.256, Time=0.016
+Epoch 1209: at batch 1: Loss=0.255, Time=0.016
+Epoch 1210: at batch 1: Loss=0.273, Time=0.014
+Epoch 1211: at batch 1: Loss=0.274, Time=0.015
+Epoch 1211: Time=259.603, Epoch time = 0.162, Avg epoch time=0.000
+
+[[0.24252675]
+ [0.223139  ]
+ [0.23634963]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1212: at batch 1: Loss=0.258, Time=0.022
+Epoch 1213: at batch 1: Loss=0.264, Time=0.021
+Epoch 1214: at batch 1: Loss=0.250, Time=0.021
+Epoch 1215: at batch 1: Loss=0.255, Time=0.022
+Epoch 1216: at batch 1: Loss=0.250, Time=0.016
+Epoch 1217: at batch 1: Loss=0.319, Time=0.014
+Epoch 1218: at batch 1: Loss=0.264, Time=0.021
+Epoch 1219: at batch 1: Loss=0.283, Time=0.017
+Epoch 1220: at batch 1: Loss=0.264, Time=0.022
+Epoch 1221: at batch 1: Loss=0.261, Time=0.023
+Epoch 1221: Time=261.732, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.24368159]
+ [0.23864239]
+ [0.23864239]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1222: at batch 1: Loss=0.282, Time=0.017
+Epoch 1223: at batch 1: Loss=0.281, Time=0.021
+Epoch 1224: at batch 1: Loss=0.262, Time=0.016
+Epoch 1225: at batch 1: Loss=0.375, Time=0.019
+Epoch 1226: at batch 1: Loss=0.282, Time=0.021
+Epoch 1227: at batch 1: Loss=0.262, Time=0.021
+Epoch 1228: at batch 1: Loss=0.291, Time=0.022
+Epoch 1229: at batch 1: Loss=0.249, Time=0.018
+Epoch 1230: at batch 1: Loss=0.260, Time=0.019
+Epoch 1231: at batch 1: Loss=0.269, Time=0.023
+Epoch 1231: Time=263.831, Epoch time = 0.199, Avg epoch time=0.000
+
+[[0.2386446 ]
+ [0.23972566]
+ [0.23854958]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1232: at batch 1: Loss=0.274, Time=0.015
+Epoch 1233: at batch 1: Loss=0.268, Time=0.021
+Epoch 1234: at batch 1: Loss=0.276, Time=0.022
+Epoch 1235: at batch 1: Loss=0.267, Time=0.023
+Epoch 1236: at batch 1: Loss=0.278, Time=0.014
+Epoch 1237: at batch 1: Loss=0.256, Time=0.022
+Epoch 1238: at batch 1: Loss=0.250, Time=0.022
+Epoch 1239: at batch 1: Loss=0.312, Time=0.021
+Epoch 1240: at batch 1: Loss=0.275, Time=0.019
+Epoch 1241: at batch 1: Loss=0.265, Time=0.018
+Epoch 1241: Time=265.924, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.24706359]
+ [0.23762846]
+ [0.23349464]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1242: at batch 1: Loss=0.250, Time=0.014
+Epoch 1243: at batch 1: Loss=0.245, Time=0.017
+Epoch 1244: at batch 1: Loss=0.269, Time=0.019
+Epoch 1245: at batch 1: Loss=0.278, Time=0.016
+Epoch 1246: at batch 1: Loss=0.278, Time=0.022
+Epoch 1247: at batch 1: Loss=0.275, Time=0.016
+Epoch 1248: at batch 1: Loss=0.276, Time=0.016
+Epoch 1249: at batch 1: Loss=0.265, Time=0.021
+Epoch 1250: at batch 1: Loss=0.315, Time=0.019
+Epoch 1251: at batch 1: Loss=0.299, Time=0.018
+Epoch 1251: Time=268.000, Epoch time = 0.192, Avg epoch time=0.000
+
+[[0.22307485]
+ [0.23001522]
+ [0.27689007]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1252: at batch 1: Loss=0.317, Time=0.018
+Epoch 1253: at batch 1: Loss=0.282, Time=0.020
+Epoch 1254: at batch 1: Loss=0.277, Time=0.015
+Epoch 1255: at batch 1: Loss=0.306, Time=0.022
+Epoch 1256: at batch 1: Loss=0.259, Time=0.021
+Epoch 1257: at batch 1: Loss=0.240, Time=0.016
+Epoch 1258: at batch 1: Loss=0.275, Time=0.016
+Epoch 1259: at batch 1: Loss=0.275, Time=0.020
+Epoch 1260: at batch 1: Loss=0.254, Time=0.022
+Epoch 1261: at batch 1: Loss=0.260, Time=0.026
+Epoch 1261: Time=270.160, Epoch time = 0.197, Avg epoch time=0.000
+
+[[0.24697375]
+ [0.23866089]
+ [0.24546196]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1262: at batch 1: Loss=0.275, Time=0.016
+Epoch 1263: at batch 1: Loss=0.263, Time=0.017
+Epoch 1264: at batch 1: Loss=0.247, Time=0.016
+Epoch 1265: at batch 1: Loss=0.245, Time=0.017
+Epoch 1266: at batch 1: Loss=0.259, Time=0.020
+Epoch 1267: at batch 1: Loss=0.253, Time=0.019
+Epoch 1268: at batch 1: Loss=0.514, Time=0.022
+Epoch 1269: at batch 1: Loss=0.373, Time=0.022
+Epoch 1270: at batch 1: Loss=0.303, Time=0.021
+Epoch 1271: at batch 1: Loss=0.252, Time=0.022
+Epoch 1271: Time=272.385, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.23325567]
+ [0.22397973]
+ [0.25579378]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1272: at batch 1: Loss=0.252, Time=0.016
+Epoch 1273: at batch 1: Loss=0.252, Time=0.022
+Epoch 1274: at batch 1: Loss=0.242, Time=0.016
+Epoch 1275: at batch 1: Loss=0.253, Time=0.023
+Epoch 1276: at batch 1: Loss=0.251, Time=0.023
+Epoch 1277: at batch 1: Loss=0.247, Time=0.020
+Epoch 1278: at batch 1: Loss=0.245, Time=0.019
+Epoch 1279: at batch 1: Loss=0.240, Time=0.016
+Epoch 1280: at batch 1: Loss=0.242, Time=0.016
+Epoch 1281: at batch 1: Loss=0.248, Time=0.019
+Epoch 1281: Time=274.571, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.22188514]
+ [0.36346149]
+ [0.27470848]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1282: at batch 1: Loss=0.244, Time=0.013
+Epoch 1283: at batch 1: Loss=0.256, Time=0.022
+Epoch 1284: at batch 1: Loss=0.262, Time=0.016
+Epoch 1285: at batch 1: Loss=0.253, Time=0.016
+Epoch 1286: at batch 1: Loss=0.244, Time=0.015
+Epoch 1287: at batch 1: Loss=0.267, Time=0.014
+Epoch 1288: at batch 1: Loss=0.259, Time=0.021
+Epoch 1289: at batch 1: Loss=0.314, Time=0.021
+Epoch 1290: at batch 1: Loss=0.273, Time=0.024
+Epoch 1291: at batch 1: Loss=0.252, Time=0.022
+Epoch 1291: Time=276.683, Epoch time = 0.202, Avg epoch time=0.000
+
+[[0.25216094]
+ [0.25216094]
+ [0.21764274]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1292: at batch 1: Loss=0.247, Time=0.017
+Epoch 1293: at batch 1: Loss=0.267, Time=0.022
+Epoch 1294: at batch 1: Loss=0.251, Time=0.021
+Epoch 1295: at batch 1: Loss=0.276, Time=0.024
+Epoch 1296: at batch 1: Loss=0.286, Time=0.019
+Epoch 1297: at batch 1: Loss=0.277, Time=0.019
+Epoch 1298: at batch 1: Loss=0.259, Time=0.019
+Epoch 1299: at batch 1: Loss=0.301, Time=0.018
+Epoch 1300: at batch 1: Loss=0.284, Time=0.021
+Epoch 1301: at batch 1: Loss=0.285, Time=0.016
+Epoch 1301: Time=278.756, Epoch time = 0.185, Avg epoch time=0.000
+
+[[0.2227134 ]
+ [0.48258981]
+ [0.280797  ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1302: at batch 1: Loss=0.281, Time=0.017
+Epoch 1303: at batch 1: Loss=0.324, Time=0.025
+Epoch 1304: at batch 1: Loss=0.288, Time=0.025
+Epoch 1305: at batch 1: Loss=0.268, Time=0.023
+Epoch 1306: at batch 1: Loss=0.263, Time=0.019
+Epoch 1307: at batch 1: Loss=0.286, Time=0.014
+Epoch 1308: at batch 1: Loss=0.279, Time=0.016
+Epoch 1309: at batch 1: Loss=0.261, Time=0.017
+Epoch 1310: at batch 1: Loss=0.248, Time=0.016
+Epoch 1311: at batch 1: Loss=0.276, Time=0.022
+Epoch 1311: Time=280.909, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.22310083]
+ [0.27508983]
+ [0.24783607]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1312: at batch 1: Loss=0.249, Time=0.022
+Epoch 1313: at batch 1: Loss=0.249, Time=0.022
+Epoch 1314: at batch 1: Loss=0.254, Time=0.022
+Epoch 1315: at batch 1: Loss=0.265, Time=0.020
+Epoch 1316: at batch 1: Loss=0.352, Time=0.016
+Epoch 1317: at batch 1: Loss=0.298, Time=0.023
+Epoch 1318: at batch 1: Loss=0.274, Time=0.020
+Epoch 1319: at batch 1: Loss=0.280, Time=0.015
+Epoch 1320: at batch 1: Loss=0.257, Time=0.019
+Epoch 1321: at batch 1: Loss=0.287, Time=0.019
+Epoch 1321: Time=283.013, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.22837766]
+ [0.23512001]
+ [0.23521698]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1322: at batch 1: Loss=0.256, Time=0.024
+Epoch 1323: at batch 1: Loss=0.292, Time=0.018
+Epoch 1324: at batch 1: Loss=0.277, Time=0.019
+Epoch 1325: at batch 1: Loss=0.261, Time=0.015
+Epoch 1326: at batch 1: Loss=0.253, Time=0.022
+Epoch 1327: at batch 1: Loss=0.251, Time=0.022
+Epoch 1328: at batch 1: Loss=0.255, Time=0.025
+Epoch 1329: at batch 1: Loss=0.252, Time=0.021
+Epoch 1330: at batch 1: Loss=0.245, Time=0.021
+Epoch 1331: at batch 1: Loss=0.247, Time=0.018
+Epoch 1331: Time=285.244, Epoch time = 0.202, Avg epoch time=0.000
+
+[[0.25098071]
+ [0.26352811]
+ [0.24711557]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1332: at batch 1: Loss=0.255, Time=0.018
+Epoch 1333: at batch 1: Loss=0.256, Time=0.025
+Epoch 1334: at batch 1: Loss=0.307, Time=0.023
+Epoch 1335: at batch 1: Loss=0.315, Time=0.016
+Epoch 1336: at batch 1: Loss=0.276, Time=0.023
+Epoch 1337: at batch 1: Loss=0.323, Time=0.023
+Epoch 1338: at batch 1: Loss=0.294, Time=0.016
+Epoch 1339: at batch 1: Loss=0.259, Time=0.017
+Epoch 1340: at batch 1: Loss=0.255, Time=0.019
+Epoch 1341: at batch 1: Loss=0.264, Time=0.020
+Epoch 1341: Time=287.481, Epoch time = 0.205, Avg epoch time=0.000
+
+[[0.22034323]
+ [0.22363757]
+ [0.28169239]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1342: at batch 1: Loss=0.250, Time=0.014
+Epoch 1343: at batch 1: Loss=0.245, Time=0.017
+Epoch 1344: at batch 1: Loss=0.241, Time=0.022
+Epoch 1345: at batch 1: Loss=0.247, Time=0.020
+Epoch 1346: at batch 1: Loss=0.256, Time=0.023
+Epoch 1347: at batch 1: Loss=0.278, Time=0.016
+Epoch 1348: at batch 1: Loss=0.324, Time=0.021
+Epoch 1349: at batch 1: Loss=0.287, Time=0.017
+Epoch 1350: at batch 1: Loss=0.294, Time=0.015
+Epoch 1351: at batch 1: Loss=0.259, Time=0.023
+Epoch 1351: Time=289.596, Epoch time = 0.205, Avg epoch time=0.000
+
+[[0.66189939]
+ [0.24136527]
+ [0.23564748]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1352: at batch 1: Loss=0.271, Time=0.017
+Epoch 1353: at batch 1: Loss=0.304, Time=0.016
+Epoch 1354: at batch 1: Loss=0.295, Time=0.014
+Epoch 1355: at batch 1: Loss=0.264, Time=0.023
+Epoch 1356: at batch 1: Loss=0.256, Time=0.017
+Epoch 1357: at batch 1: Loss=0.275, Time=0.019
+Epoch 1358: at batch 1: Loss=0.259, Time=0.023
+Epoch 1359: at batch 1: Loss=0.256, Time=0.017
+Epoch 1360: at batch 1: Loss=0.293, Time=0.024
+Epoch 1361: at batch 1: Loss=0.312, Time=0.017
+Epoch 1361: Time=291.738, Epoch time = 0.193, Avg epoch time=0.000
+
+[[0.2479157 ]
+ [0.22077088]
+ [0.22425644]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1362: at batch 1: Loss=0.259, Time=0.021
+Epoch 1363: at batch 1: Loss=0.249, Time=0.024
+Epoch 1364: at batch 1: Loss=0.239, Time=0.016
+Epoch 1365: at batch 1: Loss=0.243, Time=0.022
+Epoch 1366: at batch 1: Loss=0.241, Time=0.019
+Epoch 1367: at batch 1: Loss=0.375, Time=0.017
+Epoch 1368: at batch 1: Loss=0.278, Time=0.021
+Epoch 1369: at batch 1: Loss=0.230, Time=0.025
+Epoch 1370: at batch 1: Loss=0.237, Time=0.019
+Epoch 1371: at batch 1: Loss=0.246, Time=0.023
+Epoch 1371: Time=294.004, Epoch time = 0.202, Avg epoch time=0.000
+
+[[0.20927371]
+ [0.23410873]
+ [0.231574  ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1372: at batch 1: Loss=0.270, Time=0.022
+Epoch 1373: at batch 1: Loss=0.245, Time=0.014
+Epoch 1374: at batch 1: Loss=0.242, Time=0.017
+Epoch 1375: at batch 1: Loss=0.293, Time=0.015
+Epoch 1376: at batch 1: Loss=0.296, Time=0.022
+Epoch 1377: at batch 1: Loss=0.277, Time=0.021
+Epoch 1378: at batch 1: Loss=0.296, Time=0.024
+Epoch 1379: at batch 1: Loss=0.290, Time=0.014
+Epoch 1380: at batch 1: Loss=0.297, Time=0.019
+Epoch 1381: at batch 1: Loss=0.292, Time=0.014
+Epoch 1381: Time=296.111, Epoch time = 0.170, Avg epoch time=0.000
+
+[[0.23853754]
+ [0.38386568]
+ [0.20692213]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1382: at batch 1: Loss=0.280, Time=0.017
+Epoch 1383: at batch 1: Loss=0.270, Time=0.024
+Epoch 1384: at batch 1: Loss=0.258, Time=0.026
+Epoch 1385: at batch 1: Loss=0.252, Time=0.016
+Epoch 1386: at batch 1: Loss=0.246, Time=0.019
+Epoch 1387: at batch 1: Loss=0.246, Time=0.014
+Epoch 1388: at batch 1: Loss=0.242, Time=0.022
+Epoch 1389: at batch 1: Loss=0.241, Time=0.021
+Epoch 1390: at batch 1: Loss=0.383, Time=0.015
+Epoch 1391: at batch 1: Loss=0.297, Time=0.024
+Epoch 1391: Time=298.141, Epoch time = 0.166, Avg epoch time=0.000
+
+[[0.24753273]
+ [0.45505369]
+ [0.22686255]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1392: at batch 1: Loss=0.286, Time=0.016
+Epoch 1393: at batch 1: Loss=0.270, Time=0.015
+Epoch 1394: at batch 1: Loss=0.272, Time=0.018
+Epoch 1395: at batch 1: Loss=0.256, Time=0.021
+Epoch 1396: at batch 1: Loss=0.262, Time=0.025
+Epoch 1397: at batch 1: Loss=0.260, Time=0.014
+Epoch 1398: at batch 1: Loss=0.265, Time=0.016
+Epoch 1399: at batch 1: Loss=0.249, Time=0.013
+Epoch 1400: at batch 1: Loss=0.262, Time=0.019
+Epoch 1401: at batch 1: Loss=0.264, Time=0.025
+Epoch 1401: Time=300.211, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.22094055]
+ [0.25277609]
+ [0.21655357]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1402: at batch 1: Loss=0.263, Time=0.018
+Epoch 1403: at batch 1: Loss=0.254, Time=0.013
+Epoch 1404: at batch 1: Loss=0.242, Time=0.021
+Epoch 1405: at batch 1: Loss=0.300, Time=0.023
+Epoch 1406: at batch 1: Loss=0.277, Time=0.016
+Epoch 1407: at batch 1: Loss=0.269, Time=0.014
+Epoch 1408: at batch 1: Loss=0.317, Time=0.013
+Epoch 1409: at batch 1: Loss=0.378, Time=0.014
+Epoch 1410: at batch 1: Loss=0.310, Time=0.016
+Epoch 1411: at batch 1: Loss=0.253, Time=0.020
+Epoch 1411: Time=302.253, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.20881772]
+ [0.22398376]
+ [0.25062177]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1412: at batch 1: Loss=0.261, Time=0.016
+Epoch 1413: at batch 1: Loss=0.260, Time=0.014
+Epoch 1414: at batch 1: Loss=0.287, Time=0.018
+Epoch 1415: at batch 1: Loss=0.260, Time=0.018
+Epoch 1416: at batch 1: Loss=0.271, Time=0.020
+Epoch 1417: at batch 1: Loss=0.298, Time=0.016
+Epoch 1418: at batch 1: Loss=0.368, Time=0.018
+Epoch 1419: at batch 1: Loss=0.320, Time=0.021
+Epoch 1420: at batch 1: Loss=0.277, Time=0.016
+Epoch 1421: at batch 1: Loss=0.266, Time=0.016
+Epoch 1421: Time=304.320, Epoch time = 0.180, Avg epoch time=0.000
+
+[[0.23962058]
+ [0.2291708 ]
+ [0.24809016]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1422: at batch 1: Loss=0.273, Time=0.021
+Epoch 1423: at batch 1: Loss=0.271, Time=0.018
+Epoch 1424: at batch 1: Loss=0.256, Time=0.019
+Epoch 1425: at batch 1: Loss=0.241, Time=0.014
+Epoch 1426: at batch 1: Loss=0.276, Time=0.016
+Epoch 1427: at batch 1: Loss=0.258, Time=0.022
+Epoch 1428: at batch 1: Loss=0.238, Time=0.021
+Epoch 1429: at batch 1: Loss=0.246, Time=0.014
+Epoch 1430: at batch 1: Loss=0.289, Time=0.022
+Epoch 1431: at batch 1: Loss=0.272, Time=0.022
+Epoch 1431: Time=306.387, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.2308649 ]
+ [0.42787591]
+ [0.2442195 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1432: at batch 1: Loss=0.301, Time=0.019
+Epoch 1433: at batch 1: Loss=0.278, Time=0.023
+Epoch 1434: at batch 1: Loss=0.249, Time=0.016
+Epoch 1435: at batch 1: Loss=0.255, Time=0.015
+Epoch 1436: at batch 1: Loss=0.251, Time=0.018
+Epoch 1437: at batch 1: Loss=0.237, Time=0.021
+Epoch 1438: at batch 1: Loss=0.246, Time=0.027
+Epoch 1439: at batch 1: Loss=0.244, Time=0.018
+Epoch 1440: at batch 1: Loss=0.237, Time=0.022
+Epoch 1441: at batch 1: Loss=0.274, Time=0.014
+Epoch 1441: Time=308.503, Epoch time = 0.175, Avg epoch time=0.000
+
+[[0.22949219]
+ [0.24227674]
+ [0.22696374]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1442: at batch 1: Loss=0.258, Time=0.023
+Epoch 1443: at batch 1: Loss=0.244, Time=0.017
+Epoch 1444: at batch 1: Loss=0.260, Time=0.024
+Epoch 1445: at batch 1: Loss=0.254, Time=0.021
+Epoch 1446: at batch 1: Loss=0.247, Time=0.021
+Epoch 1447: at batch 1: Loss=0.244, Time=0.019
+Epoch 1448: at batch 1: Loss=0.251, Time=0.021
+Epoch 1449: at batch 1: Loss=0.264, Time=0.024
+Epoch 1450: at batch 1: Loss=0.268, Time=0.017
+Epoch 1451: at batch 1: Loss=0.261, Time=0.024
+Epoch 1451: Time=310.716, Epoch time = 0.187, Avg epoch time=0.000
+
+[[0.27579698]
+ [0.22006382]
+ [0.26669198]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1452: at batch 1: Loss=0.281, Time=0.022
+Epoch 1453: at batch 1: Loss=0.272, Time=0.018
+Epoch 1454: at batch 1: Loss=0.299, Time=0.019
+Epoch 1455: at batch 1: Loss=0.288, Time=0.019
+Epoch 1456: at batch 1: Loss=0.270, Time=0.025
+Epoch 1457: at batch 1: Loss=0.379, Time=0.016
+Epoch 1458: at batch 1: Loss=0.309, Time=0.015
+Epoch 1459: at batch 1: Loss=0.305, Time=0.017
+Epoch 1460: at batch 1: Loss=0.313, Time=0.022
+Epoch 1461: at batch 1: Loss=0.271, Time=0.023
+Epoch 1461: Time=312.829, Epoch time = 0.193, Avg epoch time=0.000
+
+[[0.23066814]
+ [0.22255129]
+ [0.25290671]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1462: at batch 1: Loss=0.263, Time=0.019
+Epoch 1463: at batch 1: Loss=0.255, Time=0.014
+Epoch 1464: at batch 1: Loss=0.263, Time=0.016
+Epoch 1465: at batch 1: Loss=0.252, Time=0.019
+Epoch 1466: at batch 1: Loss=0.302, Time=0.022
+Epoch 1467: at batch 1: Loss=0.280, Time=0.023
+Epoch 1468: at batch 1: Loss=0.257, Time=0.015
+Epoch 1469: at batch 1: Loss=0.257, Time=0.022
+Epoch 1470: at batch 1: Loss=0.251, Time=0.019
+Epoch 1471: at batch 1: Loss=0.253, Time=0.019
+Epoch 1471: Time=315.020, Epoch time = 0.180, Avg epoch time=0.000
+
+[[0.21736467]
+ [0.20992202]
+ [0.24516238]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1472: at batch 1: Loss=0.254, Time=0.018
+Epoch 1473: at batch 1: Loss=0.280, Time=0.024
+Epoch 1474: at batch 1: Loss=0.264, Time=0.014
+Epoch 1475: at batch 1: Loss=0.267, Time=0.025
+Epoch 1476: at batch 1: Loss=0.250, Time=0.018
+Epoch 1477: at batch 1: Loss=0.259, Time=0.020
+Epoch 1478: at batch 1: Loss=0.250, Time=0.021
+Epoch 1479: at batch 1: Loss=0.280, Time=0.014
+Epoch 1480: at batch 1: Loss=0.258, Time=0.021
+Epoch 1481: at batch 1: Loss=0.254, Time=0.022
+Epoch 1481: Time=317.158, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.235502  ]
+ [0.2368021 ]
+ [0.25351277]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1482: at batch 1: Loss=0.290, Time=0.018
+Epoch 1483: at batch 1: Loss=0.265, Time=0.021
+Epoch 1484: at batch 1: Loss=0.271, Time=0.021
+Epoch 1485: at batch 1: Loss=0.302, Time=0.024
+Epoch 1486: at batch 1: Loss=0.288, Time=0.018
+Epoch 1487: at batch 1: Loss=0.258, Time=0.014
+Epoch 1488: at batch 1: Loss=0.241, Time=0.024
+Epoch 1489: at batch 1: Loss=0.247, Time=0.016
+Epoch 1490: at batch 1: Loss=0.254, Time=0.019
+Epoch 1491: at batch 1: Loss=0.249, Time=0.014
+Epoch 1491: Time=319.282, Epoch time = 0.156, Avg epoch time=0.000
+
+[[0.22556625]
+ [0.24195516]
+ [0.26769051]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1492: at batch 1: Loss=0.258, Time=0.017
+Epoch 1493: at batch 1: Loss=0.243, Time=0.018
+Epoch 1494: at batch 1: Loss=0.258, Time=0.023
+Epoch 1495: at batch 1: Loss=0.251, Time=0.018
+Epoch 1496: at batch 1: Loss=0.249, Time=0.020
+Epoch 1497: at batch 1: Loss=0.241, Time=0.024
+Epoch 1498: at batch 1: Loss=0.245, Time=0.013
+Epoch 1499: at batch 1: Loss=0.252, Time=0.014
+Epoch 1500: at batch 1: Loss=0.260, Time=0.023
+Epoch 1501: at batch 1: Loss=0.254, Time=0.021
+Epoch 1501: Time=321.420, Epoch time = 0.195, Avg epoch time=0.000
+
+[[0.26857498]
+ [0.23466058]
+ [0.23115118]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1502: at batch 1: Loss=0.256, Time=0.019
+Epoch 1503: at batch 1: Loss=0.255, Time=0.019
+Epoch 1504: at batch 1: Loss=0.243, Time=0.019
+Epoch 1505: at batch 1: Loss=0.242, Time=0.020
+Epoch 1506: at batch 1: Loss=0.285, Time=0.021
+Epoch 1507: at batch 1: Loss=0.275, Time=0.022
+Epoch 1508: at batch 1: Loss=0.263, Time=0.021
+Epoch 1509: at batch 1: Loss=0.263, Time=0.019
+Epoch 1510: at batch 1: Loss=0.276, Time=0.022
+Epoch 1511: at batch 1: Loss=0.265, Time=0.022
+Epoch 1511: Time=323.553, Epoch time = 0.176, Avg epoch time=0.000
+
+[[0.21893232]
+ [0.2350267 ]
+ [0.22981626]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1512: at batch 1: Loss=0.253, Time=0.021
+Epoch 1513: at batch 1: Loss=0.239, Time=0.024
+Epoch 1514: at batch 1: Loss=0.243, Time=0.023
+Epoch 1515: at batch 1: Loss=0.325, Time=0.021
+Epoch 1516: at batch 1: Loss=0.406, Time=0.019
+Epoch 1517: at batch 1: Loss=0.356, Time=0.022
+Epoch 1518: at batch 1: Loss=0.282, Time=0.023
+Epoch 1519: at batch 1: Loss=0.246, Time=0.017
+Epoch 1520: at batch 1: Loss=0.266, Time=0.019
+Epoch 1521: at batch 1: Loss=0.260, Time=0.014
+Epoch 1521: Time=325.699, Epoch time = 0.178, Avg epoch time=0.000
+
+[[0.2289391 ]
+ [0.26008448]
+ [0.23099232]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1522: at batch 1: Loss=0.264, Time=0.023
+Epoch 1523: at batch 1: Loss=0.261, Time=0.022
+Epoch 1524: at batch 1: Loss=0.249, Time=0.024
+Epoch 1525: at batch 1: Loss=0.246, Time=0.019
+Epoch 1526: at batch 1: Loss=0.259, Time=0.018
+Epoch 1527: at batch 1: Loss=0.244, Time=0.018
+Epoch 1528: at batch 1: Loss=0.245, Time=0.022
+Epoch 1529: at batch 1: Loss=0.294, Time=0.016
+Epoch 1530: at batch 1: Loss=0.261, Time=0.021
+Epoch 1531: at batch 1: Loss=0.253, Time=0.019
+Epoch 1531: Time=327.869, Epoch time = 0.180, Avg epoch time=0.000
+
+[[0.22460486]
+ [0.23404706]
+ [0.22634602]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1532: at batch 1: Loss=0.258, Time=0.019
+Epoch 1533: at batch 1: Loss=0.290, Time=0.015
+Epoch 1534: at batch 1: Loss=0.264, Time=0.024
+Epoch 1535: at batch 1: Loss=0.253, Time=0.021
+Epoch 1536: at batch 1: Loss=0.237, Time=0.018
+Epoch 1537: at batch 1: Loss=0.248, Time=0.017
+Epoch 1538: at batch 1: Loss=0.247, Time=0.018
+Epoch 1539: at batch 1: Loss=0.239, Time=0.014
+Epoch 1540: at batch 1: Loss=0.315, Time=0.022
+Epoch 1541: at batch 1: Loss=0.356, Time=0.021
+Epoch 1541: Time=330.000, Epoch time = 0.196, Avg epoch time=0.000
+
+[[0.24334276]
+ [0.24404609]
+ [0.2411439 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1542: at batch 1: Loss=0.258, Time=0.020
+Epoch 1543: at batch 1: Loss=0.247, Time=0.021
+Epoch 1544: at batch 1: Loss=0.300, Time=0.013
+Epoch 1545: at batch 1: Loss=0.264, Time=0.023
+Epoch 1546: at batch 1: Loss=0.242, Time=0.021
+Epoch 1547: at batch 1: Loss=0.267, Time=0.019
+Epoch 1548: at batch 1: Loss=0.278, Time=0.016
+Epoch 1549: at batch 1: Loss=0.257, Time=0.021
+Epoch 1550: at batch 1: Loss=0.245, Time=0.017
+Epoch 1551: at batch 1: Loss=0.259, Time=0.019
+Epoch 1551: Time=332.149, Epoch time = 0.177, Avg epoch time=0.000
+
+[[0.22449954]
+ [0.22005725]
+ [0.45673522]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1552: at batch 1: Loss=0.288, Time=0.013
+Epoch 1553: at batch 1: Loss=0.261, Time=0.016
+Epoch 1554: at batch 1: Loss=0.283, Time=0.019
+Epoch 1555: at batch 1: Loss=0.274, Time=0.022
+Epoch 1556: at batch 1: Loss=0.254, Time=0.020
+Epoch 1557: at batch 1: Loss=0.375, Time=0.016
+Epoch 1558: at batch 1: Loss=0.383, Time=0.021
+Epoch 1559: at batch 1: Loss=0.292, Time=0.024
+Epoch 1560: at batch 1: Loss=0.268, Time=0.025
+Epoch 1561: at batch 1: Loss=0.247, Time=0.020
+Epoch 1561: Time=334.321, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.24049611]
+ [0.22177601]
+ [0.24176043]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1562: at batch 1: Loss=0.246, Time=0.024
+Epoch 1563: at batch 1: Loss=0.245, Time=0.021
+Epoch 1564: at batch 1: Loss=0.240, Time=0.023
+Epoch 1565: at batch 1: Loss=0.274, Time=0.017
+Epoch 1566: at batch 1: Loss=0.255, Time=0.019
+Epoch 1567: at batch 1: Loss=0.247, Time=0.014
+Epoch 1568: at batch 1: Loss=0.275, Time=0.020
+Epoch 1569: at batch 1: Loss=0.256, Time=0.017
+Epoch 1570: at batch 1: Loss=0.266, Time=0.019
+Epoch 1571: at batch 1: Loss=0.262, Time=0.016
+Epoch 1571: Time=336.446, Epoch time = 0.172, Avg epoch time=0.000
+
+[[0.21033913]
+ [0.22294797]
+ [0.43128762]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1572: at batch 1: Loss=0.250, Time=0.017
+Epoch 1573: at batch 1: Loss=0.265, Time=0.014
+Epoch 1574: at batch 1: Loss=0.249, Time=0.022
+Epoch 1575: at batch 1: Loss=0.267, Time=0.018
+Epoch 1576: at batch 1: Loss=0.259, Time=0.021
+Epoch 1577: at batch 1: Loss=0.276, Time=0.021
+Epoch 1578: at batch 1: Loss=0.262, Time=0.021
+Epoch 1579: at batch 1: Loss=0.261, Time=0.021
+Epoch 1580: at batch 1: Loss=0.247, Time=0.020
+Epoch 1581: at batch 1: Loss=0.240, Time=0.016
+Epoch 1581: Time=338.562, Epoch time = 0.177, Avg epoch time=0.000
+
+[[0.24701552]
+ [0.32082713]
+ [0.23147364]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1582: at batch 1: Loss=0.265, Time=0.022
+Epoch 1583: at batch 1: Loss=0.304, Time=0.016
+Epoch 1584: at batch 1: Loss=0.262, Time=0.014
+Epoch 1585: at batch 1: Loss=0.254, Time=0.021
+Epoch 1586: at batch 1: Loss=0.252, Time=0.014
+Epoch 1587: at batch 1: Loss=0.273, Time=0.016
+Epoch 1588: at batch 1: Loss=0.266, Time=0.021
+Epoch 1589: at batch 1: Loss=0.258, Time=0.016
+Epoch 1590: at batch 1: Loss=0.292, Time=0.019
+Epoch 1591: at batch 1: Loss=0.285, Time=0.016
+Epoch 1591: Time=340.698, Epoch time = 0.185, Avg epoch time=0.000
+
+[[0.22885846]
+ [1.22788382]
+ [0.20990939]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1592: at batch 1: Loss=0.356, Time=0.020
+Epoch 1593: at batch 1: Loss=0.292, Time=0.014
+Epoch 1594: at batch 1: Loss=0.260, Time=0.024
+Epoch 1595: at batch 1: Loss=0.456, Time=0.017
+Epoch 1596: at batch 1: Loss=0.317, Time=0.021
+Epoch 1597: at batch 1: Loss=0.274, Time=0.018
+Epoch 1598: at batch 1: Loss=0.272, Time=0.021
+Epoch 1599: at batch 1: Loss=0.305, Time=0.022
+Epoch 1600: at batch 1: Loss=0.357, Time=0.016
+Epoch 1601: at batch 1: Loss=0.289, Time=0.013
+Epoch 1601: Time=342.764, Epoch time = 0.166, Avg epoch time=0.000
+
+[[0.2534965 ]
+ [0.23062651]
+ [0.23062651]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1602: at batch 1: Loss=0.266, Time=0.022
+Epoch 1603: at batch 1: Loss=0.262, Time=0.018
+Epoch 1604: at batch 1: Loss=0.260, Time=0.021
+Epoch 1605: at batch 1: Loss=0.268, Time=0.016
+Epoch 1606: at batch 1: Loss=0.252, Time=0.019
+Epoch 1607: at batch 1: Loss=0.299, Time=0.020
+Epoch 1608: at batch 1: Loss=0.288, Time=0.024
+Epoch 1609: at batch 1: Loss=0.313, Time=0.016
+Epoch 1610: at batch 1: Loss=0.298, Time=0.019
+Epoch 1611: at batch 1: Loss=0.293, Time=0.024
+Epoch 1611: Time=344.872, Epoch time = 0.220, Avg epoch time=0.000
+
+[[0.21696337]
+ [0.24854307]
+ [0.27381471]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1612: at batch 1: Loss=0.284, Time=0.014
+Epoch 1613: at batch 1: Loss=0.263, Time=0.016
+Epoch 1614: at batch 1: Loss=0.259, Time=0.016
+Epoch 1615: at batch 1: Loss=0.353, Time=0.021
+Epoch 1616: at batch 1: Loss=0.291, Time=0.021
+Epoch 1617: at batch 1: Loss=0.272, Time=0.024
+Epoch 1618: at batch 1: Loss=0.257, Time=0.017
+Epoch 1619: at batch 1: Loss=0.249, Time=0.022
+Epoch 1620: at batch 1: Loss=0.241, Time=0.023
+Epoch 1621: at batch 1: Loss=0.259, Time=0.019
+Epoch 1621: Time=347.063, Epoch time = 0.193, Avg epoch time=0.000
+
+[[0.22850491]
+ [0.2217253 ]
+ [0.24024849]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1622: at batch 1: Loss=0.306, Time=0.023
+Epoch 1623: at batch 1: Loss=0.298, Time=0.021
+Epoch 1624: at batch 1: Loss=0.266, Time=0.017
+Epoch 1625: at batch 1: Loss=0.242, Time=0.017
+Epoch 1626: at batch 1: Loss=0.412, Time=0.022
+Epoch 1627: at batch 1: Loss=0.304, Time=0.015
+Epoch 1628: at batch 1: Loss=0.284, Time=0.016
+Epoch 1629: at batch 1: Loss=0.252, Time=0.019
+Epoch 1630: at batch 1: Loss=0.252, Time=0.022
+Epoch 1631: at batch 1: Loss=0.242, Time=0.017
+Epoch 1631: Time=349.134, Epoch time = 0.164, Avg epoch time=0.000
+
+[[0.22860968]
+ [0.24654029]
+ [0.23365736]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1632: at batch 1: Loss=0.235, Time=0.019
+Epoch 1633: at batch 1: Loss=0.278, Time=0.019
+Epoch 1634: at batch 1: Loss=0.247, Time=0.020
+Epoch 1635: at batch 1: Loss=0.257, Time=0.018
+Epoch 1636: at batch 1: Loss=0.241, Time=0.020
+Epoch 1637: at batch 1: Loss=0.265, Time=0.016
+Epoch 1638: at batch 1: Loss=0.253, Time=0.014
+Epoch 1639: at batch 1: Loss=0.247, Time=0.025
+Epoch 1640: at batch 1: Loss=0.282, Time=0.017
+Epoch 1641: at batch 1: Loss=0.274, Time=0.024
+Epoch 1641: Time=351.280, Epoch time = 0.198, Avg epoch time=0.000
+
+[[0.24816032]
+ [0.24606514]
+ [0.21162671]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1642: at batch 1: Loss=0.335, Time=0.019
+Epoch 1643: at batch 1: Loss=0.290, Time=0.013
+Epoch 1644: at batch 1: Loss=0.260, Time=0.021
+Epoch 1645: at batch 1: Loss=0.270, Time=0.019
+Epoch 1646: at batch 1: Loss=0.267, Time=0.017
+Epoch 1647: at batch 1: Loss=0.257, Time=0.019
+Epoch 1648: at batch 1: Loss=0.250, Time=0.019
+Epoch 1649: at batch 1: Loss=0.282, Time=0.014
+Epoch 1650: at batch 1: Loss=0.267, Time=0.018
+Epoch 1651: at batch 1: Loss=0.252, Time=0.016
+Epoch 1651: Time=353.337, Epoch time = 0.172, Avg epoch time=0.000
+
+[[0.2542493 ]
+ [0.21978641]
+ [0.22532672]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1652: at batch 1: Loss=0.250, Time=0.020
+Epoch 1653: at batch 1: Loss=0.257, Time=0.016
+Epoch 1654: at batch 1: Loss=0.265, Time=0.024
+Epoch 1655: at batch 1: Loss=0.261, Time=0.016
+Epoch 1656: at batch 1: Loss=0.285, Time=0.019
+Epoch 1657: at batch 1: Loss=0.280, Time=0.016
+Epoch 1658: at batch 1: Loss=0.263, Time=0.016
+Epoch 1659: at batch 1: Loss=0.251, Time=0.021
+Epoch 1660: at batch 1: Loss=0.248, Time=0.023
+Epoch 1661: at batch 1: Loss=0.236, Time=0.016
+Epoch 1661: Time=355.464, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.2459213 ]
+ [0.25169966]
+ [0.22193485]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1662: at batch 1: Loss=0.240, Time=0.021
+Epoch 1663: at batch 1: Loss=0.263, Time=0.024
+Epoch 1664: at batch 1: Loss=0.256, Time=0.019
+Epoch 1665: at batch 1: Loss=0.249, Time=0.016
+Epoch 1666: at batch 1: Loss=0.250, Time=0.021
+Epoch 1667: at batch 1: Loss=0.245, Time=0.016
+Epoch 1668: at batch 1: Loss=0.273, Time=0.022
+Epoch 1669: at batch 1: Loss=0.259, Time=0.019
+Epoch 1670: at batch 1: Loss=0.267, Time=0.017
+Epoch 1671: at batch 1: Loss=0.259, Time=0.018
+Epoch 1671: Time=357.563, Epoch time = 0.172, Avg epoch time=0.000
+
+[[0.23163056]
+ [0.23163056]
+ [0.21403223]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1672: at batch 1: Loss=0.251, Time=0.014
+Epoch 1673: at batch 1: Loss=0.249, Time=0.021
+Epoch 1674: at batch 1: Loss=0.319, Time=0.019
+Epoch 1675: at batch 1: Loss=0.304, Time=0.018
+Epoch 1676: at batch 1: Loss=0.379, Time=0.024
+Epoch 1677: at batch 1: Loss=0.273, Time=0.020
+Epoch 1678: at batch 1: Loss=0.256, Time=0.019
+Epoch 1679: at batch 1: Loss=0.269, Time=0.021
+Epoch 1680: at batch 1: Loss=0.252, Time=0.019
+Epoch 1681: at batch 1: Loss=0.288, Time=0.019
+Epoch 1681: Time=359.698, Epoch time = 0.165, Avg epoch time=0.000
+
+[[0.23442738]
+ [0.23022993]
+ [0.22286594]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1682: at batch 1: Loss=0.251, Time=0.017
+Epoch 1683: at batch 1: Loss=0.256, Time=0.016
+Epoch 1684: at batch 1: Loss=0.251, Time=0.016
+Epoch 1685: at batch 1: Loss=0.255, Time=0.018
+Epoch 1686: at batch 1: Loss=0.248, Time=0.019
+Epoch 1687: at batch 1: Loss=0.254, Time=0.027
+Epoch 1688: at batch 1: Loss=0.296, Time=0.024
+Epoch 1689: at batch 1: Loss=0.293, Time=0.019
+Epoch 1690: at batch 1: Loss=0.261, Time=0.024
+Epoch 1691: at batch 1: Loss=0.291, Time=0.018
+Epoch 1691: Time=361.873, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.2310704 ]
+ [0.27325353]
+ [0.23595239]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1692: at batch 1: Loss=0.299, Time=0.022
+Epoch 1693: at batch 1: Loss=0.271, Time=0.022
+Epoch 1694: at batch 1: Loss=0.252, Time=0.017
+Epoch 1695: at batch 1: Loss=0.243, Time=0.018
+Epoch 1696: at batch 1: Loss=0.247, Time=0.021
+Epoch 1697: at batch 1: Loss=0.246, Time=0.019
+Epoch 1698: at batch 1: Loss=0.306, Time=0.022
+Epoch 1699: at batch 1: Loss=0.271, Time=0.020
+Epoch 1700: at batch 1: Loss=0.268, Time=0.022
+Epoch 1701: at batch 1: Loss=0.258, Time=0.025
+Epoch 1701: Time=364.048, Epoch time = 0.205, Avg epoch time=0.000
+
+[[0.22188576]
+ [0.30347577]
+ [0.2447824 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1702: at batch 1: Loss=0.258, Time=0.022
+Epoch 1703: at batch 1: Loss=0.259, Time=0.020
+Epoch 1704: at batch 1: Loss=0.379, Time=0.019
+Epoch 1705: at batch 1: Loss=0.329, Time=0.019
+Epoch 1706: at batch 1: Loss=0.464, Time=0.024
+Epoch 1707: at batch 1: Loss=0.313, Time=0.020
+Epoch 1708: at batch 1: Loss=0.276, Time=0.022
+Epoch 1709: at batch 1: Loss=0.254, Time=0.023
+Epoch 1710: at batch 1: Loss=0.284, Time=0.024
+Epoch 1711: at batch 1: Loss=0.247, Time=0.024
+Epoch 1711: Time=366.235, Epoch time = 0.213, Avg epoch time=0.000
+
+[[0.24987529]
+ [0.25315982]
+ [0.24462421]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1712: at batch 1: Loss=0.355, Time=0.016
+Epoch 1713: at batch 1: Loss=0.288, Time=0.014
+Epoch 1714: at batch 1: Loss=0.265, Time=0.024
+Epoch 1715: at batch 1: Loss=0.260, Time=0.019
+Epoch 1716: at batch 1: Loss=0.279, Time=0.017
+Epoch 1717: at batch 1: Loss=0.259, Time=0.013
+Epoch 1718: at batch 1: Loss=0.364, Time=0.018
+Epoch 1719: at batch 1: Loss=0.271, Time=0.024
+Epoch 1720: at batch 1: Loss=0.260, Time=0.016
+Epoch 1721: at batch 1: Loss=0.254, Time=0.018
+Epoch 1721: Time=368.352, Epoch time = 0.170, Avg epoch time=0.000
+
+[[0.21984816]
+ [0.21984816]
+ [0.28962949]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1722: at batch 1: Loss=0.260, Time=0.021
+Epoch 1723: at batch 1: Loss=0.245, Time=0.024
+Epoch 1724: at batch 1: Loss=0.271, Time=0.021
+Epoch 1725: at batch 1: Loss=0.255, Time=0.021
+Epoch 1726: at batch 1: Loss=0.252, Time=0.019
+Epoch 1727: at batch 1: Loss=0.259, Time=0.022
+Epoch 1728: at batch 1: Loss=0.244, Time=0.014
+Epoch 1729: at batch 1: Loss=0.250, Time=0.024
+Epoch 1730: at batch 1: Loss=0.268, Time=0.021
+Epoch 1731: at batch 1: Loss=0.268, Time=0.024
+Epoch 1731: Time=370.524, Epoch time = 0.195, Avg epoch time=0.000
+
+[[0.21872973]
+ [0.25479102]
+ [0.24195592]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1732: at batch 1: Loss=0.255, Time=0.017
+Epoch 1733: at batch 1: Loss=0.250, Time=0.024
+Epoch 1734: at batch 1: Loss=0.296, Time=0.017
+Epoch 1735: at batch 1: Loss=0.267, Time=0.016
+Epoch 1736: at batch 1: Loss=0.276, Time=0.022
+Epoch 1737: at batch 1: Loss=0.273, Time=0.018
+Epoch 1738: at batch 1: Loss=0.307, Time=0.022
+Epoch 1739: at batch 1: Loss=0.277, Time=0.014
+Epoch 1740: at batch 1: Loss=0.680, Time=0.014
+Epoch 1741: at batch 1: Loss=0.505, Time=0.014
+Epoch 1741: Time=372.612, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.22221088]
+ [0.22221088]
+ [0.29266384]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1742: at batch 1: Loss=0.320, Time=0.016
+Epoch 1743: at batch 1: Loss=0.282, Time=0.022
+Epoch 1744: at batch 1: Loss=0.328, Time=0.023
+Epoch 1745: at batch 1: Loss=0.283, Time=0.022
+Epoch 1746: at batch 1: Loss=0.373, Time=0.014
+Epoch 1747: at batch 1: Loss=0.297, Time=0.014
+Epoch 1748: at batch 1: Loss=0.276, Time=0.017
+Epoch 1749: at batch 1: Loss=0.282, Time=0.020
+Epoch 1750: at batch 1: Loss=0.250, Time=0.025
+Epoch 1751: at batch 1: Loss=0.236, Time=0.014
+Epoch 1751: Time=374.671, Epoch time = 0.153, Avg epoch time=0.000
+
+[[0.32237545]
+ [0.22953635]
+ [0.2192744 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1752: at batch 1: Loss=0.238, Time=0.017
+Epoch 1753: at batch 1: Loss=0.241, Time=0.016
+Epoch 1754: at batch 1: Loss=0.405, Time=0.015
+Epoch 1755: at batch 1: Loss=0.253, Time=0.019
+Epoch 1756: at batch 1: Loss=0.383, Time=0.019
+Epoch 1757: at batch 1: Loss=0.313, Time=0.019
+Epoch 1758: at batch 1: Loss=0.528, Time=0.016
+Epoch 1759: at batch 1: Loss=0.345, Time=0.022
+Epoch 1760: at batch 1: Loss=0.274, Time=0.014
+Epoch 1761: at batch 1: Loss=0.313, Time=0.018
+Epoch 1761: Time=376.736, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.21530259]
+ [0.23052581]
+ [0.285952  ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1762: at batch 1: Loss=0.273, Time=0.016
+Epoch 1763: at batch 1: Loss=0.283, Time=0.016
+Epoch 1764: at batch 1: Loss=0.287, Time=0.013
+Epoch 1765: at batch 1: Loss=0.266, Time=0.023
+Epoch 1766: at batch 1: Loss=0.256, Time=0.021
+Epoch 1767: at batch 1: Loss=0.249, Time=0.019
+Epoch 1768: at batch 1: Loss=0.266, Time=0.019
+Epoch 1769: at batch 1: Loss=0.248, Time=0.013
+Epoch 1770: at batch 1: Loss=0.264, Time=0.021
+Epoch 1771: at batch 1: Loss=0.256, Time=0.025
+Epoch 1771: Time=378.871, Epoch time = 0.197, Avg epoch time=0.000
+
+[[0.27363932]
+ [0.25210765]
+ [0.25365058]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1772: at batch 1: Loss=0.246, Time=0.024
+Epoch 1773: at batch 1: Loss=0.246, Time=0.023
+Epoch 1774: at batch 1: Loss=0.271, Time=0.016
+Epoch 1775: at batch 1: Loss=0.252, Time=0.024
+Epoch 1776: at batch 1: Loss=0.252, Time=0.024
+Epoch 1777: at batch 1: Loss=0.248, Time=0.021
+Epoch 1778: at batch 1: Loss=0.248, Time=0.014
+Epoch 1779: at batch 1: Loss=0.242, Time=0.017
+Epoch 1780: at batch 1: Loss=0.242, Time=0.017
+Epoch 1781: at batch 1: Loss=0.239, Time=0.017
+Epoch 1781: Time=380.947, Epoch time = 0.187, Avg epoch time=0.000
+
+[[0.23925133]
+ [0.22072954]
+ [0.22670853]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1782: at batch 1: Loss=0.238, Time=0.016
+Epoch 1783: at batch 1: Loss=0.247, Time=0.017
+Epoch 1784: at batch 1: Loss=0.261, Time=0.015
+Epoch 1785: at batch 1: Loss=0.245, Time=0.015
+Epoch 1786: at batch 1: Loss=0.333, Time=0.015
+Epoch 1787: at batch 1: Loss=0.307, Time=0.017
+Epoch 1788: at batch 1: Loss=0.254, Time=0.017
+Epoch 1789: at batch 1: Loss=0.253, Time=0.016
+Epoch 1790: at batch 1: Loss=0.242, Time=0.024
+Epoch 1791: at batch 1: Loss=0.244, Time=0.017
+Epoch 1791: Time=383.019, Epoch time = 0.175, Avg epoch time=0.000
+
+[[0.21093209]
+ [0.23937899]
+ [0.33950141]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1792: at batch 1: Loss=0.259, Time=0.020
+Epoch 1793: at batch 1: Loss=0.248, Time=0.016
+Epoch 1794: at batch 1: Loss=0.250, Time=0.021
+Epoch 1795: at batch 1: Loss=0.239, Time=0.016
+Epoch 1796: at batch 1: Loss=0.243, Time=0.024
+Epoch 1797: at batch 1: Loss=0.252, Time=0.016
+Epoch 1798: at batch 1: Loss=0.317, Time=0.016
+Epoch 1799: at batch 1: Loss=0.311, Time=0.017
+Epoch 1800: at batch 1: Loss=0.277, Time=0.021
+Epoch 1801: at batch 1: Loss=0.269, Time=0.022
+Epoch 1801: Time=385.119, Epoch time = 0.180, Avg epoch time=0.000
+
+[[0.27498016]
+ [0.24571824]
+ [0.23009121]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1802: at batch 1: Loss=0.252, Time=0.022
+Epoch 1803: at batch 1: Loss=0.246, Time=0.025
+Epoch 1804: at batch 1: Loss=0.253, Time=0.017
+Epoch 1805: at batch 1: Loss=0.251, Time=0.015
+Epoch 1806: at batch 1: Loss=0.249, Time=0.017
+Epoch 1807: at batch 1: Loss=0.263, Time=0.016
+Epoch 1808: at batch 1: Loss=0.255, Time=0.020
+Epoch 1809: at batch 1: Loss=0.249, Time=0.019
+Epoch 1810: at batch 1: Loss=0.240, Time=0.016
+Epoch 1811: at batch 1: Loss=0.234, Time=0.018
+Epoch 1811: Time=387.235, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.21915221]
+ [0.22265129]
+ [0.25042427]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1812: at batch 1: Loss=0.244, Time=0.019
+Epoch 1813: at batch 1: Loss=0.292, Time=0.016
+Epoch 1814: at batch 1: Loss=0.265, Time=0.019
+Epoch 1815: at batch 1: Loss=0.254, Time=0.017
+Epoch 1816: at batch 1: Loss=0.256, Time=0.015
+Epoch 1817: at batch 1: Loss=0.246, Time=0.022
+Epoch 1818: at batch 1: Loss=0.250, Time=0.015
+Epoch 1819: at batch 1: Loss=0.254, Time=0.019
+Epoch 1820: at batch 1: Loss=0.249, Time=0.021
+Epoch 1821: at batch 1: Loss=0.280, Time=0.016
+Epoch 1821: Time=389.344, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.25964049]
+ [0.68027306]
+ [0.22751601]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1822: at batch 1: Loss=0.251, Time=0.018
+Epoch 1823: at batch 1: Loss=0.257, Time=0.025
+Epoch 1824: at batch 1: Loss=0.317, Time=0.022
+Epoch 1825: at batch 1: Loss=0.259, Time=0.018
+Epoch 1826: at batch 1: Loss=0.267, Time=0.022
+Epoch 1827: at batch 1: Loss=0.253, Time=0.020
+Epoch 1828: at batch 1: Loss=0.349, Time=0.015
+Epoch 1829: at batch 1: Loss=0.307, Time=0.018
+Epoch 1830: at batch 1: Loss=0.320, Time=0.022
+Epoch 1831: at batch 1: Loss=0.295, Time=0.020
+Epoch 1831: Time=391.581, Epoch time = 0.195, Avg epoch time=0.000
+
+[[0.22363497]
+ [0.24999817]
+ [0.26801261]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1832: at batch 1: Loss=0.261, Time=0.019
+Epoch 1833: at batch 1: Loss=0.241, Time=0.016
+Epoch 1834: at batch 1: Loss=0.252, Time=0.016
+Epoch 1835: at batch 1: Loss=0.296, Time=0.017
+Epoch 1836: at batch 1: Loss=0.267, Time=0.021
+Epoch 1837: at batch 1: Loss=0.244, Time=0.018
+Epoch 1838: at batch 1: Loss=0.240, Time=0.021
+Epoch 1839: at batch 1: Loss=0.296, Time=0.019
+Epoch 1840: at batch 1: Loss=0.267, Time=0.019
+Epoch 1841: at batch 1: Loss=0.247, Time=0.025
+Epoch 1841: Time=393.729, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.22915995]
+ [0.44189414]
+ [0.20846198]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1842: at batch 1: Loss=0.251, Time=0.021
+Epoch 1843: at batch 1: Loss=0.280, Time=0.014
+Epoch 1844: at batch 1: Loss=0.249, Time=0.015
+Epoch 1845: at batch 1: Loss=0.245, Time=0.014
+Epoch 1846: at batch 1: Loss=0.258, Time=0.017
+Epoch 1847: at batch 1: Loss=0.250, Time=0.021
+Epoch 1848: at batch 1: Loss=0.270, Time=0.024
+Epoch 1849: at batch 1: Loss=0.282, Time=0.020
+Epoch 1850: at batch 1: Loss=0.264, Time=0.017
+Epoch 1851: at batch 1: Loss=0.282, Time=0.022
+Epoch 1851: Time=395.892, Epoch time = 0.189, Avg epoch time=0.000
+
+[[0.23234706]
+ [0.24852295]
+ [0.25015175]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1852: at batch 1: Loss=0.375, Time=0.017
+Epoch 1853: at batch 1: Loss=0.286, Time=0.019
+Epoch 1854: at batch 1: Loss=0.278, Time=0.014
+Epoch 1855: at batch 1: Loss=0.264, Time=0.017
+Epoch 1856: at batch 1: Loss=0.258, Time=0.017
+Epoch 1857: at batch 1: Loss=0.312, Time=0.014
+Epoch 1858: at batch 1: Loss=0.308, Time=0.018
+Epoch 1859: at batch 1: Loss=0.295, Time=0.019
+Epoch 1860: at batch 1: Loss=0.270, Time=0.017
+Epoch 1861: at batch 1: Loss=0.262, Time=0.019
+Epoch 1861: Time=398.096, Epoch time = 0.199, Avg epoch time=0.000
+
+[[0.24206693]
+ [0.23232178]
+ [0.27200922]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1862: at batch 1: Loss=0.249, Time=0.014
+Epoch 1863: at batch 1: Loss=0.243, Time=0.024
+Epoch 1864: at batch 1: Loss=0.271, Time=0.025
+Epoch 1865: at batch 1: Loss=0.305, Time=0.016
+Epoch 1866: at batch 1: Loss=0.278, Time=0.021
+Epoch 1867: at batch 1: Loss=0.257, Time=0.019
+Epoch 1868: at batch 1: Loss=0.243, Time=0.023
+Epoch 1869: at batch 1: Loss=0.241, Time=0.017
+Epoch 1870: at batch 1: Loss=0.244, Time=0.016
+Epoch 1871: at batch 1: Loss=0.252, Time=0.019
+Epoch 1871: Time=400.245, Epoch time = 0.159, Avg epoch time=0.000
+
+[[0.23758505]
+ [0.22204874]
+ [0.23263986]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1872: at batch 1: Loss=0.245, Time=0.017
+Epoch 1873: at batch 1: Loss=0.261, Time=0.016
+Epoch 1874: at batch 1: Loss=0.240, Time=0.021
+Epoch 1875: at batch 1: Loss=0.310, Time=0.021
+Epoch 1876: at batch 1: Loss=0.265, Time=0.023
+Epoch 1877: at batch 1: Loss=0.306, Time=0.019
+Epoch 1878: at batch 1: Loss=0.269, Time=0.019
+Epoch 1879: at batch 1: Loss=0.318, Time=0.016
+Epoch 1880: at batch 1: Loss=0.323, Time=0.021
+Epoch 1881: at batch 1: Loss=0.264, Time=0.018
+Epoch 1881: Time=402.362, Epoch time = 0.192, Avg epoch time=0.000
+
+[[0.22783919]
+ [0.22461724]
+ [0.26191396]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1882: at batch 1: Loss=0.251, Time=0.014
+Epoch 1883: at batch 1: Loss=0.269, Time=0.024
+Epoch 1884: at batch 1: Loss=0.256, Time=0.019
+Epoch 1885: at batch 1: Loss=0.244, Time=0.016
+Epoch 1886: at batch 1: Loss=0.237, Time=0.017
+Epoch 1887: at batch 1: Loss=0.239, Time=0.021
+Epoch 1888: at batch 1: Loss=0.239, Time=0.019
+Epoch 1889: at batch 1: Loss=0.240, Time=0.019
+Epoch 1890: at batch 1: Loss=0.242, Time=0.022
+Epoch 1891: at batch 1: Loss=0.243, Time=0.014
+Epoch 1891: Time=404.505, Epoch time = 0.175, Avg epoch time=0.000
+
+[[0.2445605 ]
+ [0.2253713 ]
+ [0.24539678]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1892: at batch 1: Loss=0.248, Time=0.019
+Epoch 1893: at batch 1: Loss=0.241, Time=0.022
+Epoch 1894: at batch 1: Loss=0.237, Time=0.022
+Epoch 1895: at batch 1: Loss=0.243, Time=0.022
+Epoch 1896: at batch 1: Loss=0.234, Time=0.015
+Epoch 1897: at batch 1: Loss=0.242, Time=0.021
+Epoch 1898: at batch 1: Loss=0.239, Time=0.021
+Epoch 1899: at batch 1: Loss=0.285, Time=0.019
+Epoch 1900: at batch 1: Loss=0.286, Time=0.019
+Epoch 1901: at batch 1: Loss=0.402, Time=0.017
+Epoch 1901: Time=406.624, Epoch time = 0.177, Avg epoch time=0.000
+
+[[0.24642785]
+ [2.67178035]
+ [0.23649348]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1902: at batch 1: Loss=0.290, Time=0.018
+Epoch 1903: at batch 1: Loss=0.270, Time=0.024
+Epoch 1904: at batch 1: Loss=0.334, Time=0.019
+Epoch 1905: at batch 1: Loss=0.260, Time=0.024
+Epoch 1906: at batch 1: Loss=0.280, Time=0.024
+Epoch 1907: at batch 1: Loss=0.284, Time=0.016
+Epoch 1908: at batch 1: Loss=0.259, Time=0.019
+Epoch 1909: at batch 1: Loss=0.253, Time=0.021
+Epoch 1910: at batch 1: Loss=0.247, Time=0.019
+Epoch 1911: at batch 1: Loss=0.250, Time=0.024
+Epoch 1911: Time=408.789, Epoch time = 0.198, Avg epoch time=0.000
+
+[[0.23244376]
+ [0.26000568]
+ [0.23475479]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1912: at batch 1: Loss=0.261, Time=0.017
+Epoch 1913: at batch 1: Loss=0.257, Time=0.016
+Epoch 1914: at batch 1: Loss=0.242, Time=0.018
+Epoch 1915: at batch 1: Loss=0.278, Time=0.022
+Epoch 1916: at batch 1: Loss=0.325, Time=0.016
+Epoch 1917: at batch 1: Loss=0.267, Time=0.018
+Epoch 1918: at batch 1: Loss=0.251, Time=0.022
+Epoch 1919: at batch 1: Loss=0.266, Time=0.022
+Epoch 1920: at batch 1: Loss=0.382, Time=0.014
+Epoch 1921: at batch 1: Loss=0.322, Time=0.022
+Epoch 1921: Time=410.883, Epoch time = 0.187, Avg epoch time=0.000
+
+[[0.21716233]
+ [0.24219342]
+ [0.24231488]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1922: at batch 1: Loss=0.328, Time=0.016
+Epoch 1923: at batch 1: Loss=0.265, Time=0.024
+Epoch 1924: at batch 1: Loss=0.265, Time=0.014
+Epoch 1925: at batch 1: Loss=0.257, Time=0.019
+Epoch 1926: at batch 1: Loss=0.284, Time=0.021
+Epoch 1927: at batch 1: Loss=0.248, Time=0.015
+Epoch 1928: at batch 1: Loss=0.292, Time=0.019
+Epoch 1929: at batch 1: Loss=0.278, Time=0.024
+Epoch 1930: at batch 1: Loss=0.255, Time=0.013
+Epoch 1931: at batch 1: Loss=0.258, Time=0.015
+Epoch 1931: Time=412.949, Epoch time = 0.155, Avg epoch time=0.000
+
+[[0.21941257]
+ [0.25052616]
+ [0.27609053]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1932: at batch 1: Loss=0.250, Time=0.017
+Epoch 1933: at batch 1: Loss=0.256, Time=0.017
+Epoch 1934: at batch 1: Loss=0.250, Time=0.014
+Epoch 1935: at batch 1: Loss=0.244, Time=0.016
+Epoch 1936: at batch 1: Loss=0.242, Time=0.019
+Epoch 1937: at batch 1: Loss=0.234, Time=0.016
+Epoch 1938: at batch 1: Loss=0.233, Time=0.021
+Epoch 1939: at batch 1: Loss=0.241, Time=0.023
+Epoch 1940: at batch 1: Loss=0.327, Time=0.013
+Epoch 1941: at batch 1: Loss=0.283, Time=0.024
+Epoch 1941: Time=415.083, Epoch time = 0.203, Avg epoch time=0.000
+
+[[0.23031265]
+ [0.28604686]
+ [0.22504693]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1942: at batch 1: Loss=0.251, Time=0.015
+Epoch 1943: at batch 1: Loss=0.238, Time=0.022
+Epoch 1944: at batch 1: Loss=0.233, Time=0.021
+Epoch 1945: at batch 1: Loss=0.294, Time=0.016
+Epoch 1946: at batch 1: Loss=0.264, Time=0.020
+Epoch 1947: at batch 1: Loss=0.329, Time=0.017
+Epoch 1948: at batch 1: Loss=0.358, Time=0.024
+Epoch 1949: at batch 1: Loss=0.336, Time=0.016
+Epoch 1950: at batch 1: Loss=0.296, Time=0.022
+Epoch 1951: at batch 1: Loss=0.326, Time=0.023
+Epoch 1951: Time=417.261, Epoch time = 0.197, Avg epoch time=0.000
+
+[[0.25355148]
+ [0.24494511]
+ [0.25015557]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1952: at batch 1: Loss=0.308, Time=0.019
+Epoch 1953: at batch 1: Loss=0.345, Time=0.017
+Epoch 1954: at batch 1: Loss=0.304, Time=0.014
+Epoch 1955: at batch 1: Loss=0.352, Time=0.019
+Epoch 1956: at batch 1: Loss=0.287, Time=0.026
+Epoch 1957: at batch 1: Loss=0.263, Time=0.022
+Epoch 1958: at batch 1: Loss=0.257, Time=0.017
+Epoch 1959: at batch 1: Loss=0.247, Time=0.024
+Epoch 1960: at batch 1: Loss=0.248, Time=0.019
+Epoch 1961: at batch 1: Loss=0.248, Time=0.014
+Epoch 1961: Time=419.377, Epoch time = 0.171, Avg epoch time=0.000
+
+[[0.25352627]
+ [0.38622594]
+ [0.38622594]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1962: at batch 1: Loss=0.251, Time=0.022
+Epoch 1963: at batch 1: Loss=0.251, Time=0.014
+Epoch 1964: at batch 1: Loss=0.261, Time=0.016
+Epoch 1965: at batch 1: Loss=0.320, Time=0.020
+Epoch 1966: at batch 1: Loss=0.302, Time=0.014
+Epoch 1967: at batch 1: Loss=0.272, Time=0.018
+Epoch 1968: at batch 1: Loss=0.255, Time=0.016
+Epoch 1969: at batch 1: Loss=0.248, Time=0.015
+Epoch 1970: at batch 1: Loss=0.252, Time=0.017
+Epoch 1971: at batch 1: Loss=0.256, Time=0.023
+Epoch 1971: Time=421.463, Epoch time = 0.201, Avg epoch time=0.000
+
+[[0.2263871 ]
+ [0.24318771]
+ [0.24107349]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1972: at batch 1: Loss=0.268, Time=0.014
+Epoch 1973: at batch 1: Loss=0.284, Time=0.021
+Epoch 1974: at batch 1: Loss=0.259, Time=0.019
+Epoch 1975: at batch 1: Loss=0.241, Time=0.016
+Epoch 1976: at batch 1: Loss=0.243, Time=0.016
+Epoch 1977: at batch 1: Loss=0.410, Time=0.024
+Epoch 1978: at batch 1: Loss=0.360, Time=0.022
+Epoch 1979: at batch 1: Loss=0.918, Time=0.020
+Epoch 1980: at batch 1: Loss=0.559, Time=0.022
+Epoch 1981: at batch 1: Loss=0.290, Time=0.019
+Epoch 1981: Time=423.564, Epoch time = 0.173, Avg epoch time=0.000
+
+[[0.21817337]
+ [0.24126048]
+ [0.271539  ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1982: at batch 1: Loss=0.282, Time=0.024
+Epoch 1983: at batch 1: Loss=0.327, Time=0.018
+Epoch 1984: at batch 1: Loss=0.287, Time=0.019
+Epoch 1985: at batch 1: Loss=0.261, Time=0.014
+Epoch 1986: at batch 1: Loss=0.267, Time=0.016
+Epoch 1987: at batch 1: Loss=0.252, Time=0.022
+Epoch 1988: at batch 1: Loss=0.275, Time=0.019
+Epoch 1989: at batch 1: Loss=0.302, Time=0.019
+Epoch 1990: at batch 1: Loss=0.261, Time=0.018
+Epoch 1991: at batch 1: Loss=0.241, Time=0.022
+Epoch 1991: Time=425.718, Epoch time = 0.186, Avg epoch time=0.000
+
+[[0.24143445]
+ [0.23575544]
+ [0.23639041]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 1992: at batch 1: Loss=0.248, Time=0.021
+Epoch 1993: at batch 1: Loss=0.250, Time=0.021
+Epoch 1994: at batch 1: Loss=0.247, Time=0.014
+Epoch 1995: at batch 1: Loss=0.247, Time=0.019
+Epoch 1996: at batch 1: Loss=0.247, Time=0.022
+Epoch 1997: at batch 1: Loss=0.237, Time=0.019
+Epoch 1998: at batch 1: Loss=0.236, Time=0.019
+Epoch 1999: at batch 1: Loss=0.416, Time=0.016
+Epoch 2000: at batch 1: Loss=0.336, Time=0.019
+Epoch 2001: at batch 1: Loss=0.264, Time=0.024
+Epoch 2001: Time=427.916, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.33636451]
+ [0.22800992]
+ [0.32157949]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2002: at batch 1: Loss=0.243, Time=0.018
+Epoch 2003: at batch 1: Loss=0.276, Time=0.020
+Epoch 2004: at batch 1: Loss=0.267, Time=0.022
+Epoch 2005: at batch 1: Loss=0.253, Time=0.019
+Epoch 2006: at batch 1: Loss=0.244, Time=0.022
+Epoch 2007: at batch 1: Loss=0.241, Time=0.020
+Epoch 2008: at batch 1: Loss=0.245, Time=0.025
+Epoch 2009: at batch 1: Loss=0.260, Time=0.022
+Epoch 2010: at batch 1: Loss=0.257, Time=0.019
+Epoch 2011: at batch 1: Loss=0.286, Time=0.022
+Epoch 2011: Time=430.035, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.43951988]
+ [0.24792556]
+ [0.23928636]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2012: at batch 1: Loss=0.257, Time=0.014
+Epoch 2013: at batch 1: Loss=0.474, Time=0.014
+Epoch 2014: at batch 1: Loss=0.316, Time=0.021
+Epoch 2015: at batch 1: Loss=0.302, Time=0.013
+Epoch 2016: at batch 1: Loss=0.302, Time=0.014
+Epoch 2017: at batch 1: Loss=0.267, Time=0.019
+Epoch 2018: at batch 1: Loss=0.258, Time=0.016
+Epoch 2019: at batch 1: Loss=0.244, Time=0.022
+Epoch 2020: at batch 1: Loss=0.245, Time=0.016
+Epoch 2021: at batch 1: Loss=0.540, Time=0.016
+Epoch 2021: Time=432.083, Epoch time = 0.168, Avg epoch time=0.000
+
+[[0.23667349]
+ [0.2238185 ]
+ [0.24140714]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2022: at batch 1: Loss=0.448, Time=0.015
+Epoch 2023: at batch 1: Loss=0.361, Time=0.014
+Epoch 2024: at batch 1: Loss=0.307, Time=0.023
+Epoch 2025: at batch 1: Loss=0.280, Time=0.023
+Epoch 2026: at batch 1: Loss=0.249, Time=0.014
+Epoch 2027: at batch 1: Loss=0.248, Time=0.016
+Epoch 2028: at batch 1: Loss=0.242, Time=0.019
+Epoch 2029: at batch 1: Loss=0.242, Time=0.021
+Epoch 2030: at batch 1: Loss=0.251, Time=0.019
+Epoch 2031: at batch 1: Loss=0.248, Time=0.019
+Epoch 2031: Time=434.203, Epoch time = 0.189, Avg epoch time=0.000
+
+[[0.26311502]
+ [0.22108299]
+ [0.22108299]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2032: at batch 1: Loss=0.248, Time=0.019
+Epoch 2033: at batch 1: Loss=0.239, Time=0.016
+Epoch 2034: at batch 1: Loss=0.241, Time=0.019
+Epoch 2035: at batch 1: Loss=0.240, Time=0.017
+Epoch 2036: at batch 1: Loss=0.243, Time=0.016
+Epoch 2037: at batch 1: Loss=0.241, Time=0.017
+Epoch 2038: at batch 1: Loss=0.243, Time=0.023
+Epoch 2039: at batch 1: Loss=0.239, Time=0.024
+Epoch 2040: at batch 1: Loss=0.239, Time=0.014
+Epoch 2041: at batch 1: Loss=0.236, Time=0.024
+Epoch 2041: Time=436.303, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.22473472]
+ [0.24977882]
+ [0.23496516]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2042: at batch 1: Loss=0.250, Time=0.015
+Epoch 2043: at batch 1: Loss=0.293, Time=0.016
+Epoch 2044: at batch 1: Loss=0.265, Time=0.014
+Epoch 2045: at batch 1: Loss=0.264, Time=0.016
+Epoch 2046: at batch 1: Loss=0.245, Time=0.021
+Epoch 2047: at batch 1: Loss=0.248, Time=0.013
+Epoch 2048: at batch 1: Loss=0.250, Time=0.016
+Epoch 2049: at batch 1: Loss=0.261, Time=0.022
+Epoch 2050: at batch 1: Loss=0.296, Time=0.019
+Epoch 2051: at batch 1: Loss=0.275, Time=0.020
+Epoch 2051: Time=438.422, Epoch time = 0.177, Avg epoch time=0.000
+
+[[0.71036738]
+ [0.23072253]
+ [0.25692621]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2052: at batch 1: Loss=0.252, Time=0.021
+Epoch 2053: at batch 1: Loss=0.286, Time=0.023
+Epoch 2054: at batch 1: Loss=0.261, Time=0.021
+Epoch 2055: at batch 1: Loss=0.242, Time=0.015
+Epoch 2056: at batch 1: Loss=0.247, Time=0.017
+Epoch 2057: at batch 1: Loss=0.235, Time=0.023
+Epoch 2058: at batch 1: Loss=0.237, Time=0.021
+Epoch 2059: at batch 1: Loss=0.234, Time=0.016
+Epoch 2060: at batch 1: Loss=0.233, Time=0.018
+Epoch 2061: at batch 1: Loss=0.258, Time=0.019
+Epoch 2061: Time=440.549, Epoch time = 0.175, Avg epoch time=0.000
+
+[[0.25460961]
+ [0.26953751]
+ [0.23238015]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2062: at batch 1: Loss=0.256, Time=0.022
+Epoch 2063: at batch 1: Loss=0.248, Time=0.022
+Epoch 2064: at batch 1: Loss=0.265, Time=0.019
+Epoch 2065: at batch 1: Loss=0.240, Time=0.019
+Epoch 2066: at batch 1: Loss=0.236, Time=0.015
+Epoch 2067: at batch 1: Loss=0.261, Time=0.022
+Epoch 2068: at batch 1: Loss=0.250, Time=0.016
+Epoch 2069: at batch 1: Loss=0.368, Time=0.020
+Epoch 2070: at batch 1: Loss=0.317, Time=0.016
+Epoch 2071: at batch 1: Loss=0.289, Time=0.013
+Epoch 2071: Time=442.714, Epoch time = 0.195, Avg epoch time=0.000
+
+[[0.24064501]
+ [0.26906475]
+ [0.21270585]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2072: at batch 1: Loss=0.265, Time=0.022
+Epoch 2073: at batch 1: Loss=0.267, Time=0.022
+Epoch 2074: at batch 1: Loss=0.247, Time=0.022
+Epoch 2075: at batch 1: Loss=0.248, Time=0.022
+Epoch 2076: at batch 1: Loss=0.241, Time=0.017
+Epoch 2077: at batch 1: Loss=0.245, Time=0.017
+Epoch 2078: at batch 1: Loss=0.242, Time=0.016
+Epoch 2079: at batch 1: Loss=0.244, Time=0.020
+Epoch 2080: at batch 1: Loss=0.248, Time=0.016
+Epoch 2081: at batch 1: Loss=0.263, Time=0.024
+Epoch 2081: Time=444.921, Epoch time = 0.199, Avg epoch time=0.000
+
+[[0.20414698]
+ [0.23451817]
+ [0.2363687 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2082: at batch 1: Loss=0.256, Time=0.022
+Epoch 2083: at batch 1: Loss=0.247, Time=0.017
+Epoch 2084: at batch 1: Loss=0.237, Time=0.021
+Epoch 2085: at batch 1: Loss=0.253, Time=0.016
+Epoch 2086: at batch 1: Loss=0.345, Time=0.014
+Epoch 2087: at batch 1: Loss=0.282, Time=0.022
+Epoch 2088: at batch 1: Loss=0.244, Time=0.020
+Epoch 2089: at batch 1: Loss=0.244, Time=0.014
+Epoch 2090: at batch 1: Loss=0.275, Time=0.021
+Epoch 2091: at batch 1: Loss=0.246, Time=0.018
+Epoch 2091: Time=447.063, Epoch time = 0.200, Avg epoch time=0.000
+
+[[0.23145996]
+ [0.23453422]
+ [0.23453422]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2092: at batch 1: Loss=0.247, Time=0.022
+Epoch 2093: at batch 1: Loss=0.240, Time=0.017
+Epoch 2094: at batch 1: Loss=0.244, Time=0.016
+Epoch 2095: at batch 1: Loss=0.250, Time=0.022
+Epoch 2096: at batch 1: Loss=0.245, Time=0.017
+Epoch 2097: at batch 1: Loss=0.240, Time=0.014
+Epoch 2098: at batch 1: Loss=0.243, Time=0.020
+Epoch 2099: at batch 1: Loss=0.241, Time=0.022
+Epoch 2100: at batch 1: Loss=0.274, Time=0.022
+Epoch 2101: at batch 1: Loss=0.245, Time=0.024
+Epoch 2101: Time=449.259, Epoch time = 0.192, Avg epoch time=0.000
+
+[[0.21268445]
+ [0.24453919]
+ [0.24453919]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2102: at batch 1: Loss=0.233, Time=0.019
+Epoch 2103: at batch 1: Loss=0.240, Time=0.025
+Epoch 2104: at batch 1: Loss=0.357, Time=0.019
+Epoch 2105: at batch 1: Loss=0.267, Time=0.023
+Epoch 2106: at batch 1: Loss=0.298, Time=0.014
+Epoch 2107: at batch 1: Loss=0.318, Time=0.022
+Epoch 2108: at batch 1: Loss=0.271, Time=0.018
+Epoch 2109: at batch 1: Loss=0.284, Time=0.017
+Epoch 2110: at batch 1: Loss=0.280, Time=0.017
+Epoch 2111: at batch 1: Loss=0.254, Time=0.025
+Epoch 2111: Time=451.480, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.24185793]
+ [0.24214579]
+ [0.24185793]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2112: at batch 1: Loss=0.243, Time=0.019
+Epoch 2113: at batch 1: Loss=0.249, Time=0.019
+Epoch 2114: at batch 1: Loss=0.241, Time=0.019
+Epoch 2115: at batch 1: Loss=0.241, Time=0.022
+Epoch 2116: at batch 1: Loss=0.257, Time=0.019
+Epoch 2117: at batch 1: Loss=0.264, Time=0.020
+Epoch 2118: at batch 1: Loss=0.265, Time=0.017
+Epoch 2119: at batch 1: Loss=0.360, Time=0.021
+Epoch 2120: at batch 1: Loss=0.318, Time=0.023
+Epoch 2121: at batch 1: Loss=0.365, Time=0.016
+Epoch 2121: Time=453.609, Epoch time = 0.178, Avg epoch time=0.000
+
+[[0.24162619]
+ [0.27076259]
+ [0.23745529]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2122: at batch 1: Loss=0.259, Time=0.017
+Epoch 2123: at batch 1: Loss=0.304, Time=0.019
+Epoch 2124: at batch 1: Loss=0.269, Time=0.016
+Epoch 2125: at batch 1: Loss=0.269, Time=0.024
+Epoch 2126: at batch 1: Loss=0.256, Time=0.013
+Epoch 2127: at batch 1: Loss=0.257, Time=0.018
+Epoch 2128: at batch 1: Loss=0.318, Time=0.017
+Epoch 2129: at batch 1: Loss=0.270, Time=0.021
+Epoch 2130: at batch 1: Loss=0.241, Time=0.019
+Epoch 2131: at batch 1: Loss=0.240, Time=0.021
+Epoch 2131: Time=455.691, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.24148439]
+ [0.24148439]
+ [0.25998241]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2132: at batch 1: Loss=0.247, Time=0.019
+Epoch 2133: at batch 1: Loss=0.243, Time=0.019
+Epoch 2134: at batch 1: Loss=0.238, Time=0.013
+Epoch 2135: at batch 1: Loss=0.245, Time=0.014
+Epoch 2136: at batch 1: Loss=0.242, Time=0.016
+Epoch 2137: at batch 1: Loss=0.245, Time=0.016
+Epoch 2138: at batch 1: Loss=0.247, Time=0.022
+Epoch 2139: at batch 1: Loss=0.238, Time=0.019
+Epoch 2140: at batch 1: Loss=0.239, Time=0.022
+Epoch 2141: at batch 1: Loss=0.238, Time=0.017
+Epoch 2141: Time=457.914, Epoch time = 0.188, Avg epoch time=0.000
+
+[[0.24303274]
+ [1.17948425]
+ [0.2169583 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2142: at batch 1: Loss=0.289, Time=0.024
+Epoch 2143: at batch 1: Loss=0.276, Time=0.022
+Epoch 2144: at batch 1: Loss=0.244, Time=0.022
+Epoch 2145: at batch 1: Loss=0.238, Time=0.014
+Epoch 2146: at batch 1: Loss=0.236, Time=0.017
+Epoch 2147: at batch 1: Loss=0.244, Time=0.019
+Epoch 2148: at batch 1: Loss=0.239, Time=0.020
+Epoch 2149: at batch 1: Loss=0.241, Time=0.014
+Epoch 2150: at batch 1: Loss=0.245, Time=0.021
+Epoch 2151: at batch 1: Loss=0.244, Time=0.021
+Epoch 2151: Time=460.033, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.23464878]
+ [0.22252919]
+ [0.3891699 ]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2152: at batch 1: Loss=0.247, Time=0.019
+Epoch 2153: at batch 1: Loss=0.234, Time=0.016
+Epoch 2154: at batch 1: Loss=0.255, Time=0.021
+Epoch 2155: at batch 1: Loss=0.251, Time=0.016
+Epoch 2156: at batch 1: Loss=0.244, Time=0.014
+Epoch 2157: at batch 1: Loss=0.246, Time=0.018
+Epoch 2158: at batch 1: Loss=0.245, Time=0.016
+Epoch 2159: at batch 1: Loss=0.246, Time=0.017
+Epoch 2160: at batch 1: Loss=0.248, Time=0.020
+Epoch 2161: at batch 1: Loss=0.305, Time=0.019
+Epoch 2161: Time=462.130, Epoch time = 0.184, Avg epoch time=0.000
+
+[[0.21981914]
+ [0.23685324]
+ [0.22154687]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2162: at batch 1: Loss=0.260, Time=0.021
+Epoch 2163: at batch 1: Loss=0.250, Time=0.017
+Epoch 2164: at batch 1: Loss=0.281, Time=0.017
+Epoch 2165: at batch 1: Loss=0.289, Time=0.022
+Epoch 2166: at batch 1: Loss=0.256, Time=0.021
+Epoch 2167: at batch 1: Loss=0.239, Time=0.020
+Epoch 2168: at batch 1: Loss=0.245, Time=0.014
+Epoch 2169: at batch 1: Loss=0.248, Time=0.016
+Epoch 2170: at batch 1: Loss=0.250, Time=0.019
+Epoch 2171: at batch 1: Loss=0.261, Time=0.020
+Epoch 2171: Time=464.126, Epoch time = 0.151, Avg epoch time=0.000
+
+[[0.2532194 ]
+ [0.2429146 ]
+ [0.22219999]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2172: at batch 1: Loss=0.244, Time=0.021
+Epoch 2173: at batch 1: Loss=0.255, Time=0.016
+Epoch 2174: at batch 1: Loss=0.251, Time=0.013
+Epoch 2175: at batch 1: Loss=0.239, Time=0.019
+Epoch 2176: at batch 1: Loss=0.249, Time=0.024
+Epoch 2177: at batch 1: Loss=0.242, Time=0.021
+Epoch 2178: at batch 1: Loss=0.257, Time=0.016
+Epoch 2179: at batch 1: Loss=0.246, Time=0.021
+Epoch 2180: at batch 1: Loss=0.242, Time=0.014
+Epoch 2181: at batch 1: Loss=0.255, Time=0.018
+Epoch 2181: Time=466.171, Epoch time = 0.200, Avg epoch time=0.000
+
+[[0.23702741]
+ [0.24209721]
+ [0.24425896]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2182: at batch 1: Loss=0.242, Time=0.019
+Epoch 2183: at batch 1: Loss=0.246, Time=0.016
+Epoch 2184: at batch 1: Loss=0.243, Time=0.016
+Epoch 2185: at batch 1: Loss=0.319, Time=0.018
+Epoch 2186: at batch 1: Loss=0.331, Time=0.018
+Epoch 2187: at batch 1: Loss=0.261, Time=0.019
+Epoch 2188: at batch 1: Loss=0.253, Time=0.019
+Epoch 2189: at batch 1: Loss=0.255, Time=0.019
+Epoch 2190: at batch 1: Loss=0.296, Time=0.014
+Epoch 2191: at batch 1: Loss=0.304, Time=0.022
+Epoch 2191: Time=468.277, Epoch time = 0.191, Avg epoch time=0.000
+
+[[0.24046159]
+ [0.28650808]
+ [0.24064271]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2192: at batch 1: Loss=0.262, Time=0.022
+Epoch 2193: at batch 1: Loss=0.256, Time=0.017
+Epoch 2194: at batch 1: Loss=0.308, Time=0.023
+Epoch 2195: at batch 1: Loss=0.259, Time=0.014
+Epoch 2196: at batch 1: Loss=0.254, Time=0.019
+Epoch 2197: at batch 1: Loss=0.242, Time=0.024
+Epoch 2198: at batch 1: Loss=0.271, Time=0.016
+Epoch 2199: at batch 1: Loss=0.250, Time=0.024
+Epoch 2200: at batch 1: Loss=0.261, Time=0.021
+Epoch 2201: at batch 1: Loss=0.246, Time=0.022
+Epoch 2201: Time=470.448, Epoch time = 0.204, Avg epoch time=0.000
+
+[[0.25406653]
+ [0.24203412]
+ [0.37022528]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2202: at batch 1: Loss=0.248, Time=0.023
+Epoch 2203: at batch 1: Loss=0.244, Time=0.018
+Epoch 2204: at batch 1: Loss=0.323, Time=0.014
+Epoch 2205: at batch 1: Loss=0.274, Time=0.022
+Epoch 2206: at batch 1: Loss=0.280, Time=0.014
+Epoch 2207: at batch 1: Loss=0.242, Time=0.014
+Epoch 2208: at batch 1: Loss=0.238, Time=0.021
+Epoch 2209: at batch 1: Loss=0.238, Time=0.019
+Epoch 2210: at batch 1: Loss=0.253, Time=0.016
+Epoch 2211: at batch 1: Loss=0.246, Time=0.020
+Epoch 2211: Time=472.566, Epoch time = 0.169, Avg epoch time=0.000
+
+[[0.24337159]
+ [0.24490885]
+ [0.22809823]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2212: at batch 1: Loss=0.248, Time=0.014
+Epoch 2213: at batch 1: Loss=0.245, Time=0.017
+Epoch 2214: at batch 1: Loss=0.237, Time=0.016
+Epoch 2215: at batch 1: Loss=0.350, Time=0.021
+Epoch 2216: at batch 1: Loss=0.283, Time=0.021
+Epoch 2217: at batch 1: Loss=0.314, Time=0.022
+Epoch 2218: at batch 1: Loss=0.278, Time=0.023
+Epoch 2219: at batch 1: Loss=0.254, Time=0.021
+Epoch 2220: at batch 1: Loss=0.246, Time=0.016
+Epoch 2221: at batch 1: Loss=0.330, Time=0.017
+Epoch 2221: Time=474.758, Epoch time = 0.186, Avg epoch time=0.000
+
+[[0.23374104]
+ [0.67047262]
+ [0.21814692]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2222: at batch 1: Loss=0.514, Time=0.024
+Epoch 2223: at batch 1: Loss=0.360, Time=0.017
+Epoch 2224: at batch 1: Loss=0.280, Time=0.022
+Epoch 2225: at batch 1: Loss=0.259, Time=0.022
+Epoch 2226: at batch 1: Loss=0.271, Time=0.024
+Epoch 2227: at batch 1: Loss=0.247, Time=0.016
+Epoch 2228: at batch 1: Loss=0.288, Time=0.021
+Epoch 2229: at batch 1: Loss=0.264, Time=0.024
+Epoch 2230: at batch 1: Loss=0.254, Time=0.016
+Epoch 2231: at batch 1: Loss=0.245, Time=0.019
+Epoch 2231: Time=476.901, Epoch time = 0.189, Avg epoch time=0.000
+
+[[0.21969353]
+ [0.22453344]
+ [0.24151695]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2232: at batch 1: Loss=0.247, Time=0.019
+Epoch 2233: at batch 1: Loss=0.247, Time=0.016
+Epoch 2234: at batch 1: Loss=0.245, Time=0.019
+Epoch 2235: at batch 1: Loss=0.243, Time=0.016
+Epoch 2236: at batch 1: Loss=0.244, Time=0.017
+Epoch 2237: at batch 1: Loss=0.279, Time=0.017
+Epoch 2238: at batch 1: Loss=0.250, Time=0.022
+Epoch 2239: at batch 1: Loss=0.237, Time=0.021
+Epoch 2240: at batch 1: Loss=0.229, Time=0.016
+Epoch 2241: at batch 1: Loss=0.237, Time=0.020
+Epoch 2241: Time=479.085, Epoch time = 0.179, Avg epoch time=0.000
+
+[[0.26526615]
+ [0.21906479]
+ [0.26526615]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2242: at batch 1: Loss=0.251, Time=0.025
+Epoch 2243: at batch 1: Loss=0.295, Time=0.025
+Epoch 2244: at batch 1: Loss=0.261, Time=0.014
+Epoch 2245: at batch 1: Loss=0.263, Time=0.016
+Epoch 2246: at batch 1: Loss=0.250, Time=0.019
+Epoch 2247: at batch 1: Loss=0.249, Time=0.017
+Epoch 2248: at batch 1: Loss=0.241, Time=0.019
+Epoch 2249: at batch 1: Loss=0.244, Time=0.015
+Epoch 2250: at batch 1: Loss=0.236, Time=0.021
+Epoch 2251: at batch 1: Loss=0.436, Time=0.013
+Epoch 2251: Time=481.159, Epoch time = 0.178, Avg epoch time=0.000
+
+[[0.2159528 ]
+ [0.22886257]
+ [0.22877239]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2252: at batch 1: Loss=0.284, Time=0.019
+Epoch 2253: at batch 1: Loss=0.242, Time=0.017
+Epoch 2254: at batch 1: Loss=0.239, Time=0.022
+Epoch 2255: at batch 1: Loss=0.241, Time=0.021
+Epoch 2256: at batch 1: Loss=0.251, Time=0.021
+Epoch 2257: at batch 1: Loss=0.257, Time=0.023
+Epoch 2258: at batch 1: Loss=0.266, Time=0.025
+Epoch 2259: at batch 1: Loss=0.247, Time=0.019
+Epoch 2260: at batch 1: Loss=0.242, Time=0.016
+Epoch 2261: at batch 1: Loss=0.246, Time=0.021
+Epoch 2261: Time=483.270, Epoch time = 0.193, Avg epoch time=0.000
+
+[[0.24536175]
+ [0.23941804]
+ [0.23088634]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2262: at batch 1: Loss=0.249, Time=0.020
+Epoch 2263: at batch 1: Loss=0.267, Time=0.021
+Epoch 2264: at batch 1: Loss=0.253, Time=0.016
+Epoch 2265: at batch 1: Loss=0.322, Time=0.019
+Epoch 2266: at batch 1: Loss=0.273, Time=0.015
+Epoch 2267: at batch 1: Loss=0.253, Time=0.021
+Epoch 2268: at batch 1: Loss=0.236, Time=0.017
+Epoch 2269: at batch 1: Loss=0.252, Time=0.023
+Epoch 2270: at batch 1: Loss=0.248, Time=0.017
+Epoch 2271: at batch 1: Loss=0.239, Time=0.021
+Epoch 2271: Time=485.397, Epoch time = 0.181, Avg epoch time=0.000
+
+[[0.24701327]
+ [0.70213938]
+ [0.23444004]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2272: at batch 1: Loss=0.265, Time=0.023
+Epoch 2273: at batch 1: Loss=0.245, Time=0.020
+Epoch 2274: at batch 1: Loss=0.236, Time=0.022
+Epoch 2275: at batch 1: Loss=0.248, Time=0.017
+Epoch 2276: at batch 1: Loss=0.243, Time=0.019
+Epoch 2277: at batch 1: Loss=0.244, Time=0.019
+Epoch 2278: at batch 1: Loss=0.247, Time=0.016
+Epoch 2279: at batch 1: Loss=0.236, Time=0.020
+Epoch 2280: at batch 1: Loss=0.244, Time=0.019
+Epoch 2281: at batch 1: Loss=0.247, Time=0.018
+Epoch 2281: Time=487.484, Epoch time = 0.190, Avg epoch time=0.000
+
+[[0.21401002]
+ [0.23436894]
+ [0.25830334]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2282: at batch 1: Loss=0.236, Time=0.016
+Epoch 2283: at batch 1: Loss=0.237, Time=0.014
+Epoch 2284: at batch 1: Loss=0.258, Time=0.021
+Epoch 2285: at batch 1: Loss=0.243, Time=0.017
+Epoch 2286: at batch 1: Loss=0.238, Time=0.017
+Epoch 2287: at batch 1: Loss=0.238, Time=0.025
+Epoch 2288: at batch 1: Loss=0.247, Time=0.022
+Epoch 2289: at batch 1: Loss=0.256, Time=0.014
+Epoch 2290: at batch 1: Loss=0.258, Time=0.021
+Epoch 2291: at batch 1: Loss=0.247, Time=0.025
+Epoch 2291: Time=489.629, Epoch time = 0.194, Avg epoch time=0.000
+
+[[0.25558278]
+ [0.23200695]
+ [0.23200695]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2292: at batch 1: Loss=0.247, Time=0.019
+Epoch 2293: at batch 1: Loss=0.242, Time=0.022
+Epoch 2294: at batch 1: Loss=0.238, Time=0.016
+Epoch 2295: at batch 1: Loss=0.245, Time=0.024
+Epoch 2296: at batch 1: Loss=0.239, Time=0.020
+Epoch 2297: at batch 1: Loss=0.231, Time=0.018
+Epoch 2298: at batch 1: Loss=0.236, Time=0.017
+Epoch 2299: at batch 1: Loss=0.245, Time=0.019
+Epoch 2300: at batch 1: Loss=0.255, Time=0.024
+Epoch 2301: at batch 1: Loss=0.259, Time=0.021
+Epoch 2301: Time=491.747, Epoch time = 0.182, Avg epoch time=0.000
+
+[[0.25899047]
+ [0.31760094]
+ [0.24173152]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2302: at batch 1: Loss=0.254, Time=0.014
+Epoch 2303: at batch 1: Loss=0.255, Time=0.016
+Epoch 2304: at batch 1: Loss=0.241, Time=0.016
+Epoch 2305: at batch 1: Loss=0.247, Time=0.021
+Epoch 2306: at batch 1: Loss=0.256, Time=0.019
+Epoch 2307: at batch 1: Loss=0.250, Time=0.017
+Epoch 2308: at batch 1: Loss=0.243, Time=0.016
+Epoch 2309: at batch 1: Loss=0.255, Time=0.019
+Epoch 2310: at batch 1: Loss=0.247, Time=0.017
+Epoch 2311: at batch 1: Loss=0.236, Time=0.018
+Epoch 2311: Time=493.912, Epoch time = 0.199, Avg epoch time=0.000
+
+[[0.26772222]
+ [0.28173995]
+ [0.22284241]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2312: at batch 1: Loss=0.235, Time=0.024
+Epoch 2313: at batch 1: Loss=0.243, Time=0.014
+Epoch 2314: at batch 1: Loss=0.244, Time=0.016
+Epoch 2315: at batch 1: Loss=0.255, Time=0.023
+Epoch 2316: at batch 1: Loss=0.246, Time=0.019
+Epoch 2317: at batch 1: Loss=0.244, Time=0.024
+Epoch 2318: at batch 1: Loss=0.242, Time=0.025
+Epoch 2319: at batch 1: Loss=0.272, Time=0.019
+Epoch 2320: at batch 1: Loss=0.273, Time=0.022
+Epoch 2321: at batch 1: Loss=0.252, Time=0.016
+Epoch 2321: Time=496.110, Epoch time = 0.180, Avg epoch time=0.000
+
+[[0.23919541]
+ [0.23333149]
+ [0.95624304]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2322: at batch 1: Loss=0.303, Time=0.017
+Epoch 2323: at batch 1: Loss=0.282, Time=0.014
+Epoch 2324: at batch 1: Loss=0.288, Time=0.017
+Epoch 2325: at batch 1: Loss=0.260, Time=0.021
+Epoch 2326: at batch 1: Loss=0.247, Time=0.023
+Epoch 2327: at batch 1: Loss=0.241, Time=0.019
+Epoch 2328: at batch 1: Loss=0.262, Time=0.022
+Epoch 2329: at batch 1: Loss=0.243, Time=0.021
+Epoch 2330: at batch 1: Loss=0.235, Time=0.019
+Epoch 2331: at batch 1: Loss=0.237, Time=0.014
+Epoch 2331: Time=498.207, Epoch time = 0.163, Avg epoch time=0.000
+
+[[0.23122318]
+ [0.24386342]
+ [0.22550523]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2332: at batch 1: Loss=0.250, Time=0.019
+Epoch 2333: at batch 1: Loss=0.297, Time=0.018
+Epoch 2334: at batch 1: Loss=0.262, Time=0.022
+Epoch 2335: at batch 1: Loss=0.255, Time=0.017
+Epoch 2336: at batch 1: Loss=0.244, Time=0.019
+Epoch 2337: at batch 1: Loss=0.242, Time=0.016
+Epoch 2338: at batch 1: Loss=0.243, Time=0.013
+Epoch 2339: at batch 1: Loss=0.236, Time=0.021
+Epoch 2340: at batch 1: Loss=0.229, Time=0.019
+Epoch 2341: at batch 1: Loss=0.291, Time=0.019
+Epoch 2341: Time=500.364, Epoch time = 0.207, Avg epoch time=0.000
+
+[[0.22179383]
+ [0.27738538]
+ [0.23325808]
+ ...
+ [0.        ]
+ [0.        ]
+ [0.        ]]
+Epoch 2342: at batch 1: Loss=0.286, Time=0.017
+Epoch 2343: at batch 1: Loss=0.266, Time=0.022
+Epoch 2344: at batch 1: Loss=0.260, Time=0.019
+Epoch 2345: at batch 1: Loss=0.233, Time=0.017
+^CTraceback (most recent call last):
+  File "simple_batched_numpy_diff_loss.py", line 337, in <module>
+    saver.save(sess, checkpoint_dir + 'model.ckpt')
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 1458, in save
+    meta_graph_filename, strip_default_attrs=strip_default_attrs)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 1503, in export_meta_graph
+    strip_default_attrs=strip_default_attrs)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/training/saver.py", line 1792, in export_meta_graph
+    **kwargs)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/framework/meta_graph.py", line 1000, in export_scoped_meta_graph
+    **kwargs)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/framework/meta_graph.py", line 579, in create_meta_graph_def
+    meta_graph_def.graph_def.MergeFrom(graph_def)
+KeyboardInterrupt
+(sid2) [ir967@gr018 Learning-to-See-in-the-Dark]$ vi mean_square_loss.txt
