@@ -342,19 +342,19 @@ for epoch in range(lastepoch, final_epoch):
             output_list = np.exp(output * log(300))
             output_list = output_list.reshape(BATCH_SIZE)
             output_list = output_list.tolist()
-            print(output_list[0])
+            #print(output_list[0])
             output_list = map(str, output_list)#convert to string
             s = ", "
             s = s.join(output_list)
-            print(s)
+            #print(s)
             text_file.write(s)
             assigned_image_gamma_list = assigned_image_gamma.tolist()
             assigned_image_gamma_list = [str(x[0]) for x in assigned_image_gamma_list]
-            print(assigned_image_gamma_list[0])
+            #print(assigned_image_gamma_list[0])
             #assigned_image_gamma_list = map(str, assigned_image_gamma_list)
             s = ", "
             s = s.join(assigned_image_gamma_list)
-            print(s)
+            #print(s)
             text_file.write(s)
             
             text_file.close()
