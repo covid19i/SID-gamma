@@ -21,8 +21,8 @@ print (now.strftime("%Y-%m-%d %H:%M:%S"))
 
 #input_dir = './dataset/Sony/short/'
 gt_dir = './dataset/Sony/long/'
-checkpoint_dir = './gt_Sony_CNN9_FC2_log/'
-result_dir = './gt_Sony_CNN9_FC2_log/'
+result_dir = './gt_Sony_CNN9_FC2_ps32_log/'
+checkpoint_dir = result_dir
 
 if not os.path.isdir(result_dir):
     os.mkdir(result_dir)
@@ -40,7 +40,7 @@ train_ids = [int(os.path.basename(train_fn)[0:5]) for train_fn in train_fns]
 
 print("Found " + str(len(train_ids)) + " images to train with\n")
 
-ps = 128  # patch size for training
+ps = 32  # patch size for training
 save_freq = 500
 
 DEBUG = 1
@@ -76,24 +76,18 @@ def network(input):
     bn3 = slim.batch_norm(conv3, scope='g_conv3_bn2')
     pool3 = slim.max_pool2d(bn3, [2, 2], padding='SAME')
 
-    conv4 = slim.conv2d(pool3, 256, [3, 3], rate=1, activation_fn=relu, scope='g_conv4_1')
-    bn4 = slim.batch_norm(conv4, scope='g_conv4_bn1')
-    conv4 = slim.conv2d(bn4, 256, [3, 3], rate=1, activation_fn=relu, scope='g_conv4_2')
-    bn4 = slim.batch_norm(conv4, scope='g_conv4_bn2')
-    pool4 = slim.max_pool2d(bn4, [2, 2], padding='SAME')
-
     #conv5 = slim.conv2d(pool4, 512, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv5_1')
     #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
     #conv5 = slim.conv2d(conv5, 512, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv5_2')
     #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
     
-    conv10 = slim.conv2d(pool4, 12, [1, 1], rate=1, activation_fn=relu, scope='g_conv10')
+    conv10 = slim.conv2d(pool3, 12, [1, 1], rate=1, activation_fn=relu, scope='g_conv10')
     bn10 = slim.batch_norm(conv10, scope='g_conv10_bn1')
     flatten1 = slim.flatten(bn10)
-    flatten1.set_shape([None, 12*8*8])
-    fc1 = slim.fully_connected(flatten1, 1000, scope='fc_1')
+    flatten1.set_shape([None, 12*4*4])
+    fc1 = slim.fully_connected(flatten1, 100, scope='fc_1')
     bn1_fc = slim.batch_norm(fc1, scope='g_fc1_bn1')
-    fc2 = slim.fully_connected(bn1_fc, 1000, scope='fc_2')
+    fc2 = slim.fully_connected(bn1_fc, 100, scope='fc_2')
     bn2_fc = slim.batch_norm(fc2, scope='g_fc2_bn1')
     fc3 = slim.fully_connected(bn2_fc, 1, scope='fc_3')
     return fc3
@@ -277,124 +271,8 @@ print("\n\n\nBATCH_SIZE", BATCH_SIZE, ",final_epoch", final_epoch, ",no_of_batch
       ",ps", ps, ",result_dir", result_dir, ",len(train_ids)", len(train_ids))
 print("Scaling the log regression labels now.\n")
 
-def load_validation_images():
-    # get validation IDs
-    validation_fns = glob.glob(gt_dir + '[1-2]*[0-9]_00_*.ARW')#0 in the beginning means training set
-    validation_ids = [int(os.path.basename(validation_fn)[0:5]) for validation_fn in validation_fns]
-    
-    #gt_images = [None] * len(validation_ids)
-    val_assigned_image_gamma_indices = np.random.randint(0, 3, len(validation_ids))
-    val_assigned_image_gammas = np.array(gammas)[val_assigned_image_gamma_indices]
-    
-    #val_input_images = [None] * len(validation_ids)
-    val_input_images_numpy = np.zeros((len(validation_ids), 1424, 2128, 4))
-    
-    #Load all images so that GPU doesn't wait
-    for ind in range(len(validation_ids)):
-        # get the path from image id
-        validation_id = validation_ids[ind]
-    
-        val_gt_files = glob.glob(gt_dir + '%05d_00*.ARW' % validation_id)
-        val_gt_path = val_gt_files[0]
-        val_gt_fn = os.path.basename(val_gt_path)
-        
-        val_gt_raw = rawpy.imread(val_gt_fn)
-        if(DEBUG == 1 and ind % 10 == 0):
-            print("rawpy read the " + str(ind) + "th file at location: " + str(val_gt_path))
-        val_input_image = pack_raw(val_gt_raw)
-        #input_image = np.expand_dims(pack_raw(gt_raw), axis=0)#adding dimension because they use only one image in batch
-    
-        val_assigned_image_gamma = val_assigned_image_gammas[ind]#gamma for the image
-        #print("Gamma: " + str(assigned_image_gamma))
-        val_assigned_image_gamma_index = gammas.index(val_assigned_image_gamma)#Should be same as in assigned_image_gamma_indices
-        
-        val_input_image = np.multiply(val_input_image, 65535)#CAN I DO THIS? Will it remove  the information on Gamma?
-        val_input_image = val_input_image.astype(int)
-        val_input_image = np.array(gamma_curve)[val_assigned_image_gamma_index][val_input_image]
-        
-        val_input_image = np.multiply(val_input_image, 1./65535.)
-        #input_images[ind] = input_image
-        val_input_images_numpy[ind] = val_input_image
-        #cnt += 1
-        #if(ind ==0):
-        if(ind < 2):
-            print("min, max, mean, gamma, argmax: %.5f, %.5f, %.5f, %.5f, %d" % (np.min(val_input_image), np.max(val_input_image), np.mean(val_input_image), val_assigned_image_gamma, np.argmax(val_input_image)))
-    print("%d val_images loaded to CPU RAM in Time=%.3f seconds." % (cnt, time.time() - st))
-    print("\nMoved val_images data to a numpy array.")
-    
-load_validation_images()
-
-
-val_input_patch = np.zeros((1, ps, ps, 4))
 def validate_model():
-    for ind in range(len(validation_ids)):
-        validation_id = validation_ids[ind]
-        val_assigned_image_gamma = val_assigned_image_gammas[ind]#gamma for the image
-        #if(DEBUG == 1 and epoch == lastepoch and cnt == 0):
-        #    print("Starting Training on gammas " + str(val_assigned_image_gamma))
-        #assigned_image_gamma_index = assigned_image_gamma_indices[ind]#Should be same as in assigned_image_gamma_indices
-        #out_image = gamma_curve[assigned_image_gamma_index][out_image]#Is it int?
-        
-        st = time.time()
-        #cnt += 1
-
-        # crop
-        H = input_image.shape[0]
-        W = input_image.shape[1]
-        D = input_image.shape[2]
-        xx = np.random.randint(0, W - ps)
-        yy = np.random.randint(0, H - ps)
-        
-        val_input_patch[0,:,:,:] = val_input_images_numpy[ind, yy:yy + ps, xx:xx + ps, :]
-
-        if np.random.randint(2, size=1)[0] == 1:  # random flip
-            val_input_patch = np.flip(val_input_patch, axis=1)
-        if np.random.randint(2, size=1)[0] == 1:
-            val_input_patch = np.flip(val_input_patch, axis=2)
-        if np.random.randint(2, size=1)[0] == 1:  # random transpose
-            val_input_patch = np.transpose(val_input_patch, (0, 2, 1, 3))
-
-        val_input_patch = np.minimum(val_input_patch, 1.0)
-
-        val_assigned_image_gamma = np.transpose(np.array([val_assigned_image_gamma]))#conversion for the sake of gt_gamma
-        val_assigned_image_gamma_feed = np.log(val_assigned_image_gamma)#Helps regression
-        val_assigned_image_gamma_feed = 1/log(300) * val_assigned_image_gamma_feed#scaling for the sake of Neural Network training
-        _, G_current, output = sess.run([G_opt, G_loss, out_gamma],
-                                        feed_dict={in_image: val_input_patch, gt_gamma: val_assigned_image_gamma_feed, lr: learning_rate})
-        #output = np.minimum(np.maximum(output, 0.0001), 1000)#bounds for gamma
-        g_loss[ind] = G_current
-
-        #moving_loss = moving_loss_alpha*moving_loss + (1 - moving_loss_alpha)*np.mean(g_loss[np.where(g_loss)]).item()
-        if(cnt == 1 and ((epoch - lastepoch) % 10 == 1 or (epoch - lastepoch) < 10) ):
-            training_dataset_loss = np.mean(g_loss[np.where(g_loss)])
-            print("Epoch %d: at batch %d: Training dataset Loss=%.3f, Batch Time=%.3f" % (
-                epoch, cnt, training_dataset_loss, time.time() - st))
-
-        if epoch % save_freq == 0:
-            if not os.path.isdir(result_dir + '%04d' % epoch):
-                os.mkdir(result_dir + '%04d' % epoch)
-            file_path = result_dir + ('%04d/' % epoch) + 'intermediate_results.txt'
-            text_file = open(file_path, 'a')
-            #print(tf.shape(assigned_image_gamma_index))#Tensor("Shape:0", shape=(0,), dtype=int32)
-            text_file.write('Epoch %04d\tBatch %05d\n' % (
-                epoch, batch_id))
-            output_list = np.exp(output * log(300))
-            np.savetxt(text_file, output_list)
-            assigned_image_gamma_list = assigned_image_gamma.tolist()
-            assigned_image_gamma_list = [str(log(x[0])) for x in assigned_image_gamma_list]
-            #assigned_image_gamma_list = map(str, assigned_image_gamma_list)
-            s = ", "
-            s = s.join(assigned_image_gamma_list)
-            text_file.write(s)
-            text_file.close()
-            
-    if((epoch - lastepoch) % 100 == 1):
-        print("\t\tEpoch %d: Epoch time = %.3f, Avg epoch time=%.3f, Total Time=%.3f\n" % (
-            epoch, time.time() - init_time, time.time() - epoch_init_time, 
-            (time.time() - init_time) / (epoch - lastepoch + 1)))
-    if((epoch - lastepoch) % 100 == 1 or (epoch - lastepoch) < 5):
-        print(g_loss[0:min(20,len(train_ids))])
-        print("")
+    pass
 
 st = time.time()
 #Train with images
