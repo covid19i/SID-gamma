@@ -20,8 +20,8 @@ print ("Current date and time : ")
 print (now.strftime("%Y-%m-%d %H:%M:%S"))
 
 #input_dir = './dataset/Sony/short/'
-gt_dir = './dataset/Sony/long/'
-checkpoint_dir = './gt_Sony_CNN5_FC2_no_log_jitter/'
+gt_dir = './dataset/Sony/short/'
+checkpoint_dir = './gt_Sony_CNN5_FC2_no_log_low_exposure_images/'
 result_dir = checkpoint_dir
 
 if not os.path.isdir(result_dir):
@@ -195,7 +195,6 @@ final_epoch = 4001#lastepoch + 1 #4001
 
 print("\n\n\nBATCH_SIZE", BATCH_SIZE, ",final_epoch", final_epoch, ",no_of_batches", no_of_batches, 
       ",ps", ps, ",result_dir", result_dir, ",len(train_ids)", len(train_ids))
-print("Scaling the log regression labels now.\n")
 
 st = time.time()
 #Train with images
