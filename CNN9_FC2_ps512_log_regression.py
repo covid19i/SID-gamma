@@ -21,8 +21,11 @@ print (now.strftime("%Y-%m-%d %H:%M:%S"))
 
 #input_dir = './dataset/Sony/short/'
 gt_dir = './dataset/Sony/long/'
-checkpoint_dir = './gt_Sony_medium_log_regression_all_images_MSE_lowerLRat1000/'
-result_dir = './gt_Sony_medium_log_regression_all_images_MSE_lowerLRat1000/'
+checkpoint_dir = './gt_Sony_CNN9_FC2_ps512_log/'
+result_dir = './gt_Sony_CNN9_FC2_ps512_log/'
+
+if not os.path.isdir(result_dir):
+    os.mkdir(result_dir)
 
 #The file name contains the image information. For example, in "10019_00_0.033s.RAF",
 #the first digit "1" means it is from the test set ("0" for training set and 
@@ -37,7 +40,7 @@ train_ids = [int(os.path.basename(train_fn)[0:5]) for train_fn in train_fns]
 
 print("Found " + str(len(train_ids)) + " images to train with\n")
 
-ps = 128  # patch size for training
+ps = 512  # patch size for training
 save_freq = 500
 
 DEBUG = 1
@@ -67,31 +70,33 @@ def network(input):
     bn2 = slim.batch_norm(conv2, scope='g_conv2_bn2')
     pool2 = slim.max_pool2d(bn2, [2, 2], padding='SAME')
 
-    #conv3 = slim.conv2d(pool2, 128, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv3_1')
-    #bn3 = slim.batch_norm(conv3, scope='g_conv3_bn1')
-    #conv3 = slim.conv2d(bn3, 128, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv3_2')
-    #bn3 = slim.batch_norm(conv2, scope='g_conv3_bn2')
-    #pool3 = slim.max_pool2d(bn3, [2, 2], padding='SAME')
+    conv3 = slim.conv2d(pool2, 128, [3, 3], rate=1, activation_fn=relu, scope='g_conv3_1')
+    bn3 = slim.batch_norm(conv3, scope='g_conv3_bn1')
+    conv3 = slim.conv2d(bn3, 128, [3, 3], rate=1, activation_fn=relu, scope='g_conv3_2')
+    bn3 = slim.batch_norm(conv3, scope='g_conv3_bn2')
+    pool3 = slim.max_pool2d(bn3, [2, 2], padding='SAME')
 
-    #conv4 = slim.conv2d(pool3, 256, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv4_1')
-    #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
-    #conv4 = slim.conv2d(conv4, 256, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv4_2')
-    #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
-    #pool4 = slim.max_pool2d(conv4, [2, 2], padding='SAME')
+    conv4 = slim.conv2d(pool3, 256, [3, 3], rate=1, activation_fn=relu, scope='g_conv4_1')
+    bn4 = slim.batch_norm(conv4, scope='g_conv4_bn1')
+    conv4 = slim.conv2d(bn4, 256, [3, 3], rate=1, activation_fn=relu, scope='g_conv4_2')
+    bn4 = slim.batch_norm(conv4, scope='g_conv4_bn2')
+    pool4 = slim.max_pool2d(bn4, [2, 2], padding='SAME')
 
     #conv5 = slim.conv2d(pool4, 512, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv5_1')
     #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
     #conv5 = slim.conv2d(conv5, 512, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv5_2')
     #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
     
-    conv10 = slim.conv2d(pool2, 12, [1, 1], rate=1, activation_fn=relu, scope='g_conv10')
+    conv10 = slim.conv2d(pool4, 12, [1, 1], rate=1, activation_fn=relu, scope='g_conv10')
     bn10 = slim.batch_norm(conv10, scope='g_conv10_bn1')
     flatten1 = slim.flatten(bn10)
     flatten1.set_shape([None, 12*32*32])
-    fc1 = slim.fully_connected(flatten1, 1000, scope='fc_1')
+    fc1 = slim.fully_connected(flatten1, 3000, scope='fc_1')
     bn1_fc = slim.batch_norm(fc1, scope='g_fc1_bn1')
-    fc2 = slim.fully_connected(bn1_fc, 1, scope='fc_2')
-    return fc2
+    fc2 = slim.fully_connected(bn1_fc, 3000, scope='fc_2')
+    bn2_fc = slim.batch_norm(fc2, scope='g_fc2_bn1')
+    fc3 = slim.fully_connected(bn2_fc, 1, scope='fc_3')
+    return fc3
 
 
 def pack_raw(raw):
@@ -272,6 +277,10 @@ print("\n\n\nBATCH_SIZE", BATCH_SIZE, ",final_epoch", final_epoch, ",no_of_batch
       ",ps", ps, ",result_dir", result_dir, ",len(train_ids)", len(train_ids))
 print("Scaling the log regression labels now.\n")
 
+def validate_model():
+    
+    pass
+
 st = time.time()
 #Train with images
 for epoch in range(lastepoch, final_epoch):
@@ -314,12 +323,18 @@ for epoch in range(lastepoch, final_epoch):
             input_patch = np.flip(input_patch, axis=2)
         if np.random.randint(2, size=1)[0] == 1:  # random transpose
             input_patch = np.transpose(input_patch, (0, 2, 1, 3))
+        if np.random.randint(10, size=1)[0] > 2:
+            input_patch[:, np.random.randint(0,ps,1),:,:] = 1#Jittering to 0 will not change much
+        if np.random.randint(10, size=1)[0] > 2:
+            input_patch[:, :, np.random.randint(0,ps,1),:] = 1#Jittering to 0 will not change much
 
         input_patch = np.minimum(input_patch, 1.0)
 
         assigned_image_gamma = np.transpose(np.array([assigned_image_gamma]))#conversion for the sake of gt_gamma
         assigned_image_gamma_feed = np.log(assigned_image_gamma)#Helps regression
         assigned_image_gamma_feed = 1/log(300) * assigned_image_gamma_feed#scaling for the sake of Neural Network training
+        if(DEBUG == 1 and epoch == lastepoch and cnt == 0):
+            print(assigned_image_gamma_feed[0][0], assigned_image_gamma_feed[1][0])
         _, G_current, output = sess.run([G_opt, G_loss, out_gamma],
                                         feed_dict={in_image: input_patch, gt_gamma: assigned_image_gamma_feed, lr: learning_rate})
         #output = np.minimum(np.maximum(output, 0.0001), 1000)#bounds for gamma
@@ -337,12 +352,11 @@ for epoch in range(lastepoch, final_epoch):
             file_path = result_dir + ('%04d/' % epoch) + 'intermediate_results.txt'
             text_file = open(file_path, 'a')
             #print(tf.shape(assigned_image_gamma_index))#Tensor("Shape:0", shape=(0,), dtype=int32)
-            text_file.write('Epoch %04d\tBatch %05d\n' % (
-                epoch, batch_id))
+            text_file.write('\nEpoch %04d\tBatch %05d\n' % (epoch, batch_id))
             output_list = np.exp(output * log(300))
             np.savetxt(text_file, output_list)
             assigned_image_gamma_list = assigned_image_gamma.tolist()
-            assigned_image_gamma_list = [str(x[0]) for x in assigned_image_gamma_list]
+            assigned_image_gamma_list = [str(log(x[0])) for x in assigned_image_gamma_list]
             #assigned_image_gamma_list = map(str, assigned_image_gamma_list)
             s = ", "
             s = s.join(assigned_image_gamma_list)
@@ -356,6 +370,9 @@ for epoch in range(lastepoch, final_epoch):
     if((epoch - lastepoch) % 100 == 1 or (epoch - lastepoch) < 5):
         print(g_loss[0:min(20,len(train_ids))])
         print("")
+        
+    if((epoch - lastepoch) % 100 == 99):
+        validate_model()
     saver.save(sess, checkpoint_dir + 'model.ckpt')
     
     
