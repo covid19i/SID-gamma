@@ -275,6 +275,9 @@ for epoch in range(lastepoch, final_epoch):
             s = s.join(assigned_image_gamma_list)
             text_file.write(s)
             text_file.close()
+            #trainable_var = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
+            #with tf.variable_scope('conv1', reuse=True):
+                #weights_conv_1 = tf.get_variable('weights')
             
     if((epoch - lastepoch) % 300 == 1):
         print("\t\tEpoch %d: Epoch time = %.3f, Avg epoch time=%.3f, Total Time=%.3f\n" % (
