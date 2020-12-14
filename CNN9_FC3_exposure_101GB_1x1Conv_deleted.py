@@ -23,7 +23,7 @@ print (now.strftime("%Y-%m-%d %H:%M:%S"))
 #input_dir = './dataset/Sony/short/'
 gt_long_dir = './dataset/Sony/long/'
 gt_short_dir = './dataset/Sony/short/'
-checkpoint_dir = './gt_Sony_CNN9_FC3_exposure_101GB_BS64/'
+checkpoint_dir = './gt_Sony_CNN9_FC3_1x1Conv_deleted_exposure_101GB_BS64/'
 result_dir = checkpoint_dir
 RAM_ALLOCATED = 101860#in MB
 RAM_PER_IMAGE = 75.9#80640/1060
@@ -111,13 +111,13 @@ def network(input):
     #conv5 = slim.conv2d(conv5, 512, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv5_2')
     #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
     
-    conv10 = slim.conv2d(pool4, 12, [1, 1], rate=1, activation_fn=relu, scope='g_conv10')
-    bn10 = slim.batch_norm(conv10, scope='g_conv10_bn1')
-    flatten1 = slim.flatten(bn10)
-    flatten1.set_shape([None, 12*8*8])
-    fc1 = slim.fully_connected(flatten1, 1000, scope='fc_1')
+    #conv10 = slim.conv2d(pool4, 12, [1, 1], rate=1, activation_fn=relu, scope='g_conv10')
+    #bn10 = slim.batch_norm(conv10, scope='g_conv10_bn1')
+    flatten1 = slim.flatten(pool4)
+    flatten1.set_shape([None, 256*8*8])
+    fc1 = slim.fully_connected(flatten1, 4096, scope='fc_1')
     bn1_fc = slim.batch_norm(fc1, scope='g_fc1_bn1')
-    fc2 = slim.fully_connected(bn1_fc, 1000, scope='fc_2')
+    fc2 = slim.fully_connected(bn1_fc, 4096, scope='fc_2')
     bn2_fc = slim.batch_norm(fc2, scope='g_fc2_bn1')
     fc3 = slim.fully_connected(bn2_fc, 1, scope='fc_3')
     return fc3

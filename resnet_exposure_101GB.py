@@ -5,13 +5,14 @@
 from __future__ import division, print_function
 import os, time, scipy.io
 import tensorflow as tf
-import tensorflow.contrib.slim as slim
+#import tensorflow.contrib.slim as slim
 import numpy as np
 import rawpy
 import glob
 from math import log
 from show import *
 import re
+from resnet import *
 
 
 print("\n\n\n")
@@ -23,7 +24,7 @@ print (now.strftime("%Y-%m-%d %H:%M:%S"))
 #input_dir = './dataset/Sony/short/'
 gt_long_dir = './dataset/Sony/long/'
 gt_short_dir = './dataset/Sony/short/'
-checkpoint_dir = './gt_Sony_CNN9_FC3_exposure_101GB_BS64/'
+checkpoint_dir = './gt_Sony_resnet_101GB_BS64/'
 result_dir = checkpoint_dir
 RAM_ALLOCATED = 101860#in MB
 RAM_PER_IMAGE = 75.9#80640/1060
@@ -74,54 +75,6 @@ if DEBUG == 1:
 
 print("Training on " + str(len(train_ids)) + " images only\n")
 
-def lrelu(x):
-    return tf.maximum(x * 0.2, x)
-
-def relu(x):
-    return tf.maximum(x * 0.0, x)
-
-def network(input):
-    #https://github.com/google-research/tf-slim
-    conv1 = slim.conv2d(input, 32, [3, 3], rate=1, activation_fn=relu, scope='g_conv1_1')
-    bn1 = slim.batch_norm(conv1, scope='g_conv1_bn1')
-    conv1 = slim.conv2d(bn1, 32, [3, 3], rate=1, activation_fn=relu, scope='g_conv1_2')
-    bn1 = slim.batch_norm(conv1, scope='g_conv1_bn2')
-    pool1 = slim.max_pool2d(bn1, [2, 2], padding='SAME')
-
-    conv2 = slim.conv2d(pool1, 64, [3, 3], rate=1, activation_fn=relu, scope='g_conv2_1')
-    bn2 = slim.batch_norm(conv2, scope='g_conv2_bn1')
-    conv2 = slim.conv2d(bn2, 64, [3, 3], rate=1, activation_fn=relu, scope='g_conv2_2')
-    bn2 = slim.batch_norm(conv2, scope='g_conv2_bn2')
-    pool2 = slim.max_pool2d(bn2, [2, 2], padding='SAME')
-
-    conv3 = slim.conv2d(pool2, 128, [3, 3], rate=1, activation_fn=relu, scope='g_conv3_1')
-    bn3 = slim.batch_norm(conv3, scope='g_conv3_bn1')
-    conv3 = slim.conv2d(bn3, 128, [3, 3], rate=1, activation_fn=relu, scope='g_conv3_2')
-    bn3 = slim.batch_norm(conv3, scope='g_conv3_bn2')
-    pool3 = slim.max_pool2d(bn3, [2, 2], padding='SAME')
-
-    conv4 = slim.conv2d(pool3, 256, [3, 3], rate=1, activation_fn=relu, scope='g_conv4_1')
-    bn4 = slim.batch_norm(conv4, scope='g_conv4_bn1')
-    conv4 = slim.conv2d(bn4, 256, [3, 3], rate=1, activation_fn=relu, scope='g_conv4_2')
-    bn4 = slim.batch_norm(conv4, scope='g_conv4_bn2')
-    pool4 = slim.max_pool2d(bn4, [2, 2], padding='SAME')
-
-    #conv5 = slim.conv2d(pool4, 512, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv5_1')
-    #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
-    #conv5 = slim.conv2d(conv5, 512, [3, 3], rate=1, activation_fn=lrelu, scope='g_conv5_2')
-    #bn2 = slim.batch_norm(conv2, scope='g_conv1_bn2')
-    
-    conv10 = slim.conv2d(pool4, 12, [1, 1], rate=1, activation_fn=relu, scope='g_conv10')
-    bn10 = slim.batch_norm(conv10, scope='g_conv10_bn1')
-    flatten1 = slim.flatten(bn10)
-    flatten1.set_shape([None, 12*8*8])
-    fc1 = slim.fully_connected(flatten1, 1000, scope='fc_1')
-    bn1_fc = slim.batch_norm(fc1, scope='g_fc1_bn1')
-    fc2 = slim.fully_connected(bn1_fc, 1000, scope='fc_2')
-    bn2_fc = slim.batch_norm(fc2, scope='g_fc2_bn1')
-    fc3 = slim.fully_connected(bn2_fc, 1, scope='fc_3')
-    return fc3
-
 def pack_raw(raw):
     # pack Bayer image to 4 channels
     im = raw.raw_image_visible.astype(np.float32)
@@ -139,14 +92,16 @@ def pack_raw(raw):
     return out
 
 
+
 sess = tf.Session()
 in_image = tf.placeholder(tf.float32, [None, None, None, 4])#4 channels coming from pack_raw()??
 gt_exposure = tf.placeholder(tf.int32, [None, 1])#Just one gamma number per image. batch size = 1 in this paper, BTW
-out_exposure = network(in_image)
+out_exposure = resnet(in_image, 2, reuse=False)
 #gt_gamma_one_hot = tf.squeeze(slim.one_hot_encoding(gt_gamma, 3), axis=1)
 #gt_gamma_one_hot = tf.Print(gt_gamma_one_hot, [gt_gamma_one_hot])
 #G_loss = tf.losses.softmax_cross_entropy(gt_gamma_one_hot, out_gamma)
-G_loss = tf.losses.mean_squared_error(gt_exposure, out_exposure)
+#G_loss = tf.losses.mean_squared_error(gt_exposure, out_exposure)
+G_loss = tf.losses.huber_loss(gt_exposure, out_exposure)
 #G_loss = tf.losses.absolute_difference(gt_gamma_one_hot, out_gamma)
 
 t_vars = tf.trainable_variables()
@@ -303,7 +258,7 @@ for epoch in range(lastepoch, final_epoch):
         #output = np.minimum(np.maximum(output, 0.0001), 1000)#bounds for gamma
         #g_loss[ind] = G_current#This is wrong if the batch size > 1
         for k in range(BATCH_SIZE):
-            g_loss[ind[k]] = exposures_feed[k] - output[k]
+            g_loss[ind[k]] = abs(exposures_feed[k] - output[k])
 
         #moving_loss = moving_loss_alpha*moving_loss + (1 - moving_loss_alpha)*np.mean(g_loss[np.where(g_loss)]).item()
         if(cnt == 1 and ((epoch - lastepoch) % 2 == 1 or (epoch - lastepoch) < 10) ):
