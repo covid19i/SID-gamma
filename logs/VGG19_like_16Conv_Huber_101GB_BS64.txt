@@ -1,0 +1,1898 @@
+(sid2) [ir967@gr010 Learning-to-See-in-the-Dark]$ vi VGG19like_16Conv_huber_exposure_101GB.py
+(sid2) [ir967@gr010 Learning-to-See-in-the-Dark]$ vi VGG19like_16Conv_exposure_101GB.py
+(sid2) [ir967@gr010 Learning-to-See-in-the-Dark]$ python VGG19like_16Conv_huber_exposure_101GB.py
+
+
+
+
+Current date and time : 
+2020-12-13 20:27:48
+./dataset/Sony/short/00133_07_0.1s.ARW 133 0.1
+./dataset/Sony/short/00015_09_0.1s.ARW 15 0.1
+./dataset/Sony/short/00190_08_0.04s.ARW 190 0.04
+./dataset/Sony/short/00204_01_0.033s.ARW 204 0.033
+./dataset/Sony/short/00047_03_0.1s.ARW 47 0.1
+./dataset/Sony/short/00049_07_0.1s.ARW 49 0.1
+./dataset/Sony/short/00231_00_0.033s.ARW 231 0.033
+Found 1865 images to train with
+
+Training on files with indices: 490 to 1822
+Training on 1332 images only
+
+2020-12-13 20:27:48.322809: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-13 20:27:48.459350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:86:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-13 20:27:48.459383: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-13 20:27:48.745916: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-13 20:27:48.745955: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-13 20:27:48.745969: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-13 20:27:48.746073: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:86:00.0, compute capability: 7.5)
+No checkpoint found at ./gt_Sony_VGGlike_16Conv_huber_exposure_101GB_BS64/. Hence, will create the folder.
+
+last epoch of previous run: 0
+
+
+BATCH_SIZE= 64 ,final_epoch= 4001 ,no_of_batches= 20 ,ps 128 ,result_dir= ./gt_Sony_VGGlike_16Conv_huber_exposure_101GB_BS64/ ,len(train_fns)= 1332
+
+Cleared all images in memory.
+
+Starting Training on index [ 578  557  245 1164  823 1222  547  268    9  191 1248  773  554  170
+  680 1065  368  817 1252  383  793   18  268 1304  190 1182  371  773
+ 1077  486 1059  639  313 1044  577 1006  242  476  277  906  304  719
+  677   93  235  691   13  939  663  148 1041 1034 1209 1316 1319  322
+  740  674  585  683 1133 1236 1041  551]
+dataset index: ['./dataset/Sony/short/00190_09_0.04s.ARW'
+ './dataset/Sony/short/00129_06_0.1s.ARW'
+ './dataset/Sony/short/00043_09_0.1s.ARW'
+ './dataset/Sony/short/00017_04_0.1s.ARW'
+ './dataset/Sony/short/00042_00_0.1s.ARW'
+ './dataset/Sony/short/00160_03_0.1s.ARW'
+ './dataset/Sony/short/00100_04_0.1s.ARW'
+ './dataset/Sony/short/00039_08_0.1s.ARW'
+ './dataset/Sony/short/00058_09_0.1s.ARW'
+ './dataset/Sony/short/00180_08_0.04s.ARW'
+ './dataset/Sony/short/00044_00_0.1s.ARW'
+ './dataset/Sony/short/00207_09_0.04s.ARW'
+ './dataset/Sony/short/00018_05_0.1s.ARW'
+ './dataset/Sony/short/00222_02_0.04s.ARW'
+ './dataset/Sony/short/00202_01_0.1s.ARW'
+ './dataset/Sony/short/00197_05_0.04s.ARW'
+ './dataset/Sony/short/00159_04_0.1s.ARW'
+ './dataset/Sony/short/00184_01_0.033s.ARW'
+ './dataset/Sony/short/00092_05_0.1s.ARW'
+ './dataset/Sony/short/00071_08_0.1s.ARW'
+ './dataset/Sony/short/00110_09_0.1s.ARW'
+ './dataset/Sony/short/00171_08_0.1s.ARW'
+ './dataset/Sony/short/00039_08_0.1s.ARW'
+ './dataset/Sony/short/00134_06_0.1s.ARW'
+ './dataset/Sony/short/00156_01_0.1s.ARW'
+ './dataset/Sony/short/00013_02_0.1s.ARW'
+ './dataset/Sony/short/00158_02_0.1s.ARW'
+ './dataset/Sony/short/00207_09_0.04s.ARW'
+ './dataset/Sony/short/00057_03_0.1s.ARW'
+ './dataset/Sony/short/00137_07_0.1s.ARW'
+ './dataset/Sony/short/00038_06_0.1s.ARW'
+ './dataset/Sony/short/00065_04_0.1s.ARW'
+ './dataset/Sony/short/00021_01_0.04s.ARW'
+ './dataset/Sony/short/00118_02_0.1s.ARW'
+ './dataset/Sony/short/00058_02_0.1s.ARW'
+ './dataset/Sony/short/00052_02_0.1s.ARW'
+ './dataset/Sony/short/00063_03_0.1s.ARW'
+ './dataset/Sony/short/00207_07_0.04s.ARW'
+ './dataset/Sony/short/00225_02_0.04s.ARW'
+ './dataset/Sony/short/00216_02_0.04s.ARW'
+ './dataset/Sony/short/00206_00_0.04s.ARW'
+ './dataset/Sony/short/00150_03_0.1s.ARW'
+ './dataset/Sony/short/00102_08_0.1s.ARW'
+ './dataset/Sony/short/00160_06_0.1s.ARW'
+ './dataset/Sony/short/00060_09_0.1s.ARW'
+ './dataset/Sony/short/00141_03_0.1s.ARW'
+ './dataset/Sony/short/00218_01_0.1s.ARW'
+ './dataset/Sony/short/00041_04_0.1s.ARW'
+ './dataset/Sony/short/00109_01_0.1s.ARW'
+ './dataset/Sony/short/00019_00_0.1s.ARW'
+ './dataset/Sony/short/00017_06_0.1s.ARW'
+ './dataset/Sony/short/00183_02_0.04s.ARW'
+ './dataset/Sony/short/00015_05_0.1s.ARW'
+ './dataset/Sony/short/00190_07_0.04s.ARW'
+ './dataset/Sony/short/00173_06_0.1s.ARW'
+ './dataset/Sony/short/00041_07_0.1s.ARW'
+ './dataset/Sony/short/00161_05_0.1s.ARW'
+ './dataset/Sony/short/00102_09_0.1s.ARW'
+ './dataset/Sony/short/00119_00_0.1s.ARW'
+ './dataset/Sony/short/00097_05_0.1s.ARW'
+ './dataset/Sony/short/00019_05_0.1s.ARW'
+ './dataset/Sony/short/00202_00_0.1s.ARW'
+ './dataset/Sony/short/00017_06_0.1s.ARW'
+ './dataset/Sony/short/00205_03_0.04s.ARW']
+Starting Training on exposures [0.04  0.1   0.1   0.1   0.1   0.1   0.1   0.1   0.1   0.04  0.1   0.04
+ 0.1   0.04  0.1   0.04  0.1   0.033 0.1   0.1   0.1   0.1   0.1   0.1
+ 0.1   0.1   0.1   0.04  0.1   0.1   0.1   0.1   0.04  0.1   0.1   0.1
+ 0.1   0.04  0.04  0.04  0.04  0.1   0.1   0.1   0.1   0.1   0.1   0.1
+ 0.1   0.1   0.1   0.04  0.1   0.04  0.1   0.1   0.1   0.1   0.1   0.1
+ 0.1   0.1   0.1   0.04 ]
+Epoch 0: at batch 1: Training dataset Loss=0.971725, Batch Time=2.656
+Epoch 0: at batch 1: Training dataset Loss=0.971725, Batch Time=2.656; Early rounds
+Epoch 0: at batch 2: Training dataset Loss=0.901647, Batch Time=0.150; Early rounds
+Epoch 0: at batch 3: Training dataset Loss=0.832726, Batch Time=0.158; Early rounds
+Epoch 0: at batch 4: Training dataset Loss=0.781580, Batch Time=0.158; Early rounds
+Epoch 0: at batch 5: Training dataset Loss=0.722497, Batch Time=0.146; Early rounds
+Epoch 0: at batch 6: Training dataset Loss=0.670386, Batch Time=0.138; Early rounds
+Epoch 0: at batch 7: Training dataset Loss=0.624876, Batch Time=0.138; Early rounds
+Epoch 0: at batch 8: Training dataset Loss=0.584261, Batch Time=0.161; Early rounds
+Epoch 0: at batch 9: Training dataset Loss=0.542461, Batch Time=0.142; Early rounds
+rawpy read the 601th file at location: 00029_03_0.1s.ARW
+Epoch 0: at batch 10: Training dataset Loss=0.469779, Batch Time=0.154; Early rounds
+Epoch 0: at batch 11: Training dataset Loss=0.443763, Batch Time=0.168; Early rounds
+Epoch 0: at batch 12: Training dataset Loss=0.431581, Batch Time=0.152; Early rounds
+Epoch 0: at batch 13: Training dataset Loss=0.414689, Batch Time=0.138; Early rounds
+rawpy read the 401th file at location: 00060_01_0.04s.ARW
+Epoch 0: at batch 14: Training dataset Loss=0.379948, Batch Time=0.138; Early rounds
+Epoch 0: at batch 15: Training dataset Loss=0.356834, Batch Time=0.154; Early rounds
+Epoch 0: at batch 16: Training dataset Loss=0.338616, Batch Time=0.154; Early rounds
+rawpy read the 801th file at location: 00037_07_0.1s.ARW
+Epoch 0: at batch 17: Training dataset Loss=0.305348, Batch Time=0.153; Early rounds
+Epoch 0: at batch 18: Training dataset Loss=0.270159, Batch Time=0.168; Early rounds
+Epoch 0: at batch 19: Training dataset Loss=0.243535, Batch Time=0.162; Early rounds
+Epoch 0: at batch 20: Training dataset Loss=0.234556, Batch Time=0.169; Early rounds
+		Epoch 0:  Time = 133.920, Avg epoch time=133.919, Current epoch Time=133.920
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 0.676085  ]
+ [ 0.4       ]
+ [-2.71015906]
+ [ 1.        ]
+ [-0.45072758]
+ [ 1.        ]
+ [ 1.        ]
+ [-3.56175947]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [-4.25890217]
+ [ 0.02251786]
+ [ 1.        ]]
+Epoch 1: at batch 1: Training dataset Loss=0.197945, Batch Time=0.170
+Epoch 1: at batch 1: Training dataset Loss=0.197945, Batch Time=0.170; Early rounds
+Epoch 1: at batch 2: Training dataset Loss=0.177644, Batch Time=0.149; Early rounds
+Epoch 1: at batch 3: Training dataset Loss=0.142133, Batch Time=0.138; Early rounds
+Epoch 1: at batch 4: Training dataset Loss=0.096306, Batch Time=0.144; Early rounds
+Epoch 1: at batch 5: Training dataset Loss=0.068020, Batch Time=0.156; Early rounds
+Epoch 1: at batch 6: Training dataset Loss=0.051038, Batch Time=0.146; Early rounds
+Epoch 1: at batch 7: Training dataset Loss=0.051679, Batch Time=0.149; Early rounds
+Epoch 1: at batch 8: Training dataset Loss=0.021263, Batch Time=0.158; Early rounds
+Epoch 1: at batch 9: Training dataset Loss=0.014663, Batch Time=0.152; Early rounds
+Epoch 1: at batch 10: Training dataset Loss=0.015096, Batch Time=0.138; Early rounds
+Epoch 1: at batch 11: Training dataset Loss=0.019635, Batch Time=0.140; Early rounds
+Epoch 1: at batch 12: Training dataset Loss=0.023548, Batch Time=0.138; Early rounds
+Epoch 1: at batch 13: Training dataset Loss=0.003580, Batch Time=0.146; Early rounds
+Epoch 1: at batch 14: Training dataset Loss=-0.009620, Batch Time=0.151; Early rounds
+Epoch 1: at batch 15: Training dataset Loss=-0.008459, Batch Time=0.144; Early rounds
+Epoch 1: at batch 16: Training dataset Loss=-0.011661, Batch Time=0.146; Early rounds
+Epoch 1: at batch 17: Training dataset Loss=-0.036480, Batch Time=0.163; Early rounds
+Epoch 1: at batch 18: Training dataset Loss=-0.031805, Batch Time=0.159; Early rounds
+Epoch 1: at batch 19: Training dataset Loss=-0.037777, Batch Time=0.152; Early rounds
+Epoch 1: at batch 20: Training dataset Loss=-0.058380, Batch Time=0.143; Early rounds
+		Epoch 1:  Time = 188.276, Avg epoch time=53.327, Current epoch Time=94.138
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 1.        ]
+ [-0.3632305 ]
+ [ 1.        ]
+ [ 1.        ]
+ [-0.45072758]
+ [ 0.02351069]
+ [ 1.        ]
+ [-3.56175947]
+ [-1.81454158]
+ [-0.33625674]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [-0.0910244 ]
+ [-1.41023586]
+ [-1.16715405]
+ [-1.70857763]
+ [ 1.        ]]
+Epoch 2: at batch 1: Training dataset Loss=-0.052197, Batch Time=0.149
+Epoch 2: at batch 1: Training dataset Loss=-0.052197, Batch Time=0.150; Early rounds
+Epoch 2: at batch 2: Training dataset Loss=-0.057617, Batch Time=0.143; Early rounds
+Epoch 2: at batch 3: Training dataset Loss=-0.097568, Batch Time=0.162; Early rounds
+Epoch 2: at batch 4: Training dataset Loss=-0.114719, Batch Time=0.162; Early rounds
+Epoch 2: at batch 5: Training dataset Loss=-0.096163, Batch Time=0.149; Early rounds
+Epoch 2: at batch 6: Training dataset Loss=-0.095031, Batch Time=0.150; Early rounds
+Epoch 2: at batch 7: Training dataset Loss=-0.089773, Batch Time=0.159; Early rounds
+Epoch 2: at batch 8: Training dataset Loss=-0.083061, Batch Time=0.133; Early rounds
+Epoch 2: at batch 9: Training dataset Loss=-0.110543, Batch Time=0.133; Early rounds
+Epoch 2: at batch 10: Training dataset Loss=-0.096621, Batch Time=0.124; Early rounds
+Epoch 2: at batch 11: Training dataset Loss=-0.068218, Batch Time=0.157; Early rounds
+Epoch 2: at batch 12: Training dataset Loss=-0.075016, Batch Time=0.151; Early rounds
+Epoch 2: at batch 13: Training dataset Loss=-0.066405, Batch Time=0.150; Early rounds
+Epoch 2: at batch 14: Training dataset Loss=-0.069417, Batch Time=0.161; Early rounds
+Epoch 2: at batch 15: Training dataset Loss=-0.053648, Batch Time=0.133; Early rounds
+Epoch 2: at batch 16: Training dataset Loss=-0.067827, Batch Time=0.128; Early rounds
+Epoch 2: at batch 17: Training dataset Loss=-0.068721, Batch Time=0.151; Early rounds
+Epoch 2: at batch 18: Training dataset Loss=-0.069883, Batch Time=0.143; Early rounds
+Epoch 2: at batch 19: Training dataset Loss=-0.078094, Batch Time=0.137; Early rounds
+Epoch 2: at batch 20: Training dataset Loss=-0.070017, Batch Time=0.124; Early rounds
+		Epoch 2:  Time = 210.464, Avg epoch time=21.665, Current epoch Time=70.155
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.19897211]
+ [ 0.40103865]
+ [ 0.4       ]
+ [ 1.        ]
+ [ 1.        ]
+ [-0.45072758]
+ [ 0.02351069]
+ [ 0.4       ]
+ [-3.56175947]
+ [-1.18269777]
+ [-0.04937518]
+ [ 0.42168885]
+ [ 1.        ]
+ [ 1.        ]
+ [-0.0910244 ]
+ [-1.41023586]
+ [ 0.4       ]
+ [-1.09999132]
+ [ 1.        ]]
+Epoch 3: at batch 1: Training dataset Loss=-0.041990, Batch Time=0.135
+		Epoch 3:  Time = 220.246, Avg epoch time=9.262, Current epoch Time=55.061
+
+Loss vector (slice for the first 20 images)
+[[ 4.00000000e-01]
+ [-4.53083634e-01]
+ [ 3.03981364e-01]
+ [ 4.00000000e-01]
+ [ 1.00000000e+00]
+ [ 5.24606824e-01]
+ [-1.05724812e+00]
+ [-8.72882247e-01]
+ [ 4.00000000e-01]
+ [-3.56175947e+00]
+ [ 6.41423047e-01]
+ [-2.44784355e-03]
+ [-1.12201500e+00]
+ [ 1.00000000e+00]
+ [-5.71092880e-01]
+ [ 9.03152086e-01]
+ [ 4.00000000e-01]
+ [ 4.00000000e-01]
+ [ 1.00000000e+00]
+ [-6.83207154e-01]]
+Epoch 4: at batch 1: Training dataset Loss=0.185122, Batch Time=0.134
+		Epoch 4:  Time = 228.057, Avg epoch time=7.279, Current epoch Time=45.611
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [-0.42768812]
+ [-2.33555636]
+ [ 0.01840669]
+ [ 0.52460682]
+ [ 0.68012771]
+ [ 1.        ]
+ [ 0.4       ]
+ [-1.1535027 ]
+ [ 0.64142305]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 0.90315209]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 1.        ]
+ [-0.68320715]]
+Epoch 5: at batch 1: Training dataset Loss=0.216509, Batch Time=0.124
+		Epoch 5:  Time = 231.935, Avg epoch time=3.358, Current epoch Time=38.656
+
+Epoch 6: at batch 1: Training dataset Loss=0.344838, Batch Time=0.145
+		Epoch 6:  Time = 235.399, Avg epoch time=2.943, Current epoch Time=33.628
+
+Epoch 7: at batch 1: Training dataset Loss=0.401723, Batch Time=0.160
+		Epoch 7:  Time = 239.072, Avg epoch time=3.149, Current epoch Time=29.884
+
+Epoch 8: at batch 1: Training dataset Loss=0.401678, Batch Time=0.151
+		Epoch 8:  Time = 242.435, Avg epoch time=2.843, Current epoch Time=26.937
+
+Epoch 9: at batch 1: Training dataset Loss=0.410569, Batch Time=0.148
+		Epoch 9:  Time = 245.921, Avg epoch time=2.956, Current epoch Time=24.592
+
+Epoch 11: at batch 1: Training dataset Loss=0.407757, Batch Time=0.133
+		Epoch 11:  Time = 252.674, Avg epoch time=2.877, Current epoch Time=21.056
+
+Epoch 13: at batch 1: Training dataset Loss=0.364741, Batch Time=0.150
+Epoch 15: at batch 1: Training dataset Loss=0.241665, Batch Time=0.159
+Epoch 17: at batch 1: Training dataset Loss=0.197318, Batch Time=0.149
+Epoch 19: at batch 1: Training dataset Loss=0.272657, Batch Time=0.133
+Epoch 21: at batch 1: Training dataset Loss=0.211048, Batch Time=0.133
+		Epoch 21:  Time = 286.674, Avg epoch time=2.891, Current epoch Time=13.031
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 0.09963799]
+ [ 0.01665565]
+ [ 0.05312437]
+ [-0.66159534]
+ [ 0.03360587]
+ [ 0.08351564]
+ [ 0.4       ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 0.2302447 ]
+ [ 0.18558007]
+ [ 1.        ]
+ [ 0.4       ]
+ [-0.19398868]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.19915372]
+ [-0.20930147]]
+Epoch 23: at batch 1: Training dataset Loss=0.202679, Batch Time=0.148
+Epoch 25: at batch 1: Training dataset Loss=0.199682, Batch Time=0.151
+Epoch 27: at batch 1: Training dataset Loss=0.179032, Batch Time=0.143
+Epoch 29: at batch 1: Training dataset Loss=0.172359, Batch Time=0.149
+Epoch 31: at batch 1: Training dataset Loss=0.190655, Batch Time=0.143
+		Epoch 31:  Time = 320.743, Avg epoch time=2.844, Current epoch Time=10.023
+
+Epoch 33: at batch 1: Training dataset Loss=0.174465, Batch Time=0.137
+Epoch 35: at batch 1: Training dataset Loss=0.164363, Batch Time=0.152
+Epoch 37: at batch 1: Training dataset Loss=0.179681, Batch Time=0.158
+Epoch 39: at batch 1: Training dataset Loss=0.162132, Batch Time=0.134
+Epoch 41: at batch 1: Training dataset Loss=0.175482, Batch Time=0.160
+		Epoch 41:  Time = 354.554, Avg epoch time=2.853, Current epoch Time=8.442
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 0.21276224]
+ [-0.36661241]
+ [ 0.11043304]
+ [ 0.02491558]
+ [ 0.01270628]
+ [ 0.06159943]
+ [ 0.4       ]
+ [ 1.        ]
+ [ 0.35693812]
+ [ 0.16066539]
+ [ 0.25599903]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.36717379]
+ [ 0.02193326]]
+Epoch 43: at batch 1: Training dataset Loss=0.173189, Batch Time=0.158
+Epoch 45: at batch 1: Training dataset Loss=0.182558, Batch Time=0.153
+Epoch 47: at batch 1: Training dataset Loss=0.172438, Batch Time=0.151
+Epoch 49: at batch 1: Training dataset Loss=0.148473, Batch Time=0.151
+Epoch 51: at batch 1: Training dataset Loss=0.166947, Batch Time=0.145
+		Epoch 51:  Time = 388.422, Avg epoch time=2.809, Current epoch Time=7.470
+
+Epoch 53: at batch 1: Training dataset Loss=0.168868, Batch Time=0.158
+Epoch 55: at batch 1: Training dataset Loss=0.150045, Batch Time=0.151
+Epoch 57: at batch 1: Training dataset Loss=0.155728, Batch Time=0.125
+Epoch 59: at batch 1: Training dataset Loss=0.180268, Batch Time=0.133
+Epoch 61: at batch 1: Training dataset Loss=0.166426, Batch Time=0.160
+		Epoch 61:  Time = 422.249, Avg epoch time=2.825, Current epoch Time=6.810
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [-0.01631153]
+ [-0.25210259]
+ [ 0.14365691]
+ [ 0.47130132]
+ [ 0.07404488]
+ [ 0.19569844]
+ [ 0.4       ]
+ [ 0.35097951]
+ [ 0.22285539]
+ [ 0.05646157]
+ [-0.25986695]
+ [ 1.        ]
+ [-0.22872356]
+ [ 0.32167327]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.16846663]
+ [-0.08717597]]
+Epoch 63: at batch 1: Training dataset Loss=0.148642, Batch Time=0.129
+Epoch 65: at batch 1: Training dataset Loss=0.174342, Batch Time=0.150
+Epoch 67: at batch 1: Training dataset Loss=0.162860, Batch Time=0.134
+Epoch 69: at batch 1: Training dataset Loss=0.155827, Batch Time=0.151
+Epoch 71: at batch 1: Training dataset Loss=0.160774, Batch Time=0.133
+		Epoch 71:  Time = 456.166, Avg epoch time=2.810, Current epoch Time=6.336
+
+Epoch 73: at batch 1: Training dataset Loss=0.138977, Batch Time=0.128
+Epoch 75: at batch 1: Training dataset Loss=0.147657, Batch Time=0.150
+Epoch 77: at batch 1: Training dataset Loss=0.157464, Batch Time=0.149
+Epoch 79: at batch 1: Training dataset Loss=0.157657, Batch Time=0.159
+Epoch 81: at batch 1: Training dataset Loss=0.169114, Batch Time=0.144
+		Epoch 81:  Time = 490.178, Avg epoch time=2.874, Current epoch Time=5.978
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 0.25954723]
+ [-0.55582145]
+ [ 0.26027793]
+ [ 0.21148747]
+ [ 0.05217129]
+ [ 0.01234412]
+ [ 0.4       ]
+ [ 0.1844523 ]
+ [ 0.13183361]
+ [ 0.08829528]
+ [-0.03446388]
+ [ 0.7713002 ]
+ [ 0.4       ]
+ [ 0.16322482]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.45411563]
+ [ 0.38976562]]
+Epoch 83: at batch 1: Training dataset Loss=0.158877, Batch Time=0.135
+Epoch 85: at batch 1: Training dataset Loss=0.170610, Batch Time=0.128
+Epoch 87: at batch 1: Training dataset Loss=0.150064, Batch Time=0.149
+Epoch 89: at batch 1: Training dataset Loss=0.152469, Batch Time=0.152
+Epoch 91: at batch 1: Training dataset Loss=0.163377, Batch Time=0.134
+		Epoch 91:  Time = 524.132, Avg epoch time=2.862, Current epoch Time=5.697
+
+Epoch 93: at batch 1: Training dataset Loss=0.155489, Batch Time=0.159
+Epoch 95: at batch 1: Training dataset Loss=0.161317, Batch Time=0.128
+Epoch 97: at batch 1: Training dataset Loss=0.175437, Batch Time=0.149
+Epoch 99: at batch 1: Training dataset Loss=0.148869, Batch Time=0.150
+Epoch 101: at batch 1: Training dataset Loss=0.150536, Batch Time=0.157
+		Epoch 101:  Time = 557.941, Avg epoch time=2.840, Current epoch Time=5.470
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 0.13348335]
+ [-0.48203806]
+ [ 0.21849227]
+ [-0.1123898 ]
+ [-0.03663325]
+ [ 0.41825867]
+ [ 0.28754005]
+ [ 1.        ]
+ [ 0.32921988]
+ [ 0.07918721]
+ [-0.15784979]
+ [ 0.91286054]
+ [ 0.4       ]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.11240888]
+ [-0.00359654]]
+Epoch 103: at batch 1: Training dataset Loss=0.151959, Batch Time=0.143
+Epoch 105: at batch 1: Training dataset Loss=0.155811, Batch Time=0.124
+Epoch 107: at batch 1: Training dataset Loss=0.141327, Batch Time=0.142
+Epoch 109: at batch 1: Training dataset Loss=0.163758, Batch Time=0.137
+Epoch 111: at batch 1: Training dataset Loss=0.143093, Batch Time=0.150
+		Epoch 111:  Time = 591.685, Avg epoch time=2.794, Current epoch Time=5.283
+
+Epoch 113: at batch 1: Training dataset Loss=0.143119, Batch Time=0.151
+Epoch 115: at batch 1: Training dataset Loss=0.147088, Batch Time=0.153
+Epoch 117: at batch 1: Training dataset Loss=0.164460, Batch Time=0.134
+Epoch 119: at batch 1: Training dataset Loss=0.151377, Batch Time=0.133
+Epoch 121: at batch 1: Training dataset Loss=0.126359, Batch Time=0.134
+		Epoch 121:  Time = 625.494, Avg epoch time=2.899, Current epoch Time=5.127
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.17177653]
+ [-0.01007974]
+ [-0.37801394]
+ [ 0.24032032]
+ [ 0.17067623]
+ [ 0.15783751]
+ [ 0.02897507]
+ [ 0.4       ]
+ [ 0.15167975]
+ [ 0.24042886]
+ [ 0.08967477]
+ [ 0.07435143]
+ [ 0.71546292]
+ [-0.26931283]
+ [-0.0183183 ]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.01134229]
+ [ 0.06795478]]
+Epoch 123: at batch 1: Training dataset Loss=0.138786, Batch Time=0.149
+Epoch 125: at batch 1: Training dataset Loss=0.150934, Batch Time=0.137
+Epoch 127: at batch 1: Training dataset Loss=0.140208, Batch Time=0.133
+Epoch 129: at batch 1: Training dataset Loss=0.130740, Batch Time=0.126
+Epoch 131: at batch 1: Training dataset Loss=0.143918, Batch Time=0.135
+		Epoch 131:  Time = 660.339, Avg epoch time=2.853, Current epoch Time=5.003
+
+Epoch 133: at batch 1: Training dataset Loss=0.118548, Batch Time=0.137
+Epoch 135: at batch 1: Training dataset Loss=0.132869, Batch Time=0.150
+Epoch 137: at batch 1: Training dataset Loss=0.134382, Batch Time=0.133
+Epoch 139: at batch 1: Training dataset Loss=0.126604, Batch Time=0.136
+Epoch 141: at batch 1: Training dataset Loss=0.138335, Batch Time=0.153
+		Epoch 141:  Time = 695.612, Avg epoch time=2.934, Current epoch Time=4.899
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.11605483]
+ [ 0.17278683]
+ [-0.59669236]
+ [ 0.11103356]
+ [ 0.18295676]
+ [ 0.15358698]
+ [ 0.31131631]
+ [ 0.4       ]
+ [-0.00213802]
+ [ 0.25223118]
+ [ 0.12079751]
+ [ 0.22423053]
+ [ 1.        ]
+ [ 0.4       ]
+ [-0.02275348]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.29972637]
+ [-0.06863773]]
+Epoch 143: at batch 1: Training dataset Loss=0.127835, Batch Time=0.149
+Epoch 145: at batch 1: Training dataset Loss=0.138806, Batch Time=0.141
+Epoch 147: at batch 1: Training dataset Loss=0.125896, Batch Time=0.125
+Epoch 149: at batch 1: Training dataset Loss=0.136008, Batch Time=0.157
+Epoch 151: at batch 1: Training dataset Loss=0.149412, Batch Time=0.135
+		Epoch 151:  Time = 730.639, Avg epoch time=2.796, Current epoch Time=4.807
+
+Epoch 153: at batch 1: Training dataset Loss=0.141487, Batch Time=0.128
+Epoch 155: at batch 1: Training dataset Loss=0.136652, Batch Time=0.133
+Epoch 157: at batch 1: Training dataset Loss=0.146030, Batch Time=0.150
+Epoch 159: at batch 1: Training dataset Loss=0.139881, Batch Time=0.158
+Epoch 161: at batch 1: Training dataset Loss=0.136171, Batch Time=0.159
+		Epoch 161:  Time = 766.272, Avg epoch time=2.949, Current epoch Time=4.730
+
+Loss vector (slice for the first 20 images)
+[[-0.09464509]
+ [ 1.        ]
+ [ 0.00707221]
+ [-0.50380251]
+ [ 0.06680495]
+ [-0.21689463]
+ [ 0.08157104]
+ [ 0.0852859 ]
+ [ 0.4       ]
+ [ 0.03589088]
+ [ 0.3060776 ]
+ [ 0.18114054]
+ [ 0.09221178]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 0.01487613]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.10707569]
+ [ 0.10087413]]
+Epoch 163: at batch 1: Training dataset Loss=0.134284, Batch Time=0.159
+Epoch 165: at batch 1: Training dataset Loss=0.129347, Batch Time=0.142
+Epoch 167: at batch 1: Training dataset Loss=0.146755, Batch Time=0.144
+Epoch 169: at batch 1: Training dataset Loss=0.137571, Batch Time=0.141
+Epoch 171: at batch 1: Training dataset Loss=0.136486, Batch Time=0.144
+		Epoch 171:  Time = 801.150, Avg epoch time=2.779, Current epoch Time=4.658
+
+Epoch 173: at batch 1: Training dataset Loss=0.132218, Batch Time=0.134
+Epoch 175: at batch 1: Training dataset Loss=0.148183, Batch Time=0.128
+Epoch 177: at batch 1: Training dataset Loss=0.132927, Batch Time=0.149
+Epoch 179: at batch 1: Training dataset Loss=0.117324, Batch Time=0.137
+Epoch 181: at batch 1: Training dataset Loss=0.152330, Batch Time=0.144
+		Epoch 181:  Time = 836.522, Avg epoch time=2.881, Current epoch Time=4.596
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 0.11086577]
+ [-0.55529073]
+ [-0.11263609]
+ [ 0.14372742]
+ [ 0.20931077]
+ [ 0.17971927]
+ [ 0.4       ]
+ [ 0.36386567]
+ [-0.23925722]
+ [ 0.24904603]
+ [ 0.03817618]
+ [ 0.40702277]
+ [ 0.0579828 ]
+ [-0.02992344]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.15092731]
+ [ 0.28122765]]
+Epoch 183: at batch 1: Training dataset Loss=0.144159, Batch Time=0.150
+Epoch 185: at batch 1: Training dataset Loss=0.149826, Batch Time=0.159
+Epoch 187: at batch 1: Training dataset Loss=0.135105, Batch Time=0.124
+Epoch 189: at batch 1: Training dataset Loss=0.140976, Batch Time=0.144
+Epoch 191: at batch 1: Training dataset Loss=0.122845, Batch Time=0.136
+		Epoch 191:  Time = 871.737, Avg epoch time=2.888, Current epoch Time=4.540
+
+Epoch 193: at batch 1: Training dataset Loss=0.139121, Batch Time=0.149
+Epoch 195: at batch 1: Training dataset Loss=0.136424, Batch Time=0.153
+Epoch 197: at batch 1: Training dataset Loss=0.140250, Batch Time=0.143
+Epoch 199: at batch 1: Training dataset Loss=0.143856, Batch Time=0.124
+Epoch 201: at batch 1: Training dataset Loss=0.129096, Batch Time=0.138
+		Epoch 201:  Time = 906.921, Avg epoch time=2.795, Current epoch Time=4.490
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.08300525]
+ [ 0.18969941]
+ [-0.24743215]
+ [ 0.06587654]
+ [ 0.29278761]
+ [ 0.39065528]
+ [ 0.17592269]
+ [ 0.4       ]
+ [ 0.30969274]
+ [ 0.0968467 ]
+ [ 0.12899834]
+ [ 0.01413625]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 0.14860511]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.42308545]
+ [ 0.1538021 ]]
+Epoch 203: at batch 1: Training dataset Loss=0.140901, Batch Time=0.129
+Epoch 205: at batch 1: Training dataset Loss=0.117544, Batch Time=0.158
+Epoch 207: at batch 1: Training dataset Loss=0.140125, Batch Time=0.143
+Epoch 209: at batch 1: Training dataset Loss=0.141816, Batch Time=0.140
+Epoch 211: at batch 1: Training dataset Loss=0.123318, Batch Time=0.132
+		Epoch 211:  Time = 941.725, Avg epoch time=2.915, Current epoch Time=4.442
+
+Epoch 213: at batch 1: Training dataset Loss=0.142442, Batch Time=0.136
+Epoch 215: at batch 1: Training dataset Loss=0.136287, Batch Time=0.143
+Epoch 217: at batch 1: Training dataset Loss=0.138803, Batch Time=0.159
+Epoch 219: at batch 1: Training dataset Loss=0.141988, Batch Time=0.149
+Epoch 221: at batch 1: Training dataset Loss=0.147859, Batch Time=0.128
+		Epoch 221:  Time = 977.273, Avg epoch time=2.857, Current epoch Time=4.402
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.17864698]
+ [ 0.05432516]
+ [-0.58231936]
+ [ 0.04205787]
+ [ 0.27790278]
+ [ 0.02552271]
+ [ 0.01174128]
+ [ 0.4       ]
+ [-0.01011264]
+ [ 0.06836474]
+ [-0.05985534]
+ [ 0.09761792]
+ [ 0.04160947]
+ [ 0.4       ]
+ [ 0.08792537]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.23117977]
+ [ 0.23712748]]
+Epoch 223: at batch 1: Training dataset Loss=0.147113, Batch Time=0.148
+Epoch 225: at batch 1: Training dataset Loss=0.132654, Batch Time=0.150
+Epoch 227: at batch 1: Training dataset Loss=0.148971, Batch Time=0.148
+Epoch 229: at batch 1: Training dataset Loss=0.137785, Batch Time=0.128
+Epoch 231: at batch 1: Training dataset Loss=0.165639, Batch Time=0.151
+		Epoch 231:  Time = 1012.562, Avg epoch time=2.829, Current epoch Time=4.364
+
+Epoch 233: at batch 1: Training dataset Loss=0.137834, Batch Time=0.133
+Epoch 235: at batch 1: Training dataset Loss=0.128046, Batch Time=0.135
+Epoch 237: at batch 1: Training dataset Loss=0.131414, Batch Time=0.133
+Epoch 239: at batch 1: Training dataset Loss=0.132649, Batch Time=0.140
+Epoch 241: at batch 1: Training dataset Loss=0.131271, Batch Time=0.136
+		Epoch 241:  Time = 1047.918, Avg epoch time=2.800, Current epoch Time=4.330
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.09421629]
+ [ 0.14370292]
+ [-0.58411494]
+ [ 0.04132104]
+ [ 0.10844219]
+ [ 0.12785661]
+ [ 0.18309951]
+ [ 0.4       ]
+ [-0.03641498]
+ [ 0.12681454]
+ [ 0.05749798]
+ [ 0.04439116]
+ [ 0.02545321]
+ [ 0.4       ]
+ [ 0.20162767]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.18974388]
+ [ 0.19036269]]
+Epoch 243: at batch 1: Training dataset Loss=0.139653, Batch Time=0.140
+Epoch 245: at batch 1: Training dataset Loss=0.133224, Batch Time=0.149
+Epoch 247: at batch 1: Training dataset Loss=0.135945, Batch Time=0.124
+Epoch 249: at batch 1: Training dataset Loss=0.144325, Batch Time=0.140
+Epoch 251: at batch 1: Training dataset Loss=0.130121, Batch Time=0.149
+		Epoch 251:  Time = 1082.928, Avg epoch time=2.906, Current epoch Time=4.297
+
+Epoch 253: at batch 1: Training dataset Loss=0.129840, Batch Time=0.150
+Epoch 255: at batch 1: Training dataset Loss=0.139786, Batch Time=0.140
+Epoch 257: at batch 1: Training dataset Loss=0.127228, Batch Time=0.144
+Epoch 259: at batch 1: Training dataset Loss=0.143123, Batch Time=0.143
+Epoch 261: at batch 1: Training dataset Loss=0.152112, Batch Time=0.132
+		Epoch 261:  Time = 1118.197, Avg epoch time=2.912, Current epoch Time=4.268
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 1.        ]
+ [ 0.0049783 ]
+ [-0.61882327]
+ [ 0.10153288]
+ [ 0.39611119]
+ [ 0.14245892]
+ [ 0.08892202]
+ [ 0.4       ]
+ [ 0.2171275 ]
+ [ 0.22351915]
+ [ 0.15560871]
+ [ 0.23719913]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 0.09390646]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.13844448]
+ [ 0.19138157]]
+Epoch 263: at batch 1: Training dataset Loss=0.156864, Batch Time=0.140
+Epoch 265: at batch 1: Training dataset Loss=0.191393, Batch Time=0.151
+Epoch 267: at batch 1: Training dataset Loss=0.150464, Batch Time=0.132
+Epoch 269: at batch 1: Training dataset Loss=0.165510, Batch Time=0.159
+Epoch 271: at batch 1: Training dataset Loss=0.167778, Batch Time=0.141
+		Epoch 271:  Time = 1153.172, Avg epoch time=2.750, Current epoch Time=4.240
+
+Epoch 273: at batch 1: Training dataset Loss=0.162717, Batch Time=0.149
+Epoch 275: at batch 1: Training dataset Loss=0.150743, Batch Time=0.143
+Epoch 277: at batch 1: Training dataset Loss=0.143469, Batch Time=0.143
+Epoch 279: at batch 1: Training dataset Loss=0.169295, Batch Time=0.157
+Epoch 281: at batch 1: Training dataset Loss=0.155085, Batch Time=0.157
+		Epoch 281:  Time = 1187.870, Avg epoch time=2.712, Current epoch Time=4.212
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.2066263 ]
+ [ 0.27258015]
+ [-0.46585832]
+ [ 0.23578256]
+ [ 0.08305478]
+ [ 0.16484046]
+ [ 0.17550266]
+ [ 0.4       ]
+ [ 0.14025056]
+ [ 0.10423785]
+ [ 0.16113639]
+ [ 0.03902209]
+ [ 1.        ]
+ [ 0.4       ]
+ [ 0.68646452]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.11178321]
+ [ 0.01174039]]
+Epoch 283: at batch 1: Training dataset Loss=0.135487, Batch Time=0.158
+Epoch 285: at batch 1: Training dataset Loss=0.140267, Batch Time=0.148
+Epoch 287: at batch 1: Training dataset Loss=0.150535, Batch Time=0.150
+Epoch 289: at batch 1: Training dataset Loss=0.133079, Batch Time=0.124
+Epoch 291: at batch 1: Training dataset Loss=0.164798, Batch Time=0.139
+		Epoch 291:  Time = 1223.105, Avg epoch time=2.775, Current epoch Time=4.189
+
+Epoch 293: at batch 1: Training dataset Loss=0.130608, Batch Time=0.143
+Epoch 295: at batch 1: Training dataset Loss=0.135697, Batch Time=0.143
+Epoch 297: at batch 1: Training dataset Loss=0.136602, Batch Time=0.159
+Epoch 299: at batch 1: Training dataset Loss=0.149282, Batch Time=0.140
+Epoch 301: at batch 1: Training dataset Loss=0.151572, Batch Time=0.132
+		Epoch 301:  Time = 1257.688, Avg epoch time=2.870, Current epoch Time=4.165
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.02567554]
+ [ 0.25114119]
+ [-0.60267839]
+ [ 0.10610497]
+ [ 0.03806341]
+ [ 0.12903517]
+ [ 0.07090575]
+ [ 0.4       ]
+ [ 0.12037486]
+ [ 0.12955981]
+ [ 0.1861878 ]
+ [-0.11011946]
+ [ 0.15967506]
+ [ 0.4       ]
+ [ 0.06369805]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.02947098]
+ [ 0.00242114]]
+Epoch 303: at batch 1: Training dataset Loss=0.153378, Batch Time=0.136
+Epoch 305: at batch 1: Training dataset Loss=0.131878, Batch Time=0.132
+Epoch 307: at batch 1: Training dataset Loss=0.127707, Batch Time=0.133
+Epoch 309: at batch 1: Training dataset Loss=0.144343, Batch Time=0.159
+Epoch 311: at batch 1: Training dataset Loss=0.155342, Batch Time=0.140
+		Epoch 311:  Time = 1293.138, Avg epoch time=2.855, Current epoch Time=4.145
+
+Epoch 313: at batch 1: Training dataset Loss=0.152581, Batch Time=0.142
+Epoch 315: at batch 1: Training dataset Loss=0.142569, Batch Time=0.136
+Epoch 317: at batch 1: Training dataset Loss=0.145825, Batch Time=0.124
+Epoch 319: at batch 1: Training dataset Loss=0.138553, Batch Time=0.124
+Epoch 321: at batch 1: Training dataset Loss=0.129498, Batch Time=0.157
+		Epoch 321:  Time = 1328.012, Avg epoch time=2.889, Current epoch Time=4.124
+
+Loss vector (slice for the first 20 images)
+[[ 0.4       ]
+ [ 0.15135664]
+ [ 0.1385299 ]
+ [-0.50587848]
+ [ 0.18478423]
+ [ 0.15036035]
+ [-0.02098131]
+ [ 0.22663355]
+ [ 0.4       ]
+ [ 0.00716347]
+ [ 0.11870897]
+ [ 0.10529983]
+ [ 0.08691067]
+ [ 0.10959643]
+ [-0.03827572]
+ [ 0.10073376]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.16276777]
+ [ 0.12354863]]
+Epoch 323: at batch 1: Training dataset Loss=0.143666, Batch Time=0.158
+Epoch 325: at batch 1: Training dataset Loss=0.143729, Batch Time=0.148
+Epoch 327: at batch 1: Training dataset Loss=0.135765, Batch Time=0.141
+Epoch 329: at batch 1: Training dataset Loss=0.124140, Batch Time=0.141
+Epoch 331: at batch 1: Training dataset Loss=0.135135, Batch Time=0.133
+		Epoch 331:  Time = 1363.114, Avg epoch time=2.812, Current epoch Time=4.106
+
+Epoch 333: at batch 1: Training dataset Loss=0.128523, Batch Time=0.124
+Epoch 335: at batch 1: Training dataset Loss=0.128942, Batch Time=0.148
+Epoch 337: at batch 1: Training dataset Loss=0.126716, Batch Time=0.136
+Epoch 339: at batch 1: Training dataset Loss=0.138822, Batch Time=0.157
+Epoch 341: at batch 1: Training dataset Loss=0.156600, Batch Time=0.148
+		Epoch 341:  Time = 1397.958, Avg epoch time=2.812, Current epoch Time=4.088
+
+Loss vector (slice for the first 20 images)
+[[ 0.02186188]
+ [ 0.13104069]
+ [ 0.07820135]
+ [-0.5087829 ]
+ [ 0.05654097]
+ [ 0.25450033]
+ [ 0.16544366]
+ [ 0.16532296]
+ [ 0.4       ]
+ [ 0.29047561]
+ [-0.08296466]
+ [ 0.21242291]
+ [ 0.11891603]
+ [ 0.17845362]
+ [ 0.4       ]
+ [ 0.04155213]
+ [ 0.4       ]
+ [ 0.4       ]
+ [ 0.35030842]
+ [ 0.22581255]]
+Epoch 343: at batch 1: Training dataset Loss=0.138071, Batch Time=0.136
+Epoch 345: at batch 1: Training dataset Loss=0.139012, Batch Time=0.133
+Epoch 347: at batch 1: Training dataset Loss=0.135244, Batch Time=0.143
+^CTraceback (most recent call last):
+  File "VGG19like_16Conv_huber_exposure_101GB.py", line 313, in <module>
+    feed_dict={in_image: input_patch, gt_exposure: exposures_feed, lr: learning_rate})
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 887, in run
+    run_metadata_ptr)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1110, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1286, in _do_run
+    run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1292, in _do_call
+    return fn(*args)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1277, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1367, in _call_tf_sessionrun
+    run_metadata)
+KeyboardInterrupt
+(sid2) [ir967@gr010 Learning-to-See-in-the-Dark]$ python VGG19like_16Conv_huber_exposure_101GB.py
+
+
+
+
+Current date and time : 
+2020-12-13 20:51:36
+./dataset/Sony/short/00133_07_0.1s.ARW 133 0.1
+./dataset/Sony/short/00015_09_0.1s.ARW 15 0.1
+./dataset/Sony/short/00190_08_0.04s.ARW 190 0.04
+./dataset/Sony/short/00204_01_0.033s.ARW 204 0.033
+./dataset/Sony/short/00047_03_0.1s.ARW 47 0.1
+./dataset/Sony/short/00049_07_0.1s.ARW 49 0.1
+./dataset/Sony/short/00231_00_0.033s.ARW 231 0.033
+Found 1865 images to train with
+
+Training on files with indices: 160 to 1492
+Training on 1332 images only
+
+2020-12-13 20:51:36.155362: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-13 20:51:36.293212: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:86:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-13 20:51:36.293246: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-13 20:51:36.581261: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-13 20:51:36.581300: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-13 20:51:36.581387: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-13 20:51:36.581494: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:86:00.0, compute capability: 7.5)
+
+Loaded ./gt_Sony_VGGlike_16Conv_huber_exposure_101GB_BS64/model.ckpt
+
+last epoch of previous run: 347
+
+
+BATCH_SIZE= 64 ,final_epoch= 4001 ,no_of_batches= 20 ,ps 128 ,result_dir= ./gt_Sony_VGGlike_16Conv_huber_exposure_101GB_BS64/ ,len(train_fns)= 1332
+
+Cleared all images in memory.
+
+Epoch 348: at batch 1: Training dataset Loss=0.955301, Batch Time=2.674
+Epoch 348: at batch 1: Training dataset Loss=0.955301, Batch Time=2.674; Early rounds
+Epoch 348: at batch 2: Training dataset Loss=0.921626, Batch Time=0.133; Early rounds
+Epoch 348: at batch 3: Training dataset Loss=0.885085, Batch Time=0.137; Early rounds
+Epoch 348: at batch 4: Training dataset Loss=0.846392, Batch Time=0.151; Early rounds
+Epoch 348: at batch 5: Training dataset Loss=0.815965, Batch Time=0.163; Early rounds
+Epoch 348: at batch 6: Training dataset Loss=0.788703, Batch Time=0.155; Early rounds
+Epoch 348: at batch 7: Training dataset Loss=0.754856, Batch Time=0.144; Early rounds
+Epoch 348: at batch 8: Training dataset Loss=0.731094, Batch Time=0.160; Early rounds
+Epoch 348: at batch 9: Training dataset Loss=0.706808, Batch Time=0.142; Early rounds
+Epoch 348: at batch 10: Training dataset Loss=0.682643, Batch Time=0.156; Early rounds
+Epoch 348: at batch 11: Training dataset Loss=0.655317, Batch Time=0.171; Early rounds
+Epoch 348: at batch 12: Training dataset Loss=0.628614, Batch Time=0.160; Early rounds
+Epoch 348: at batch 13: Training dataset Loss=0.609981, Batch Time=0.146; Early rounds
+Epoch 348: at batch 14: Training dataset Loss=0.592002, Batch Time=0.154; Early rounds
+Epoch 348: at batch 15: Training dataset Loss=0.572904, Batch Time=0.153; Early rounds
+Epoch 348: at batch 16: Training dataset Loss=0.549485, Batch Time=0.144; Early rounds
+Epoch 348: at batch 17: Training dataset Loss=0.523079, Batch Time=0.160; Early rounds
+Epoch 348: at batch 18: Training dataset Loss=0.502352, Batch Time=0.147; Early rounds
+Epoch 348: at batch 19: Training dataset Loss=0.485945, Batch Time=0.137; Early rounds
+Epoch 348: at batch 20: Training dataset Loss=0.467817, Batch Time=0.142; Early rounds
+		Epoch 348:  Time = 148.264, Avg epoch time=148.264, Current epoch Time=74.132
+
+Loss vector (slice for the first 20 images)
+[[ 0.19537938]
+ [-0.54909632]
+ [ 0.33      ]
+ [-0.50087622]
+ [ 1.        ]
+ [-0.42026511]
+ [ 0.34057069]
+ [ 0.4       ]
+ [ 0.1598441 ]
+ [ 0.16715944]
+ [-0.08306409]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 0.35472423]
+ [ 1.        ]
+ [ 0.16498768]]
+Epoch 349: at batch 1: Training dataset Loss=0.450438, Batch Time=0.150
+Epoch 349: at batch 1: Training dataset Loss=0.450438, Batch Time=0.150; Early rounds
+Epoch 349: at batch 2: Training dataset Loss=0.429800, Batch Time=0.153; Early rounds
+Epoch 349: at batch 3: Training dataset Loss=0.416884, Batch Time=0.143; Early rounds
+Epoch 349: at batch 4: Training dataset Loss=0.396388, Batch Time=0.161; Early rounds
+Epoch 349: at batch 5: Training dataset Loss=0.382641, Batch Time=0.170; Early rounds
+Epoch 349: at batch 6: Training dataset Loss=0.374110, Batch Time=0.151; Early rounds
+Epoch 349: at batch 7: Training dataset Loss=0.368584, Batch Time=0.137; Early rounds
+Epoch 349: at batch 8: Training dataset Loss=0.363047, Batch Time=0.161; Early rounds
+Epoch 349: at batch 9: Training dataset Loss=0.359468, Batch Time=0.169; Early rounds
+Epoch 349: at batch 10: Training dataset Loss=0.354525, Batch Time=0.148; Early rounds
+Epoch 349: at batch 11: Training dataset Loss=0.343368, Batch Time=0.138; Early rounds
+Epoch 349: at batch 12: Training dataset Loss=0.336445, Batch Time=0.161; Early rounds
+Epoch 349: at batch 13: Training dataset Loss=0.326165, Batch Time=0.169; Early rounds
+Epoch 349: at batch 14: Training dataset Loss=0.309582, Batch Time=0.140; Early rounds
+Epoch 349: at batch 15: Training dataset Loss=0.298206, Batch Time=0.133; Early rounds
+Epoch 349: at batch 16: Training dataset Loss=0.292610, Batch Time=0.124; Early rounds
+Epoch 349: at batch 17: Training dataset Loss=0.283589, Batch Time=0.152; Early rounds
+Epoch 349: at batch 18: Training dataset Loss=0.282384, Batch Time=0.144; Early rounds
+Epoch 349: at batch 19: Training dataset Loss=0.281759, Batch Time=0.142; Early rounds
+Epoch 349: at batch 20: Training dataset Loss=0.275551, Batch Time=0.147; Early rounds
+		Epoch 349:  Time = 206.309, Avg epoch time=57.245, Current epoch Time=68.770
+
+Loss vector (slice for the first 20 images)
+[[ 0.17080039]
+ [-0.44471667]
+ [ 0.33      ]
+ [-0.46904716]
+ [ 1.        ]
+ [-0.42026511]
+ [ 0.20147538]
+ [ 0.4       ]
+ [ 0.23368275]
+ [ 0.16715944]
+ [-0.16617284]
+ [ 1.        ]
+ [ 1.        ]
+ [ 1.        ]
+ [ 0.01887131]
+ [ 0.4       ]
+ [ 1.        ]
+ [ 0.19295245]
+ [ 1.        ]
+ [ 0.13129342]]
+Epoch 350: at batch 1: Training dataset Loss=0.267717, Batch Time=0.142
+		Epoch 350:  Time = 231.561, Avg epoch time=24.505, Current epoch Time=57.890
+
+Loss vector (slice for the first 20 images)
+[[ 0.17080039]
+ [-0.44471667]
+ [ 0.33      ]
+ [-0.31505177]
+ [ 0.1997149 ]
+ [-0.42026511]
+ [ 0.14147717]
+ [ 0.4       ]
+ [ 0.16495037]
+ [ 0.10625023]
+ [-0.01017643]
+ [ 0.05055177]
+ [ 0.16463405]
+ [ 0.2641989 ]
+ [ 0.11855739]
+ [ 0.4       ]
+ [-0.07792842]
+ [ 0.19295245]
+ [ 0.17375714]
+ [ 0.33983397]]
+Epoch 351: at batch 1: Training dataset Loss=0.180642, Batch Time=0.141
+		Epoch 351:  Time = 242.761, Avg epoch time=10.658, Current epoch Time=48.552
+
+Loss vector (slice for the first 20 images)
+[[ 0.22116506]
+ [-0.44471667]
+ [ 0.33      ]
+ [-0.37316177]
+ [ 0.17725825]
+ [-0.41150007]
+ [ 0.14147717]
+ [ 0.4       ]
+ [ 0.16495037]
+ [ 0.10625023]
+ [-0.44355193]
+ [ 0.05055177]
+ [ 0.16463405]
+ [ 0.2641989 ]
+ [ 0.11855739]
+ [ 0.4       ]
+ [-0.00303686]
+ [ 0.19295245]
+ [ 0.07834131]
+ [ 0.33983397]]
+Epoch 352: at batch 1: Training dataset Loss=0.155831, Batch Time=0.127
+		Epoch 352:  Time = 250.582, Avg epoch time=7.284, Current epoch Time=41.764
+
+Epoch 353: at batch 1: Training dataset Loss=0.134693, Batch Time=0.129
+		Epoch 353:  Time = 255.070, Avg epoch time=3.918, Current epoch Time=36.439
+
+Epoch 354: at batch 1: Training dataset Loss=0.147978, Batch Time=0.128
+		Epoch 354:  Time = 258.708, Avg epoch time=3.008, Current epoch Time=32.339
+
+Epoch 355: at batch 1: Training dataset Loss=0.134782, Batch Time=0.128
+		Epoch 355:  Time = 262.288, Avg epoch time=3.020, Current epoch Time=29.143
+
+Epoch 356: at batch 1: Training dataset Loss=0.144133, Batch Time=0.136
+		Epoch 356:  Time = 265.654, Avg epoch time=2.836, Current epoch Time=26.565
+
+Epoch 358: at batch 1: Training dataset Loss=0.137621, Batch Time=0.158
+		Epoch 358:  Time = 272.519, Avg epoch time=2.900, Current epoch Time=22.710
+
+Epoch 360: at batch 1: Training dataset Loss=0.126172, Batch Time=0.144
+Epoch 362: at batch 1: Training dataset Loss=0.136137, Batch Time=0.134
+Epoch 364: at batch 1: Training dataset Loss=0.134088, Batch Time=0.153
+Epoch 366: at batch 1: Training dataset Loss=0.139223, Batch Time=0.147
+Epoch 368: at batch 1: Training dataset Loss=0.139014, Batch Time=0.147
+		Epoch 368:  Time = 306.145, Avg epoch time=2.843, Current epoch Time=13.916
+
+Loss vector (slice for the first 20 images)
+[[ 0.39380527]
+ [-0.35080925]
+ [ 0.33      ]
+ [-0.51160941]
+ [ 0.34440458]
+ [-0.28754905]
+ [-0.03072202]
+ [ 0.4       ]
+ [ 1.        ]
+ [ 0.28652   ]
+ [-0.36556313]
+ [-0.0100528 ]
+ [ 0.2499401 ]
+ [-0.01213348]
+ [ 0.13421416]
+ [ 0.4       ]
+ [ 0.04081303]
+ [ 0.03511357]
+ [ 0.22648722]
+ [ 0.03998029]]
+Epoch 370: at batch 1: Training dataset Loss=0.134415, Batch Time=0.142
+Epoch 372: at batch 1: Training dataset Loss=0.131396, Batch Time=0.145
+Epoch 374: at batch 1: Training dataset Loss=0.136328, Batch Time=0.135
+Epoch 376: at batch 1: Training dataset Loss=0.145920, Batch Time=0.148
+Epoch 378: at batch 1: Training dataset Loss=0.130616, Batch Time=0.154
+		Epoch 378:  Time = 340.239, Avg epoch time=2.817, Current epoch Time=10.632
+
+Epoch 380: at batch 1: Training dataset Loss=0.134272, Batch Time=0.140
+Epoch 382: at batch 1: Training dataset Loss=0.133142, Batch Time=0.148
+Epoch 384: at batch 1: Training dataset Loss=0.120689, Batch Time=0.158
+Epoch 386: at batch 1: Training dataset Loss=0.145079, Batch Time=0.142
+Epoch 388: at batch 1: Training dataset Loss=0.142428, Batch Time=0.144
+		Epoch 388:  Time = 374.232, Avg epoch time=2.703, Current epoch Time=8.910
+
+Loss vector (slice for the first 20 images)
+[[ 0.29518986]
+ [-0.51682506]
+ [ 0.33      ]
+ [-0.28465555]
+ [ 0.20544147]
+ [-0.1851419 ]
+ [ 0.19273514]
+ [ 0.4       ]
+ [ 0.09254742]
+ [ 0.12810594]
+ [-0.38076065]
+ [ 0.16621691]
+ [ 0.30796689]
+ [ 0.05746371]
+ [ 0.08599371]
+ [ 0.4       ]
+ [ 0.20614338]
+ [ 0.16213739]
+ [ 0.20031118]
+ [ 0.01609582]]
+Epoch 390: at batch 1: Training dataset Loss=0.142031, Batch Time=0.134
+Epoch 392: at batch 1: Training dataset Loss=0.131878, Batch Time=0.135
+Epoch 394: at batch 1: Training dataset Loss=0.140163, Batch Time=0.129
+Epoch 396: at batch 1: Training dataset Loss=0.153922, Batch Time=0.135
+Epoch 398: at batch 1: Training dataset Loss=0.146906, Batch Time=0.138
+		Epoch 398:  Time = 408.306, Avg epoch time=2.774, Current epoch Time=7.852
+
+Epoch 400: at batch 1: Training dataset Loss=0.129607, Batch Time=0.150
+Epoch 402: at batch 1: Training dataset Loss=0.135231, Batch Time=0.136
+Epoch 404: at batch 1: Training dataset Loss=0.130429, Batch Time=0.145
+Epoch 406: at batch 1: Training dataset Loss=0.140671, Batch Time=0.146
+Epoch 408: at batch 1: Training dataset Loss=0.138816, Batch Time=0.142
+		Epoch 408:  Time = 441.981, Avg epoch time=2.713, Current epoch Time=7.129
+
+Loss vector (slice for the first 20 images)
+[[ 0.08361143]
+ [-0.50460759]
+ [ 0.33      ]
+ [-0.35596058]
+ [ 0.09336692]
+ [-0.41347221]
+ [ 0.07509643]
+ [ 0.4       ]
+ [ 0.09477288]
+ [ 0.18822068]
+ [-0.47121588]
+ [ 0.04424506]
+ [ 0.39661902]
+ [ 0.24501759]
+ [ 0.04948515]
+ [ 0.4       ]
+ [ 0.24274975]
+ [-0.03135908]
+ [ 0.1674695 ]
+ [ 0.13714808]]
+Epoch 410: at batch 1: Training dataset Loss=0.121803, Batch Time=0.134
+Epoch 412: at batch 1: Training dataset Loss=0.105908, Batch Time=0.142
+Epoch 414: at batch 1: Training dataset Loss=0.120865, Batch Time=0.137
+Epoch 416: at batch 1: Training dataset Loss=0.116196, Batch Time=0.147
+Epoch 418: at batch 1: Training dataset Loss=0.154094, Batch Time=0.142
+		Epoch 418:  Time = 475.765, Avg epoch time=2.879, Current epoch Time=6.608
+
+Epoch 420: at batch 1: Training dataset Loss=0.139336, Batch Time=0.147
+Epoch 422: at batch 1: Training dataset Loss=0.138009, Batch Time=0.139
+Epoch 424: at batch 1: Training dataset Loss=0.137938, Batch Time=0.133
+Epoch 426: at batch 1: Training dataset Loss=0.137053, Batch Time=0.148
+Epoch 428: at batch 1: Training dataset Loss=0.141015, Batch Time=0.147
+		Epoch 428:  Time = 509.561, Avg epoch time=2.834, Current epoch Time=6.214
+
+Loss vector (slice for the first 20 images)
+[[ 0.30058646]
+ [-0.42866812]
+ [ 0.33      ]
+ [-0.55949715]
+ [ 0.20527059]
+ [-0.48588989]
+ [ 0.33121866]
+ [ 0.4       ]
+ [ 0.10975456]
+ [ 0.05067796]
+ [-0.35837594]
+ [ 0.11669892]
+ [ 0.24587256]
+ [ 0.04376191]
+ [-0.0203234 ]
+ [ 0.4       ]
+ [ 0.20878339]
+ [ 0.23076266]
+ [ 0.08466971]
+ [ 0.23671746]]
+Epoch 430: at batch 1: Training dataset Loss=0.150814, Batch Time=0.144
+Epoch 432: at batch 1: Training dataset Loss=0.138252, Batch Time=0.146
+Epoch 434: at batch 1: Training dataset Loss=0.128149, Batch Time=0.142
+Epoch 436: at batch 1: Training dataset Loss=0.129972, Batch Time=0.158
+Epoch 438: at batch 1: Training dataset Loss=0.129874, Batch Time=0.158
+		Epoch 438:  Time = 543.298, Avg epoch time=2.833, Current epoch Time=5.905
+
+Epoch 440: at batch 1: Training dataset Loss=0.134137, Batch Time=0.132
+Epoch 442: at batch 1: Training dataset Loss=0.143317, Batch Time=0.143
+Epoch 444: at batch 1: Training dataset Loss=0.191619, Batch Time=0.148
+Epoch 446: at batch 1: Training dataset Loss=0.175970, Batch Time=0.148
+Epoch 448: at batch 1: Training dataset Loss=0.158762, Batch Time=0.131
+		Epoch 448:  Time = 577.503, Avg epoch time=2.789, Current epoch Time=5.662
+
+Loss vector (slice for the first 20 images)
+[[ 0.10556394]
+ [-0.45479432]
+ [ 0.33      ]
+ [-0.61816988]
+ [ 0.70132664]
+ [-0.64929948]
+ [ 0.02998948]
+ [ 0.03144764]
+ [ 0.21480691]
+ [ 0.44336534]
+ [-0.38646189]
+ [ 0.13124168]
+ [-0.23163843]
+ [ 0.08130103]
+ [ 0.13028139]
+ [ 0.4       ]
+ [ 0.46497965]
+ [ 0.33385766]
+ [ 0.30278766]
+ [ 0.11291897]]
+Epoch 450: at batch 1: Training dataset Loss=0.146238, Batch Time=0.136
+Epoch 452: at batch 1: Training dataset Loss=0.131937, Batch Time=0.151
+Epoch 454: at batch 1: Training dataset Loss=0.123409, Batch Time=0.142
+Epoch 456: at batch 1: Training dataset Loss=0.107428, Batch Time=0.129
+Epoch 458: at batch 1: Training dataset Loss=0.146192, Batch Time=0.130
+		Epoch 458:  Time = 611.522, Avg epoch time=2.743, Current epoch Time=5.460
+
+Epoch 460: at batch 1: Training dataset Loss=0.140751, Batch Time=0.143
+Epoch 462: at batch 1: Training dataset Loss=0.143510, Batch Time=0.150
+Epoch 464: at batch 1: Training dataset Loss=0.128292, Batch Time=0.127
+Epoch 466: at batch 1: Training dataset Loss=0.125765, Batch Time=0.127
+Epoch 468: at batch 1: Training dataset Loss=0.120983, Batch Time=0.158
+		Epoch 468:  Time = 645.198, Avg epoch time=2.912, Current epoch Time=5.289
+
+Loss vector (slice for the first 20 images)
+[[ 0.02687836]
+ [-0.3328943 ]
+ [ 0.33      ]
+ [-0.55923531]
+ [ 0.26802099]
+ [-0.47803054]
+ [ 0.04119074]
+ [ 0.4       ]
+ [ 0.20303166]
+ [ 0.13238662]
+ [-0.35334913]
+ [ 0.08617383]
+ [ 0.28494757]
+ [ 0.01213455]
+ [-0.00671816]
+ [ 0.4       ]
+ [ 0.11067694]
+ [ 0.13897312]
+ [ 0.05110019]
+ [ 0.11159211]]
+Epoch 470: at batch 1: Training dataset Loss=0.124762, Batch Time=0.151
+Epoch 472: at batch 1: Training dataset Loss=0.148449, Batch Time=0.143
+Epoch 474: at batch 1: Training dataset Loss=0.131793, Batch Time=0.146
+Epoch 476: at batch 1: Training dataset Loss=0.123818, Batch Time=0.137
+Epoch 478: at batch 1: Training dataset Loss=0.135928, Batch Time=0.142
+		Epoch 478:  Time = 679.155, Avg epoch time=2.881, Current epoch Time=5.145
+
+Epoch 480: at batch 1: Training dataset Loss=0.133539, Batch Time=0.147
+Epoch 482: at batch 1: Training dataset Loss=0.122150, Batch Time=0.128
+Epoch 484: at batch 1: Training dataset Loss=0.132377, Batch Time=0.142
+Epoch 486: at batch 1: Training dataset Loss=0.133209, Batch Time=0.142
+Epoch 488: at batch 1: Training dataset Loss=0.122219, Batch Time=0.152
+		Epoch 488:  Time = 712.722, Avg epoch time=2.808, Current epoch Time=5.019
+
+Loss vector (slice for the first 20 images)
+[[ 0.19375122]
+ [-0.4702603 ]
+ [ 0.33      ]
+ [-0.43841062]
+ [ 0.06319493]
+ [-0.47930745]
+ [ 0.10755235]
+ [ 0.4       ]
+ [ 0.11610979]
+ [ 0.08893627]
+ [-0.52449325]
+ [ 0.13946605]
+ [ 0.331092  ]
+ [ 0.08694553]
+ [-0.05894589]
+ [ 0.4       ]
+ [ 0.08020359]
+ [ 0.0903064 ]
+ [ 0.15443176]
+ [ 0.22798985]]
+Epoch 490: at batch 1: Training dataset Loss=0.130751, Batch Time=0.153
+Epoch 492: at batch 1: Training dataset Loss=0.118947, Batch Time=0.127
+Epoch 494: at batch 1: Training dataset Loss=0.136082, Batch Time=0.158
+Epoch 496: at batch 1: Training dataset Loss=0.131638, Batch Time=0.143
+Epoch 498: at batch 1: Training dataset Loss=0.129149, Batch Time=0.147
+		Epoch 498:  Time = 746.845, Avg epoch time=2.786, Current epoch Time=4.913
+
+Epoch 500: at batch 1: Training dataset Loss=0.133362, Batch Time=0.137
+Epoch 502: at batch 1: Training dataset Loss=0.137095, Batch Time=0.131
+Epoch 504: at batch 1: Training dataset Loss=0.134148, Batch Time=0.158
+Epoch 506: at batch 1: Training dataset Loss=0.114659, Batch Time=0.147
+Epoch 508: at batch 1: Training dataset Loss=0.120597, Batch Time=0.152
+		Epoch 508:  Time = 781.458, Avg epoch time=2.856, Current epoch Time=4.824
+
+Loss vector (slice for the first 20 images)
+[[ 0.12401038]
+ [-0.41800997]
+ [ 0.33      ]
+ [-0.39849982]
+ [ 0.17967302]
+ [-0.53725973]
+ [ 0.16908365]
+ [ 0.4       ]
+ [ 0.0182476 ]
+ [ 0.03628492]
+ [-0.2719653 ]
+ [ 0.15139896]
+ [ 0.08178157]
+ [-0.0052582 ]
+ [ 0.05002624]
+ [ 0.4       ]
+ [ 0.16803646]
+ [ 0.07889962]
+ [ 0.1754809 ]
+ [ 0.1478678 ]]
+Epoch 510: at batch 1: Training dataset Loss=0.134375, Batch Time=0.137
+Epoch 512: at batch 1: Training dataset Loss=0.138071, Batch Time=0.138
+Epoch 514: at batch 1: Training dataset Loss=0.125753, Batch Time=0.148
+Epoch 516: at batch 1: Training dataset Loss=0.132298, Batch Time=0.156
+Epoch 518: at batch 1: Training dataset Loss=0.117549, Batch Time=0.151
+		Epoch 518:  Time = 815.246, Avg epoch time=2.776, Current epoch Time=4.740
+
+Epoch 520: at batch 1: Training dataset Loss=0.104413, Batch Time=0.131
+Epoch 522: at batch 1: Training dataset Loss=0.124682, Batch Time=0.137
+Epoch 524: at batch 1: Training dataset Loss=0.141479, Batch Time=0.147
+Epoch 526: at batch 1: Training dataset Loss=0.131611, Batch Time=0.142
+Epoch 528: at batch 1: Training dataset Loss=0.127948, Batch Time=0.137
+		Epoch 528:  Time = 849.153, Avg epoch time=2.838, Current epoch Time=4.666
+
+Loss vector (slice for the first 20 images)
+[[ 0.34814429]
+ [-0.54163746]
+ [ 0.33      ]
+ [-0.38692281]
+ [ 0.15542454]
+ [-0.42091182]
+ [ 0.13011539]
+ [ 0.4       ]
+ [ 0.14571649]
+ [ 0.23125917]
+ [-0.3497642 ]
+ [ 0.093449  ]
+ [ 0.77988762]
+ [ 0.23372716]
+ [ 0.07435614]
+ [ 0.4       ]
+ [ 0.17082119]
+ [ 0.00259185]
+ [ 0.09710288]
+ [ 0.14392358]]
+Epoch 530: at batch 1: Training dataset Loss=0.122976, Batch Time=0.132
+Epoch 532: at batch 1: Training dataset Loss=0.111694, Batch Time=0.142
+Epoch 534: at batch 1: Training dataset Loss=0.106818, Batch Time=0.150
+Epoch 536: at batch 1: Training dataset Loss=0.120597, Batch Time=0.135
+Epoch 538: at batch 1: Training dataset Loss=0.121653, Batch Time=0.146
+		Epoch 538:  Time = 882.752, Avg epoch time=2.764, Current epoch Time=4.598
+
+Epoch 540: at batch 1: Training dataset Loss=0.141216, Batch Time=0.128
+Epoch 542: at batch 1: Training dataset Loss=0.138079, Batch Time=0.150
+Epoch 544: at batch 1: Training dataset Loss=0.184069, Batch Time=0.132
+Epoch 546: at batch 1: Training dataset Loss=0.188199, Batch Time=0.139
+Epoch 548: at batch 1: Training dataset Loss=0.200483, Batch Time=0.139
+		Epoch 548:  Time = 916.152, Avg epoch time=2.839, Current epoch Time=4.535
+
+Loss vector (slice for the first 20 images)
+[[ 0.12912804]
+ [-0.43287734]
+ [ 0.33      ]
+ [-0.4193891 ]
+ [ 0.22920203]
+ [-0.3988373 ]
+ [ 0.14595449]
+ [ 0.4       ]
+ [ 0.1998896 ]
+ [ 0.10614663]
+ [-0.40173784]
+ [ 0.07471073]
+ [ 0.20597434]
+ [ 0.17807883]
+ [ 0.08071768]
+ [ 0.4       ]
+ [ 0.10901427]
+ [ 0.14482266]
+ [ 0.16368145]
+ [ 0.0993709 ]]
+Epoch 550: at batch 1: Training dataset Loss=0.163578, Batch Time=0.143
+Epoch 552: at batch 1: Training dataset Loss=0.144297, Batch Time=0.134
+Epoch 554: at batch 1: Training dataset Loss=0.167197, Batch Time=0.138
+Epoch 556: at batch 1: Training dataset Loss=0.172282, Batch Time=0.135
+Epoch 558: at batch 1: Training dataset Loss=0.154401, Batch Time=0.120
+		Epoch 558:  Time = 949.652, Avg epoch time=2.753, Current epoch Time=4.479
+
+Epoch 560: at batch 1: Training dataset Loss=0.170067, Batch Time=0.153
+Epoch 562: at batch 1: Training dataset Loss=0.173396, Batch Time=0.138
+Epoch 564: at batch 1: Training dataset Loss=0.152016, Batch Time=0.161
+Epoch 566: at batch 1: Training dataset Loss=0.174038, Batch Time=0.147
+Epoch 568: at batch 1: Training dataset Loss=0.167939, Batch Time=0.138
+		Epoch 568:  Time = 983.065, Avg epoch time=2.717, Current epoch Time=4.428
+
+Loss vector (slice for the first 20 images)
+[[ 0.18426287]
+ [-0.55031679]
+ [ 0.33      ]
+ [-0.519626  ]
+ [ 0.06663722]
+ [-0.52717576]
+ [ 0.20504063]
+ [ 0.4       ]
+ [ 0.19365346]
+ [ 0.13106382]
+ [-0.46971146]
+ [ 0.17775589]
+ [ 0.16114801]
+ [ 0.09376734]
+ [ 0.15047938]
+ [ 0.4       ]
+ [ 0.18767905]
+ [ 1.        ]
+ [ 0.23092085]
+ [ 0.21054107]]
+Epoch 570: at batch 1: Training dataset Loss=0.164958, Batch Time=0.132
+Epoch 572: at batch 1: Training dataset Loss=0.161772, Batch Time=0.147
+Epoch 574: at batch 1: Training dataset Loss=0.149790, Batch Time=0.147
+Epoch 576: at batch 1: Training dataset Loss=0.150242, Batch Time=0.144
+Epoch 578: at batch 1: Training dataset Loss=0.149858, Batch Time=0.152
+		Epoch 578:  Time = 1016.568, Avg epoch time=2.763, Current epoch Time=4.382
+
+Epoch 580: at batch 1: Training dataset Loss=0.139641, Batch Time=0.151
+Epoch 582: at batch 1: Training dataset Loss=0.131915, Batch Time=0.142
+Epoch 584: at batch 1: Training dataset Loss=0.130408, Batch Time=0.128
+Epoch 586: at batch 1: Training dataset Loss=0.124025, Batch Time=0.151
+Epoch 588: at batch 1: Training dataset Loss=0.122043, Batch Time=0.124
+		Epoch 588:  Time = 1050.692, Avg epoch time=2.862, Current epoch Time=4.342
+
+Loss vector (slice for the first 20 images)
+[[-0.0035845 ]
+ [-0.50100217]
+ [ 0.33      ]
+ [-0.45933858]
+ [ 0.3405816 ]
+ [-0.51841483]
+ [ 0.18503523]
+ [ 0.35657314]
+ [ 0.19151306]
+ [ 0.06233072]
+ [-0.45649562]
+ [ 0.16411918]
+ [ 0.16522586]
+ [ 0.18954676]
+ [ 0.12349755]
+ [ 0.4       ]
+ [ 0.24088949]
+ [ 0.18620068]
+ [ 0.00900656]
+ [ 0.10794687]]
+Epoch 590: at batch 1: Training dataset Loss=0.139725, Batch Time=0.151
+Epoch 592: at batch 1: Training dataset Loss=0.130545, Batch Time=0.151
+Epoch 594: at batch 1: Training dataset Loss=0.127242, Batch Time=0.142
+Epoch 596: at batch 1: Training dataset Loss=0.123526, Batch Time=0.132
+Epoch 598: at batch 1: Training dataset Loss=0.125553, Batch Time=0.146
+		Epoch 598:  Time = 1084.419, Avg epoch time=2.795, Current epoch Time=4.303
+
+Epoch 600: at batch 1: Training dataset Loss=0.108367, Batch Time=0.132
+Epoch 602: at batch 1: Training dataset Loss=0.119713, Batch Time=0.147
+Epoch 604: at batch 1: Training dataset Loss=0.122672, Batch Time=0.124
+Epoch 606: at batch 1: Training dataset Loss=0.124137, Batch Time=0.128
+Epoch 608: at batch 1: Training dataset Loss=0.113669, Batch Time=0.151
+		Epoch 608:  Time = 1118.432, Avg epoch time=2.882, Current epoch Time=4.269
+
+Loss vector (slice for the first 20 images)
+[[ 0.09945583]
+ [-0.51332477]
+ [ 0.33      ]
+ [-0.46785418]
+ [ 0.12335384]
+ [-0.5201048 ]
+ [ 0.19239765]
+ [ 0.4       ]
+ [ 0.23421508]
+ [ 0.14548177]
+ [-0.52212182]
+ [ 0.13833368]
+ [ 1.        ]
+ [ 0.17699075]
+ [ 0.07621235]
+ [ 0.06088802]
+ [ 0.15070063]
+ [ 0.09069407]
+ [ 0.09246713]
+ [ 0.09556657]]
+Epoch 610: at batch 1: Training dataset Loss=0.126302, Batch Time=0.131
+Epoch 612: at batch 1: Training dataset Loss=0.133991, Batch Time=0.152
+Epoch 614: at batch 1: Training dataset Loss=0.127641, Batch Time=0.132
+Epoch 616: at batch 1: Training dataset Loss=0.122680, Batch Time=0.148
+Epoch 618: at batch 1: Training dataset Loss=0.125236, Batch Time=0.136
+		Epoch 618:  Time = 1152.080, Avg epoch time=2.841, Current epoch Time=4.236
+
+Epoch 620: at batch 1: Training dataset Loss=0.140595, Batch Time=0.119
+Epoch 622: at batch 1: Training dataset Loss=0.119048, Batch Time=0.133
+Epoch 624: at batch 1: Training dataset Loss=0.155646, Batch Time=0.128
+Epoch 626: at batch 1: Training dataset Loss=0.124722, Batch Time=0.141
+Epoch 628: at batch 1: Training dataset Loss=0.153772, Batch Time=0.151
+		Epoch 628:  Time = 1185.530, Avg epoch time=2.842, Current epoch Time=4.204
+
+Loss vector (slice for the first 20 images)
+[[ 0.1811012 ]
+ [-0.35763929]
+ [ 0.33      ]
+ [-0.44516126]
+ [ 0.10951275]
+ [-0.41112689]
+ [ 0.12347674]
+ [ 0.4       ]
+ [ 0.23143733]
+ [ 0.03993607]
+ [-0.40397284]
+ [ 0.19932568]
+ [ 0.6554274 ]
+ [ 0.10348272]
+ [ 0.16649485]
+ [ 0.4       ]
+ [ 0.07931167]
+ [ 0.13553709]
+ [ 0.24386525]
+ [ 0.22774941]]
+Epoch 630: at batch 1: Training dataset Loss=0.149378, Batch Time=0.128
+Epoch 632: at batch 1: Training dataset Loss=0.135236, Batch Time=0.137
+Epoch 634: at batch 1: Training dataset Loss=0.134174, Batch Time=0.152
+Epoch 636: at batch 1: Training dataset Loss=0.146077, Batch Time=0.153
+Epoch 638: at batch 1: Training dataset Loss=0.169107, Batch Time=0.133
+		Epoch 638:  Time = 1218.841, Avg epoch time=2.762, Current epoch Time=4.174
+
+Epoch 640: at batch 1: Training dataset Loss=0.148169, Batch Time=0.133
+Epoch 642: at batch 1: Training dataset Loss=0.142471, Batch Time=0.148
+Epoch 644: at batch 1: Training dataset Loss=0.145575, Batch Time=0.133
+Epoch 646: at batch 1: Training dataset Loss=0.136541, Batch Time=0.138
+Epoch 648: at batch 1: Training dataset Loss=0.136224, Batch Time=0.144
+		Epoch 648:  Time = 1252.054, Avg epoch time=2.828, Current epoch Time=4.146
+
+Loss vector (slice for the first 20 images)
+[[ 0.21777922]
+ [-0.47966204]
+ [ 0.33      ]
+ [-0.58025858]
+ [ 0.10491383]
+ [-0.50887243]
+ [ 0.16689658]
+ [ 0.4       ]
+ [ 0.05446017]
+ [ 0.14249557]
+ [-0.54705874]
+ [ 0.12152481]
+ [ 0.03436708]
+ [ 0.08420914]
+ [ 0.08257502]
+ [ 0.4       ]
+ [ 0.14457941]
+ [ 0.06208605]
+ [ 0.1193499 ]
+ [ 0.00186181]]
+Epoch 650: at batch 1: Training dataset Loss=0.130476, Batch Time=0.137
+Epoch 652: at batch 1: Training dataset Loss=0.131848, Batch Time=0.143
+Epoch 654: at batch 1: Training dataset Loss=0.131065, Batch Time=0.133
+Epoch 656: at batch 1: Training dataset Loss=0.130500, Batch Time=0.127
+Epoch 658: at batch 1: Training dataset Loss=0.135390, Batch Time=0.142
+		Epoch 658:  Time = 1285.555, Avg epoch time=2.695, Current epoch Time=4.120
+
+Epoch 660: at batch 1: Training dataset Loss=0.134480, Batch Time=0.128
+Epoch 662: at batch 1: Training dataset Loss=0.140811, Batch Time=0.135
+Epoch 664: at batch 1: Training dataset Loss=0.128510, Batch Time=0.124
+Epoch 666: at batch 1: Training dataset Loss=0.145106, Batch Time=0.130
+Epoch 668: at batch 1: Training dataset Loss=0.152565, Batch Time=0.123
+		Epoch 668:  Time = 1318.928, Avg epoch time=2.623, Current epoch Time=4.096
+
+Loss vector (slice for the first 20 images)
+[[ 0.09556597]
+ [-0.37810639]
+ [ 0.30544367]
+ [-0.30389384]
+ [ 0.12817138]
+ [-0.54591433]
+ [ 0.06893998]
+ [ 0.4       ]
+ [-0.02762997]
+ [ 0.07449037]
+ [-0.42703114]
+ [ 0.2118935 ]
+ [ 0.04333931]
+ [ 0.17773265]
+ [ 0.04857159]
+ [ 0.4       ]
+ [ 0.07810181]
+ [ 0.03511047]
+ [ 0.18701541]
+ [ 0.09226799]]
+Epoch 670: at batch 1: Training dataset Loss=0.140575, Batch Time=0.136
+Epoch 672: at batch 1: Training dataset Loss=0.139290, Batch Time=0.135
+Epoch 674: at batch 1: Training dataset Loss=0.145635, Batch Time=0.128
+Epoch 676: at batch 1: Training dataset Loss=0.140176, Batch Time=0.139
+Epoch 678: at batch 1: Training dataset Loss=0.162330, Batch Time=0.138
+		Epoch 678:  Time = 1352.877, Avg epoch time=2.762, Current epoch Time=4.075
+
+Epoch 680: at batch 1: Training dataset Loss=0.170397, Batch Time=0.149
+Epoch 682: at batch 1: Training dataset Loss=0.180201, Batch Time=0.148
+Epoch 684: at batch 1: Training dataset Loss=0.143013, Batch Time=0.132
+Epoch 686: at batch 1: Training dataset Loss=0.155870, Batch Time=0.137
+Epoch 688: at batch 1: Training dataset Loss=0.138081, Batch Time=0.141
+		Epoch 688:  Time = 1386.424, Avg epoch time=2.858, Current epoch Time=4.054
+
+Loss vector (slice for the first 20 images)
+[[ 0.01341164]
+ [-0.41710124]
+ [ 0.33      ]
+ [-0.51937542]
+ [ 0.03988069]
+ [-0.33222733]
+ [ 0.09177858]
+ [ 0.4       ]
+ [ 0.38441944]
+ [ 0.05049235]
+ [-0.43927345]
+ [ 0.03288203]
+ [ 0.73715362]
+ [ 0.00238645]
+ [ 0.24490082]
+ [ 0.4       ]
+ [ 0.12727737]
+ [ 0.09746349]
+ [ 0.23608351]
+ [ 0.07666892]]
+Epoch 690: at batch 1: Training dataset Loss=0.113393, Batch Time=0.127
+Epoch 692: at batch 1: Training dataset Loss=0.124532, Batch Time=0.133
+Epoch 694: at batch 1: Training dataset Loss=0.136464, Batch Time=0.131
+Epoch 696: at batch 1: Training dataset Loss=0.145427, Batch Time=0.138
+Epoch 698: at batch 1: Training dataset Loss=0.128934, Batch Time=0.136
+		Epoch 698:  Time = 1419.817, Avg epoch time=2.842, Current epoch Time=4.034
+
+Epoch 700: at batch 1: Training dataset Loss=0.124613, Batch Time=0.125
+Epoch 702: at batch 1: Training dataset Loss=0.121720, Batch Time=0.143
+Epoch 704: at batch 1: Training dataset Loss=0.125045, Batch Time=0.127
+Epoch 706: at batch 1: Training dataset Loss=0.152456, Batch Time=0.160
+Epoch 708: at batch 1: Training dataset Loss=0.147447, Batch Time=0.150
+		Epoch 708:  Time = 1453.425, Avg epoch time=2.799, Current epoch Time=4.015
+
+Loss vector (slice for the first 20 images)
+[[ 0.12272465]
+ [-0.47838793]
+ [ 0.33      ]
+ [-0.51222852]
+ [-0.11735845]
+ [-0.38859365]
+ [-0.00983894]
+ [ 0.4       ]
+ [ 0.17536151]
+ [ 0.36127645]
+ [-0.7350522 ]
+ [ 0.08692169]
+ [ 0.1368807 ]
+ [ 0.21720117]
+ [-0.00440025]
+ [ 0.4       ]
+ [ 0.0810104 ]
+ [ 0.14186764]
+ [ 0.03209788]
+ [ 0.27998626]]
+Epoch 710: at batch 1: Training dataset Loss=0.120763, Batch Time=0.138
+Epoch 712: at batch 1: Training dataset Loss=0.130883, Batch Time=0.156
+Epoch 714: at batch 1: Training dataset Loss=0.135644, Batch Time=0.142
+Epoch 716: at batch 1: Training dataset Loss=0.138548, Batch Time=0.133
+Epoch 718: at batch 1: Training dataset Loss=0.140296, Batch Time=0.149
+		Epoch 718:  Time = 1487.034, Avg epoch time=2.750, Current epoch Time=3.997
+
+Epoch 720: at batch 1: Training dataset Loss=0.141265, Batch Time=0.156
+Epoch 722: at batch 1: Training dataset Loss=0.136973, Batch Time=0.146
+Epoch 724: at batch 1: Training dataset Loss=0.149807, Batch Time=0.149
+Epoch 726: at batch 1: Training dataset Loss=0.153206, Batch Time=0.122
+Epoch 728: at batch 1: Training dataset Loss=0.138427, Batch Time=0.146
+		Epoch 728:  Time = 1520.184, Avg epoch time=2.776, Current epoch Time=3.980
+
+Loss vector (slice for the first 20 images)
+[[-0.08873212]
+ [-0.62219057]
+ [ 0.33      ]
+ [-0.35348455]
+ [ 0.26049507]
+ [-0.56900618]
+ [ 0.08537024]
+ [ 0.4       ]
+ [ 0.22658527]
+ [ 0.04039603]
+ [-0.50157491]
+ [ 0.25121439]
+ [ 0.58209309]
+ [ 0.20564449]
+ [-0.02511227]
+ [ 0.4       ]
+ [ 0.08809745]
+ [ 0.02090758]
+ [ 0.38997602]
+ [ 0.0654915 ]]
+Epoch 730: at batch 1: Training dataset Loss=0.150029, Batch Time=0.137
+Epoch 732: at batch 1: Training dataset Loss=0.139052, Batch Time=0.147
+Epoch 734: at batch 1: Training dataset Loss=0.131545, Batch Time=0.151
+Epoch 736: at batch 1: Training dataset Loss=0.135541, Batch Time=0.136
+Epoch 738: at batch 1: Training dataset Loss=0.149627, Batch Time=0.144
+		Epoch 738:  Time = 1553.812, Avg epoch time=2.828, Current epoch Time=3.964
+
+Epoch 740: at batch 1: Training dataset Loss=0.124196, Batch Time=0.128
+Epoch 742: at batch 1: Training dataset Loss=0.151327, Batch Time=0.152
+Epoch 744: at batch 1: Training dataset Loss=0.140198, Batch Time=0.134
+Epoch 746: at batch 1: Training dataset Loss=0.120968, Batch Time=0.144
+Epoch 748: at batch 1: Training dataset Loss=0.135209, Batch Time=0.142
+		Epoch 748:  Time = 1587.282, Avg epoch time=2.773, Current epoch Time=3.948
+
+Loss vector (slice for the first 20 images)
+[[ 0.09336472]
+ [-0.54652164]
+ [ 0.10344202]
+ [-0.423277  ]
+ [-0.01156449]
+ [-0.34934089]
+ [ 0.10796875]
+ [ 0.4       ]
+ [ 0.1078676 ]
+ [ 0.18165505]
+ [-0.60335109]
+ [ 0.2054379 ]
+ [ 0.33815598]
+ [ 0.17453223]
+ [ 0.13422018]
+ [ 0.4       ]
+ [ 0.2887758 ]
+ [ 0.15211415]
+ [ 0.1402896 ]
+ [ 0.29698455]]
+Epoch 750: at batch 1: Training dataset Loss=0.126567, Batch Time=0.160
+Epoch 752: at batch 1: Training dataset Loss=0.118987, Batch Time=0.143
+Epoch 754: at batch 1: Training dataset Loss=0.129355, Batch Time=0.147
+Epoch 756: at batch 1: Training dataset Loss=0.151795, Batch Time=0.151
+Epoch 758: at batch 1: Training dataset Loss=0.147205, Batch Time=0.127
+		Epoch 758:  Time = 1621.122, Avg epoch time=2.785, Current epoch Time=3.935
+
+Epoch 760: at batch 1: Training dataset Loss=0.122228, Batch Time=0.144
+Epoch 762: at batch 1: Training dataset Loss=0.125715, Batch Time=0.138
+Epoch 764: at batch 1: Training dataset Loss=0.139257, Batch Time=0.127
+Epoch 766: at batch 1: Training dataset Loss=0.136480, Batch Time=0.137
+Epoch 768: at batch 1: Training dataset Loss=0.144035, Batch Time=0.131
+		Epoch 768:  Time = 1654.478, Avg epoch time=2.778, Current epoch Time=3.921
+
+Loss vector (slice for the first 20 images)
+[[ 0.20869178]
+ [-0.58443896]
+ [ 0.33      ]
+ [-0.52812359]
+ [ 0.159702  ]
+ [-0.57238266]
+ [ 0.05562949]
+ [ 0.4       ]
+ [ 0.2064954 ]
+ [-0.01133418]
+ [-0.48128644]
+ [ 0.1580044 ]
+ [ 0.3790549 ]
+ [-0.10780489]
+ [ 0.04828376]
+ [ 0.4       ]
+ [ 0.3067522 ]
+ [ 0.2642206 ]
+ [ 0.25983316]
+ [ 0.32227904]]
+Epoch 770: at batch 1: Training dataset Loss=0.122988, Batch Time=0.141
+Epoch 772: at batch 1: Training dataset Loss=0.114162, Batch Time=0.163
+Epoch 774: at batch 1: Training dataset Loss=0.123401, Batch Time=0.123
+Epoch 776: at batch 1: Training dataset Loss=0.134859, Batch Time=0.123
+Epoch 778: at batch 1: Training dataset Loss=0.131358, Batch Time=0.138
+		Epoch 778:  Time = 1688.014, Avg epoch time=2.743, Current epoch Time=3.907
+
+Epoch 780: at batch 1: Training dataset Loss=0.147223, Batch Time=0.120
+Epoch 782: at batch 1: Training dataset Loss=0.148340, Batch Time=0.146
+Epoch 784: at batch 1: Training dataset Loss=0.127680, Batch Time=0.127
+Epoch 786: at batch 1: Training dataset Loss=0.134002, Batch Time=0.142
+Epoch 788: at batch 1: Training dataset Loss=0.134979, Batch Time=0.156
+		Epoch 788:  Time = 1721.538, Avg epoch time=2.900, Current epoch Time=3.895
+
+Loss vector (slice for the first 20 images)
+[[ 0.20067656]
+ [-0.52055917]
+ [ 0.33      ]
+ [-0.34241227]
+ [ 0.12120479]
+ [-0.21500412]
+ [ 0.24759042]
+ [ 0.4       ]
+ [ 0.03296173]
+ [ 0.18836999]
+ [-0.41387389]
+ [ 0.13955092]
+ [ 0.19320434]
+ [ 0.30439657]
+ [-0.04102659]
+ [ 0.4       ]
+ [ 0.3112762 ]
+ [ 0.0206964 ]
+ [ 0.16879588]
+ [ 0.11544752]]
+Epoch 790: at batch 1: Training dataset Loss=0.126084, Batch Time=0.150
+Epoch 792: at batch 1: Training dataset Loss=0.126206, Batch Time=0.133
+^CTraceback (most recent call last):
+  File "VGG19like_16Conv_huber_exposure_101GB.py", line 313, in <module>
+    feed_dict={in_image: input_patch, gt_exposure: exposures_feed, lr: learning_rate})
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 887, in run
+    run_metadata_ptr)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1110, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1286, in _do_run
+    run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1292, in _do_call
+    return fn(*args)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1277, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1367, in _call_tf_sessionrun
+    run_metadata)
+KeyboardInterrupt
+(sid2) [ir967@gr010 Learning-to-See-in-the-Dark]$ 
