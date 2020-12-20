@@ -198,7 +198,7 @@ def resnet(input_tensor_batch, n, reuse):
         global_pool = tf.reduce_mean(relu_layer, [1, 2])
 
         #assert global_pool.get_shape().as_list()[-1:] == [64]
-        output = output_layer(global_pool, 1)
+        output = output_layer(global_pool, 2)
         layers.append(output)
 
     return layers[-1]

@@ -1,0 +1,1307 @@
+Last login: Thu Dec 17 12:56:09 on ttys004
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+(base) Ilyeechs-MacBook-Pro:SID-gamma ilyeech$ ssh -Y greene
+ _   ___   ___   _   _   _ ____   ____ 
+| \ | \ \ / / | | | | | | |  _ \ / ___|
+|  \| |\ V /| | | | | |_| | |_) | |    
+| |\  | | | | |_| | |  _  |  __/| |___ 
+|_| \_| |_|  \___/  |_| |_|_|    \____|
+ 
+
+  ____                          
+ / ___|_ __ ___  ___ _ __   ___ 
+| |  _| '__/ _ \/ _ \ '_ \ / _ \
+| |_| | | |  __/  __/ | | |  __/
+ \____|_|  \___|\___|_| |_|\___|
+
+ir967@localhost's password: 
+
+Last login: Wed Dec 16 22:41:25 2020 from 216.165.66.210
+(base) [ir967@log-1 ~]$ cd $SCRATCH/SID/
+(base) [ir967@log-1 SID]$ cd Learning-to-See-in-the-Dark/
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ srun -t3:00:00 --mem=50000MB --gres=gpu:1 --pty /bin/bash
+(base) [ir967@gr015 Learning-to-See-in-the-Dark]$ conda activate sid2
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ vi train_heteroscedastic_sigma_map_g_loss_full_res_BS1.py
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ python train_heteroscedastic_sigma_map_g_loss_full_res_BS1.py 
+^CTraceback (most recent call last):
+  File "train_heteroscedastic_sigma_map_g_loss_full_res_BS1.py", line 6, in <module>
+    import os, time, scipy.io
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/io/__init__.py", line 97, in <module>
+    from .matlab import loadmat, savemat, whosmat, byteordercodes
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/io/matlab/__init__.py", line 13, in <module>
+    from .mio import loadmat, savemat, whosmat
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/io/matlab/mio.py", line 10, in <module>
+    from .miobase import get_matfile_version, docfiller
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/io/matlab/miobase.py", line 22, in <module>
+    from scipy.misc import doccer
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/misc/__init__.py", line 68, in <module>
+    from scipy.interpolate._pade import pade as _pade
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/interpolate/__init__.py", line 175, in <module>
+    from .interpolate import *
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/interpolate/interpolate.py", line 32, in <module>
+    from .interpnd import _ndim_coords_from_arrays
+  File "interpnd.pyx", line 1, in init scipy.interpolate.interpnd
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/spatial/__init__.py", line 98, in <module>
+    from .kdtree import *
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/spatial/kdtree.py", line 8, in <module>
+    import scipy.sparse
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/sparse/__init__.py", line 243, in <module>
+    from . import csgraph
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/sparse/csgraph/__init__.py", line 182, in <module>
+    from ._shortest_path import shortest_path, floyd_warshall, dijkstra,\
+  File "_shortest_path.pyx", line 20, in init scipy.sparse.csgraph._shortest_path
+  File "/scratch/ir967/install/miniconda3/envs/sid2/lib/python2.7/site-packages/scipy/sparse/csgraph/_validation.py", line 5, in <module>
+    from ._tools import csgraph_to_dense, csgraph_from_dense,\
+KeyboardInterrupt
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ vi train_heteroscedastic_sigma_map_g_loss_full_res_BS1.py
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ python train_heteroscedastic_sigma_map_g_loss_full_res_BS1.py 
+
+
+
+
+Current date and time : 
+2020-12-17 13:23:54
+./dataset/Sony/long/00018_00_10s.ARW 18
+./dataset/Sony/long/00148_00_30s.ARW 148
+./dataset/Sony/long/00029_00_10s.ARW 29
+./dataset/Sony/long/00132_00_30s.ARW 132
+./dataset/Sony/long/00073_00_30s.ARW 73
+./dataset/Sony/long/00033_00_10s.ARW 33
+./dataset/Sony/long/00118_00_30s.ARW 118
+Found 161 images to train with
+
+Training on files with indices: 0 to 161
+Training on 161 images only
+
+2020-12-17 13:23:54.754131: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-17 13:23:54.892264: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:06:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-17 13:23:54.892298: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-17 13:23:58.313206: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-17 13:23:58.313246: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-17 13:23:58.313252: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-17 13:23:58.313411: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:06:00.0, compute capability: 7.5)
+No checkpoint found at ./heteroscedastic_sigma_map_g_loss_full_res_BS1checkpoint/. Hence, will create the folder.
+(161, 1424, 2128, 2)
+
+last epoch of previous run: 0
+
+
+BATCH_SIZE= 1 ,final_epoch= 4001 ,no_of_batches= 161 ,ps 128 ,len(train_fns)= 161 ,
+result_dir= ./heteroscedastic_sigma_map_g_loss_full_res_BS1checkpoint/
+
+Cleared all images in memory.
+
+Starting Training on index [77]
+dataset index: ['./dataset/Sony/long/00194_00_10s.ARW']
+
+
+(mean,stddev), image[0], hetero noise[0], const noise[0], image[0]
+0.1138835909702891 0.05260921504806972
+[[0.17491022 0.17894273]
+ [0.18095899 0.17869069]]
+heteroschedastic_sigma_s [0.10554469]
+sigma_c 0.0358061533334
+[[-0.01582861  0.00051908]
+ [-0.0056711  -0.00673293]]
+[[ 0.06246086 -0.03523965]
+ [-0.00898226  0.02188869]] 
+
+Epoch 0: at batch 1: Training dataset Loss=0.999968, Batch Time=37.145
+Epoch 0: at batch 1: Training dataset Loss=0.999968, Batch Time=71.977; Early rounds
+Epoch 0: at batch 2: Training dataset Loss=0.999935, Batch Time=34.780; Early rounds
+Epoch 0: at batch 3: Training dataset Loss=0.999902, Batch Time=34.812; Early rounds
+loading ./dataset/Sony/long/00018_00_10s.ARW; images_in_memory= 3
+Epoch 0: at batch 4: Training dataset Loss=0.999870, Batch Time=34.896; Early rounds
+Epoch 0: at batch 5: Training dataset Loss=0.999838, Batch Time=34.929; Early rounds
+Epoch 0: at batch 6: Training dataset Loss=0.999806, Batch Time=34.817; Early rounds
+Epoch 0: at batch 7: Training dataset Loss=0.999773, Batch Time=34.849; Early rounds
+loading ./dataset/Sony/long/00039_00_10s.ARW; images_in_memory= 7
+^CTraceback (most recent call last):
+  File "train_heteroscedastic_sigma_map_g_loss_full_res_BS1.py", line 325, in <module>
+    training_dataset_loss = np.mean(g_loss[np.where(g_loss)])
+KeyboardInterrupt
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ python train_heteroscedastic_sigma_map_g_loss_full_res_BS161.py 
+python: can't open file 'train_heteroscedastic_sigma_map_g_loss_full_res_BS161.py': [Errno 2] No such file or directory
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ vi train_heteroscedastic_sigma_map_g_loss_full_res_BS161.py
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ python train_heteroscedastic_sigma_map_g_loss_full_res_BS161.py 
+
+
+
+
+Current date and time : 
+2020-12-17 13:30:05
+./dataset/Sony/long/00018_00_10s.ARW 18
+./dataset/Sony/long/00148_00_30s.ARW 148
+./dataset/Sony/long/00029_00_10s.ARW 29
+./dataset/Sony/long/00132_00_30s.ARW 132
+./dataset/Sony/long/00073_00_30s.ARW 73
+./dataset/Sony/long/00033_00_10s.ARW 33
+./dataset/Sony/long/00118_00_30s.ARW 118
+Found 161 images to train with
+
+Training on files with indices: 0 to 161
+Training on 161 images only
+
+2020-12-17 13:30:05.275137: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-17 13:30:05.449714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Quadro RTX 8000 major: 7 minor: 5 memoryClockRate(GHz): 1.62
+pciBusID: 0000:06:00.0
+totalMemory: 44.49GiB freeMemory: 44.33GiB
+2020-12-17 13:30:05.449747: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-17 13:30:05.737632: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-17 13:30:05.737665: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-17 13:30:05.737670: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-17 13:30:05.737766: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 43038 MB memory) -> physical GPU (device: 0, name: Quadro RTX 8000, pci bus id: 0000:06:00.0, compute capability: 7.5)
+No checkpoint found at ./heteroscedastic_sigma_map_g_loss_full_res_BS161checkpoint/. Hence, will create the folder.
+(161, 1424, 2128, 2)
+
+last epoch of previous run: 0
+
+
+BATCH_SIZE= 161 ,final_epoch= 4001 ,no_of_batches= 1 ,ps 128 ,len(train_fns)= 161 ,
+result_dir= ./heteroscedastic_sigma_map_g_loss_full_res_BS161checkpoint/
+
+Cleared all images in memory.
+
+Starting Training on index [ 91 108  72 149 101  58  44  61  91  55  37  91 118 150 124  99   8 147
+  63  24  59  40  10   0  29 104 108 114 120 128 147  25  60  36 147 125
+ 124  73  78  62   1  55 110  20 107 144  73 116  56  56 104 145 157  21
+ 113  40 145 158 147  15 136  91  45  21 137 113 100 159  12  28 136 121
+  72  93  94  66  89  87  85  57  44  49 145  25  52 124 153 146 141   4
+ 104  83 148  44  97  82  34  58  69 108 105 102  90 157 105 114  32 147
+ 158 100  34 118  34 114 118  87  50 133 133 135   7  41  74  83  60 118
+  80  68  67  58  85 134  56  69  20 149 147  10  61  49  17  64 151 119
+   4  41 100  26 112  19  48  34   3 142  67  98  59   8  72 106 146]
+dataset index: ['./dataset/Sony/long/00206_00_10s.ARW'
+ './dataset/Sony/long/00076_00_30s.ARW'
+ './dataset/Sony/long/00197_00_10s.ARW'
+ './dataset/Sony/long/00220_00_10s.ARW'
+ './dataset/Sony/long/00021_00_10s.ARW'
+ './dataset/Sony/long/00056_00_10s.ARW'
+ './dataset/Sony/long/00095_00_30s.ARW'
+ './dataset/Sony/long/00169_00_30s.ARW'
+ './dataset/Sony/long/00206_00_10s.ARW'
+ './dataset/Sony/long/00023_00_10s.ARW'
+ './dataset/Sony/long/00133_00_30s.ARW'
+ './dataset/Sony/long/00206_00_10s.ARW'
+ './dataset/Sony/long/00165_00_30s.ARW'
+ './dataset/Sony/long/00156_00_30s.ARW'
+ './dataset/Sony/long/00010_00_10s.ARW'
+ './dataset/Sony/long/00028_00_10s.ARW'
+ './dataset/Sony/long/00081_00_30s.ARW'
+ './dataset/Sony/long/00015_00_10s.ARW'
+ './dataset/Sony/long/00127_00_30s.ARW'
+ './dataset/Sony/long/00031_00_10s.ARW'
+ './dataset/Sony/long/00037_00_10s.ARW'
+ './dataset/Sony/long/00200_00_10s.ARW'
+ './dataset/Sony/long/00038_00_10s.ARW'
+ './dataset/Sony/long/00018_00_10s.ARW'
+ './dataset/Sony/long/00231_00_10s.ARW'
+ './dataset/Sony/long/00145_00_30s.ARW'
+ './dataset/Sony/long/00076_00_30s.ARW'
+ './dataset/Sony/long/00171_00_30s.ARW'
+ './dataset/Sony/long/00012_00_10s.ARW'
+ './dataset/Sony/long/00071_00_10s.ARW'
+ './dataset/Sony/long/00015_00_10s.ARW'
+ './dataset/Sony/long/00174_00_30s.ARW'
+ './dataset/Sony/long/00084_00_30s.ARW'
+ './dataset/Sony/long/00014_00_10s.ARW'
+ './dataset/Sony/long/00015_00_10s.ARW'
+ './dataset/Sony/long/00209_00_10s.ARW'
+ './dataset/Sony/long/00010_00_10s.ARW'
+ './dataset/Sony/long/00137_00_30s.ARW'
+ './dataset/Sony/long/00108_00_30s.ARW'
+ './dataset/Sony/long/00004_00_10s.ARW'
+ './dataset/Sony/long/00148_00_30s.ARW'
+ './dataset/Sony/long/00023_00_10s.ARW'
+ './dataset/Sony/long/00026_00_10s.ARW'
+ './dataset/Sony/long/00072_00_30s.ARW'
+ './dataset/Sony/long/00122_00_30s.ARW'
+ './dataset/Sony/long/00058_00_10s.ARW'
+ './dataset/Sony/long/00137_00_30s.ARW'
+ './dataset/Sony/long/00149_00_30s.ARW'
+ './dataset/Sony/long/00183_00_10s.ARW'
+ './dataset/Sony/long/00183_00_10s.ARW'
+ './dataset/Sony/long/00145_00_30s.ARW'
+ './dataset/Sony/long/00218_00_10s.ARW'
+ './dataset/Sony/long/00048_00_10s.ARW'
+ './dataset/Sony/long/00143_00_30s.ARW'
+ './dataset/Sony/long/00130_00_30s.ARW'
+ './dataset/Sony/long/00200_00_10s.ARW'
+ './dataset/Sony/long/00218_00_10s.ARW'
+ './dataset/Sony/long/00047_00_10s.ARW'
+ './dataset/Sony/long/00015_00_10s.ARW'
+ './dataset/Sony/long/00044_00_10s.ARW'
+ './dataset/Sony/long/00216_00_10s.ARW'
+ './dataset/Sony/long/00206_00_10s.ARW'
+ './dataset/Sony/long/00092_00_30s.ARW'
+ './dataset/Sony/long/00143_00_30s.ARW'
+ './dataset/Sony/long/00002_00_10s.ARW'
+ './dataset/Sony/long/00130_00_30s.ARW'
+ './dataset/Sony/long/00059_00_10s.ARW'
+ './dataset/Sony/long/00215_00_10s.ARW'
+ './dataset/Sony/long/00046_00_10s.ARW'
+ './dataset/Sony/long/00049_00_10s.ARW'
+ './dataset/Sony/long/00216_00_10s.ARW'
+ './dataset/Sony/long/00088_00_30s.ARW'
+ './dataset/Sony/long/00197_00_10s.ARW'
+ './dataset/Sony/long/00050_00_10s.ARW'
+ './dataset/Sony/long/00182_00_10s.ARW'
+ './dataset/Sony/long/00142_00_30s.ARW'
+ './dataset/Sony/long/00083_00_30s.ARW'
+ './dataset/Sony/long/00102_00_30s.ARW'
+ './dataset/Sony/long/00154_00_30s.ARW'
+ './dataset/Sony/long/00184_00_10s.ARW'
+ './dataset/Sony/long/00095_00_30s.ARW'
+ './dataset/Sony/long/00065_00_10s.ARW'
+ './dataset/Sony/long/00218_00_10s.ARW'
+ './dataset/Sony/long/00174_00_30s.ARW'
+ './dataset/Sony/long/00053_00_10s.ARW'
+ './dataset/Sony/long/00010_00_10s.ARW'
+ './dataset/Sony/long/00158_00_30s.ARW'
+ './dataset/Sony/long/00043_00_10s.ARW'
+ './dataset/Sony/long/00179_00_10s.ARW'
+ './dataset/Sony/long/00073_00_30s.ARW'
+ './dataset/Sony/long/00145_00_30s.ARW'
+ './dataset/Sony/long/00195_00_10s.ARW'
+ './dataset/Sony/long/00001_00_10s.ARW'
+ './dataset/Sony/long/00095_00_30s.ARW'
+ './dataset/Sony/long/00135_00_30s.ARW'
+ './dataset/Sony/long/00175_00_30s.ARW'
+ './dataset/Sony/long/00190_00_10s.ARW'
+ './dataset/Sony/long/00056_00_10s.ARW'
+ './dataset/Sony/long/00019_00_10s.ARW'
+ './dataset/Sony/long/00076_00_30s.ARW'
+ './dataset/Sony/long/00189_00_10s.ARW'
+ './dataset/Sony/long/00151_00_30s.ARW'
+ './dataset/Sony/long/00057_00_10s.ARW'
+ './dataset/Sony/long/00048_00_10s.ARW'
+ './dataset/Sony/long/00189_00_10s.ARW'
+ './dataset/Sony/long/00171_00_30s.ARW'
+ './dataset/Sony/long/00212_00_10s.ARW'
+ './dataset/Sony/long/00015_00_10s.ARW'
+ './dataset/Sony/long/00047_00_10s.ARW'
+ './dataset/Sony/long/00059_00_10s.ARW'
+ './dataset/Sony/long/00190_00_10s.ARW'
+ './dataset/Sony/long/00165_00_30s.ARW'
+ './dataset/Sony/long/00190_00_10s.ARW'
+ './dataset/Sony/long/00171_00_30s.ARW'
+ './dataset/Sony/long/00165_00_30s.ARW'
+ './dataset/Sony/long/00102_00_30s.ARW'
+ './dataset/Sony/long/00024_00_10s.ARW'
+ './dataset/Sony/long/00161_00_30s.ARW'
+ './dataset/Sony/long/00161_00_30s.ARW'
+ './dataset/Sony/long/00121_00_30s.ARW'
+ './dataset/Sony/long/00078_00_30s.ARW'
+ './dataset/Sony/long/00141_00_30s.ARW'
+ './dataset/Sony/long/00150_00_30s.ARW'
+ './dataset/Sony/long/00195_00_10s.ARW'
+ './dataset/Sony/long/00084_00_30s.ARW'
+ './dataset/Sony/long/00165_00_30s.ARW'
+ './dataset/Sony/long/00128_00_30s.ARW'
+ './dataset/Sony/long/00104_00_30s.ARW'
+ './dataset/Sony/long/00138_00_30s.ARW'
+ './dataset/Sony/long/00056_00_10s.ARW'
+ './dataset/Sony/long/00154_00_30s.ARW'
+ './dataset/Sony/long/00232_00_10s.ARW'
+ './dataset/Sony/long/00183_00_10s.ARW'
+ './dataset/Sony/long/00019_00_10s.ARW'
+ './dataset/Sony/long/00072_00_30s.ARW'
+ './dataset/Sony/long/00220_00_10s.ARW'
+ './dataset/Sony/long/00015_00_10s.ARW'
+ './dataset/Sony/long/00038_00_10s.ARW'
+ './dataset/Sony/long/00169_00_30s.ARW'
+ './dataset/Sony/long/00065_00_10s.ARW'
+ './dataset/Sony/long/00070_00_10s.ARW'
+ './dataset/Sony/long/00013_00_10s.ARW'
+ './dataset/Sony/long/00134_00_30s.ARW'
+ './dataset/Sony/long/00221_00_10s.ARW'
+ './dataset/Sony/long/00073_00_30s.ARW'
+ './dataset/Sony/long/00141_00_30s.ARW'
+ './dataset/Sony/long/00059_00_10s.ARW'
+ './dataset/Sony/long/00112_00_30s.ARW'
+ './dataset/Sony/long/00062_00_10s.ARW'
+ './dataset/Sony/long/00202_00_10s.ARW'
+ './dataset/Sony/long/00204_00_10s.ARW'
+ './dataset/Sony/long/00190_00_10s.ARW'
+ './dataset/Sony/long/00132_00_30s.ARW'
+ './dataset/Sony/long/00166_00_30s.ARW'
+ './dataset/Sony/long/00138_00_30s.ARW'
+ './dataset/Sony/long/00096_00_30s.ARW'
+ './dataset/Sony/long/00037_00_10s.ARW'
+ './dataset/Sony/long/00081_00_30s.ARW'
+ './dataset/Sony/long/00197_00_10s.ARW'
+ './dataset/Sony/long/00196_00_10s.ARW'
+ './dataset/Sony/long/00043_00_10s.ARW']
+rawpy read the 91th file at location: 00206_00_10s.ARW
+rawpy read the 101th file at location: 00021_00_10s.ARW
+rawpy read the 61th file at location: 00169_00_30s.ARW
+loading ./dataset/Sony/long/00156_00_30s.ARW; images_in_memory= 11
+loading ./dataset/Sony/long/00200_00_10s.ARW; images_in_memory= 19
+loading ./dataset/Sony/long/00038_00_10s.ARW; images_in_memory= 20
+loading ./dataset/Sony/long/00018_00_10s.ARW; images_in_memory= 21
+loading ./dataset/Sony/long/00012_00_10s.ARW; images_in_memory= 25
+loading ./dataset/Sony/long/00084_00_30s.ARW; images_in_memory= 28
+rawpy read the 1th file at location: 00148_00_30s.ARW
+loading ./dataset/Sony/long/00026_00_10s.ARW; images_in_memory= 35
+loading ./dataset/Sony/long/00072_00_30s.ARW; images_in_memory= 36
+rawpy read the 21th file at location: 00143_00_30s.ARW
+loading ./dataset/Sony/long/00059_00_10s.ARW; images_in_memory= 50
+rawpy read the 121th file at location: 00088_00_30s.ARW
+rawpy read the 141th file at location: 00179_00_10s.ARW
+loading ./dataset/Sony/long/00057_00_10s.ARW; images_in_memory= 76
+loading ./dataset/Sony/long/00024_00_10s.ARW; images_in_memory= 78
+rawpy read the 41th file at location: 00141_00_30s.ARW
+loading ./dataset/Sony/long/00128_00_30s.ARW; images_in_memory= 84
+rawpy read the 151th file at location: 00134_00_30s.ARW
+
+
+(mean,stddev), image[0], hetero noise[0], const noise[0], image[0]
+0.18050177002480527 0.16004518461398468
+0.10421792353866977 0.038356630101995894
+0.037422307598983906 0.019894621980388126
+0.036302684909022 0.02231069265679465
+0.0287113686069862 0.025714062317148827
+0.2753513594978827 0.1929681241197724
+0.017163369747609458 0.011368229434704629
+0.09186915121554762 0.04014917360389986
+0.18050177002480527 0.16004518461398468
+0.01465023633729201 0.01383721741631608
+0.06587654285569755 0.04662114813781556
+0.18050177002480527 0.16004518461398468
+0.027666066078137597 0.023069358243820188
+0.12809903691213798 0.19754915772337983
+0.017794947679865558 0.01166416079784154
+0.032297751286990195 0.035103614050134534
+0.11755182274643516 0.0428160761172291
+0.05071053328959607 0.04337050461195054
+0.1384113824815003 0.11613334385665254
+0.07367722020372725 0.0295703086254348
+0.1986404966056199 0.08778317253706142
+0.1402791866762847 0.10730099397970948
+0.076631602883932 0.06614018116312476
+0.16688499718878802 0.08823076561945101
+0.02784068793594585 0.0209353559757664
+0.06371969555003076 0.054665539938597844
+0.10421792353866977 0.038356630101995894
+0.013388777395219265 0.009544638246577229
+0.12031326261837805 0.08101730978216289
+0.006649538189505755 0.0035718148623145956
+0.05071053328959607 0.04337050461195054
+0.028597464631822334 0.014973798767358295
+0.14098289654766916 0.05537542367339303
+0.05997450359761558 0.02170361823777423
+0.05071053328959607 0.04337050461195054
+0.14223355386178227 0.06575095519523455
+0.017794947679865558 0.01166416079784154
+0.03021701718717118 0.02357636793572518
+0.031745045833172725 0.0153533009662089
+0.06408850522035436 0.03319359794032713
+0.29488016072332357 0.14164067036684908
+0.01465023633729201 0.01383721741631608
+0.017943636984445455 0.025671342794413368
+0.06600810811613655 0.02354075887990829
+0.014060341018605982 0.025709708884702104
+0.352097868007732 0.31919521245323557
+0.03021701718717118 0.02357636793572518
+0.043253085922600576 0.047256831787369995
+0.07118611303852873 0.06546195821168907
+0.07118611303852873 0.06546195821168907
+0.06371969555003076 0.054665539938597844
+0.14744986186302356 0.1724756010476973
+0.1435687435494799 0.07019261679408151
+0.16062841012349338 0.12647806505585113
+0.03735801511666281 0.021153003603818568
+0.1402791866762847 0.10730099397970948
+0.14744986186302356 0.1724756010476973
+0.06380911297680658 0.040381771921940396
+0.05071053328959607 0.04337050461195054
+0.06804996798457097 0.04889903107505029
+0.1408415746285243 0.06303529726926074
+0.18050177002480527 0.16004518461398468
+0.03503199920219302 0.018753936691378786
+0.16062841012349338 0.12647806505585113
+0.09578517504441741 0.1354129789678995
+0.03735801511666281 0.021153003603818568
+0.1045930006715281 0.07988908996425834
+0.18010058626113334 0.11620065001641317
+0.05955063019995066 0.035267237796259183
+0.05671299730323476 0.03198631104133574
+0.1408415746285243 0.06303529726926074
+0.016771950231581734 0.015621246126505539
+0.037422307598983906 0.019894621980388126
+0.12623708871756634 0.05678722701271469
+0.03979808210698366 0.031670462673574123
+0.10560368804245002 0.08326060374658328
+0.45950705997915975 0.18109203085748007
+0.13882335726350448 0.05753312556273112
+0.1362058255253764 0.0991666679279206
+0.23805603024478117 0.12476195717225239
+0.017163369747609458 0.011368229434704629
+0.019154114393611366 0.01579517041623849
+0.14744986186302356 0.1724756010476973
+0.028597464631822334 0.014973798767358295
+0.14097955180357413 0.19885995398562048
+0.017794947679865558 0.01166416079784154
+0.28461701270706996 0.3812449597365443
+0.1308937574945972 0.09711816334736899
+0.02568998416283108 0.013432115927663888
+0.07851780786369034 0.04361114875232766
+0.06371969555003076 0.054665539938597844
+0.10185344282164976 0.11664310793481525
+0.18101247168708312 0.12925524707014693
+0.017163369747609458 0.011368229434704629
+0.020348908016208256 0.015487588392131362
+0.03125731837886292 0.03208782830432482
+0.11455054749268356 0.049580642187853526
+0.2753513594978827 0.1929681241197724
+0.08646549485656863 0.06211802418640504
+0.10421792353866977 0.038356630101995894
+0.05125201025326742 0.058001550359692046
+0.0032610640553309977 0.003914678505688074
+0.01653350124742836 0.008816390871373198
+0.1435687435494799 0.07019261679408151
+0.05125201025326742 0.058001550359692046
+0.013388777395219265 0.009544638246577229
+0.01837792360183954 0.02140667146382615
+0.05071053328959607 0.04337050461195054
+0.06380911297680658 0.040381771921940396
+0.1045930006715281 0.07988908996425834
+0.11455054749268356 0.049580642187853526
+0.027666066078137597 0.023069358243820188
+0.11455054749268356 0.049580642187853526
+0.013388777395219265 0.009544638246577229
+0.027666066078137597 0.023069358243820188
+0.13882335726350448 0.05753312556273112
+0.01092547468307803 0.013502107587207768
+0.053895388982510894 0.04111521930111156
+0.053895388982510894 0.04111521930111156
+0.0982848533065166 0.047269801791473214
+0.07869614080885512 0.06413576429484737
+0.025380291587986825 0.016403792075111844
+0.030633337637699043 0.029206690272409828
+0.10185344282164976 0.11664310793481525
+0.14098289654766916 0.05537542367339303
+0.027666066078137597 0.023069358243820188
+0.045019559707025536 0.03182679135438855
+0.08556564359384744 0.1853180741888932
+0.10564322960391603 0.15628933886911195
+0.2753513594978827 0.1929681241197724
+0.1362058255253764 0.0991666679279206
+0.019526558240833936 0.023754430017183924
+0.07118611303852873 0.06546195821168907
+0.08646549485656863 0.06211802418640504
+0.06600810811613655 0.02354075887990829
+0.036302684909022 0.02231069265679465
+0.05071053328959607 0.04337050461195054
+0.076631602883932 0.06614018116312476
+0.09186915121554762 0.04014917360389986
+0.019154114393611366 0.01579517041623849
+0.007838561371832142 0.004814275096859543
+0.03646343241866745 0.023334262339220826
+0.00844977916113443 0.006231478142413195
+0.08571019590665685 0.04944040631066048
+0.07851780786369034 0.04361114875232766
+0.025380291587986825 0.016403792075111844
+0.1045930006715281 0.07988908996425834
+0.11966087178679174 0.09891850312039414
+0.20277113383669487 0.21733078330273145
+0.057514195722515815 0.059318328325105196
+0.028542697898714664 0.010190053104509522
+0.11455054749268356 0.049580642187853526
+0.05256293353502706 0.054216233109175595
+0.038028878824318824 0.0229825586530111
+0.10564322960391603 0.15628933886911195
+0.236420468051449 0.11295961244204847
+0.1986404966056199 0.08778317253706142
+0.11755182274643516 0.0428160761172291
+0.037422307598983906 0.019894621980388126
+0.003337905048534928 0.0035034343611237122
+0.1308937574945972 0.09711816334736899
+[[0.15449563 0.12752819]
+ [0.16079642 0.14265011]]
+heteroschedastic_sigma_s [0.09109538]
+sigma_c 0.0302122924632
+[[-0.00286117  0.0210896 ]
+ [ 0.02434317  0.00876965]]
+[[ 0.00212799  0.00162892]
+ [-0.01267902  0.04598124]] 
+
+Epoch 0: at batch 1: Training dataset Loss=0.996834, Batch Time=38.886
+Epoch 0: at batch 1: Training dataset Loss=0.996834, Batch Time=73.905; Early rounds
+		Epoch 0:  Time = 92.449, Avg epoch time=92.449, Current epoch Time=92.449
+
+Loss vector (slice for the first 10 images)
+[[[[0.08794506 0.02942216]
+   [0.08530523 0.02537778]]
+
+  [[0.08632787 0.03021229]
+   [0.0901952  0.03010018]]]
+
+
+ [[[0.08544745 0.03021229]
+   [0.08435884 0.01615239]]
+
+  [[0.07513186 0.03021229]
+   [0.08086337 0.02422496]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[0.08967261 0.03021229]
+   [0.08971921 0.02816795]]
+
+  [[0.08753933 0.03021229]
+   [0.08902644 0.03021229]]]
+
+
+ [[[0.08794149 0.02976989]
+   [0.08855165 0.02465218]]
+
+  [[0.08505582 0.03021229]
+   [0.08918868 0.03021229]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[0.08819429 0.02888087]
+   [0.087274   0.02790556]]
+
+  [[0.08324332 0.02950222]
+   [0.07743859 0.02495643]]]
+
+
+ [[[0.08959971 0.02676738]
+   [0.08635872 0.02443606]]
+
+  [[0.08304645 0.03021229]
+   [0.08749418 0.0273346 ]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]]
+loading ./dataset/Sony/long/00114_00_30s.ARW; images_in_memory= 108
+loading ./dataset/Sony/long/00090_00_30s.ARW; images_in_memory= 133
+Epoch 1: at batch 1: Training dataset Loss=0.993675, Batch Time=36.318
+Epoch 1: at batch 1: Training dataset Loss=0.993675, Batch Time=71.254; Early rounds
+		Epoch 1:  Time = 170.849, Avg epoch time=78.226, Current epoch Time=85.425
+
+Loss vector (slice for the first 10 images)
+[[[[0.05094897 0.02731349]
+   [0.05493524 0.02381199]]
+
+  [[0.05153129 0.02738325]
+   [0.05573607 0.02526546]]]
+
+
+ [[[0.05426079 0.02738325]
+   [0.05547526 0.02434   ]]
+
+  [[0.05352896 0.02738325]
+   [0.05573607 0.02738325]]]
+
+
+ [[[0.05451056 0.02738325]
+   [0.05403227 0.02238393]]
+
+  [[0.05026748 0.02738325]
+   [0.04976316 0.02738325]]]
+
+
+ [[[0.05553844 0.0259293 ]
+   [0.05448998 0.02426941]]
+
+  [[0.05242431 0.02738325]
+   [0.05469514 0.02738325]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[0.05440795 0.02696613]
+   [0.05524244 0.0252031 ]]
+
+  [[0.05332291 0.02738325]
+   [0.05327238 0.02738325]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[0.05513368 0.02738325]
+   [0.05573607 0.02662275]]
+
+  [[0.05365086 0.02738325]
+   [0.05494374 0.02470288]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[0.05479561 0.02622383]
+   [0.05527546 0.02656662]]
+
+  [[0.05573607 0.02738325]
+   [0.05553921 0.02729181]]]]
+loading ./dataset/Sony/long/00219_00_10s.ARW; images_in_memory= 138
+Epoch 2: at batch 1: Training dataset Loss=0.990452, Batch Time=36.278
+Epoch 2: at batch 1: Training dataset Loss=0.990452, Batch Time=71.256; Early rounds
+		Epoch 2:  Time = 244.917, Avg epoch time=74.034, Current epoch Time=81.639
+
+Loss vector (slice for the first 10 images)
+[[[[0.06403715 0.03549566]
+   [0.06392126 0.0315639 ]]
+
+  [[0.06360363 0.03549566]
+   [0.06319618 0.03549566]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[0.05333512 0.03549566]
+   [0.05783225 0.02448716]]
+
+  [[0.04911685 0.03549566]
+   [0.0541946  0.03549566]]]
+
+
+ [[[0.06564269 0.03549566]
+   [0.06354895 0.03382848]]
+
+  [[0.06462738 0.03549566]
+   [0.06352274 0.03392063]]]
+
+
+ [[[0.06466287 0.03549566]
+   [0.06540155 0.03339487]]
+
+  [[0.06254072 0.03488549]
+   [0.06510651 0.03549566]]]
+
+
+ [[[0.063086   0.03500088]
+   [0.06564269 0.03472911]]
+
+  [[0.06322934 0.03549566]
+   [0.06564269 0.03549566]]]
+
+
+ [[[0.06497579 0.03504151]
+   [0.06469486 0.03399368]]
+
+  [[0.06381752 0.03549566]
+   [0.0635998  0.03500706]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[1.         1.        ]
+   [1.         1.        ]]
+
+  [[1.         1.        ]
+   [1.         1.        ]]]
+
+
+ [[[0.06402936 0.03549566]
+   [0.0646706  0.03193389]]
+
+  [[0.06240127 0.03549566]
+   [0.06564269 0.03479716]]]]
+loading ./dataset/Sony/long/00164_00_30s.ARW; images_in_memory= 157
+loading ./dataset/Sony/long/00039_00_10s.ARW; images_in_memory= 158
+Epoch 3: at batch 1: Training dataset Loss=0.987127, Batch Time=36.351
+Epoch 4: at batch 1: Training dataset Loss=0.984312, Batch Time=36.293
+Epoch 5: at batch 1: Training dataset Loss=0.981221, Batch Time=36.221
+Epoch 6: at batch 1: Training dataset Loss=0.977965, Batch Time=36.279
+Epoch 7: at batch 1: Training dataset Loss=0.974432, Batch Time=36.323
+Epoch 8: at batch 1: Training dataset Loss=0.971222, Batch Time=36.415
+Epoch 9: at batch 1: Training dataset Loss=0.968143, Batch Time=36.363
+Epoch 11: at batch 1: Training dataset Loss=0.961709, Batch Time=36.317
+Epoch 21: at batch 1: Training dataset Loss=0.929615, Batch Time=36.331
+Epoch 31: at batch 1: Training dataset Loss=0.899481, Batch Time=36.312
+Epoch 41: at batch 1: Training dataset Loss=0.867934, Batch Time=36.344
+Epoch 51: at batch 1: Training dataset Loss=0.840431, Batch Time=36.298
+Epoch 61: at batch 1: Training dataset Loss=0.813337, Batch Time=36.296
+Epoch 71: at batch 1: Training dataset Loss=0.789929, Batch Time=36.433
+Epoch 81: at batch 1: Training dataset Loss=0.763555, Batch Time=36.298
+Epoch 91: at batch 1: Training dataset Loss=0.741105, Batch Time=36.284
+Epoch 101: at batch 1: Training dataset Loss=0.717141, Batch Time=36.353
+Epoch 111: at batch 1: Training dataset Loss=0.692252, Batch Time=36.308
+Epoch 121: at batch 1: Training dataset Loss=0.675578, Batch Time=36.237
+Epoch 131: at batch 1: Training dataset Loss=0.651234, Batch Time=36.325
+Epoch 141: at batch 1: Training dataset Loss=0.633888, Batch Time=36.249
+Epoch 151: at batch 1: Training dataset Loss=0.615292, Batch Time=36.319
+Epoch 161: at batch 1: Training dataset Loss=0.598105, Batch Time=36.017
+Epoch 171: at batch 1: Training dataset Loss=0.579252, Batch Time=36.083
+Epoch 181: at batch 1: Training dataset Loss=0.560408, Batch Time=36.397
+Epoch 191: at batch 1: Training dataset Loss=0.549167, Batch Time=36.292
+
+
+(mean,stddev), image[0], hetero noise[0], const noise[0], image[0]
+0.058817867974894966 0.04510899150364977
+0.01453120892475468 0.009130477238538336
+0.12654275773445534 0.09307356505967128
+0.018866027933926333 0.01186431982935605
+0.01660630810423669 0.006915020745429158
+0.024287236989373184 0.023371434191812687
+0.1398419763569656 0.09087947739468019
+0.2669435570839198 0.28552933564030614
+0.08055870717413427 0.037614739649346314
+0.013616627626085176 0.0061664980562713915
+0.26186171595130503 0.3140512935896373
+0.12233701205767034 0.07256793585268867
+0.06880612650732587 0.06105630116799145
+0.010182603061264395 0.013313895452430884
+0.007645446491035379 0.004664637258141606
+0.07251207114947178 0.14658825189427568
+0.03545004635504867 0.03700618970322035
+0.024287236989373184 0.023371434191812687
+0.06880612650732587 0.06105630116799145
+0.16088668371609316 0.12177401498459646
+0.12654275773445534 0.09307356505967128
+0.039018520603974594 0.017427925508776056
+0.1792704296460954 0.0851445130917464
+0.08167048458972204 0.04935300016625002
+0.009955693118128384 0.008207609196097896
+0.09659465514566534 0.07522562987617344
+0.08037568246639903 0.050139991623024745
+0.09945359329094572 0.04222163720671377
+0.09885494033547104 0.05722573083071524
+0.16972175235778764 0.08952719092528341
+0.03592352165554891 0.021131717897315362
+0.024563610365261113 0.034959400993389615
+0.019583175654957596 0.011796144420785982
+0.10267528596492781 0.05074820253414678
+0.03663320003565751 0.02243553950393099
+0.1843986480256632 0.14179267014879549
+0.06398212250547708 0.058108761187978364
+0.009955693118128384 0.008207609196097896
+0.037361883884145186 0.018388915132570346
+0.004719114371946276 0.0022256837406968723
+0.29040172388371843 0.15846232273224942
+0.09659465514566534 0.07522562987617344
+0.01669216631313275 0.015657159764381375
+0.04192223802120765 0.022418143795672918
+0.06503017375072773 0.028726440679011617
+0.09101321696972065 0.13171366422493586
+0.009674285698443086 0.012466947129439547
+0.03478545500474439 0.03644015668453555
+0.13644951231748337 0.05837493773047703
+0.13644951231748337 0.05837493773047703
+0.13972463244521194 0.06900140247043123
+0.024563610365261113 0.034959400993389615
+0.024563610365261113 0.034959400993389615
+0.010134158733261955 0.01246220097386949
+0.26938549411590884 0.16408811398115186
+0.09701316387725001 0.035447984514346054
+0.07138386005210151 0.03338313464042591
+0.09659465514566534 0.07522562987617344
+0.1694433388144745 0.0692772271932618
+0.03229414306019862 0.014923417713423322
+0.06767443987002508 0.07794140614793443
+0.01209253696947421 0.008071641458300657
+0.017865199055407288 0.016137144089742112
+0.09885494033547104 0.05722573083071524
+0.12654275773445534 0.09307356505967128
+0.06784405846638464 0.03642143547795592
+0.1345065361369251 0.07017998552072258
+0.02776416421812211 0.04488350822088958
+0.43823843291298203 0.3047923058837124
+0.11506106456576504 0.05954241520814855
+0.04813249497632999 0.049943599073030046
+0.08055870717413427 0.037614739649346314
+0.16088668371609316 0.12177401498459646
+0.058817867974894966 0.04510899150364977
+0.09945359329094572 0.04222163720671377
+0.14615266484773315 0.07224834160474633
+0.015022032182029577 0.012052180299409819
+0.06543552620351534 0.03051412674168495
+0.005429797451959928 0.002728594407334721
+0.034821435389524424 0.029392450837510634
+0.04813249497632999 0.049943599073030046
+0.020601520748995128 0.012341367017202141
+0.05235555786305213 0.020892359963217456
+0.08167048458972204 0.04935300016625002
+0.1393482303621738 0.05790693873351954
+0.010650379019068623 0.007964513814150448
+0.0804444580641972 0.06710067874205262
+0.07174380152147819 0.03186925830769181
+0.06543552620351534 0.03051412674168495
+0.06543552620351534 0.03051412674168495
+0.20312259647789688 0.09557008148266308
+0.049522039871249035 0.024065889950344865
+0.07138386005210151 0.03338313464042591
+0.07913205511988508 0.04595996968262774
+0.0804444580641972 0.06710067874205262
+0.005429797451959928 0.002728594407334721
+0.09659465514566534 0.07522562987617344
+0.09945359329094572 0.04222163720671377
+0.011354104254361452 0.00947340595743937
+0.015022032182029577 0.012052180299409819
+0.03665636462441313 0.018576112783941594
+0.12179243354306735 0.06068172224889605
+0.034821435389524424 0.029392450837510634
+0.43641339272244295 0.21808241740827042
+0.0804444580641972 0.06710067874205262
+0.014381322642308625 0.00994522694929208
+0.016521993948329206 0.014623035275644219
+0.005128352953374105 0.003885424671755508
+0.43823843291298203 0.3047923058837124
+0.037361883884145186 0.018388915132570346
+0.1694433388144745 0.0692772271932618
+0.048148904606108545 0.018927029227636262
+0.010134158733261955 0.01246220097386949
+0.07590011839345134 0.05626801302168509
+0.015022032182029577 0.012052180299409819
+0.23848858346170232 0.14166172472162722
+0.06803447461221257 0.03707638670396749
+0.059211327628432286 0.023986383902183477
+0.058817867974894966 0.04510899150364977
+0.028497076399693455 0.020954295992222573
+0.03639005159722064 0.024554086924313937
+0.037361883884145186 0.018388915132570346
+0.007645446491035379 0.004664637258141606
+0.015022032182029577 0.012052180299409819
+0.09545293028122614 0.04293508946893567
+0.26938549411590884 0.16408811398115186
+0.1792704296460954 0.0851445130917464
+0.00963749385789825 0.00827048279197519
+0.06543552620351534 0.03051412674168495
+0.059211327628432286 0.023986383902183477
+0.07202143822738094 0.03186475491875092
+0.16088668371609316 0.12177401498459646
+0.1398419763569656 0.09087947739468019
+0.004934029572543963 0.005394815438476242
+0.10267528596492781 0.05074820253414678
+0.06398212250547708 0.058108761187978364
+0.049522039871249035 0.024065889950344865
+0.012746206533578608 0.00815194832639727
+0.08167048458972204 0.04935300016625002
+0.015613951310260887 0.023935795736167765
+0.09545293028122614 0.04293508946893567
+0.00963749385789825 0.00827048279197519
+0.049522039871249035 0.024065889950344865
+0.03229414306019862 0.014923417713423322
+0.03364018918163758 0.03216314371926092
+0.01209253696947421 0.008071641458300657
+0.009234387238675978 0.016395594483187188
+0.03639005159722064 0.024554086924313937
+0.015022032182029577 0.012052180299409819
+0.015102050707916703 0.014860838583847598
+0.01674249598618882 0.011886981629625159
+0.03545004635504867 0.03700618970322035
+0.01453120892475468 0.009130477238538336
+0.260552752995892 0.1324181943298336
+0.03592352165554891 0.021131717897315362
+0.07251207114947178 0.14658825189427568
+0.1398419763569656 0.09087947739468019
+0.12179243354306735 0.06068172224889605
+0.022548008065789382 0.02622475350173688
+0.01043433125697213 0.009014656203079334
+0.022764191395410194 0.021340592927191707
+[[0.02488816 0.02488816]
+ [0.02545523 0.02621133]]
+heteroschedastic_sigma_s [0.105385]
+sigma_c 0.00712858969787
+[[-4.23729340e-05  6.10541819e-04]
+ [-2.51297855e-03  5.48590986e-03]]
+[[-0.01691211  0.00384049]
+ [-0.00414731 -0.00932509]] 
+
+Epoch 201: at batch 1: Training dataset Loss=0.532509, Batch Time=36.260
+		Epoch 201:  Time = 1453.890, Avg epoch time=36.262, Current epoch Time=7.197
+
+Loss vector (slice for the first 10 images)
+[[[[0.02180727 0.03969219]
+   [0.02180727 0.03969219]]
+
+  [[0.02180727 0.03969219]
+   [0.02180727 0.03969219]]]
+
+
+ [[[0.06319037 0.04923055]
+   [0.06319037 0.04923055]]
+
+  [[0.06319037 0.04923055]
+   [0.06319037 0.04923055]]]
+
+
+ [[[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]
+
+  [[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]]
+
+
+ [[[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]
+
+  [[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]]
+
+
+ [[[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]
+
+  [[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]]
+
+
+ [[[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]
+
+  [[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]]
+
+
+ [[[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]
+
+  [[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]]
+
+
+ [[[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]
+
+  [[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]]
+
+
+ [[[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]
+
+  [[0.00340663 0.04581288]
+   [0.00340663 0.04581288]]]
+
+
+ [[[0.06319037 0.04923055]
+   [0.06319037 0.04923055]]
+
+  [[0.06319037 0.04923055]
+   [0.06319037 0.04923055]]]]
+Epoch 211: at batch 1: Training dataset Loss=0.520899, Batch Time=36.344
+Epoch 221: at batch 1: Training dataset Loss=0.507525, Batch Time=36.335
+Epoch 231: at batch 1: Training dataset Loss=0.490989, Batch Time=36.374
+Epoch 241: at batch 1: Training dataset Loss=0.477744, Batch Time=36.430
+Epoch 251: at batch 1: Training dataset Loss=0.464942, Batch Time=36.311
+Epoch 261: at batch 1: Training dataset Loss=0.453283, Batch Time=35.758
+Epoch 271: at batch 1: Training dataset Loss=0.440334, Batch Time=36.244
+Epoch 281: at batch 1: Training dataset Loss=0.430260, Batch Time=36.132
+Epoch 291: at batch 1: Training dataset Loss=0.423791, Batch Time=36.144
+Epoch 301: at batch 1: Training dataset Loss=0.413066, Batch Time=36.231
+Epoch 311: at batch 1: Training dataset Loss=0.404634, Batch Time=36.192
+Epoch 321: at batch 1: Training dataset Loss=0.398882, Batch Time=36.247
+Epoch 331: at batch 1: Training dataset Loss=0.390989, Batch Time=36.029
+Epoch 341: at batch 1: Training dataset Loss=0.379490, Batch Time=36.069
+Epoch 351: at batch 1: Training dataset Loss=0.367884, Batch Time=36.093
+Epoch 361: at batch 1: Training dataset Loss=0.356191, Batch Time=35.579
+Epoch 371: at batch 1: Training dataset Loss=0.346246, Batch Time=35.475
+Epoch 381: at batch 1: Training dataset Loss=0.336696, Batch Time=35.369
+Epoch 391: at batch 1: Training dataset Loss=0.328431, Batch Time=35.340
+
+
+(mean,stddev), image[0], hetero noise[0], const noise[0], image[0]
+0.0007648719160935347 0.0005100564519725006
+0.017246533111980433 0.018628552658783663
+0.04494934872339584 0.021656705402776852
+0.03332220335678393 0.028894379621151715
+0.06354337294668255 0.02995971007898086
+0.042244922319115474 0.040057404995194175
+0.019413508993208595 0.06216817255679067
+0.006104069398199741 0.00407784604045872
+0.3512403685620029 0.1414971898479817
+0.03303988259653501 0.05127291392674165
+0.05090536240439292 0.019997341318109697
+0.08107423040621597 0.03642845490607624
+0.005344766061525341 0.00412068461991175
+0.04398620386298546 0.01875323242131182
+0.2932448177164133 0.1180341966829227
+0.02475683000397222 0.0173879821011918
+0.005864939726026641 0.00400870976366465
+0.017246533111980433 0.018628552658783663
+0.014959228006595993 0.006571781140171079
+0.017080944789428898 0.023026315774865594
+0.04398620386298546 0.01875323242131182
+0.15657363910990796 0.22347792497214838
+0.015713691535488294 0.006370137477512905
+0.15657363910990796 0.22347792497214838
+0.00812632476152686 0.00534760762009162
+0.013250420534181018 0.005728352146935807
+0.07423236859027327 0.1918740902613155
+0.00449068152593135 0.0015969497391706076
+0.001428852771417688 0.0012777141050044913
+0.14622834733961554 0.06165851584903369
+0.012768419315635882 0.03891828119886073
+0.014308581161436962 0.005748034962188621
+0.0027432670278795257 0.0029182530818907784
+0.15657363910990796 0.22347792497214838
+0.12955467019129685 0.07100940750196567
+0.0031052361459726896 0.0012722534557197177
+0.003216173149401591 0.0013151802467613056
+0.1476801118062454 0.19985687161919372
+0.0597281690109952 0.04184399407023327
+0.027303231674595807 0.03269880868251859
+0.14622834733961554 0.06165851584903369
+0.0024690030117167083 0.0021895986669364592
+0.004954511784751148 0.002939123315740224
+0.122891654795243 0.07649568271151377
+0.06257246073555223 0.11332379042983927
+0.001505350541381567 0.0013122365034152418
+0.001505350541381567 0.0013122365034152418
+0.053770481504642476 0.1253601610556196
+0.05327027279190588 0.02413898183751905
+0.0014390083161437417 0.001199778063600736
+0.03385303444796506 0.016697399093908438
+0.03993548230868882 0.0729565288447427
+0.14594918389865086 0.16508804769839885
+0.0027432670278795257 0.0029182530818907784
+0.05488487306037371 0.04716420126120742
+0.027303231674595807 0.03269880868251859
+0.000551599792941948 0.00022533805793958152
+0.010268650670236745 0.010669843393310816
+0.008455393897100372 0.003755080247879607
+0.1299371446611417 0.05817134333650594
+0.014308581161436962 0.005748034962188621
+0.007466271333356644 0.007589549981786596
+0.03316571688709402 0.03623175723206136
+0.008639599236452966 0.0030531045033787272
+0.0597281690109952 0.04184399407023327
+0.04611735797008265 0.02078600591310972
+0.03332220335678393 0.028894379621151715
+0.05327027279190588 0.02413898183751905
+0.035728363766999394 0.02081771352621351
+0.07009904329947858 0.07901279233730639
+0.00689183093820489 0.0037745262162479296
+0.0932790206755385 0.04163899175291195
+0.3512403685620029 0.1414971898479817
+0.00812632476152686 0.00534760762009162
+0.00812632476152686 0.00534760762009162
+0.12363608295765971 0.05039291734369407
+0.04584181818221644 0.16332232292684695
+0.012610780052776605 0.005565251261068117
+0.012610780052776605 0.005565251261068117
+0.12881987165823539 0.12785116537134406
+0.07432741324844017 0.04122284608718411
+0.0007648719160935347 0.0005100564519725006
+0.01473861539820831 0.011833690279193381
+0.5001796974887913 0.397921541470292
+0.1299371446611417 0.05817134333650594
+0.011624949448442834 0.006829312219309558
+0.030509902121174548 0.012768967349384586
+0.05090536240439292 0.019997341318109697
+0.15107091643071158 0.06328475367621694
+0.05090536240439292 0.019997341318109697
+0.0932790206755385 0.04163899175291195
+0.042244922319115474 0.040057404995194175
+0.06402601736773761 0.04496707412360991
+0.04494934872339584 0.021656705402776852
+0.09505180134728874 0.04803334850417885
+0.011766482867754391 0.008096625198750302
+0.0014390083161437417 0.001199778063600736
+0.21518985180074424 0.12274767441117905
+0.06811768027523968 0.052965967147372346
+0.0019747493867789956 0.0015962336009802992
+0.14622834733961554 0.06165851584903369
+0.023095778509944154 0.015201675690806363
+0.014308581161436962 0.005748034962188621
+0.0049185736939363345 0.004148374274060634
+0.008455393897100372 0.003755080247879607
+0.02475683000397222 0.0173879821011918
+0.044702046962134645 0.02197646944721407
+0.0991323866524283 0.04340213979436643
+0.007117654482324376 0.0035780006732342817
+0.001428852771417688 0.0012777141050044913
+0.009215981702379139 0.011602241119491175
+0.04697025425157619 0.038067497998625556
+0.1476801118062454 0.19985687161919372
+0.0007648719160935347 0.0005100564519725006
+0.0022271698152387387 0.000976763773138183
+0.00978627257332576 0.007945143722574717
+0.0007648719160935347 0.0005100564519725006
+0.0136506121019071 0.014892678461586286
+0.012799779108316756 0.018171387879760713
+0.2932448177164133 0.1180341966829227
+0.00812632476152686 0.00534760762009162
+0.0597281690109952 0.04184399407023327
+0.0598931516133403 0.03729543963884602
+0.015713691535488294 0.006370137477512905
+0.053770481504642476 0.1253601610556196
+0.03507924749817182 0.020723855977838553
+0.005139557420282159 0.005145341874970006
+0.09718671660243672 0.040650560391914545
+0.0019909859471711755 0.00127002003172637
+0.0991323866524283 0.04340213979436643
+0.08429603083902215 0.15530669227039948
+0.006456731922932946 0.004366972115005881
+0.05488487306037371 0.04716420126120742
+0.03385303444796506 0.016697399093908438
+0.0024690030117167083 0.0021895986669364592
+0.1476801118062454 0.19985687161919372
+0.053770481504642476 0.1253601610556196
+0.03125843362980962 0.032311953701290363
+0.18837398219154267 0.2622186178013422
+0.02475683000397222 0.0173879821011918
+0.011624949448442834 0.006829312219309558
+0.0050019293057852465 0.003892990225578906
+0.12955467019129685 0.07100940750196567
+0.02442997795232138 0.028707059072206
+0.03507924749817182 0.020723855977838553
+0.05327027279190588 0.02413898183751905
+0.0597281690109952 0.04184399407023327
+0.2932448177164133 0.1180341966829227
+0.06402601736773761 0.04496707412360991
+0.00812632476152686 0.00534760762009162
+0.122891654795243 0.07649568271151377
+0.03125843362980962 0.032311953701290363
+0.03303988259653501 0.05127291392674165
+0.0598931516133403 0.03729543963884602
+0.14033401869451723 0.061235434755004106
+0.044702046962134645 0.02197646944721407
+0.010268650670236745 0.010669843393310816
+0.00449068152593135 0.0015969497391706076
+0.009613269768274257 0.006043606496386581
+0.27567016082589646 0.299695994952946
+0.0136506121019071 0.014892678461586286
+[[0.00126016 0.00132317]
+ [0.00056707 0.00138618]]
+heteroschedastic_sigma_s [0.01358637]
+sigma_c 0.0369974284285
+[[-5.28534188e-05 -1.85302682e-04]
+ [ 2.07054356e-04  1.44816642e-04]]
+[[ 0.01983701 -0.03191788]
+ [ 0.02736102  0.03944115]] 
+
+Epoch 401: at batch 1: Training dataset Loss=0.321106, Batch Time=35.599
+		Epoch 401:  Time = 2406.768, Avg epoch time=35.602, Current epoch Time=5.987
+
+Loss vector (slice for the first 10 images)
+[[[[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]
+
+  [[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]]
+
+
+ [[[0.0777529  0.01774126]
+   [0.0777529  0.01774126]]
+
+  [[0.0777529  0.01774126]
+   [0.0777529  0.01774126]]]
+
+
+ [[[0.08576851 0.04810097]
+   [0.08576851 0.04810097]]
+
+  [[0.08576851 0.04810097]
+   [0.08576851 0.04810097]]]
+
+
+ [[[0.0777529  0.01774126]
+   [0.0777529  0.01774126]]
+
+  [[0.0777529  0.01774126]
+   [0.0777529  0.01774126]]]
+
+
+ [[[0.08576851 0.04810097]
+   [0.08576851 0.04810097]]
+
+  [[0.08576851 0.04810097]
+   [0.08576851 0.04810097]]]
+
+
+ [[[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]
+
+  [[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]]
+
+
+ [[[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]
+
+  [[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]]
+
+
+ [[[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]
+
+  [[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]]
+
+
+ [[[0.08576851 0.04810097]
+   [0.08576851 0.04810097]]
+
+  [[0.08576851 0.04810097]
+   [0.08576851 0.04810097]]]
+
+
+ [[[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]
+
+  [[0.08629498 0.01881562]
+   [0.08629498 0.01881562]]]]
+Epoch 411: at batch 1: Training dataset Loss=0.312998, Batch Time=35.667
+Epoch 421: at batch 1: Training dataset Loss=0.306955, Batch Time=35.634
+Epoch 431: at batch 1: Training dataset Loss=0.299998, Batch Time=35.702
+Epoch 441: at batch 1: Training dataset Loss=0.294613, Batch Time=35.617
+^CTraceback (most recent call last):
+  File "train_heteroscedastic_sigma_map_g_loss_full_res_BS161.py", line 321, in <module>
+    training_dataset_loss = np.mean(g_loss[np.where(g_loss)])
+KeyboardInterrupt
+(sid2) [ir967@gr015 Learning-to-See-in-the-Dark]$ exit
+exit
+srun: error: gr015-ib0: task 0: Exited with exit code 1
+srun: Terminating job step 508309.0
+(base) [ir967@log-1 Learning-to-See-in-the-Dark]$ 

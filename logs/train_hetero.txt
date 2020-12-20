@@ -1,0 +1,74 @@
+(sid2) [ir967@gv06 Learning-to-See-in-the-Dark]$ vi train_heteroschedastic_sigma.py 
+(sid2) [ir967@gv06 Learning-to-See-in-the-Dark]$ python train_heteroschedastic_sigma.py 
+
+
+
+
+Current date and time : 
+2020-12-17 00:03:35
+./dataset/Sony/long/00018_00_10s.ARW 18
+./dataset/Sony/long/00148_00_30s.ARW 148
+./dataset/Sony/long/00029_00_10s.ARW 29
+./dataset/Sony/long/00132_00_30s.ARW 132
+./dataset/Sony/long/00073_00_30s.ARW 73
+./dataset/Sony/long/00033_00_10s.ARW 33
+./dataset/Sony/long/00118_00_30s.ARW 118
+Found 161 images to train with
+
+Training on files with indices: 0 to 161
+Training on 161 images only
+
+2020-12-17 00:03:35.074567: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 AVX512F FMA
+2020-12-17 00:03:35.237496: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1411] Found device 0 with properties: 
+name: Tesla V100-PCIE-32GB major: 7 minor: 0 memoryClockRate(GHz): 1.38
+pciBusID: 0000:86:00.0
+totalMemory: 31.75GiB freeMemory: 31.45GiB
+2020-12-17 00:03:35.237531: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1490] Adding visible gpu devices: 0
+2020-12-17 00:03:35.514881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-12-17 00:03:35.514922: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977]      0 
+2020-12-17 00:03:35.514954: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990] 0:   N 
+2020-12-17 00:03:35.515065: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1103] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 30507 MB memory) -> physical GPU (device: 0, name: Tesla V100-PCIE-32GB, pci bus id: 0000:86:00.0, compute capability: 7.0)
+WARNING:tensorflow:From /scratch/ir967/SID/Learning-to-See-in-the-Dark/resnet.py:49: __init__ (from tensorflow.python.ops.init_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.initializers.variance_scaling instead with distribution=uniform to get equivalent behavior.
+
+Loaded ./heteroschedastic_sigma_checkpoint/model.ckpt
+
+last epoch of previous run: 472
+
+
+BATCH_SIZE= 16 ,final_epoch= 4001 ,no_of_batches= 10 ,ps 128 ,result_dir= ./heteroschedastic_sigma_checkpoint/ ,len(train_fns)= 161
+
+Cleared all images in memory.
+
+0.023019577805820646 0.08411586735143557
+0.07389625317658499 0.02765367289366785
+0.041770486541338414 0.026955879022336465
+0.18140347590957795 0.11950344192433007
+0.08870601696301605 0.06292615394789813
+0.026601175468908167 0.01213838306541175
+0.006978720732785604 0.0024077820943447055
+0.08408806189623874 0.04319565861957675
+0.020122273064282936 0.011383889936017966
+0.14702386956980718 0.16823259942064683
+0.09703395851128249 0.06364968313193263
+0.024103556574719853 0.020880212463834057
+0.11501676592172316 0.0860127217953477
+0.09483404703343012 0.039173696548440155
+0.047180441148000796 0.0295320235515089
+0.002092089486537496 0.002222008887041201
+[[0.01266461 0.01228656]
+ [0.01360973 0.01449184]]
+[[0.00792404 0.01420856]
+ [0.01609816 0.00029735]]
+[[ 0.00179799  0.01056618]
+ [ 0.00571029 -0.00042016]]
+[[0.02164086 0.03072096]
+ [0.03212691 0.01436533]] 
+(mean,stddev), image[0], const noise[0], hetero noise[0], image[0]
+
+Traceback (most recent call last):
+  File "train_heteroschedastic_sigma.py", line 252, in <module>
+    sys.exit()
+NameError: name 'sys' is not defined
+(sid2) [ir967@gv06 Learning-to-See-in-the-Dark]$ 
