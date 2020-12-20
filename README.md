@@ -1,3 +1,3 @@
-Estimating the noise level in an image.
+Estimating the noise level in a synthetic RAW image.
 
-An improvement to Learning to See in the Dark paper. Estimating the gamma ot the exposure duration of the image from the image. 
+And, an improvement to Learning to See in the Dark paper. Estimating the gamma or the exposure duration of the image from the image.
